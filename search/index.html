@@ -1,10 +1,10 @@
 
- <!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   
-    <title>知行合一</title>
+    <title>search | 知行合一</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="xxx">
@@ -13,12 +13,13 @@
     
     <meta name="description">
 <meta property="og:type" content="website">
-<meta property="og:title" content="知行合一">
-<meta property="og:url" content="http://jokerhappy.github.io/index.html">
+<meta property="og:title" content="search">
+<meta property="og:url" content="http://jokerhappy.github.io/search/index.html">
 <meta property="og:site_name" content="知行合一">
 <meta property="og:description">
+<meta property="og:updated_time" content="2016-04-06T07:20:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="知行合一">
+<meta name="twitter:title" content="search">
 <meta name="twitter:description">
 
     
@@ -34,9 +35,9 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
-  <body>
-    <header>
-      
+    <body>
+      <header>
+        
 <div>
 		
 			<div id="textlogo">
@@ -66,127 +67,31 @@
 				</ul>
 			</nav>			
 </div>
-    </header>
-    <div id="container">
-      <div id="main">
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/post/hello-world/" title="知行合一" itemprop="url">知行合一</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
-		
-  <p class="article-time">
-    <time datetime="2016-04-07T23:15:08.887Z" itemprop="datePublished"> 发表于 2016-04-08</time>
-    
-  </p>
-</header>
-    <div class="article-content">
+      </header>
+      <div id="container">
         
-        <blockquote>
-<p>知是行之始，行是知之成。</p>
-<p>若会得时，</p>
-<p>只说一个知，已自有行在。</p>
-<p>只说一个行，已自有知在。</p>
-</blockquote>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
+<div  id="main" class="page">
+  <div id='cse' style='width:100%;text-align:center'>正在加载搜索结果，请稍等。</div>
 </div>
+<script src="http://www.google.com.hk/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+google.load('search', '1', {language : 'zh-CN',style: google.loader.themes.MINIMALIST});
+google.setOnLoadCallback(function(){
+  var customSearchControl = new google.search.CustomSearchControl('005633572514386024064:85kpstb7kpc');
+  customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  var options = new google.search.DrawOptions();
+  options.setAutoComplete(true);
+  customSearchControl.draw('cse', options);
+  var match = location.search.match(/q=([^&]*)(&|$)/);
+  if(match && match[1]){
+    var search = decodeURIComponent(match[1]); 
+    customSearchControl.execute(search);
+  }
+},true);
+</script>
 
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/post/hello-world/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/hello-world/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-
-</div>
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
-
-<div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
-<aside class="clearfix">
-
-  
-<div class="categorieslist">
-	<p class="asidetitle">分类</p>
-		<ul>
-		
-		  
-		
-		</ul>
-</div>
-
-
-  
-<div class="tagslist">
-	<p class="asidetitle">标签</p>
-		<ul class="clearfix">
-		
-			
-		
-			
-		
-		</ul>
-</div>
-
-
-  <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
-    <ul>
-        
-          <li>
-            
-            	<a href="https://hexo.io/" target="_blank" title="Hexo">Hexo</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="https://github.com/JokerHappy" target="_blank" title="GitHub">GitHub</a>
-            
-          </li>
-        
-    </ul>
-</div>
-
-  <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
-</div>
-
-</aside>
-</div>
-    </div>
-    <footer><div id="footer" >
+      </div>
+      <footer><div id="footer" >
 	
 	<div class="line">
 		<span></span>
@@ -227,7 +132,7 @@
 		</p>
 </div>
 </footer>
-    <script src="/js/jquery-2.0.3.min.js"></script>
+      <script src="/js/jquery-2.0.3.min.js"></script>
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 <script src="/js/jquery.qrcode-0.12.0.min.js"></script>
@@ -279,6 +184,18 @@ $(document).ready(function(){
 
 
 
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"JokerHappy"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
 
 
 
@@ -345,5 +262,5 @@ ga('send', 'pageview');
 
 <!-- Tiny_search End -->
 
-  </body>
- </html>
+    </body>
+   </html>
