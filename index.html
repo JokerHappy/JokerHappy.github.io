@@ -96,26 +96,21 @@
 <p>除了在代码的书写过程中注意内存的管理，还可以利用<code>Xcode</code>自带的工具对代码进行分析，解决内存问题。</p>
 <h3 id="Diagnostics"><a href="#Diagnostics" class="headerlink" title="Diagnostics"></a>Diagnostics</h3><p><img src="http://a2.qpic.cn/psb?/V13xbUt94FYthm/oBASUjsDRr4YZxAzrYj0GqANnEFgmN0xP0glwDTtzVI!/b/dKkAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=gAP4AQAAAAAFB14!&amp;sce=0-12-12&amp;rf=viewer_4" alt=""></p>
 <p><code>Xcode</code> 的  <code>Product</code> –&gt; <code>Sheme</code> –&gt; <code>edit scheme</code> –&gt; <code>Run</code> -&gt; <code>Diagnostics</code> 下有一些选项可以帮助我们找到<code>app</code>中的内存问题：</p>
-<p>#####Enable Malloc Scribble</p>
-<blockquote>
+<h5 id="Enable-Malloc-Scribble"><a href="#Enable-Malloc-Scribble" class="headerlink" title="Enable Malloc Scribble"></a>Enable Malloc Scribble</h5><blockquote>
 <p>申请内存后在申请的内存上填<code>0xAA</code>，内存释放后在释放的内存上填<code>0x55</code>；再就是说如果内存未被初始化就被访问，或者释放后被访问，就会引发异常，这样就可以使问题尽快暴漏出来。</p>
 <p><code>Scribble</code>其实是<code>malloc</code>库<code>libsystem_malloc.dylib</code>自身提供的调试方案</p>
 </blockquote>
-<p>#####Enable Malloc Guard Edges</p>
-<blockquote>
+<h5 id="Enable-Malloc-Guard-Edges"><a href="#Enable-Malloc-Guard-Edges" class="headerlink" title="Enable Malloc Guard Edges"></a>Enable Malloc Guard Edges</h5><blockquote>
 <p>申请大片内存的时候在前后page上加保护，详见<a href="http://baike.baidu.com/link?url=47Hbd0Lf8oBC2tUS1HcASJKPWGPYOp3vsUJqJwF4i-6TJ-QkhwIRfKoYpEbnbZFOjavlB383bXTykYOOGVtqya" target="_blank" rel="external">保护模式</a>。</p>
 </blockquote>
-<p>#####Enable Guard Mallocs</p>
-<blockquote>
+<h5 id="Enable-Guard-Mallocs"><a href="#Enable-Guard-Mallocs" class="headerlink" title="Enable Guard Mallocs"></a>Enable Guard Mallocs</h5><blockquote>
 <p>使用<code>libgmalloc</code>捕获常见的内存问题，比如越界、释放之后继续使用。</p>
 <p>由于<code>libgmalloc</code>在真机上不存在，因此这个功能只能在模拟器上使用.</p>
 </blockquote>
-<p>#####Enable Zombie Objects</p>
-<blockquote>
+<h5 id="Enable-Zombie-Objects"><a href="#Enable-Zombie-Objects" class="headerlink" title="Enable Zombie Objects"></a>Enable Zombie Objects</h5><blockquote>
 <p><code>Zombie</code>的原理是用生成僵尸对象来替换<code>dealloc</code>的实现，当对象引用计数为<code>0</code>的时候，将需要<code>dealloc</code>的对象转化为僵尸对象。如果之后再给这个僵尸对象发消息，则抛出异常，并打印出相应的信息，调试者可以很轻松的找到异常发生位置。</p>
 </blockquote>
-<p>#####Enable Address Sanitizer (Xcode7 +)</p>
-<blockquote>
+<h5 id="Enable-Address-Sanitizer-Xcode7"><a href="#Enable-Address-Sanitizer-Xcode7" class="headerlink" title="Enable Address Sanitizer (Xcode7 +)"></a>Enable Address Sanitizer (Xcode7 +)</h5><blockquote>
 <p><code>AddressSanitizer</code>的原理是当程序创建变量分配一段内存时，将此内存后面的一段内存也冻结住，标识为中毒内存。当程序访问到中毒内存时（越界访问），就会抛出异常，并打印出相应<code>log</code>信息。调试者可以根据中断位置和的<code>log</code>信息，识别<code>bug</code>。如果变量释放了，变量所占的内存也会标识为中毒内存，这时候访问这段内存同样会抛出异常（访问已经释放的对象）。</p>
 </blockquote>
 <h3 id="静态分析"><a href="#静态分析" class="headerlink" title="静态分析"></a>静态分析</h3><p>一般来说，在程序未运行之前我们可以先通过<code>Clang Static Analyzer</code>(静态分析)来检查代码是否存在<code>bug</code>。比如，内存泄露、文件资源泄露或访问空指针的数据等。</p>
