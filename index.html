@@ -94,7 +94,7 @@
 <p>内存泄漏（Memory Leaks）是当一个对象或变量在使用完成后没有释放掉，这个对象一直占有着这块内存，直到应用停止。如果这种对象过多内存就会耗尽，其它的应用就无法运行。</p>
 </blockquote>
 <p>除了在代码的书写过程中注意内存的管理，还可以利用<code>Xcode</code>自带的工具对代码进行分析，解决内存问题。</p>
-<h3 id="Diagnostics"><a href="#Diagnostics" class="headerlink" title="Diagnostics"></a>Diagnostics</h3><p><img src="http://a2.qpic.cn/psb?/V13xbUt94FYthm/oBASUjsDRr4YZxAzrYj0GqANnEFgmN0xP0glwDTtzVI!/b/dKkAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=gAP4AQAAAAAFB14!&amp;sce=0-12-12&amp;rf=viewer_4" alt=""></p>
+<h3 id="Diagnostics"><a href="#Diagnostics" class="headerlink" title="Diagnostics"></a>Diagnostics</h3><p><img src="http://7xt3bw.com1.z0.glb.clouddn.com/1.png-water" alt=""></p>
 <p><code>Xcode</code> 的  <code>Product</code> –&gt; <code>Sheme</code> –&gt; <code>edit scheme</code> –&gt; <code>Run</code> -&gt; <code>Diagnostics</code> 下有一些选项可以帮助我们找到<code>app</code>中的内存问题：</p>
 <h5 id="Enable-Malloc-Scribble"><a href="#Enable-Malloc-Scribble" class="headerlink" title="Enable Malloc Scribble"></a>Enable Malloc Scribble</h5><blockquote>
 <p>申请内存后在申请的内存上填<code>0xAA</code>，内存释放后在释放的内存上填<code>0x55</code>；再就是说如果内存未被初始化就被访问，或者释放后被访问，就会引发异常，这样就可以使问题尽快暴漏出来。</p>
@@ -120,7 +120,7 @@
 <li><p>自动静态分析：在<code>Build Settings</code>启用<code>Analyze During &#39;Build&#39;</code>，每次编译时都会自动静态分析</p>
 </li>
 </ul>
-<p><img src="http://a3.qpic.cn/psb?/V13xbUt94FYthm/HCMi1koiHNTRE0L2npCydqcGFc4avoaGYWjK8vmLfm4!/b/dPoAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=vALgAAAAAAAFB3o!&amp;sce=0-12-12&amp;rf=viewer_4" alt=""></p>
+<p><img src="http://7xt3bw.com1.z0.glb.clouddn.com/2.png-water" alt=""></p>
 <p><code>Analyze</code>主要分析以下四种问题：</p>
 <ul>
 <li><p>逻辑错误：访问空指针或未初始化的变量等；</p>
@@ -147,7 +147,7 @@
 <li><p><strong>在界面的右下角有若干选框，选中Invert Call Tree 和Hide System Libraries,（红圈范围内）显示如下</strong></p>
 </li>
 </ul>
-<p><img src="http://a2.qpic.cn/psb?/V13xbUt94FYthm/GSm5c7izr9J5viTQXX3CFySFmojgwGFMon769qlF308!/b/dKUAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=AQGQAQAAAAADB7M!&amp;sce=0-12-12&amp;rf=viewer_4" alt=""></p>
+<p><img src="http://7xt3bw.com1.z0.glb.clouddn.com/3.png-water" alt=""></p>
 <ul>
 <li><p>选中显示的若干条中的一条，双击，会自动跳到内存泄露代码处。</p>
 </li>
