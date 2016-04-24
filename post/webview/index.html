@@ -1,0 +1,682 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>UIWebView 使用浅析 | 知行合一</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="xxx">
+    
+
+    
+    <meta name="description" content="苹果官方对UIWebView的介绍
+
+You can use the UIWebView class to embed web content in your application. To doso, you simply create a UIWebView object, attach it to a window, and send it a request to load web con">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UIWebView 使用浅析">
+<meta property="og:url" content="http://jokerhappy.github.io/post/webview/index.html">
+<meta property="og:site_name" content="知行合一">
+<meta property="og:description" content="苹果官方对UIWebView的介绍
+
+You can use the UIWebView class to embed web content in your application. To doso, you simply create a UIWebView object, attach it to a window, and send it a request to load web con">
+<meta property="og:updated_time" content="2016-04-24T09:13:40.236Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UIWebView 使用浅析">
+<meta name="twitter:description" content="苹果官方对UIWebView的介绍
+
+You can use the UIWebView class to embed web content in your application. To doso, you simply create a UIWebView object, attach it to a window, and send it a request to load web con">
+
+    
+    <link rel="alternative" href="/atom.xml" title="知行合一" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="知行合一">知行合一</a></h1>
+				<h2 class="blog-motto">无谓的协助者</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">简介</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/post/webview/" title="UIWebView 使用浅析" itemprop="url">UIWebView 使用浅析</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-15T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-02-16</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#属性"><span class="toc-number">1.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法"><span class="toc-number">2.</span> <span class="toc-text">方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代理方法"><span class="toc-number">3.</span> <span class="toc-text">代理方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UIWebView-的高级用法"><span class="toc-number">4.</span> <span class="toc-text">UIWebView 的高级用法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#隐藏上下滚动时出边界的后面的黑色的阴影"><span class="toc-number">4.1.</span> <span class="toc-text">隐藏上下滚动时出边界的后面的黑色的阴影</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#禁用拖拽时的反弹效果"><span class="toc-number">4.2.</span> <span class="toc-text">禁用拖拽时的反弹效果</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#判断用户点击类型"><span class="toc-number">4.3.</span> <span class="toc-text">判断用户点击类型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#UIWebView和JavaScript的交互"><span class="toc-number">4.4.</span> <span class="toc-text">UIWebView和JavaScript的交互</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Objective-C调用JavaScript"><span class="toc-number">4.4.1.</span> <span class="toc-text">Objective-C调用JavaScript</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Javascript调用Objective-C的函数"><span class="toc-number">4.4.2.</span> <span class="toc-text">Javascript调用Objective-C的函数</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#UIWebView-捕获-404，-403"><span class="toc-number">4.5.</span> <span class="toc-text">UIWebView 捕获 404， 403</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<p>苹果官方对<code>UIWebView</code>的介绍</p>
+<blockquote>
+<p>You can use the UIWebView class to embed web content in your application. To doso, you simply create a UIWebView object, attach it to a window, and send it a request to load web content. You can also use this class to move back and forward in the history of webpages, and you can even set some web content properties programmatically.</p>
+</blockquote>
+<p><code>UIWebView</code>是<code>iOS</code>内置的浏览器控件，<code>UIWebView</code>用于在<code>App</code>中嵌入网页，通常是<code>html</code>网页，也可以是<code>PDF</code>、<code>txt</code>文档等。苹果在发布<code>iOS8</code>的时候，新增了一个<code>WKWebView</code>组件，如果你的<code>APP</code>只考虑支持<code>iOS8</code>及以上版本，那么你就可以使用这个新的浏览器控件了。</p>
+<a id="more"></a> 
+<p>本文只是探讨<code>UIWebView</code>的使用方法。</p>
+<h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><p><code>@property (nonatomic) BOOL scalesPageToFit;</code> </p>
+<blockquote>
+<p>自动适应屏幕尺寸</p>
+</blockquote>
+<p><code>@property (nonatomic) BOOL detectsPhoneNumbers NS_DEPRECATED_IOS(2_0, 3_0);</code> </p>
+<blockquote>
+<p>自动检测网页上的电话号码，单击可以拨打，<code>iOS4</code>之后被下面的属性所代替。</p>
+</blockquote>
+<p><code>@property (nonatomic) UIDataDetectorTypes dataDetectorTypes NS_AVAILABLE_IOS(3_0);</code> </p>
+<blockquote>
+<p>自动检测电话、网址和邮箱。枚举见下方代码。</p>
+</blockquote>
+<pre><code>typedef NS_OPTIONS(NSUInteger, UIDataDetectorTypes) {
+UIDataDetectorTypePhoneNumber                              = 1 &lt;&lt; 0,          // Phone number detection
+UIDataDetectorTypeLink                                     = 1 &lt;&lt; 1,          // URL detection
+UIDataDetectorTypeAddress NS_ENUM_AVAILABLE_IOS(4_0)       = 1 &lt;&lt; 2,          // Street address detection
+UIDataDetectorTypeCalendarEvent NS_ENUM_AVAILABLE_IOS(4_0) = 1 &lt;&lt; 3,          // Event detection
+
+UIDataDetectorTypeNone          = 0,               // No detection at all
+UIDataDetectorTypeAll           = NSUIntegerMax    // All types
+} __TVOS_PROHIBITED;
+</code></pre><p><code>@property (nonatomic) BOOL allowsInlineMediaPlayback NS_AVAILABLE_IOS(4_0);</code><br><code>// iPhone Safari defaults to NO. iPad Safari defaults to YES</code>  </p>
+<blockquote>
+<p><code>UIWebView</code>中用<code>html5</code>的<code>video</code>方式播放视频时，在<code>iPad</code>上是默认原来大小的，而在<code>iPhone</code>上是默认全屏播放的。<br><strong><code>HTML</code>里<code>video</code>必须加上<code>webkit-playsinline</code>属性</strong></p>
+</blockquote>
+<p><code>@property (nonatomic) BOOL mediaPlaybackRequiresUserAction NS_AVAILABLE_IOS(4_0);</code><br><code>// iPhone and iPad Safari both default to YES</code></p>
+<blockquote>
+<p>是否可以自动播放<code>html5</code>中的视频。</p>
+</blockquote>
+<p><code>@property (nonatomic) BOOL mediaPlaybackAllowsAirPlay NS_AVAILABLE_IOS(5_0);</code><br><code>// iPhone and iPad Safari both default to YES</code></p>
+<blockquote>
+<p>是否可以使用<code>Air Play</code>。 在<code>iPhone</code>和<code>iPad</code>上默认使<code>YES</code>。</p>
+</blockquote>
+<p><code>@property (nonatomic) BOOL suppressesIncrementalRendering NS_AVAILABLE_IOS(6_0);</code><br><code>// iPhone and iPad Safari both default to NO</code></p>
+<blockquote>
+<p>是否网页内容下载完毕才开始渲染<code>web</code>视图，默认为<code>NO</code>。</p>
+</blockquote>
+<p><code>@property (nonatomic) BOOL keyboardDisplayRequiresUserAction NS_AVAILABLE_IOS(6_0); // default is YES</code></p>
+<blockquote>
+<p>是否在<code>web</code>页面响应用户输入弹出键盘，默认为<code>YES</code>。</p>
+</blockquote>
+<p><em><code>iOS7</code>增加了分页功能</em><br><code>@property (nonatomic) UIWebPaginationMode paginationMode NS_AVAILABLE_IOS(7_0);</code></p>
+<blockquote>
+<p>设置分页模式</p>
+</blockquote>
+<pre><code>typedef NS_ENUM(NSInteger, UIWebPaginationMode) {
+UIWebPaginationModeUnpaginated,//不使用翻页效果
+UIWebPaginationModeLeftToRight,//将网页超出部分分页，从左向右进行翻页
+UIWebPaginationModeTopToBottom,//将网页超出部分分页，从上向下进行翻页
+UIWebPaginationModeBottomToTop,//将网页超出部分分页，从下向上进行翻页
+UIWebPaginationModeRightToLeft//将网页超出部分分页，从右向左进行翻页
+};
+</code></pre><p><code>@property (nonatomic) UIWebPaginationBreakingMode paginationBreakingMode NS_AVAILABLE_IOS(7_0);</code></p>
+<blockquote>
+<p>设置分页打破模式</p>
+</blockquote>
+<pre><code>typedef NS_ENUM (NSInteger, UIWebPaginationBreakingMode ) {
+UIWebPaginationBreakingModePage, // 页模式
+UIWebPaginationBreakingModeColumn //列模式 
+};
+</code></pre><p><code>@property (nonatomic) CGFloat pageLength NS_AVAILABLE_IOS(7_0);</code></p>
+<blockquote>
+<p>每一页的长度</p>
+</blockquote>
+<p><code>@property (nonatomic) CGFloat gapBetweenPages NS_AVAILABLE_IOS(7_0);</code></p>
+<blockquote>
+<p>每一页的间距</p>
+</blockquote>
+<p><code>@property (nonatomic) BOOL allowsPictureInPictureMediaPlayback NS_AVAILABLE_IOS(9_0);</code></p>
+<blockquote>
+<p>画中画模式页面中返回 <strong><code>iOS9</code>新增属性</strong></p>
+</blockquote>
+<p><code>@property (nonatomic) BOOL allowsLinkPreview NS_AVAILABLE_IOS(9_0); // default is NO</code></p>
+<blockquote>
+<p>使用<code>3DTouch</code>显示链接预览 <strong><code>iOS9</code>新增属性</strong></p>
+</blockquote>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><pre><code>- (void)reload; //重新加载（刷新）
+- (void)stopLoading; //停止加载
+- (void)goBack;//回退
+- (void)goForward; //前进
+- (void)loadRequest:(NSURLRequest *)request;
+- (void)loadHTMLString:(NSString *)string baseURL:(nullable NSURL *)baseURL;
+- (void)loadData:(NSData *)data MIMEType:(NSString *)MIMEType textEncodingName:(NSString *)textEncodingName baseURL:(NSURL *)baseURL;
+</code></pre><h4 id="代理方法"><a href="#代理方法" class="headerlink" title="代理方法"></a>代理方法</h4><pre><code>- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType;
+- (void)webViewDidStartLoad:(UIWebView *)webView;
+- (void)webViewDidFinishLoad:(UIWebView *)webView;
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(nullable NSError *)error;
+</code></pre><h4 id="UIWebView-的高级用法"><a href="#UIWebView-的高级用法" class="headerlink" title="UIWebView 的高级用法"></a>UIWebView 的高级用法</h4><h5 id="隐藏上下滚动时出边界的后面的黑色的阴影"><a href="#隐藏上下滚动时出边界的后面的黑色的阴影" class="headerlink" title="隐藏上下滚动时出边界的后面的黑色的阴影"></a>隐藏上下滚动时出边界的后面的黑色的阴影</h5><pre><code>for (UIView *_aView in [webView subviews])  
+{  
+   if ([_aView isKindOfClass:[UIScrollView class]])  
+   {  
+       [(UIScrollView *)_aView setShowsVerticalScrollIndicator:NO];  
+       //右侧的滚动条  
+       [(UIScrollView *)_aView setShowsHorizontalScrollIndicator:NO]; //下侧的滚动条   
+       [(UIScrollView *)_aView setAlwaysBounceHorizontal:NO];//禁止左右滑动  
+
+       for (UIView *_inScrollview in _aView.subviews)  
+       {  
+           if ([_inScrollview isKindOfClass:[UIImageView class]])  
+           {  
+               _inScrollview.hidden = YES;  //上下滚动出边界时的黑色的图片  
+           }  
+       }  
+   }  
+   }  
+</code></pre><h5 id="禁用拖拽时的反弹效果"><a href="#禁用拖拽时的反弹效果" class="headerlink" title="禁用拖拽时的反弹效果"></a>禁用拖拽时的反弹效果</h5><pre><code>[(UIScrollView *)[[webView subviews] objectAtIndex:0] setBounces:NO];
+</code></pre><h5 id="判断用户点击类型"><a href="#判断用户点击类型" class="headerlink" title="判断用户点击类型"></a>判断用户点击类型</h5><pre><code>- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    switch (navigationType) 
+    {
+        //点击连接
+    case UIWebViewNavigationTypeLinkClicked:
+    {
+            NSLog(@&quot;clicked&quot;);
+    }
+    break;
+       //提交表单
+    case UIWebViewNavigationTypeFormSubmitted:
+    {
+            NSLog(@&quot;submitted&quot;);
+    }
+    default:
+    break;
+    }
+return YES;
+}
+</code></pre><h5 id="UIWebView和JavaScript的交互"><a href="#UIWebView和JavaScript的交互" class="headerlink" title="UIWebView和JavaScript的交互"></a><code>UIWebView</code>和<code>JavaScript</code>的交互</h5><h6 id="Objective-C调用JavaScript"><a href="#Objective-C调用JavaScript" class="headerlink" title="Objective-C调用JavaScript"></a>Objective-C调用JavaScript</h6><p>用<code>Objective-C</code>调用<code>JavaScript</code>会相对简单些，在<code>UIWebView</code>加载完成之后调用<code>UIWebView</code>的<code>stringByEvaluatingJavaScriptFromString:</code>方法就行了。参数中的<code>NSString</code>字符串就是<code>js</code>的代码，可以是<code>js</code>函数，也可以是<code>js</code>代码。如下所示:</p>
+<p><code>[myWebView stringByEvaluatingJavaScriptFromString:@&quot;javascriptFunction()&quot;];</code></p>
+<h6 id="Javascript调用Objective-C的函数"><a href="#Javascript调用Objective-C的函数" class="headerlink" title="Javascript调用Objective-C的函数"></a>Javascript调用Objective-C的函数</h6><p>通过<code>UIWebView</code>的重定向，通过在<code>UIWebView</code>的代理函数<code>webView:shouldStartLoadWithRequest:navigationType:</code>来监听<code>URL</code>的变化，这个函数会在<code>webview</code>加载<code>URL</code>时回调，我们可以<code>return YES</code>来让<code>webview</code>继续加载内容，<code>return NO</code>来停止继续加载新的内容。事先可以约定好几个虚假的<code>URL</code>(比如<code>tool://goToHomePage</code>)，我们拿到定义好的<code>URL</code>之后做对应的<code>Objective-C</code>函数调用。在<code>iOS7</code>中会出现代理方法无法调用的情况，具体原因不明。</p>
+<p><strong>实例</strong> </p>
+<p>比如我们在<code>javascript</code>文件里添加点击响应的函数</p>
+<pre><code>function clickButton() {
+
+      window.location = &quot;tool://goToHomePage&quot;
+}
+</code></pre><p>然后在<code>webview</code>的代理函数中监听，如果是事先定义好的虚假<code>URL</code>，就进行对应的处理</p>
+<pre><code>-(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+
+NSURL *url = request.URL;
+
+if ([[url scheme] isEqualToString:@&quot;tool&quot;] &amp;&amp; [[url host] isEqualToString:@&quot;goToHomePage&quot;]) {
+   //添加跳转到HomePage的逻辑
+    [self jumpToHomePage];
+    return NO;
+}
+return YES;
+}
+</code></pre><h5 id="UIWebView-捕获-404，-403"><a href="#UIWebView-捕获-404，-403" class="headerlink" title="UIWebView 捕获 404， 403"></a>UIWebView 捕获 404， 403</h5><pre><code>#pragma mark - UIWebView Delegate Methods
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    static BOOL isRequestWeb = YES;
+
+    if (isRequestWeb) {
+        NSHTTPURLResponse *response = nil;
+
+        NSData *data = [NSURLConnection sendSynchronousRequest:request   returningResponse:&amp;response error:nil];
+
+    if (response.statusCode == 404) {
+        // code for 404
+        return NO;
+    } else if (response.statusCode == 403) {
+        // code for 403
+        return NO;
+    }
+
+    [webView loadData:data MIMEType:@&quot;text/html&quot; textEncodingName:nil baseURL:[request URL]];
+
+    isRequestWeb = NO;
+
+    return NO;
+    }
+
+    return YES;
+}
+</code></pre>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Knowledge/">Knowledge</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://jokerhappy.github.io/post/webview/" data-title="UIWebView 使用浅析 | 知行合一" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/post/Diagnostics/" title="Xcode 利用工具解决程序内存问题">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Xcode 利用工具解决程序内存问题</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/post/hexo/"  title="利用 Hexo 和 Github 创建个人博客">
+ <strong>下一篇：</strong><br/> 
+ <span>利用 Hexo 和 Github 创建个人博客
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="post/webview/" data-title="UIWebView 使用浅析" data-url="http://jokerhappy.github.io/post/webview/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#属性"><span class="toc-number">1.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法"><span class="toc-number">2.</span> <span class="toc-text">方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代理方法"><span class="toc-number">3.</span> <span class="toc-text">代理方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UIWebView-的高级用法"><span class="toc-number">4.</span> <span class="toc-text">UIWebView 的高级用法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#隐藏上下滚动时出边界的后面的黑色的阴影"><span class="toc-number">4.1.</span> <span class="toc-text">隐藏上下滚动时出边界的后面的黑色的阴影</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#禁用拖拽时的反弹效果"><span class="toc-number">4.2.</span> <span class="toc-text">禁用拖拽时的反弹效果</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#判断用户点击类型"><span class="toc-number">4.3.</span> <span class="toc-text">判断用户点击类型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#UIWebView和JavaScript的交互"><span class="toc-number">4.4.</span> <span class="toc-text">UIWebView和JavaScript的交互</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Objective-C调用JavaScript"><span class="toc-number">4.4.1.</span> <span class="toc-text">Objective-C调用JavaScript</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Javascript调用Objective-C的函数"><span class="toc-number">4.4.2.</span> <span class="toc-text">Javascript调用Objective-C的函数</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#UIWebView-捕获-404，-403"><span class="toc-number">4.5.</span> <span class="toc-text">UIWebView 捕获 404， 403</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Skill/" title="Skill">Skill<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/随想/" title="随想">随想<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Method/" title="Method">Method<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Knowledge/" title="Knowledge">Knowledge<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://hexo.io/" target="_blank" title="Hexo">Hexo</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/JokerHappy" target="_blank" title="GitHub">GitHub</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Well, so long <br/>
+			Unity of knowing and doing</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/1395682167" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/JokerHappy" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="xxx">xxx</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"JokerHappy"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-76095227-1', 'auto');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

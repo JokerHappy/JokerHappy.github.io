@@ -93,71 +93,11 @@
 <blockquote>
 <p>内存泄漏（Memory Leaks）是当一个对象或变量在使用完成后没有释放掉，这个对象一直占有着这块内存，直到应用停止。如果这种对象过多内存就会耗尽，其它的应用就无法运行。</p>
 </blockquote>
-<p>除了在代码的书写过程中注意内存的管理，还可以利用<code>Xcode</code>自带的工具对代码进行分析，解决内存问题。</p>
-<h3 id="Diagnostics"><a href="#Diagnostics" class="headerlink" title="Diagnostics"></a>Diagnostics</h3><p><img src="http://7xt3bw.com1.z0.glb.clouddn.com/1.png-water" alt=""></p>
-<p><code>Xcode</code> 的  <code>Product</code> –&gt; <code>Sheme</code> –&gt; <code>edit scheme</code> –&gt; <code>Run</code> -&gt; <code>Diagnostics</code> 下有一些选项可以帮助我们找到<code>app</code>中的内存问题：</p>
-<h5 id="Enable-Malloc-Scribble"><a href="#Enable-Malloc-Scribble" class="headerlink" title="Enable Malloc Scribble"></a>Enable Malloc Scribble</h5><blockquote>
-<p>申请内存后在申请的内存上填<code>0xAA</code>，内存释放后在释放的内存上填<code>0x55</code>；再就是说如果内存未被初始化就被访问，或者释放后被访问，就会引发异常，这样就可以使问题尽快暴漏出来。</p>
-<p><code>Scribble</code>其实是<code>malloc</code>库<code>libsystem_malloc.dylib</code>自身提供的调试方案</p>
-</blockquote>
-<h5 id="Enable-Malloc-Guard-Edges"><a href="#Enable-Malloc-Guard-Edges" class="headerlink" title="Enable Malloc Guard Edges"></a>Enable Malloc Guard Edges</h5><blockquote>
-<p>申请大片内存的时候在前后page上加保护，详见<a href="http://baike.baidu.com/link?url=47Hbd0Lf8oBC2tUS1HcASJKPWGPYOp3vsUJqJwF4i-6TJ-QkhwIRfKoYpEbnbZFOjavlB383bXTykYOOGVtqya" target="_blank" rel="external">保护模式</a>。</p>
-</blockquote>
-<h5 id="Enable-Guard-Mallocs"><a href="#Enable-Guard-Mallocs" class="headerlink" title="Enable Guard Mallocs"></a>Enable Guard Mallocs</h5><blockquote>
-<p>使用<code>libgmalloc</code>捕获常见的内存问题，比如越界、释放之后继续使用。</p>
-<p>由于<code>libgmalloc</code>在真机上不存在，因此这个功能只能在模拟器上使用.</p>
-</blockquote>
-<h5 id="Enable-Zombie-Objects"><a href="#Enable-Zombie-Objects" class="headerlink" title="Enable Zombie Objects"></a>Enable Zombie Objects</h5><blockquote>
-<p><code>Zombie</code>的原理是用生成僵尸对象来替换<code>dealloc</code>的实现，当对象引用计数为<code>0</code>的时候，将需要<code>dealloc</code>的对象转化为僵尸对象。如果之后再给这个僵尸对象发消息，则抛出异常，并打印出相应的信息，调试者可以很轻松的找到异常发生位置。</p>
-</blockquote>
-<h5 id="Enable-Address-Sanitizer-Xcode7"><a href="#Enable-Address-Sanitizer-Xcode7" class="headerlink" title="Enable Address Sanitizer (Xcode7 +)"></a>Enable Address Sanitizer (Xcode7 +)</h5><blockquote>
-<p><code>AddressSanitizer</code>的原理是当程序创建变量分配一段内存时，将此内存后面的一段内存也冻结住，标识为中毒内存。当程序访问到中毒内存时（越界访问），就会抛出异常，并打印出相应<code>log</code>信息。调试者可以根据中断位置和的<code>log</code>信息，识别<code>bug</code>。如果变量释放了，变量所占的内存也会标识为中毒内存，这时候访问这段内存同样会抛出异常（访问已经释放的对象）。</p>
-</blockquote>
-<h3 id="静态分析"><a href="#静态分析" class="headerlink" title="静态分析"></a>静态分析</h3><p>一般来说，在程序未运行之前我们可以先通过<code>Clang Static Analyzer</code>(静态分析)来检查代码是否存在<code>bug</code>。比如，内存泄露、文件资源泄露或访问空指针的数据等。</p>
-<ul>
-<li><p>手动静态分析：每次都是通过点击菜单栏的<code>Product</code> –&gt; <code>Analyze</code>或快捷键<code>shift + command + b</code></p>
-</li>
-<li><p>自动静态分析：在<code>Build Settings</code>启用<code>Analyze During &#39;Build&#39;</code>，每次编译时都会自动静态分析</p>
-</li>
-</ul>
-<p><img src="http://7xt3bw.com1.z0.glb.clouddn.com/2.png-water" alt=""></p>
-<p><code>Analyze</code>主要分析以下四种问题：</p>
-<ul>
-<li><p>逻辑错误：访问空指针或未初始化的变量等；</p>
-</li>
-<li><p>内存管理错误：如内存泄漏等；</p>
-</li>
-<li><p>声明错误：从未使用过的变量；</p>
-</li>
-<li><p><code>Api</code>调用错误：未包含使用的库和框架。</p>
-</li>
-</ul>
-<h3 id="Instruments"><a href="#Instruments" class="headerlink" title="Instruments"></a>Instruments</h3><p>使用静态分析能够检查出一些内存泄露问题，但是有时只有运行时使用Instruments才能检查到</p>
-<p><strong>注意：我们需要进行操作让系统不断去执行所要检测的代码是否存在内存泄露。</strong></p>
-<p>启动<code>Instruments</code>步骤如下：</p>
-<ul>
-<li><p>点击<code>Xcode</code>的菜单栏的 <code>Product</code> –&gt; <code>Profile</code> 启动<code>Instruments</code>。</p>
-</li>
-<li><p>出现<code>Instruments</code>的工具集，选中<code>Leaks</code>子工具点击。</p>
-</li>
-<li><p>打开<code>Leaks</code>工具之后，点击红色圆点按钮启动<code>Leaks</code>工具，在<code>Leaks</code>工具启动同时，模拟器或真机也跟着启动。</p>
-</li>
-<li><p>启动<code>Leaks</code>工具后，它会在程序运行时记录内存分配信息和检查是否发生内存泄露。</p>
-</li>
-<li><p><strong>在界面的右下角有若干选框，选中Invert Call Tree 和Hide System Libraries,（红圈范围内）显示如下</strong></p>
-</li>
-</ul>
-<p><img src="http://7xt3bw.com1.z0.glb.clouddn.com/3.png-water" alt=""></p>
-<ul>
-<li><p>选中显示的若干条中的一条，双击，会自动跳到内存泄露代码处。</p>
-</li>
-<li><p>找到了内存泄露的地方，那么我们就可以修改即可。</p>
-</li>
-</ul>
-
         
         
         <p class="article-more-link">
+          
+            <a href="/post/Diagnostics/#more">阅读全文</a>
           
        </p>
     </div>
@@ -184,6 +124,74 @@
 	
 	  	<span></span>
 		<a href="/post/Diagnostics/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/Diagnostics/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/post/webview/" title="UIWebView 使用浅析" itemprop="url">UIWebView 使用浅析</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-15T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-02-16</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>苹果官方对<code>UIWebView</code>的介绍</p>
+<blockquote>
+<p>You can use the UIWebView class to embed web content in your application. To doso, you simply create a UIWebView object, attach it to a window, and send it a request to load web content. You can also use this class to move back and forward in the history of webpages, and you can even set some web content properties programmatically.</p>
+</blockquote>
+<p><code>UIWebView</code>是<code>iOS</code>内置的浏览器控件，<code>UIWebView</code>用于在<code>App</code>中嵌入网页，通常是<code>html</code>网页，也可以是<code>PDF</code>、<code>txt</code>文档等。苹果在发布<code>iOS8</code>的时候，新增了一个<code>WKWebView</code>组件，如果你的<code>APP</code>只考虑支持<code>iOS8</code>及以上版本，那么你就可以使用这个新的浏览器控件了。</p>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/post/webview/#more">阅读全文</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Knowledge/">Knowledge</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/post/webview/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/webview/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -388,7 +396,7 @@ hexo s
 		  
 		
 		  
-			<li><a href="/categories/iOS/" title="iOS">iOS<sup>1</sup></a></li>
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>2</sup></a></li>
 		  
 		
 		</ul>
@@ -410,6 +418,10 @@ hexo s
 		
 			
 				<li><a href="/tags/Method/" title="Method">Method<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Knowledge/" title="Knowledge">Knowledge<sup>1</sup></a></li>
 			
 		
 		</ul>
