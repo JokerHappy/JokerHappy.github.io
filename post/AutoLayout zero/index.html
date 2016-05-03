@@ -1,0 +1,533 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>iOS中AutoLayer自动布局流程及相关方法 | 知行合一</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="xxx">
+    
+
+    
+    <meta name="description" content="Auto Layout  重新构思了开发者创建界面的方式。它创建了一个灵活、强大的系统，来描述试图和他们的内容是如何相互关联的，他们和他们占据的窗口和父试图是如何关联的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS中AutoLayer自动布局流程及相关方法">
+<meta property="og:url" content="http://jokerhappy.github.io/post/AutoLayout zero/index.html">
+<meta property="og:site_name" content="知行合一">
+<meta property="og:description" content="Auto Layout  重新构思了开发者创建界面的方式。它创建了一个灵活、强大的系统，来描述试图和他们的内容是如何相互关联的，他们和他们占据的窗口和父试图是如何关联的。">
+<meta property="og:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/4.png">
+<meta property="og:updated_time" content="2016-05-03T13:24:16.400Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS中AutoLayer自动布局流程及相关方法">
+<meta name="twitter:description" content="Auto Layout  重新构思了开发者创建界面的方式。它创建了一个灵活、强大的系统，来描述试图和他们的内容是如何相互关联的，他们和他们占据的窗口和父试图是如何关联的。">
+<meta name="twitter:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/4.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="知行合一" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="知行合一">知行合一</a></h1>
+				<h2 class="blog-motto">无谓的协助者</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">简介</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/post/AutoLayout zero/" title="iOS中AutoLayer自动布局流程及相关方法" itemprop="url">iOS中AutoLayer自动布局流程及相关方法</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-17T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-02-18</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Auto-Layout-Process-自动布局过程"><span class="toc-number">1.</span> <span class="toc-text">Auto Layout Process 自动布局过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#iOS-提供的Layout-的方法"><span class="toc-number">2.</span> <span class="toc-text">iOS 提供的Layout 的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#layoutSubviews"><span class="toc-number">2.1.</span> <span class="toc-text">layoutSubviews</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#setNeedsLayout"><span class="toc-number">2.2.</span> <span class="toc-text">setNeedsLayout</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#layoutIfNeeded"><span class="toc-number">2.3.</span> <span class="toc-text">layoutIfNeeded</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基于AutoLayer约束constraints的方法："><span class="toc-number">3.</span> <span class="toc-text">基于AutoLayer约束constraints的方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#setNeedsUpdateConstraints"><span class="toc-number">3.1.</span> <span class="toc-text">setNeedsUpdateConstraints</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#needsUpdateConstraints"><span class="toc-number">3.2.</span> <span class="toc-text">needsUpdateConstraints</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#updateConstraintsIfNeeded"><span class="toc-number">3.3.</span> <span class="toc-text">updateConstraintsIfNeeded</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#updateConstraints"><span class="toc-number">3.4.</span> <span class="toc-text">updateConstraints</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<p><code>Auto Layout</code>  重新构思了开发者创建界面的方式。它创建了一个灵活、强大的系统，来描述试图和他们的内容是如何相互关联的，他们和他们占据的窗口和父试图是如何关联的。</p>
+<a id="more"></a>
+<h4 id="Auto-Layout-Process-自动布局过程"><a href="#Auto-Layout-Process-自动布局过程" class="headerlink" title="Auto Layout Process 自动布局过程"></a>Auto Layout Process 自动布局过程</h4><p><code>Auto Layout</code>在<code>view</code>显示之前，主要有三个步骤<code>updating constraints -&gt; layout -&gt; display</code>。每一个步骤都依赖于上一个。<code>display</code>依赖<code>layout</code>，而<code>layout</code>依赖<code>updating constraints</code>。 </p>
+<ul>
+<li><p><code>updating constraints</code>，被称为测量阶段，其从下向上(from subview to super view),为下一步<code>layout</code>准备信息。可以通过调用方法<code>setNeedUpdateConstraints</code>去触发此步。<code>constraints</code>的改变也会自动的触发此步。但是，当你自定义<code>view</code>的时候，如果一些改变可能会影响到布局的时候，通常需要自己去通知<code>Auto Layout</code>-&gt;<code>updateConstraintsIfNeeded</code>。<br>自定义<code>view</code>的话，通常可以重写<code>updateConstraints</code>方法，在其中可以添加<code>view</code>需要的局部的<code>contraints</code>。</p>
+</li>
+<li><p><code>layout</code>，其从上向下(from super view to subview)，此步主要应用上一步的信息去设置<code>view</code>的<code>center</code>和<code>bounds</code>。可以通过调用<code>setNeedsLayout</code>去触发此步骤，此方法不会立即应用<code>layout</code>。如果想要系统立即的更新<code>layout</code>，可以调用<code>layoutIfNeeded</code>。另外，自定义<code>view</code>可以重写方法<code>layoutSubViews</code>来在<code>layout</code>的工程中得到更多的定制化效果。</p>
+</li>
+<li><p><code>display</code>，此步时把<code>view</code>渲染到屏幕上，它与你是否使用<code>Auto layout</code>无关，其操作是从上向下(from super view to subview)，通过调用<code>setNeedsDisplay</code>触发，因为每一步都依赖前一步，因此一个<code>display</code>可能会触发<code>layout</code>，当有任何<code>layout</code>没有被处理的时候，同理，<code>layout</code>可能会触发<code>updating constraints</code>，当<code>constraint system</code>更新改变的时候。</p>
+</li>
+</ul>
+<p><img src="http://7xt3bw.com1.z0.glb.clouddn.com/4.png" alt=""></p>
+<h4 id="iOS-提供的Layout-的方法"><a href="#iOS-提供的Layout-的方法" class="headerlink" title="iOS 提供的Layout 的方法"></a>iOS 提供的Layout 的方法</h4><h5 id="layoutSubviews"><a href="#layoutSubviews" class="headerlink" title="layoutSubviews"></a>layoutSubviews</h5><ul>
+<li>在<code>iOS5.1</code>和之前的版本，此方法的缺省实现不会做任何事情(实现为空)，<code>iOS5.1</code>之后(iOS6开始)的版本，此方法的缺省实现是使用你设置在此view上面的constraints(Autolayout)去决定subviews的<code>position</code>和<code>size</code>。 UIView的子类如果需要对其<code>subviews</code>进行更精确的布局，则可以重写此方法。只有在autoresizing和constraint-based behaviors of subviews不能提供我们想要的布局结果的时候，我们才应该重写此方法。可以在此方法中直接设置subviews的<code>frame</code>。 我们不应该直接调用此方法，而应当用下面两个方法。</li>
+</ul>
+<h5 id="setNeedsLayout"><a href="#setNeedsLayout" class="headerlink" title="setNeedsLayout"></a>setNeedsLayout</h5><ul>
+<li>此方法会将view当前的layout设置为无效的，并在下一个<code>upadte cycle</code>里去触发<code>layout</code>更新。</li>
+</ul>
+<h5 id="layoutIfNeeded"><a href="#layoutIfNeeded" class="headerlink" title="layoutIfNeeded"></a>layoutIfNeeded</h5><ul>
+<li>使用此方法<code>强制立即</code>进行layout,从当前view开始，此方法会遍历整个view层次(包括superviews)请求layout。因此，调用此方法会强制整个view层次布局。</li>
+</ul>
+<h4 id="基于AutoLayer约束constraints的方法："><a href="#基于AutoLayer约束constraints的方法：" class="headerlink" title="基于AutoLayer约束constraints的方法："></a>基于AutoLayer约束constraints的方法：</h4><h5 id="setNeedsUpdateConstraints"><a href="#setNeedsUpdateConstraints" class="headerlink" title="setNeedsUpdateConstraints"></a>setNeedsUpdateConstraints</h5><ul>
+<li>当一个自定义view的某个属性发生改变，并且可能影响到constraint时，需要调用此方法去标记constraints需要在未来的某个点更新，系统然后调用<code>updateConstraints</code>.</li>
+</ul>
+<h5 id="needsUpdateConstraints"><a href="#needsUpdateConstraints" class="headerlink" title="needsUpdateConstraints"></a>needsUpdateConstraints</h5><ul>
+<li><code>constraint-based layout system</code>使用此返回值去决定是否需要调用<code>updateConstraint</code>s作为正常布局过程的一部分。</li>
+</ul>
+<h5 id="updateConstraintsIfNeeded"><a href="#updateConstraintsIfNeeded" class="headerlink" title="updateConstraintsIfNeeded"></a>updateConstraintsIfNeeded</h5><ul>
+<li>立即触发约束更新，自动更新布局。</li>
+</ul>
+<h5 id="updateConstraints"><a href="#updateConstraints" class="headerlink" title="updateConstraints"></a>updateConstraints</h5><ul>
+<li>自定义view应该重写此方法在其中建立constraints. 注意：要在实现在最后调用<code>[super updateConstraints]</code></li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Auto-Layout/">Auto Layout</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://jokerhappy.github.io/post/AutoLayout zero/" data-title="iOS中AutoLayer自动布局流程及相关方法 | 知行合一" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/post/Diagnostics/" title="Xcode 利用工具解决程序内存问题">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Xcode 利用工具解决程序内存问题</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/post/webview/"  title="UIWebView 使用浅析">
+ <strong>下一篇：</strong><br/> 
+ <span>UIWebView 使用浅析
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="post/AutoLayout zero/" data-title="iOS中AutoLayer自动布局流程及相关方法" data-url="http://jokerhappy.github.io/post/AutoLayout zero/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Auto-Layout-Process-自动布局过程"><span class="toc-number">1.</span> <span class="toc-text">Auto Layout Process 自动布局过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#iOS-提供的Layout-的方法"><span class="toc-number">2.</span> <span class="toc-text">iOS 提供的Layout 的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#layoutSubviews"><span class="toc-number">2.1.</span> <span class="toc-text">layoutSubviews</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#setNeedsLayout"><span class="toc-number">2.2.</span> <span class="toc-text">setNeedsLayout</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#layoutIfNeeded"><span class="toc-number">2.3.</span> <span class="toc-text">layoutIfNeeded</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基于AutoLayer约束constraints的方法："><span class="toc-number">3.</span> <span class="toc-text">基于AutoLayer约束constraints的方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#setNeedsUpdateConstraints"><span class="toc-number">3.1.</span> <span class="toc-text">setNeedsUpdateConstraints</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#needsUpdateConstraints"><span class="toc-number">3.2.</span> <span class="toc-text">needsUpdateConstraints</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#updateConstraintsIfNeeded"><span class="toc-number">3.3.</span> <span class="toc-text">updateConstraintsIfNeeded</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#updateConstraints"><span class="toc-number">3.4.</span> <span class="toc-text">updateConstraints</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Skill/" title="Skill">Skill<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>3</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/随想/" title="随想">随想<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Method/" title="Method">Method<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Knowledge/" title="Knowledge">Knowledge<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Auto-Layout/" title="Auto Layout">Auto Layout<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://hexo.io/" target="_blank" title="Hexo">Hexo</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/JokerHappy" target="_blank" title="GitHub">GitHub</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Well, so long <br/>
+			Unity of knowing and doing</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/1395682167" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/JokerHappy" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="xxx">xxx</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"JokerHappy"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-76095227-1', 'auto');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
