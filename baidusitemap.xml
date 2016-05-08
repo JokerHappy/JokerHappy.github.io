@@ -4,6 +4,46 @@
 
     
   <url>
+    <loc>http://jokerhappy.github.io/post/layout%20%E7%AC%94%E8%AE%B01/</loc>
+    <lastmod>2016-05-08T05:09:30.666Z</lastmod>
+    <data>
+        <display>
+        <title>iOS Auto Layout Demystified 学习笔记（一）</title>
+        <pubTime>2016-02-19T16:00:00.000Z</pubTime>
+        
+        <tag>Auto Layout</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jokerhappy.github.io/post/Diagnostics/</loc>
+    <lastmod>2016-05-08T03:26:02.021Z</lastmod>
+    <data>
+        <display>
+        <title>Xcode 利用工具解决程序内存问题</title>
+        <pubTime>2016-02-23T16:00:00.000Z</pubTime>
+        
+        <tag>Method</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://jokerhappy.github.io/post/AutoLayout%20zero/</loc>
     <lastmod>2016-05-03T13:24:16.400Z</lastmod>
     <data>
@@ -32,26 +72,6 @@
         <pubTime>2016-02-15T16:00:00.000Z</pubTime>
         
         <tag>Knowledge</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://jokerhappy.github.io/post/Diagnostics/</loc>
-    <lastmod>2016-04-24T08:54:44.395Z</lastmod>
-    <data>
-        <display>
-        <title>Xcode 利用工具解决程序内存问题</title>
-        <pubTime>2016-02-23T16:00:00.000Z</pubTime>
-        
-        <tag>Method</tag>
          
          
            
