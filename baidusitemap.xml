@@ -5,11 +5,31 @@
     
   <url>
     <loc>http://jokerhappy.github.io/post/layout%20%E7%AC%94%E8%AE%B01/</loc>
-    <lastmod>2016-05-08T05:09:30.666Z</lastmod>
+    <lastmod>2016-05-18T14:17:01.059Z</lastmod>
     <data>
         <display>
         <title>iOS Auto Layout Demystified 学习笔记（一）</title>
         <pubTime>2016-02-19T16:00:00.000Z</pubTime>
+        
+        <tag>Auto Layout</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jokerhappy.github.io/post/layout%20%E7%AC%94%E8%AE%B02/</loc>
+    <lastmod>2016-05-18T14:14:48.475Z</lastmod>
+    <data>
+        <display>
+        <title>iOS Auto Layout Demystified 学习笔记（二）</title>
+        <pubTime>2016-02-27T16:00:00.000Z</pubTime>
         
         <tag>Auto Layout</tag>
          
