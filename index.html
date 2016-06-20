@@ -76,6 +76,121 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/post/layout 笔记4/" title="iOS Auto Layout Demystified 学习笔记（四）" itemprop="url">iOS Auto Layout Demystified 学习笔记（四）</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-04T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-03-05</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>本文主要探究利用可视化格式语言进行自动布局。<br></p>
+<h5 id="可视化格式约束介绍"><a href="#可视化格式约束介绍" class="headerlink" title="可视化格式约束介绍"></a>可视化格式约束介绍</h5><p>可视化格式由一个描述视图布局的文本字符串组成。你可以根据视图在界面中出现的顺序列出他们，文本中可以指定间隔、不等量及优先级，可以使布局形象化地表现为一个简单的文本。<br>如下所示</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@<span class="string">"V:|-[view1](==200)-(&gt;=20@750)-[view2]"</span> options:NSLayoutFormatAlignAllLeft metrics:nil views:NSDictionaryOfVariableBindings(view1,view2)]];</span><br></pre></td></tr></table></figure>
+<p>其中<code>NSDictionaryOfVariableBindings()</code>表示：当使用可视化约束时，布局系统将名称字符串同它们表示的对象关联起来，利用此宏创建一个约束列表（字典）。<br>在代码中<code>NSDictionaryOfVariableBindings(view1,view2)</code>相当于创建了下列字典</p>
+<pre><code>@{@&quot;view1&quot;:view1,@&quot;view2&quot;:view2}
+</code></pre><p>当然你可以自定义字典，将视图进行关联。<br></p>
+<p>代码中其他符号的含义</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">变量</th>
+<th style="text-align:left">释义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">V:，H:</td>
+<td style="text-align:left">方向</td>
+</tr>
+<tr>
+<td style="text-align:center">metric</td>
+<td style="text-align:left">度量</td>
+</tr>
+<tr>
+<td style="text-align:center">== &lt;= &gt;=</td>
+<td style="text-align:left">关系</td>
+</tr>
+<tr>
+<td style="text-align:center">@</td>
+<td style="text-align:left">优先级</td>
+</tr>
+<tr>
+<td style="text-align:center">｜</td>
+<td style="text-align:left">父视图</td>
+</tr>
+<tr>
+<td style="text-align:center">options</td>
+<td style="text-align:left">对齐方式</td>
+</tr>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:left">标准间隔：视图到视图为8点；视图到父视图为20点</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>其中8点和20点的值来源于苹果的<code>Aqua</code>用户界面标准，作为基本的视觉主题应用于<code>OS X</code>设计</li>
+<li>如果间隔为负数的时候，需要使用<code>()</code></li>
+<li>可视化格式可以加入多个视图</li>
+<li>视图的<code>()</code>中指定视图的尺寸，根据排列方向对应固定的宽度或高度</li>
+<li>使用可视化格式创建的所有约束都有一个默认的优先级，即1000（必需的）</li>
+</ul>
+<h6 id="NSLog-和可视化格式"><a href="#NSLog-和可视化格式" class="headerlink" title="NSLog 和可视化格式"></a>NSLog 和可视化格式</h6><p>在<code>NSLayoutConstraint</code>日志中任何可能的地方<code>Xcode</code>都添加了可视化格式表示，即使完全适用<code>IB</code>或者通过单独的约束实例来创建约束，通过学习这种布局语言，你也会受益匪浅。<br>实践是检验真理的唯一标准，多去尝试吧。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Auto-Layout/">Auto Layout</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/post/layout 笔记4/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/layout 笔记4/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/post/layout 笔记3/" title="iOS Auto Layout Demystified 学习笔记（三）" itemprop="url">iOS Auto Layout Demystified 学习笔记（三）</a>
   </h1>
   <p class="article-author">By
@@ -351,70 +466,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/post/AutoLayout zero/" title="iOS中AutoLayer自动布局流程及相关方法" itemprop="url">iOS中AutoLayer自动布局流程及相关方法</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
-		
-  <p class="article-time">
-    <time datetime="2016-02-17T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-02-18</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p><code>Auto Layout</code>  重新构思了开发者创建界面的方式。它创建了一个灵活、强大的系统，来描述试图和他们的内容是如何相互关联的，他们和他们占据的窗口和父试图是如何关联的。</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/post/AutoLayout zero/#more">阅读全文</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Auto-Layout/">Auto Layout</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/post/AutoLayout zero/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/AutoLayout zero/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -437,7 +488,7 @@
 		  
 		
 		  
-			<li><a href="/categories/iOS/" title="iOS">iOS<sup>6</sup></a></li>
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>7</sup></a></li>
 		  
 		
 		</ul>
@@ -450,7 +501,7 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/Auto-Layout/" title="Auto Layout">Auto Layout<sup>4</sup></a></li>
+				<li><a href="/tags/Auto-Layout/" title="Auto Layout">Auto Layout<sup>5</sup></a></li>
 			
 		
 			

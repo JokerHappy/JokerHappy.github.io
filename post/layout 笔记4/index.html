@@ -4,35 +4,29 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>利用 Hexo 和 Github 创建个人博客 | 知行合一</title>
+    <title>iOS Auto Layout Demystified 学习笔记（四） | 知行合一</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="xxx">
     
 
     
-    <meta name="description" content="Hexo 是一款基于 Node.js 的静态博客框架。Hexo 生成的静态页面可以部署在 Github 或 Coding 上，并且能够免费绑定自己的域名，可以用来很方便地搭建个人博客。
-Github
-注册 github。
-在主页右下角创建New repository，name必须和用户名一致,如username.github.io。
-首次创建耐心等待10分钟左右审核，之后即可访问静态主页如http">
+    <meta name="description" content="本文主要探究利用可视化格式语言进行自动布局。
+可视化格式约束介绍可视化格式由一个描述视图布局的文本字符串组成。你可以根据视图在界面中出现的顺序列出他们，文本中可以指定间隔、不等量及优先级，可以使布局形象化地表现为一个简单的文本。如下所示
+1[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@&quot;V:|-">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用 Hexo 和 Github 创建个人博客">
-<meta property="og:url" content="http://jokerhappy.github.io/post/hexo/index.html">
+<meta property="og:title" content="iOS Auto Layout Demystified 学习笔记（四）">
+<meta property="og:url" content="http://jokerhappy.github.io/post/layout 笔记4/index.html">
 <meta property="og:site_name" content="知行合一">
-<meta property="og:description" content="Hexo 是一款基于 Node.js 的静态博客框架。Hexo 生成的静态页面可以部署在 Github 或 Coding 上，并且能够免费绑定自己的域名，可以用来很方便地搭建个人博客。
-Github
-注册 github。
-在主页右下角创建New repository，name必须和用户名一致,如username.github.io。
-首次创建耐心等待10分钟左右审核，之后即可访问静态主页如http">
-<meta property="og:updated_time" content="2016-04-17T08:46:54.000Z">
+<meta property="og:description" content="本文主要探究利用可视化格式语言进行自动布局。
+可视化格式约束介绍可视化格式由一个描述视图布局的文本字符串组成。你可以根据视图在界面中出现的顺序列出他们，文本中可以指定间隔、不等量及优先级，可以使布局形象化地表现为一个简单的文本。如下所示
+1[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@&quot;V:|-">
+<meta property="og:updated_time" content="2016-06-20T13:34:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利用 Hexo 和 Github 创建个人博客">
-<meta name="twitter:description" content="Hexo 是一款基于 Node.js 的静态博客框架。Hexo 生成的静态页面可以部署在 Github 或 Coding 上，并且能够免费绑定自己的域名，可以用来很方便地搭建个人博客。
-Github
-注册 github。
-在主页右下角创建New repository，name必须和用户名一致,如username.github.io。
-首次创建耐心等待10分钟左右审核，之后即可访问静态主页如http">
+<meta name="twitter:title" content="iOS Auto Layout Demystified 学习笔记（四）">
+<meta name="twitter:description" content="本文主要探究利用可视化格式语言进行自动布局。
+可视化格式约束介绍可视化格式由一个描述视图布局的文本字符串组成。你可以根据视图在界面中出现的顺序列出他们，文本中可以指定间隔、不等量及优先级，可以使布局形象化地表现为一个简单的文本。如下所示
+1[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@&quot;V:|-">
 
     
     <link rel="alternative" href="/atom.xml" title="知行合一" type="application/atom+xml">
@@ -87,14 +81,14 @@ Github
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/post/hexo/" title="利用 Hexo 和 Github 创建个人博客" itemprop="url">利用 Hexo 和 Github 创建个人博客</a>
+      <a href="/post/layout 笔记4/" title="iOS Auto Layout Demystified 学习笔记（四）" itemprop="url">iOS Auto Layout Demystified 学习笔记（四）</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
 		
   <p class="article-time">
-    <time datetime="2016-02-13T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-02-14</time>
+    <time datetime="2016-03-04T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-03-05</time>
     
   </p>
 </header>
@@ -103,58 +97,63 @@ Github
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Github"><span class="toc-number">1.</span> <span class="toc-text">Github</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo"><span class="toc-number">2.</span> <span class="toc-text">Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-Node-js"><span class="toc-number">2.1.</span> <span class="toc-text">安装 Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Git"><span class="toc-number">2.2.</span> <span class="toc-text">安装Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Hexo"><span class="toc-number">2.3.</span> <span class="toc-text">安装Hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#建立本地博客"><span class="toc-number">2.4.</span> <span class="toc-text">建立本地博客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地效果预览"><span class="toc-number">2.5.</span> <span class="toc-text">本地效果预览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署到Github"><span class="toc-number">2.6.</span> <span class="toc-text">部署到Github</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编写博文"><span class="toc-number">2.7.</span> <span class="toc-text">编写博文</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#可视化格式约束介绍"><span class="toc-number">1.</span> <span class="toc-text">可视化格式约束介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#NSLog-和可视化格式"><span class="toc-number">1.1.</span> <span class="toc-text">NSLog 和可视化格式</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<p><a href="https://hexo.io/" target="_blank" rel="external">Hexo</a> 是一款基于 <code>Node.js</code> 的静态博客框架。<code>Hexo</code> 生成的静态页面可以部署在 <code>Github</code> 或 <code>Coding</code> 上，并且能够免费绑定自己的域名，可以用来很方便地搭建个人博客。</p>
-<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><ol>
-<li>注册 <a href="https://github.com/" target="_blank" rel="external">github</a>。</li>
-<li>在主页右下角创建New repository，name必须和用户名一致,如username.github.io。</li>
-<li>首次创建耐心等待10分钟左右审核，之后即可访问静态主页如<a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a></li>
-</ol>
-<p>个人博客初步搭建完成，接下来利用 <code>Hexo</code> 修改博客框架</p>
-<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><h3 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h3><p>选择对应的系统安装<a href="http://nodejs.cn/download/" target="_blank" rel="external">Node.js</a></p>
-<h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><p>最简单的方法 安装  <a href="https://desktop.github.com/" target="_blank" rel="external">GitHub Desktop</a> </p>
-<p>对 <code>Git</code> 还不太熟悉的小伙伴可以参考下 <a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">Git 教程（廖雪峰的官方网站）</a></p>
-<p>里面有详细的<code>Git</code>安装方法及使用方法</p>
-<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>首先将 <code>npm</code> 的源替换成淘宝的源</p>
-<pre><code>npm config set registry http://registry.npm.taobao.org/
-</code></pre><p>在 <code>Git</code> 中输入 <code>npm</code> 命令即可安装</p>
-<pre><code>npm install -g hexo
-</code></pre><p>在 <code>OS X</code>系统下 因为可能有文件读写权限的问题， 加上前缀<code>sudo</code></p>
-<p>安装过程中可能会出现错误，可以参考<a href="https://xuanwo.org/2014/08/14/hexo-usual-problem/" target="_blank" rel="external">Hexo 常见问题</a> 或自行<code>Google</code>查找。</p>
-<h3 id="建立本地博客"><a href="#建立本地博客" class="headerlink" title="建立本地博客"></a>建立本地博客</h3><p>安装完成后，新建一个目录如 MyBlog 用于存放博客，切换到该目录下执行以下指令，Hexo 即会在目标文件夹初步生成博客所需要的所有文件：</p>
-<pre><code>hexo init
-</code></pre><p>如果对 <code>Hexo</code> 自带的模板不满意的话可以看一下<a href="http://www.zhihu.com/question/24422335" target="_blank" rel="external">这里</a>，自定义个性化的主题模板。</p>
-<p>个人推荐：</p>
+		<p>本文主要探究利用可视化格式语言进行自动布局。<br></p>
+<h5 id="可视化格式约束介绍"><a href="#可视化格式约束介绍" class="headerlink" title="可视化格式约束介绍"></a>可视化格式约束介绍</h5><p>可视化格式由一个描述视图布局的文本字符串组成。你可以根据视图在界面中出现的顺序列出他们，文本中可以指定间隔、不等量及优先级，可以使布局形象化地表现为一个简单的文本。<br>如下所示</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@<span class="string">"V:|-[view1](==200)-(&gt;=20@750)-[view2]"</span> options:NSLayoutFormatAlignAllLeft metrics:nil views:NSDictionaryOfVariableBindings(view1,view2)]];</span><br></pre></td></tr></table></figure>
+<p>其中<code>NSDictionaryOfVariableBindings()</code>表示：当使用可视化约束时，布局系统将名称字符串同它们表示的对象关联起来，利用此宏创建一个约束列表（字典）。<br>在代码中<code>NSDictionaryOfVariableBindings(view1,view2)</code>相当于创建了下列字典</p>
+<pre><code>@{@&quot;view1&quot;:view1,@&quot;view2&quot;:view2}
+</code></pre><p>当然你可以自定义字典，将视图进行关联。<br></p>
+<p>代码中其他符号的含义</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">变量</th>
+<th style="text-align:left">释义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">V:，H:</td>
+<td style="text-align:left">方向</td>
+</tr>
+<tr>
+<td style="text-align:center">metric</td>
+<td style="text-align:left">度量</td>
+</tr>
+<tr>
+<td style="text-align:center">== &lt;= &gt;=</td>
+<td style="text-align:left">关系</td>
+</tr>
+<tr>
+<td style="text-align:center">@</td>
+<td style="text-align:left">优先级</td>
+</tr>
+<tr>
+<td style="text-align:center">｜</td>
+<td style="text-align:left">父视图</td>
+</tr>
+<tr>
+<td style="text-align:center">options</td>
+<td style="text-align:left">对齐方式</td>
+</tr>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:left">标准间隔：视图到视图为8点；视图到父视图为20点</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li>Jacman - <a href="https://github.com/wuchong/jacman" target="_blank" rel="external">https://github.com/wuchong/jacman</a></li>
-<li>Next - <a href="http://theme-next.iissnan.com/" target="_blank" rel="external">http://theme-next.iissnan.com/</a></li>
+<li>其中8点和20点的值来源于苹果的<code>Aqua</code>用户界面标准，作为基本的视觉主题应用于<code>OS X</code>设计</li>
+<li>如果间隔为负数的时候，需要使用<code>()</code></li>
+<li>可视化格式可以加入多个视图</li>
+<li>视图的<code>()</code>中指定视图的尺寸，根据排列方向对应固定的宽度或高度</li>
+<li>使用可视化格式创建的所有约束都有一个默认的优先级，即1000（必需的）</li>
 </ul>
-<p><strong>注意：</strong>修改 <code>Hexo</code> 配置文件及主题配置文件时，按照YAML语法，参数冒号 <code>:</code> 后一定要留空格。</p>
-<h3 id="本地效果预览"><a href="#本地效果预览" class="headerlink" title="本地效果预览"></a>本地效果预览</h3><p>在终端使用 <code>cd</code> 命令切换到博客所在目录 <code>MyBlog</code>，执行如下命令生成静态博客页面（public 文件夹）并启动本地服务器</p>
-<pre><code>hexo generate
-hexo server
-</code></pre><p>或者如下的缩写形式也可以：</p>
-<pre><code>hexo g
-hexo s
-</code></pre><p>若成功可在浏览器中访问 <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> 进行预览。</p>
-<h3 id="部署到Github"><a href="#部署到Github" class="headerlink" title="部署到Github"></a>部署到Github</h3><ol>
-<li>利用  <code>Git</code>  将 <code>Github</code> 中的 <code>username.github.io</code> 项目    <code>clone</code> 到本地新建文件夹。</li>
-<li>将 <code>MyBlog</code> 中执行 <code>hexo g</code> 命令生成 <code>public</code> 文件夹，复制到<code>clone</code>的文件夹中。</li>
-<li>运行 <code>GitHub</code> 确认修改信息 <code>commit</code> 后执行右上角的 <code>Sync</code> 同步。（或者利用 <code>Git</code> 命令将修改内容 <code>pull</code> 到 <code>Github</code>）</li>
-<li>最后访问主页（<a href="http://username.github.io）观察效果，可能会存在延迟，请稍等几分钟。" target="_blank" rel="external">http://username.github.io）观察效果，可能会存在延迟，请稍等几分钟。</a></li>
-</ol>
-<h3 id="编写博文"><a href="#编写博文" class="headerlink" title="编写博文"></a>编写博文</h3><ul>
-<li><p>利用命令行 <code>cd</code> 到 MyBlog 中利用<code>Hexo</code>命令生成初始文章。</p>
-<pre><code>hexo n &quot;new&quot;
-</code></pre></li>
-<li><p>在<code>hexo\source\_posts</code>中编辑生成出来的<code>new</code>文件。</p>
-</li>
-<li><p>利用 <code>Markdown</code> 文本编辑器修改<code>new</code>文件，编写博文。 对<code>Markdown</code>不熟悉的小伙伴可以查看 <a href="http://wowubuntu.com/markdown/" target="_blank" rel="external">Markdown 语法</a> 。</p>
-</li>
-</ul>
+<h6 id="NSLog-和可视化格式"><a href="#NSLog-和可视化格式" class="headerlink" title="NSLog 和可视化格式"></a>NSLog 和可视化格式</h6><p>在<code>NSLayoutConstraint</code>日志中任何可能的地方<code>Xcode</code>都添加了可视化格式表示，即使完全适用<code>IB</code>或者通过单独的约束实例来创建约束，通过学习这种布局语言，你也会受益匪浅。<br>实践是检验真理的唯一标准，多去尝试吧。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -162,13 +161,13 @@ hexo s
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/Skill/">Skill</a>
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Hexo/">Hexo</a>
+  <span></span> <a href="/tags/Auto-Layout/">Auto Layout</a>
   </div>
 
 </div>
@@ -177,7 +176,7 @@ hexo s
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://jokerhappy.github.io/post/hexo/" data-title="利用 Hexo 和 Github 创建个人博客 | 知行合一" data-tsina="null" class="share clearfix">
+	  <div data-url="http://jokerhappy.github.io/post/layout 笔记4/" data-title="iOS Auto Layout Demystified 学习笔记（四） | 知行合一" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -190,19 +189,11 @@ hexo s
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/post/webview/" title="UIWebView 使用浅析">
-  <strong>上一篇：</strong><br/>
-  <span>
-  UIWebView 使用浅析</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/post/hello/"  title="知行合一">
+<a href="/post/layout 笔记3/"  title="iOS Auto Layout Demystified 学习笔记（三）">
  <strong>下一篇：</strong><br/> 
- <span>知行合一
+ <span>iOS Auto Layout Demystified 学习笔记（三）
 </span>
 </a>
 </div>
@@ -211,7 +202,7 @@ hexo s
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="post/hexo/" data-title="利用 Hexo 和 Github 创建个人博客" data-url="http://jokerhappy.github.io/post/hexo/"></div>
+	<div class="ds-thread" data-thread-key="post/layout 笔记4/" data-title="iOS Auto Layout Demystified 学习笔记（四）" data-url="http://jokerhappy.github.io/post/layout 笔记4/"></div>
 </section>
 
 
@@ -221,7 +212,7 @@ hexo s
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Github"><span class="toc-number">1.</span> <span class="toc-text">Github</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo"><span class="toc-number">2.</span> <span class="toc-text">Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-Node-js"><span class="toc-number">2.1.</span> <span class="toc-text">安装 Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Git"><span class="toc-number">2.2.</span> <span class="toc-text">安装Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Hexo"><span class="toc-number">2.3.</span> <span class="toc-text">安装Hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#建立本地博客"><span class="toc-number">2.4.</span> <span class="toc-text">建立本地博客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地效果预览"><span class="toc-number">2.5.</span> <span class="toc-text">本地效果预览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署到Github"><span class="toc-number">2.6.</span> <span class="toc-text">部署到Github</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编写博文"><span class="toc-number">2.7.</span> <span class="toc-text">编写博文</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#可视化格式约束介绍"><span class="toc-number">1.</span> <span class="toc-text">可视化格式约束介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#NSLog-和可视化格式"><span class="toc-number">1.1.</span> <span class="toc-text">NSLog 和可视化格式</span></a></li></ol></li></ol>
  
   </div>
 
