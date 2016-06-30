@@ -76,6 +76,101 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/post/链式编程/" title="链式编程和函数式编程学习笔记" itemprop="url">链式编程和函数式编程学习笔记</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-31T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-04-01</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h5 id="链式编程"><a href="#链式编程" class="headerlink" title="链式编程"></a>链式编程</h5><blockquote>
+<p>链式编程思想：是将多个操作（多行代码）通过点号(.)链接在一起成为一句代码,使代码可读性好。</p>
+</blockquote>
+<p>在<code>OC</code>中，可以利用<code>block</code>实现链式编程。</p>
+<blockquote>
+<p>方法的返回值是block,block必须有返回值（本身对象），block参数（需要操作的值）</p>
+</blockquote>
+<p>定义如下：</p>
+<pre><code>- (returnType (^)(parameterTypes)function;
+</code></pre><p>实现：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- (returnType(^)(parameterTypes))function&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ^ returnType (parameterTypes)&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/*</span><br><span class="line">        处理参数</span><br><span class="line">        */</span></span><br><span class="line">                </span><br><span class="line">        <span class="keyword">return</span> self; <span class="comment">// returnType 的类型为自身类型</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具体代码参照<a href="http://www.jianshu.com/p/87ef6720a096" target="_blank" rel="external">峥吖的文章《最快让你上手ReactiveCocoa之基础篇》</a></p>
+<p>在此将调用的代码列一下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> result = [NSObject makeCaculators:^(CaculatorMaker *maker) &#123;</span><br><span class="line">                maker.add(<span class="number">1</span>).add(<span class="number">2</span>).sub(<span class="number">3</span>).mult(<span class="number">10</span>);</span><br><span class="line">        </span><br><span class="line">    &#125;];</span><br></pre></td></tr></table></figure>
+<p><s>实在是太帅了，刚看到的时候，一脸懵逼，很像js对吧</s>     我们可以用自定义的实例接着做其他事，这样的调用像一条链子一样，一口气做完一个对象想做的所有事都可以。</p>
+<h5 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h5><p>它属于”结构化编程”的一种，主要思想是把运算过程尽量写成一系列嵌套的函数调用。<br><br>详细说明，参照<a href="http://www.ruanyifeng.com/blog/2012/04/functional_programming.html" target="_blank" rel="external">阮一峰的网络日志-函数式编程初探</a></p>
+<p><s>12年呀，差距好大</s><br>举例来说,现在有这样一个数学表达式：</p>
+<pre><code>(1 + 2) * 3 - 4
+</code></pre><p>　　<br>传统的过程式编程，可能这样写：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = <span class="number">1</span> + <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">var b = a * <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">var c = b - <span class="number">4</span>;</span><br></pre></td></tr></table></figure>
+<p>转换成响应式编程</p>
+<pre><code>add(1,2).multiply(3).subtract(4)
+</code></pre><p>在<code>OC</code>中的实现方法</p>
+<blockquote>
+<p>每个方法必须有返回值（本身对象）,把函数或者Block当做参数,block参数（需要操作的值）block返回值（操作结果）</p>
+</blockquote>
+<p>定义如下：</p>
+<pre><code>- ( ClassType )function:(returnType (^)(parameterTypes)parameter;
+</code></pre><p>实现：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- ( ClassType )function1:(returnType (^)(parameterTypes)parameter&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// block 调用 一般传入全局变量</span></span><br><span class="line">	变量 ＝  parameter(变量);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> self;</span><br><span class="line">&#125;</span><br><span class="line">- ( ClassType )function2:(returnType (^)(parameterTypes)parameter&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// block 调用 一般传入全局变量</span></span><br><span class="line">	变量 ＝  parameter(变量);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> self;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ClassType <span class="keyword">class</span> = [ClassType alloc]init];</span><br><span class="line">	</span><br><span class="line">[[<span class="keyword">class</span> function1:^(parameterTypes)&#123;</span><br><span class="line">	</span><br><span class="line">			<span class="comment">// 逻辑处理</span></span><br><span class="line">			<span class="keyword">return</span> ...;</span><br><span class="line">&#125;]function2:^(parameterTypes)&#123;</span><br><span class="line">	</span><br><span class="line">			<span class="comment">// 逻辑处理 </span></span><br><span class="line">			<span class="comment">// 在方法2 中可以使用方法1中得到的变量进行操作</span></span><br><span class="line">			<span class="keyword">return</span> ...;</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<p>对于函数式编程的思想，还不是太懂，在琢磨当中,借鉴了各位大神的博客，一一拜谢，理解比较浅，有错误的地方还望指正。<s>顺便说一句<code>ReactiveCocoa</code>真NB，不断学习中。</s></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/RAC/">RAC</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/post/链式编程/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/链式编程/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/post/layout 笔记4/" title="iOS Auto Layout Demystified 学习笔记（四）" itemprop="url">iOS Auto Layout Demystified 学习笔记（四）</a>
   </h1>
   <p class="article-author">By
@@ -400,72 +495,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/post/layout 笔记1/" title="iOS Auto Layout Demystified 学习笔记（一）" itemprop="url">iOS Auto Layout Demystified 学习笔记（一）</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
-		
-  <p class="article-time">
-    <time datetime="2016-02-19T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-02-20</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h4 id="Auto-Layout-的由来"><a href="#Auto-Layout-的由来" class="headerlink" title="Auto Layout 的由来"></a><strong>Auto Layout</strong> 的由来</h4><p>2012年，Auto Layout 作为<code>iOS 6</code>版本的一部分，首次露面。 Auto Layout 的前身是<code>Cassowary</code> 约束解析包。</p>
-<blockquote>
-<p><code>Cassowary</code>是一种递增式约束解析工具包，它能有效的解析线性等式系统和线性不等式系统。约束可能是需求，也可能是偏好。该工具包能够快速的重新解析系统，并且支持UI应用程序。<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/post/layout 笔记1/#more">阅读全文</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Auto-Layout/">Auto Layout</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/post/layout 笔记1/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/layout 笔记1/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -488,7 +517,7 @@
 		  
 		
 		  
-			<li><a href="/categories/iOS/" title="iOS">iOS<sup>7</sup></a></li>
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>8</sup></a></li>
 		  
 		
 		</ul>
@@ -518,6 +547,10 @@
 		
 			
 				<li><a href="/tags/Knowledge/" title="Knowledge">Knowledge<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/RAC/" title="RAC">RAC<sup>1</sup></a></li>
 			
 		
 		</ul>
