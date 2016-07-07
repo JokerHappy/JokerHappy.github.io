@@ -4,22 +4,26 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>知行合一</title>
+    <title>Objective-C和JavaScript 数据交互 | 知行合一</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="xxx">
     
 
     
-    <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="知行合一">
-<meta property="og:url" content="http://jokerhappy.github.io/index.html">
+    <meta name="description" content="iOS7 之前OC 调用 JS在iOS7以前，在OC中调用JavaScript的方式只有一种，就是通过UIWebView对象的stringByEvaluatingJavaScriptFromString:方法，可以实现的交互很少，还需要JS提供相应的方法，实现功能，常用代码如下：
+NSString *title =[webViewstringByEvaluatingJavaScriptFromSt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Objective-C和JavaScript 数据交互">
+<meta property="og:url" content="http://jokerhappy.github.io/post/objective-c和javascript的相互调用/index.html">
 <meta property="og:site_name" content="知行合一">
-<meta property="og:description">
+<meta property="og:description" content="iOS7 之前OC 调用 JS在iOS7以前，在OC中调用JavaScript的方式只有一种，就是通过UIWebView对象的stringByEvaluatingJavaScriptFromString:方法，可以实现的交互很少，还需要JS提供相应的方法，实现功能，常用代码如下：
+NSString *title =[webViewstringByEvaluatingJavaScriptFromSt">
+<meta property="og:updated_time" content="2016-07-07T14:34:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="知行合一">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Objective-C和JavaScript 数据交互">
+<meta name="twitter:description" content="iOS7 之前OC 调用 JS在iOS7以前，在OC中调用JavaScript的方式只有一种，就是通过UIWebView对象的stringByEvaluatingJavaScriptFromString:方法，可以实现的交互很少，还需要JS提供相应的方法，实现功能，常用代码如下：
+NSString *title =[webViewstringByEvaluatingJavaScriptFromSt">
 
     
     <link rel="alternative" href="/atom.xml" title="知行合一" type="application/atom+xml">
@@ -68,12 +72,10 @@
 </div>
     </header>
     <div id="container">
-      <div id="main">
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
   <h1 itemprop="name">
     
       <a href="/post/objective-c和javascript的相互调用/" title="Objective-C和JavaScript 数据交互" itemprop="url">Objective-C和JavaScript 数据交互</a>
@@ -87,9 +89,16 @@
     
   </p>
 </header>
-    <div class="article-content">
-        
-        <h4 id="iOS7-之前"><a href="#iOS7-之前" class="headerlink" title="iOS7 之前"></a><s>iOS7 之前</s></h4><h6 id="OC-调用-JS"><a href="#OC-调用-JS" class="headerlink" title="OC 调用 JS"></a>OC 调用 JS</h6><p>在<code>iOS7</code>以前，在<code>OC</code>中调用<code>JavaScript</code>的方式只有一种，就是通过<code>UIWebView</code>对象的<code>stringByEvaluatingJavaScriptFromString:</code>方法，可以实现的交互很少，还需要<code>JS</code>提供相应的方法，实现功能，常用代码如下：</p>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#iOS7-之前"><span class="toc-number">1.</span> <span class="toc-text">iOS7 之前</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#OC-调用-JS"><span class="toc-number">1.0.1.</span> <span class="toc-text">OC 调用 JS</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#JS-调用-OC"><span class="toc-number">1.0.2.</span> <span class="toc-text">JS 调用 OC</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JavaScriptCore"><span class="toc-number">2.</span> <span class="toc-text">JavaScriptCore</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#类概述"><span class="toc-number">2.1.</span> <span class="toc-text">类概述</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#JSContext"><span class="toc-number">2.1.1.</span> <span class="toc-text">JSContext</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#JSValue"><span class="toc-number">2.1.2.</span> <span class="toc-text">JSValue</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#JSManagedValue"><span class="toc-number">2.1.3.</span> <span class="toc-text">JSManagedValue</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#JSVirtualMachine"><span class="toc-number">2.1.4.</span> <span class="toc-text">JSVirtualMachine</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#JSExport"><span class="toc-number">2.1.5.</span> <span class="toc-text">JSExport</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#OC-调用-JS-1"><span class="toc-number">2.2.</span> <span class="toc-text">OC 调用 JS</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#jS-调用-OC"><span class="toc-number">2.3.</span> <span class="toc-text">jS 调用 OC</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#block"><span class="toc-number">2.3.1.</span> <span class="toc-text">block</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#JSExport-1"><span class="toc-number">2.3.2.</span> <span class="toc-text">JSExport</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#异常处理"><span class="toc-number">2.4.</span> <span class="toc-text">异常处理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#内存管理"><span class="toc-number">2.5.</span> <span class="toc-text">内存管理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number"></span> <span class="toc-text">参考资料</span></a>
+		
+		</div>
+		
+		<h4 id="iOS7-之前"><a href="#iOS7-之前" class="headerlink" title="iOS7 之前"></a><s>iOS7 之前</s></h4><h6 id="OC-调用-JS"><a href="#OC-调用-JS" class="headerlink" title="OC 调用 JS"></a>OC 调用 JS</h6><p>在<code>iOS7</code>以前，在<code>OC</code>中调用<code>JavaScript</code>的方式只有一种，就是通过<code>UIWebView</code>对象的<code>stringByEvaluatingJavaScriptFromString:</code>方法，可以实现的交互很少，还需要<code>JS</code>提供相应的方法，实现功能，常用代码如下：</p>
 <pre><code>NSString *title =[webViewstringByEvaluatingJavaScriptFromString:@&quot;document.title&quot;];  //得到网页标题
 </code></pre><p> </p>
 <h6 id="JS-调用-OC"><a href="#JS-调用-OC" class="headerlink" title="JS 调用 OC"></a>JS 调用 OC</h6><p>通过<code>UIWebView</code>的重定向，通过在<code>UIWebView</code>的代理函数<code>webView:shouldStartLoadWithRequest:navigationType:</code>来监听<code>URL</code>的变化，这个函数会在<code>webview</code>加载<code>UR</code>L时回调，我们可以<code>return YES</code>来让<code>webview</code>继续加载内容，<code>return NO</code>来停止继续加载新的内容。要约定好几个虚假的<code>URL</code>(比如tool://goToHomePage)，我们拿到定义好的URL之后做对应的<code>Objective-C</code>函数调用。</p>
@@ -181,14 +190,9 @@
 <li><a href="http://nshipster.cn/javascriptcore/" target="_blank" rel="external">Java​Script​Core</a></li>
 <li><a href="http://www.jianshu.com/p/a329cd4a67ee" target="_blank" rel="external">JavaScriptCore 使用</a></li>
 </ul>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
+  
+	</div>
+		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 <div class="article-categories">
@@ -206,389 +210,47 @@
 
 
 
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://jokerhappy.github.io/post/objective-c和javascript的相互调用/" data-title="Objective-C和JavaScript 数据交互 | 知行合一" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
 
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/post/objective-c和javascript的相互调用/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/objective-c和javascript的相互调用/" data-count-type="comments">&nbsp;</a>
-	
-</div>
 
 </footer>
 
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/post/链式编程/" title="链式编程和函数式编程学习笔记" itemprop="url">链式编程和函数式编程学习笔记</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
-		
-  <p class="article-time">
-    <time datetime="2016-03-31T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-04-01</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h5 id="链式编程"><a href="#链式编程" class="headerlink" title="链式编程"></a>链式编程</h5><blockquote>
-<p>链式编程思想：是将多个操作（多行代码）通过点号(.)链接在一起成为一句代码,使代码可读性好。</p>
-</blockquote>
-<p>在<code>OC</code>中，可以利用<code>block</code>实现链式编程。</p>
-<blockquote>
-<p>方法的返回值是block,block必须有返回值（本身对象），block参数（需要操作的值）</p>
-</blockquote>
-<p>定义如下：</p>
-<pre><code>- (returnType (^)(parameterTypes)function;
-</code></pre><p>实现：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- (returnType(^)(parameterTypes))function&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ^ returnType (parameterTypes)&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/*</span><br><span class="line">        处理参数</span><br><span class="line">        */</span></span><br><span class="line">                </span><br><span class="line">        <span class="keyword">return</span> self; <span class="comment">// returnType 的类型为自身类型</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>具体代码参照<a href="http://www.jianshu.com/p/87ef6720a096" target="_blank" rel="external">峥吖的文章《最快让你上手ReactiveCocoa之基础篇》</a></p>
-<p>在此将调用的代码列一下</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> result = [NSObject makeCaculators:^(CaculatorMaker *maker) &#123;</span><br><span class="line">                maker.add(<span class="number">1</span>).add(<span class="number">2</span>).sub(<span class="number">3</span>).mult(<span class="number">10</span>);</span><br><span class="line">        </span><br><span class="line">    &#125;];</span><br></pre></td></tr></table></figure>
-<p><s>实在是太帅了，刚看到的时候，一脸懵逼，很像js对吧</s>     我们可以用自定义的实例接着做其他事，这样的调用像一条链子一样，一口气做完一个对象想做的所有事都可以。</p>
-<h5 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h5><p>它属于”结构化编程”的一种，主要思想是把运算过程尽量写成一系列嵌套的函数调用。<br><br>详细说明，参照<a href="http://www.ruanyifeng.com/blog/2012/04/functional_programming.html" target="_blank" rel="external">阮一峰的网络日志-函数式编程初探</a></p>
-<p><s>12年呀，差距好大</s><br>举例来说,现在有这样一个数学表达式：</p>
-<pre><code>(1 + 2) * 3 - 4
-</code></pre><p>　　<br>传统的过程式编程，可能这样写：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = <span class="number">1</span> + <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">var b = a * <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">var c = b - <span class="number">4</span>;</span><br></pre></td></tr></table></figure>
-<p>转换成响应式编程</p>
-<pre><code>add(1,2).multiply(3).subtract(4)
-</code></pre><p>在<code>OC</code>中的实现方法</p>
-<blockquote>
-<p>每个方法必须有返回值（本身对象）,把函数或者Block当做参数,block参数（需要操作的值）block返回值（操作结果）</p>
-</blockquote>
-<p>定义如下：</p>
-<pre><code>- ( ClassType )function:(returnType (^)(parameterTypes)parameter;
-</code></pre><p>实现：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- ( ClassType )function1:(returnType (^)(parameterTypes)parameter&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// block 调用 一般传入全局变量</span></span><br><span class="line">	变量 ＝  parameter(变量);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> self;</span><br><span class="line">&#125;</span><br><span class="line">- ( ClassType )function2:(returnType (^)(parameterTypes)parameter&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// block 调用 一般传入全局变量</span></span><br><span class="line">	变量 ＝  parameter(变量);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> self;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>调用代码</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ClassType <span class="keyword">class</span> = [ClassType alloc]init];</span><br><span class="line">	</span><br><span class="line">[[<span class="keyword">class</span> function1:^(parameterTypes)&#123;</span><br><span class="line">	</span><br><span class="line">			<span class="comment">// 逻辑处理</span></span><br><span class="line">			<span class="keyword">return</span> ...;</span><br><span class="line">&#125;]function2:^(parameterTypes)&#123;</span><br><span class="line">	</span><br><span class="line">			<span class="comment">// 逻辑处理 </span></span><br><span class="line">			<span class="comment">// 在方法2 中可以使用方法1中得到的变量进行操作</span></span><br><span class="line">			<span class="keyword">return</span> ...;</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-<p>对于函数式编程的思想，还不是太懂，在琢磨当中,借鉴了各位大神的博客，一一拜谢，理解比较浅，有错误的地方还望指正。<s>顺便说一句<code>ReactiveCocoa</code>真NB，不断学习中。</s></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/RAC/">RAC</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
+   	       
+	</article>
 	
-	  	<span></span>
-		<a href="/post/链式编程/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/链式编程/" data-count-type="comments">&nbsp;</a>
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/post/链式编程/"  title="链式编程和函数式编程学习笔记">
+ <strong>下一篇：</strong><br/> 
+ <span>链式编程和函数式编程学习笔记
+</span>
+</a>
+</div>
+
+</nav>
+
 	
-</div>
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="post/objective-c和javascript的相互调用/" data-title="Objective-C和JavaScript 数据交互" data-url="http://jokerhappy.github.io/post/objective-c和javascript的相互调用/"></div>
+</section>
 
-</footer>
 
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/post/layout 笔记4/" title="iOS Auto Layout Demystified 学习笔记（四）" itemprop="url">iOS Auto Layout Demystified 学习笔记（四）</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
-		
-  <p class="article-time">
-    <time datetime="2016-03-04T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-03-05</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>本文主要探究利用可视化格式语言进行自动布局。<br></p>
-<h5 id="可视化格式约束介绍"><a href="#可视化格式约束介绍" class="headerlink" title="可视化格式约束介绍"></a>可视化格式约束介绍</h5><p>可视化格式由一个描述视图布局的文本字符串组成。你可以根据视图在界面中出现的顺序列出他们，文本中可以指定间隔、不等量及优先级，可以使布局形象化地表现为一个简单的文本。<br>如下所示</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@<span class="string">"V:|-[view1](==200)-(&gt;=20@750)-[view2]"</span> options:NSLayoutFormatAlignAllLeft metrics:nil views:NSDictionaryOfVariableBindings(view1,view2)]];</span><br></pre></td></tr></table></figure>
-<p>其中<code>NSDictionaryOfVariableBindings()</code>表示：当使用可视化约束时，布局系统将名称字符串同它们表示的对象关联起来，利用此宏创建一个约束列表（字典）。<br>在代码中<code>NSDictionaryOfVariableBindings(view1,view2)</code>相当于创建了下列字典</p>
-<pre><code>@{@&quot;view1&quot;:view1,@&quot;view2&quot;:view2}
-</code></pre><p>当然你可以自定义字典，将视图进行关联。<br></p>
-<p>代码中其他符号的含义</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">变量</th>
-<th style="text-align:left">释义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">V:，H:</td>
-<td style="text-align:left">方向</td>
-</tr>
-<tr>
-<td style="text-align:center">metric</td>
-<td style="text-align:left">度量</td>
-</tr>
-<tr>
-<td style="text-align:center">== &lt;= &gt;=</td>
-<td style="text-align:left">关系</td>
-</tr>
-<tr>
-<td style="text-align:center">@</td>
-<td style="text-align:left">优先级</td>
-</tr>
-<tr>
-<td style="text-align:center">｜</td>
-<td style="text-align:left">父视图</td>
-</tr>
-<tr>
-<td style="text-align:center">options</td>
-<td style="text-align:left">对齐方式</td>
-</tr>
-<tr>
-<td style="text-align:center">-</td>
-<td style="text-align:left">标准间隔：视图到视图为8点；视图到父视图为20点</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>其中8点和20点的值来源于苹果的<code>Aqua</code>用户界面标准，作为基本的视觉主题应用于<code>OS X</code>设计</li>
-<li>如果间隔为负数的时候，需要使用<code>()</code></li>
-<li>可视化格式可以加入多个视图</li>
-<li>视图的<code>()</code>中指定视图的尺寸，根据排列方向对应固定的宽度或高度</li>
-<li>使用可视化格式创建的所有约束都有一个默认的优先级，即1000（必需的）</li>
-</ul>
-<h6 id="NSLog-和可视化格式"><a href="#NSLog-和可视化格式" class="headerlink" title="NSLog 和可视化格式"></a>NSLog 和可视化格式</h6><p>在<code>NSLayoutConstraint</code>日志中任何可能的地方<code>Xcode</code>都添加了可视化格式表示，即使完全适用<code>IB</code>或者通过单独的约束实例来创建约束，通过学习这种布局语言，你也会受益匪浅。<br>实践是检验真理的唯一标准，多去尝试吧。</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Auto-Layout/">Auto Layout</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/post/layout 笔记4/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/layout 笔记4/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/post/layout 笔记3/" title="iOS Auto Layout Demystified 学习笔记（三）" itemprop="url">iOS Auto Layout Demystified 学习笔记（三）</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
-		
-  <p class="article-time">
-    <time datetime="2016-03-01T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-03-02</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>本文主要探究<code>Interface Builder</code>自动布局。<br></p>
-<h5 id="在IB中使用-禁用自动布局"><a href="#在IB中使用-禁用自动布局" class="headerlink" title="在IB中使用/禁用自动布局"></a>在IB中使用/禁用自动布局</h5><p>在右侧面板中勾选<code>Use Autolayout</code>选项，不做赘述。<br>如果想在代码中退出<code>Use Autolayout</code>需要设置视图的属性<code>translatesAutoresizingMaskIntoConstraints</code>属性为<code>YES</code>。</p>
-<h5 id="基本布局及自动生成的约束"><a href="#基本布局及自动生成的约束" class="headerlink" title="基本布局及自动生成的约束"></a>基本布局及自动生成的约束</h5><p>当你在<code>IB</code>中放置好视图时，在不添加约束的情况下，<code>Xcode</code>会<strong>自动</strong>帮助你免费添加一些根据视图的框架构建的约束，为界面元素提供最小的回退行为。</p>
-<h5 id="IB元素指南"><a href="#IB元素指南" class="headerlink" title="IB元素指南"></a><code>IB</code>元素指南</h5><p>具体元素在此不再赘述，需要开发者多多使用。<br><br>使用的小窍门</p>
-<ol>
-<li>按下<code>Ctrl</code>键从一个视图拖拽到另一个视图，在弹出的选择列表时，在选择约束类型是按住<code>Shift</code>可以进行多选.</li>
-<li>在<code>Intrinsic Size</code>中的选项<code>Placeholder</code>为设计中的视图提供一个占位空间，在程序运行时在具体计算视图的尺寸。</li>
-<li>在<code>IB</code>中，同时按下<code>Ctrl</code>+<code>Shift</code>键并单击任意区域，会显示该位置所放置的所有视图的清单，在复杂的布局中可以快速选择所要操作的视图。</li>
-</ol>
-<h5 id="添加约束"><a href="#添加约束" class="headerlink" title="添加约束"></a>添加约束</h5><p>略</p>
-<h5 id="预览布局"><a href="#预览布局" class="headerlink" title="预览布局"></a>预览布局</h5><p>在IB中布局完成后，不需要每次都运行程序查看布局效果，在IB中提供了简单的方法，可以展示在不同设备上的布局效果包括横竖屏。具体步骤：</p>
-<ul>
-<li>首先需要关闭多余的视图，腾出更多的空间。</li>
-<li>选择<code>IB</code>左上角，如下图所示<br><br><img src="http://7xt3bw.com1.z0.glb.clouddn.com/8.png-water" alt=""><br><br></li>
-<li>按住<code>Shift</code>和<code>Option</code>键，选择对应的IB视图，会出现如下视图<br><br><img src="http://7xt3bw.com1.z0.glb.clouddn.com/9.png-water" alt=""><br><br></li>
-<li>选择右侧下方<strong>＋</strong>,双击或者回车，就会出现对应的预览视图<br><br><img src="http://7xt3bw.com1.z0.glb.clouddn.com/10.png-water" alt=""><br><br></li>
-<li>最后就可以选择各种尺寸的屏幕，进行预览。</li>
-</ul>
-<p>在<code>IB</code>中还可以为视化编辑器添加一些视图覆盖物，用于测试，选中控件后再选择菜单中<br><code>Editor-&gt;Canvas</code>，可以选择测试效果。</p>
-<blockquote>
-<p>小窍门<br>在应项目的<code>Edit Scheme</code>中设置一个启动参数 <code>UIViewShowAlignmentRects</code> 并将参数值设置为<code>YES</code>，可以让程序在运行时显示视图的对齐矩阵（alignment rectangle）。-<br>    UIViewShowAlignmentRects YES</p>
-</blockquote>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Auto-Layout/">Auto Layout</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/post/layout 笔记3/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/layout 笔记3/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/post/layout 笔记2/" title="iOS Auto Layout Demystified 学习笔记（二）" itemprop="url">iOS Auto Layout Demystified 学习笔记（二）</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
-		
-  <p class="article-time">
-    <time datetime="2016-02-27T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-02-28</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p><code>Auto Layout</code>是一种约束满足系统。所谓<strong>约束</strong>其本质是限制的意思。你创建的每个规则都给出了一个要求，这个要求规定了界面的一部分和另一部分的关系。这些规则可以用数字标识的优先级进行排序，<code>Auto Layout</code>根据你定制的规则和优先级序号确定界面的<strong>可视化</strong>呈现方式。<br><br/><br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/post/layout 笔记2/#more">阅读全文</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Auto-Layout/">Auto Layout</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/post/layout 笔记2/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/layout 笔记2/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-
-  <nav id="page-nav" class="clearfix">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
-  </nav>
-
-</div>
+</div>  
       <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#iOS7-之前"><span class="toc-number">1.</span> <span class="toc-text">iOS7 之前</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#OC-调用-JS"><span class="toc-number">1.0.1.</span> <span class="toc-text">OC 调用 JS</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#JS-调用-OC"><span class="toc-number">1.0.2.</span> <span class="toc-text">JS 调用 OC</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JavaScriptCore"><span class="toc-number">2.</span> <span class="toc-text">JavaScriptCore</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#类概述"><span class="toc-number">2.1.</span> <span class="toc-text">类概述</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#JSContext"><span class="toc-number">2.1.1.</span> <span class="toc-text">JSContext</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#JSValue"><span class="toc-number">2.1.2.</span> <span class="toc-text">JSValue</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#JSManagedValue"><span class="toc-number">2.1.3.</span> <span class="toc-text">JSManagedValue</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#JSVirtualMachine"><span class="toc-number">2.1.4.</span> <span class="toc-text">JSVirtualMachine</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#JSExport"><span class="toc-number">2.1.5.</span> <span class="toc-text">JSExport</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#OC-调用-JS-1"><span class="toc-number">2.2.</span> <span class="toc-text">OC 调用 JS</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#jS-调用-OC"><span class="toc-number">2.3.</span> <span class="toc-text">jS 调用 OC</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#block"><span class="toc-number">2.3.1.</span> <span class="toc-text">block</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#JSExport-1"><span class="toc-number">2.3.2.</span> <span class="toc-text">JSExport</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#异常处理"><span class="toc-number">2.4.</span> <span class="toc-text">异常处理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#内存管理"><span class="toc-number">2.5.</span> <span class="toc-text">内存管理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number"></span> <span class="toc-text">参考资料</span></a>
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
@@ -741,6 +403,11 @@ $(document).ready(function(){
     o.css("top",Math.max(80,260-$(this).scrollTop()));
   });
   
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
   $(window).resize(function(){
     getSize(); 
     if (myWidth >= 1024) {
@@ -749,14 +416,103 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
 });
 </script>
 
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
 
 
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"JokerHappy"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
 
 
 
@@ -824,4 +580,4 @@ ga('send', 'pageview');
 <!-- Tiny_search End -->
 
   </body>
- </html>
+</html>
