@@ -76,6 +76,116 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/post/hexo/" title="利用 Hexo 和 Github 创建个人博客" itemprop="url">利用 Hexo 和 Github 创建个人博客</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-13T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-02-14</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p><a href="https://hexo.io/" target="_blank" rel="external">Hexo</a> 是一款基于 <code>Node.js</code> 的静态博客框架。<code>Hexo</code> 生成的静态页面可以部署在 <code>Github</code> 或 <code>Coding</code> 上，并且能够免费绑定自己的域名，可以用来很方便地搭建个人博客。</p>
+<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><ol>
+<li>注册 <a href="https://github.com/" target="_blank" rel="external">github</a>。</li>
+<li>在主页右下角创建New repository，name必须和用户名一致,如username.github.io。</li>
+<li>首次创建耐心等待10分钟左右审核，之后即可访问静态主页如<a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a></li>
+</ol>
+<p>个人博客初步搭建完成，接下来利用 <code>Hexo</code> 修改博客框架</p>
+<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><h3 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h3><p>选择对应的系统安装<a href="http://nodejs.cn/download/" target="_blank" rel="external">Node.js</a></p>
+<h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><p>最简单的方法 安装  <a href="https://desktop.github.com/" target="_blank" rel="external">GitHub Desktop</a> </p>
+<p>对 <code>Git</code> 还不太熟悉的小伙伴可以参考下 <a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">Git 教程（廖雪峰的官方网站）</a></p>
+<p>里面有详细的<code>Git</code>安装方法及使用方法</p>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>首先将 <code>npm</code> 的源替换成淘宝的源</p>
+<pre><code>npm config set registry http://registry.npm.taobao.org/
+</code></pre><p>在 <code>Git</code> 中输入 <code>npm</code> 命令即可安装</p>
+<pre><code>npm install -g hexo
+</code></pre><p>在 <code>OS X</code>系统下 因为可能有文件读写权限的问题， 加上前缀<code>sudo</code></p>
+<p>安装过程中可能会出现错误，可以参考<a href="https://xuanwo.org/2014/08/14/hexo-usual-problem/" target="_blank" rel="external">Hexo 常见问题</a> 或自行<code>Google</code>查找。</p>
+<h3 id="建立本地博客"><a href="#建立本地博客" class="headerlink" title="建立本地博客"></a>建立本地博客</h3><p>安装完成后，新建一个目录如 MyBlog 用于存放博客，切换到该目录下执行以下指令，Hexo 即会在目标文件夹初步生成博客所需要的所有文件：</p>
+<pre><code>hexo init
+</code></pre><p>如果对 <code>Hexo</code> 自带的模板不满意的话可以看一下<a href="http://www.zhihu.com/question/24422335" target="_blank" rel="external">这里</a>，自定义个性化的主题模板。</p>
+<p>个人推荐：</p>
+<ul>
+<li>Jacman - <a href="https://github.com/wuchong/jacman" target="_blank" rel="external">https://github.com/wuchong/jacman</a></li>
+<li>Next - <a href="http://theme-next.iissnan.com/" target="_blank" rel="external">http://theme-next.iissnan.com/</a></li>
+</ul>
+<p><strong>注意：</strong>修改 <code>Hexo</code> 配置文件及主题配置文件时，按照YAML语法，参数冒号 <code>:</code> 后一定要留空格。</p>
+<h3 id="本地效果预览"><a href="#本地效果预览" class="headerlink" title="本地效果预览"></a>本地效果预览</h3><p>在终端使用 <code>cd</code> 命令切换到博客所在目录 <code>MyBlog</code>，执行如下命令生成静态博客页面（public 文件夹）并启动本地服务器</p>
+<pre><code>hexo generate
+hexo server
+</code></pre><p>或者如下的缩写形式也可以：</p>
+<pre><code>hexo g
+hexo s
+</code></pre><p>若成功可在浏览器中访问 <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> 进行预览。</p>
+<h3 id="部署到Github"><a href="#部署到Github" class="headerlink" title="部署到Github"></a>部署到Github</h3><ol>
+<li>利用  <code>Git</code>  将 <code>Github</code> 中的 <code>username.github.io</code> 项目    <code>clone</code> 到本地新建文件夹。</li>
+<li>将 <code>MyBlog</code> 中执行 <code>hexo g</code> 命令生成 <code>public</code> 文件夹，复制到<code>clone</code>的文件夹中。</li>
+<li>运行 <code>GitHub</code> 确认修改信息 <code>commit</code> 后执行右上角的 <code>Sync</code> 同步。（或者利用 <code>Git</code> 命令将修改内容 <code>pull</code> 到 <code>Github</code>）</li>
+<li>最后访问主页（<a href="http://username.github.io）观察效果，可能会存在延迟，请稍等几分钟。" target="_blank" rel="external">http://username.github.io）观察效果，可能会存在延迟，请稍等几分钟。</a></li>
+</ol>
+<h3 id="编写博文"><a href="#编写博文" class="headerlink" title="编写博文"></a>编写博文</h3><ul>
+<li><p>利用命令行 <code>cd</code> 到 MyBlog 中利用<code>Hexo</code>命令生成初始文章。</p>
+<pre><code>hexo n &quot;new&quot;
+</code></pre></li>
+<li><p>在<code>hexo\source\_posts</code>中编辑生成出来的<code>new</code>文件。</p>
+</li>
+<li><p>利用 <code>Markdown</code> 文本编辑器修改<code>new</code>文件，编写博文。 对<code>Markdown</code>不熟悉的小伙伴可以查看 <a href="http://wowubuntu.com/markdown/" target="_blank" rel="external">Markdown 语法</a> 。</p>
+</li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Skill/">Skill</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Hexo/">Hexo</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/post/hexo/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/hexo/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/post/hello/" title="知行合一" itemprop="url">知行合一</a>
   </h1>
   <p class="article-author">By
@@ -155,7 +265,7 @@
 		  
 		
 		  
-			<li><a href="/categories/iOS/" title="iOS">iOS<sup>9</sup></a></li>
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>10</sup></a></li>
 		  
 		
 		</ul>
@@ -193,6 +303,10 @@
 		
 			
 				<li><a href="/tags/JavaScriptCore/" title="JavaScriptCore">JavaScriptCore<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Notes/" title="Notes">Notes<sup>1</sup></a></li>
 			
 		
 		</ul>

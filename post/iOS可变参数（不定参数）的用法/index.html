@@ -4,33 +4,26 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>iOS Auto Layout Demystified 学习笔记（三） | 知行合一</title>
+    <title>iOS可变参数 | 知行合一</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="xxx">
     
 
     
-    <meta name="description" content="本文主要探究Interface Builder自动布局。
-在IB中使用/禁用自动布局在右侧面板中勾选Use Autolayout选项，不做赘述。如果想在代码中退出Use Autolayout需要设置视图的属性translatesAutoresizingMaskIntoConstraints属性为YES。
-基本布局及自动生成的约束当你在IB中放置好视图时，在不添加约束的情况下，Xcode会自动帮助你">
+    <meta name="description" content="iOS可变参数官方的例子，留记
+12345678910111213141516171819202122232425#import &amp;lt;Cocoa/Cocoa.h&amp;gt;@interface NSMutableArray (variadicMethodExample)- (void) appendObjects:(id) firstObject, ...; // This method take">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS Auto Layout Demystified 学习笔记（三）">
-<meta property="og:url" content="http://jokerhappy.github.io/post/layout 笔记3/index.html">
+<meta property="og:title" content="iOS可变参数">
+<meta property="og:url" content="http://jokerhappy.github.io/post/iOS可变参数（不定参数）的用法/index.html">
 <meta property="og:site_name" content="知行合一">
-<meta property="og:description" content="本文主要探究Interface Builder自动布局。
-在IB中使用/禁用自动布局在右侧面板中勾选Use Autolayout选项，不做赘述。如果想在代码中退出Use Autolayout需要设置视图的属性translatesAutoresizingMaskIntoConstraints属性为YES。
-基本布局及自动生成的约束当你在IB中放置好视图时，在不添加约束的情况下，Xcode会自动帮助你">
-<meta property="og:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/8.png-water">
-<meta property="og:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/9.png-water">
-<meta property="og:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/10.png-water">
-<meta property="og:updated_time" content="2016-05-28T03:52:56.000Z">
+<meta property="og:description" content="iOS可变参数官方的例子，留记
+12345678910111213141516171819202122232425#import &amp;lt;Cocoa/Cocoa.h&amp;gt;@interface NSMutableArray (variadicMethodExample)- (void) appendObjects:(id) firstObject, ...; // This method take">
+<meta property="og:updated_time" content="2016-07-24T06:03:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS Auto Layout Demystified 学习笔记（三）">
-<meta name="twitter:description" content="本文主要探究Interface Builder自动布局。
-在IB中使用/禁用自动布局在右侧面板中勾选Use Autolayout选项，不做赘述。如果想在代码中退出Use Autolayout需要设置视图的属性translatesAutoresizingMaskIntoConstraints属性为YES。
-基本布局及自动生成的约束当你在IB中放置好视图时，在不添加约束的情况下，Xcode会自动帮助你">
-<meta name="twitter:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/8.png-water">
+<meta name="twitter:title" content="iOS可变参数">
+<meta name="twitter:description" content="iOS可变参数官方的例子，留记
+12345678910111213141516171819202122232425#import &amp;lt;Cocoa/Cocoa.h&amp;gt;@interface NSMutableArray (variadicMethodExample)- (void) appendObjects:(id) firstObject, ...; // This method take">
 
     
     <link rel="alternative" href="/atom.xml" title="知行合一" type="application/atom+xml">
@@ -85,14 +78,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/post/layout 笔记3/" title="iOS Auto Layout Demystified 学习笔记（三）" itemprop="url">iOS Auto Layout Demystified 学习笔记（三）</a>
+      <a href="/post/iOS可变参数（不定参数）的用法/" title="iOS可变参数" itemprop="url">iOS可变参数</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-01T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-03-02</time>
+    <time datetime="2016-04-05T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-04-06</time>
     
   </p>
 </header>
@@ -101,33 +94,21 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#在IB中使用-禁用自动布局"><span class="toc-number">1.</span> <span class="toc-text">在IB中使用/禁用自动布局</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#基本布局及自动生成的约束"><span class="toc-number">2.</span> <span class="toc-text">基本布局及自动生成的约束</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#IB元素指南"><span class="toc-number">3.</span> <span class="toc-text">IB元素指南</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#添加约束"><span class="toc-number">4.</span> <span class="toc-text">添加约束</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#预览布局"><span class="toc-number">5.</span> <span class="toc-text">预览布局</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#iOS可变参数"><span class="toc-number">1.</span> <span class="toc-text">iOS可变参数</span></a></li></ol>
 		
 		</div>
 		
-		<p>本文主要探究<code>Interface Builder</code>自动布局。<br></p>
-<h5 id="在IB中使用-禁用自动布局"><a href="#在IB中使用-禁用自动布局" class="headerlink" title="在IB中使用/禁用自动布局"></a>在IB中使用/禁用自动布局</h5><p>在右侧面板中勾选<code>Use Autolayout</code>选项，不做赘述。<br>如果想在代码中退出<code>Use Autolayout</code>需要设置视图的属性<code>translatesAutoresizingMaskIntoConstraints</code>属性为<code>YES</code>。</p>
-<h5 id="基本布局及自动生成的约束"><a href="#基本布局及自动生成的约束" class="headerlink" title="基本布局及自动生成的约束"></a>基本布局及自动生成的约束</h5><p>当你在<code>IB</code>中放置好视图时，在不添加约束的情况下，<code>Xcode</code>会<strong>自动</strong>帮助你免费添加一些根据视图的框架构建的约束，为界面元素提供最小的回退行为。</p>
-<h5 id="IB元素指南"><a href="#IB元素指南" class="headerlink" title="IB元素指南"></a><code>IB</code>元素指南</h5><p>具体元素在此不再赘述，需要开发者多多使用。<br><br>使用的小窍门</p>
-<ol>
-<li>按下<code>Ctrl</code>键从一个视图拖拽到另一个视图，在弹出的选择列表时，在选择约束类型是按住<code>Shift</code>可以进行多选.</li>
-<li>在<code>Intrinsic Size</code>中的选项<code>Placeholder</code>为设计中的视图提供一个占位空间，在程序运行时在具体计算视图的尺寸。</li>
-<li>在<code>IB</code>中，同时按下<code>Ctrl</code>+<code>Shift</code>键并单击任意区域，会显示该位置所放置的所有视图的清单，在复杂的布局中可以快速选择所要操作的视图。</li>
-</ol>
-<h5 id="添加约束"><a href="#添加约束" class="headerlink" title="添加约束"></a>添加约束</h5><p>略</p>
-<h5 id="预览布局"><a href="#预览布局" class="headerlink" title="预览布局"></a>预览布局</h5><p>在IB中布局完成后，不需要每次都运行程序查看布局效果，在IB中提供了简单的方法，可以展示在不同设备上的布局效果包括横竖屏。具体步骤：</p>
-<ul>
-<li>首先需要关闭多余的视图，腾出更多的空间。</li>
-<li>选择<code>IB</code>左上角，如下图所示<br><br><img src="http://7xt3bw.com1.z0.glb.clouddn.com/8.png-water" alt=""><br><br></li>
-<li>按住<code>Shift</code>和<code>Option</code>键，选择对应的IB视图，会出现如下视图<br><br><img src="http://7xt3bw.com1.z0.glb.clouddn.com/9.png-water" alt=""><br><br></li>
-<li>选择右侧下方<strong>＋</strong>,双击或者回车，就会出现对应的预览视图<br><br><img src="http://7xt3bw.com1.z0.glb.clouddn.com/10.png-water" alt=""><br><br></li>
-<li>最后就可以选择各种尺寸的屏幕，进行预览。</li>
-</ul>
-<p>在<code>IB</code>中还可以为视化编辑器添加一些视图覆盖物，用于测试，选中控件后再选择菜单中<br><code>Editor-&gt;Canvas</code>，可以选择测试效果。</p>
+		<h5 id="iOS可变参数"><a href="#iOS可变参数" class="headerlink" title="iOS可变参数"></a>iOS可变参数</h5><p><a href="https://developer.apple.com/library/mac/qa/qa1405/_index.html" target="_blank" rel="external">官方的例子</a>，留记</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Cocoa/Cocoa.h&gt;</span><br><span class="line"></span><br><span class="line">@interface NSMutableArray (variadicMethodExample)</span><br><span class="line"></span><br><span class="line">- (void) appendObjects:(id) firstObject, ...; // This method takes a nil-terminated list of objects.</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation NSMutableArray (variadicMethodExample)</span><br><span class="line"></span><br><span class="line">- (void) appendObjects:(id) firstObject, ...</span><br><span class="line">&#123;</span><br><span class="line">	id eachObject;</span><br><span class="line">	va_list argumentList;</span><br><span class="line">	if (firstObject) // The first argument isn't part of the varargs list,</span><br><span class="line">  &#123;                                   // so we'll handle it separately.</span><br><span class="line">  	[self addObject: firstObject];</span><br><span class="line">  	va_start(argumentList, firstObject); // Start scanning for arguments after firstObject.</span><br><span class="line">  	while (eachObject = va_arg(argumentList, id)) // As many times as we can get an argument of type "id"</span><br><span class="line">	[self addObject: eachObject]; // that isn't nil, add it to self's contents.</span><br><span class="line">  	va_end(argumentList);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p><code>va_list</code>：用来保存宏 <code>va_start</code> 、<code>va_arg</code> 和 <code>va_end</code> 所需信息的一种类型。为了访问变长参数列表中的参数，必须声明 <code>va_list</code> 类型的一个对象。</p>
+<p><code>va_start</code>：访问变长参数列表中的参数之前使用的宏，它初始化用<code>va_list</code>声明的对象，初始化结果供宏<code>va_arg</code>和<code>va_end</code>使用；</p>
+<p><code>va_arg</code>：展开成一个表达式的宏，该表达式具有变长参数列表中下一个参数的值和类型。每次调用 <code>va_arg</code> 都会修改，用 <code>va_list</code> 声明的对象从而使该对象指向参数列表中的下一个参数。</p>
+<p><code>va_end</code>：该宏使程序能够从变长参数列表用宏 <code>va_start</code> 引用的函数中正常返回。</p>
 <blockquote>
-<p>小窍门<br>在应项目的<code>Edit Scheme</code>中设置一个启动参数 <code>UIViewShowAlignmentRects</code> 并将参数值设置为<code>YES</code>，可以让程序在运行时显示视图的对齐矩阵（alignment rectangle）。-<br>    UIViewShowAlignmentRects YES</p>
+<p>参数结尾必须加上<strong>nil</strong>，表示参数结束，可以再参数后加上宏 <code>NS_REQUIRES_NIL_TERMINATION</code>，用于编译时非nil结尾的检查。</p>
 </blockquote>
-  
+<pre><code>- (void) appendObjects:(id) firstObject, ...NS_REQUIRES_NIL_TERMINATION;
+</code></pre>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -140,7 +121,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Auto-Layout/">Auto Layout</a>
+  <span></span> <a href="/tags/Notes/">Notes</a>
   </div>
 
 </div>
@@ -149,7 +130,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://jokerhappy.github.io/post/layout 笔记3/" data-title="iOS Auto Layout Demystified 学习笔记（三） | 知行合一" data-tsina="null" class="share clearfix">
+	  <div data-url="http://jokerhappy.github.io/post/iOS可变参数（不定参数）的用法/" data-title="iOS可变参数 | 知行合一" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -163,18 +144,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/post/layout 笔记4/" title="iOS Auto Layout Demystified 学习笔记（四）">
+ <a href="/post/objective-c和javascript的相互调用/" title="Objective-C和JavaScript 数据交互">
   <strong>上一篇：</strong><br/>
   <span>
-  iOS Auto Layout Demystified 学习笔记（四）</span>
+  Objective-C和JavaScript 数据交互</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/post/layout 笔记2/"  title="iOS Auto Layout Demystified 学习笔记（二）">
+<a href="/post/链式编程/"  title="链式编程和函数式编程学习笔记">
  <strong>下一篇：</strong><br/> 
- <span>iOS Auto Layout Demystified 学习笔记（二）
+ <span>链式编程和函数式编程学习笔记
 </span>
 </a>
 </div>
@@ -183,7 +164,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="post/layout 笔记3/" data-title="iOS Auto Layout Demystified 学习笔记（三）" data-url="http://jokerhappy.github.io/post/layout 笔记3/"></div>
+	<div class="ds-thread" data-thread-key="post/iOS可变参数（不定参数）的用法/" data-title="iOS可变参数" data-url="http://jokerhappy.github.io/post/iOS可变参数（不定参数）的用法/"></div>
 </section>
 
 
@@ -193,7 +174,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#在IB中使用-禁用自动布局"><span class="toc-number">1.</span> <span class="toc-text">在IB中使用/禁用自动布局</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#基本布局及自动生成的约束"><span class="toc-number">2.</span> <span class="toc-text">基本布局及自动生成的约束</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#IB元素指南"><span class="toc-number">3.</span> <span class="toc-text">IB元素指南</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#添加约束"><span class="toc-number">4.</span> <span class="toc-text">添加约束</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#预览布局"><span class="toc-number">5.</span> <span class="toc-text">预览布局</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#iOS可变参数"><span class="toc-number">1.</span> <span class="toc-text">iOS可变参数</span></a></li></ol>
  
   </div>
 

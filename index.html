@@ -160,8 +160,6 @@
 </table>
 <h5 id="JS-调用-OC-1"><a href="#JS-调用-OC-1" class="headerlink" title="JS 调用 OC"></a>JS 调用 OC</h5><p>JS调用OC有两个方法：<code>block</code>和<code>JSExport</code>。</p>
 <h6 id="Block"><a href="#Block" class="headerlink" title="Block"></a>Block</h6><p><s>稍微复杂的运算</s>给出一个数字，从1加到当前数字，将此函数在OC中实现，在JS中调用，代码如下：</p>
-<h5 id="jS-调用-OC"><a href="#jS-调用-OC" class="headerlink" title="jS 调用 OC"></a>JS 调用 OC</h5><p>JS调用OC有两个方法：<code>block</code>和<code>JSExport</code>。</p>
-<h6 id="block"><a href="#block" class="headerlink" title="block"></a>block</h6><p><s>稍微复杂的运算</s>给出一个数字，从1加到当前数字，将此函数在OC中实现，在JS中调用，代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化对象</span></span><br><span class="line">JSContext *context = [[JSContext alloc]init];</span><br><span class="line"><span class="comment">// JS 脚本</span></span><br><span class="line">NSString *function = @<span class="string">"var sum = function ()&#123; return gauss(100);&#125;;"</span>;</span><br><span class="line">   </span><br><span class="line">[context evaluateScript:function];</span><br><span class="line">   </span><br><span class="line">context[@<span class="string">"gauss"</span>] = ^(NSInteger a) &#123;</span><br><span class="line">   </span><br><span class="line">       NSInteger sum = <span class="number">0</span>;</span><br><span class="line">       </span><br><span class="line">       <span class="keyword">for</span> (NSInteger i = <span class="number">0</span>; i &lt;= a; i ++) &#123;</span><br><span class="line">           </span><br><span class="line">           sum += i;</span><br><span class="line">       &#125;</span><br><span class="line">       </span><br><span class="line">       <span class="keyword">return</span> sum;</span><br><span class="line">   &#125;;</span><br><span class="line">   </span><br><span class="line">   JSValue *value = context[@<span class="string">"sum"</span>];</span><br><span class="line">   JSValue *result = [value  callWithArguments:@[]];</span><br><span class="line">   </span><br><span class="line">   NSLog(@<span class="string">"%@"</span>,result); <span class="comment">// result = 5050</span></span><br></pre></td></tr></table></figure>
 <p><s>是不是很神奇</s>，我们可以得到JS执行上下文，利用JS语句得到相对应的<strong>DOM对象</strong>，运行OC中自定义的方法，完美。</p>
 <h6 id="JSExport-1"><a href="#JSExport-1" class="headerlink" title="JSExport"></a>JSExport</h6><p>JSExport是一个协议，可以让原生类的属性或方法转化为JavaScript的属性或方法。需要我们自定义一个协议继承JSExport，然后我们在签署我们自定义的协议。代码如下：</p>
@@ -213,6 +211,78 @@
 	
 	  	<span></span>
 		<a href="/post/objective-c和javascript的相互调用/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/objective-c和javascript的相互调用/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/post/iOS可变参数（不定参数）的用法/" title="iOS可变参数" itemprop="url">iOS可变参数</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
+		
+  <p class="article-time">
+    <time datetime="2016-04-05T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-04-06</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h5 id="iOS可变参数"><a href="#iOS可变参数" class="headerlink" title="iOS可变参数"></a>iOS可变参数</h5><p><a href="https://developer.apple.com/library/mac/qa/qa1405/_index.html" target="_blank" rel="external">官方的例子</a>，留记</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Cocoa/Cocoa.h&gt;</span><br><span class="line"></span><br><span class="line">@interface NSMutableArray (variadicMethodExample)</span><br><span class="line"></span><br><span class="line">- (void) appendObjects:(id) firstObject, ...; // This method takes a nil-terminated list of objects.</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation NSMutableArray (variadicMethodExample)</span><br><span class="line"></span><br><span class="line">- (void) appendObjects:(id) firstObject, ...</span><br><span class="line">&#123;</span><br><span class="line">	id eachObject;</span><br><span class="line">	va_list argumentList;</span><br><span class="line">	if (firstObject) // The first argument isn't part of the varargs list,</span><br><span class="line">  &#123;                                   // so we'll handle it separately.</span><br><span class="line">  	[self addObject: firstObject];</span><br><span class="line">  	va_start(argumentList, firstObject); // Start scanning for arguments after firstObject.</span><br><span class="line">  	while (eachObject = va_arg(argumentList, id)) // As many times as we can get an argument of type "id"</span><br><span class="line">	[self addObject: eachObject]; // that isn't nil, add it to self's contents.</span><br><span class="line">  	va_end(argumentList);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p><code>va_list</code>：用来保存宏 <code>va_start</code> 、<code>va_arg</code> 和 <code>va_end</code> 所需信息的一种类型。为了访问变长参数列表中的参数，必须声明 <code>va_list</code> 类型的一个对象。</p>
+<p><code>va_start</code>：访问变长参数列表中的参数之前使用的宏，它初始化用<code>va_list</code>声明的对象，初始化结果供宏<code>va_arg</code>和<code>va_end</code>使用；</p>
+<p><code>va_arg</code>：展开成一个表达式的宏，该表达式具有变长参数列表中下一个参数的值和类型。每次调用 <code>va_arg</code> 都会修改，用 <code>va_list</code> 声明的对象从而使该对象指向参数列表中的下一个参数。</p>
+<p><code>va_end</code>：该宏使程序能够从变长参数列表用宏 <code>va_start</code> 引用的函数中正常返回。</p>
+<blockquote>
+<p>参数结尾必须加上<strong>nil</strong>，表示参数结束，可以再参数后加上宏 <code>NS_REQUIRES_NIL_TERMINATION</code>，用于编译时非nil结尾的检查。</p>
+</blockquote>
+<pre><code>- (void) appendObjects:(id) firstObject, ...NS_REQUIRES_NIL_TERMINATION;
+</code></pre>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Notes/">Notes</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/post/iOS可变参数（不定参数）的用法/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/iOS可变参数（不定参数）的用法/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -520,70 +590,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/post/layout 笔记2/" title="iOS Auto Layout Demystified 学习笔记（二）" itemprop="url">iOS Auto Layout Demystified 学习笔记（二）</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
-		
-  <p class="article-time">
-    <time datetime="2016-02-27T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-02-28</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p><code>Auto Layout</code>是一种约束满足系统。所谓<strong>约束</strong>其本质是限制的意思。你创建的每个规则都给出了一个要求，这个要求规定了界面的一部分和另一部分的关系。这些规则可以用数字标识的优先级进行排序，<code>Auto Layout</code>根据你定制的规则和优先级序号确定界面的<strong>可视化</strong>呈现方式。<br><br/><br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/post/layout 笔记2/#more">阅读全文</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Auto-Layout/">Auto Layout</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/post/layout 笔记2/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/layout 笔记2/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -606,7 +612,7 @@
 		  
 		
 		  
-			<li><a href="/categories/iOS/" title="iOS">iOS<sup>9</sup></a></li>
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>10</sup></a></li>
 		  
 		
 		</ul>
@@ -644,6 +650,10 @@
 		
 			
 				<li><a href="/tags/JavaScriptCore/" title="JavaScriptCore">JavaScriptCore<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Notes/" title="Notes">Notes<sup>1</sup></a></li>
 			
 		
 		</ul>
