@@ -4,35 +4,53 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>利用 Hexo 和 Github 创建个人博客 | 知行合一</title>
+    <title>链式编程和函数式编程学习笔记 | 知行合一</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="xxx">
     
 
     
-    <meta name="description" content="Hexo 是一款基于 Node.js 的静态博客框架。Hexo 生成的静态页面可以部署在 Github 或 Coding 上，并且能够免费绑定自己的域名，可以用来很方便地搭建个人博客。
-Github
-注册 github。
-在主页右下角创建New repository，name必须和用户名一致,如username.github.io。
-首次创建耐心等待10分钟左右审核，之后即可访问静态主页如http">
+    <meta name="description" content="链式编程
+链式编程思想：是将多个操作（多行代码）通过点号(.)链接在一起成为一句代码,使代码可读性好。
+
+在OC中，可以利用block实现链式编程。
+
+方法的返回值是block，block必须有返回值（本身对象），block参数（需要操作的值）
+
+定义如下：
+- (returnType (^)(parameterTypes)function;
+实现：
+1234567891011- (returnT">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用 Hexo 和 Github 创建个人博客">
-<meta property="og:url" content="http://jokerhappy.github.io/post/hexo/index.html">
+<meta property="og:title" content="链式编程和函数式编程学习笔记">
+<meta property="og:url" content="http://jokerhappy.github.io/post/链式编程和函数式编程学习笔记/index.html">
 <meta property="og:site_name" content="知行合一">
-<meta property="og:description" content="Hexo 是一款基于 Node.js 的静态博客框架。Hexo 生成的静态页面可以部署在 Github 或 Coding 上，并且能够免费绑定自己的域名，可以用来很方便地搭建个人博客。
-Github
-注册 github。
-在主页右下角创建New repository，name必须和用户名一致,如username.github.io。
-首次创建耐心等待10分钟左右审核，之后即可访问静态主页如http">
-<meta property="og:updated_time" content="2016-04-17T08:46:54.536Z">
+<meta property="og:description" content="链式编程
+链式编程思想：是将多个操作（多行代码）通过点号(.)链接在一起成为一句代码,使代码可读性好。
+
+在OC中，可以利用block实现链式编程。
+
+方法的返回值是block，block必须有返回值（本身对象），block参数（需要操作的值）
+
+定义如下：
+- (returnType (^)(parameterTypes)function;
+实现：
+1234567891011- (returnT">
+<meta property="og:updated_time" content="2016-08-11T14:32:06.949Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利用 Hexo 和 Github 创建个人博客">
-<meta name="twitter:description" content="Hexo 是一款基于 Node.js 的静态博客框架。Hexo 生成的静态页面可以部署在 Github 或 Coding 上，并且能够免费绑定自己的域名，可以用来很方便地搭建个人博客。
-Github
-注册 github。
-在主页右下角创建New repository，name必须和用户名一致,如username.github.io。
-首次创建耐心等待10分钟左右审核，之后即可访问静态主页如http">
+<meta name="twitter:title" content="链式编程和函数式编程学习笔记">
+<meta name="twitter:description" content="链式编程
+链式编程思想：是将多个操作（多行代码）通过点号(.)链接在一起成为一句代码,使代码可读性好。
+
+在OC中，可以利用block实现链式编程。
+
+方法的返回值是block，block必须有返回值（本身对象），block参数（需要操作的值）
+
+定义如下：
+- (returnType (^)(parameterTypes)function;
+实现：
+1234567891011- (returnT">
 
     
     <link rel="alternative" href="/atom.xml" title="知行合一" type="application/atom+xml">
@@ -87,14 +105,14 @@ Github
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/post/hexo/" title="利用 Hexo 和 Github 创建个人博客" itemprop="url">利用 Hexo 和 Github 创建个人博客</a>
+      <a href="/post/链式编程和函数式编程学习笔记/" title="链式编程和函数式编程学习笔记" itemprop="url">链式编程和函数式编程学习笔记</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
 		
   <p class="article-time">
-    <time datetime="2016-02-13T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-02-14</time>
+    <time datetime="2016-03-31T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-04-01</time>
     
   </p>
 </header>
@@ -103,58 +121,48 @@ Github
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Github"><span class="toc-number">1.</span> <span class="toc-text">Github</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo"><span class="toc-number">2.</span> <span class="toc-text">Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-Node-js"><span class="toc-number">2.1.</span> <span class="toc-text">安装 Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Git"><span class="toc-number">2.2.</span> <span class="toc-text">安装Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Hexo"><span class="toc-number">2.3.</span> <span class="toc-text">安装Hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#建立本地博客"><span class="toc-number">2.4.</span> <span class="toc-text">建立本地博客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地效果预览"><span class="toc-number">2.5.</span> <span class="toc-text">本地效果预览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署到Github"><span class="toc-number">2.6.</span> <span class="toc-text">部署到Github</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编写博文"><span class="toc-number">2.7.</span> <span class="toc-text">编写博文</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#链式编程"><span class="toc-number">1.</span> <span class="toc-text">链式编程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#函数式编程"><span class="toc-number">2.</span> <span class="toc-text">函数式编程</span></a></li></ol>
 		
 		</div>
 		
-		<p><a href="https://hexo.io/" target="_blank" rel="external">Hexo</a> 是一款基于 <code>Node.js</code> 的静态博客框架。<code>Hexo</code> 生成的静态页面可以部署在 <code>Github</code> 或 <code>Coding</code> 上，并且能够免费绑定自己的域名，可以用来很方便地搭建个人博客。</p>
-<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><ol>
-<li>注册 <a href="https://github.com/" target="_blank" rel="external">github</a>。</li>
-<li>在主页右下角创建New repository，name必须和用户名一致,如username.github.io。</li>
-<li>首次创建耐心等待10分钟左右审核，之后即可访问静态主页如<a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a></li>
-</ol>
-<p>个人博客初步搭建完成，接下来利用 <code>Hexo</code> 修改博客框架</p>
-<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><h3 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h3><p>选择对应的系统安装<a href="http://nodejs.cn/download/" target="_blank" rel="external">Node.js</a></p>
-<h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><p>最简单的方法 安装  <a href="https://desktop.github.com/" target="_blank" rel="external">GitHub Desktop</a> </p>
-<p>对 <code>Git</code> 还不太熟悉的小伙伴可以参考下 <a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">Git 教程（廖雪峰的官方网站）</a></p>
-<p>里面有详细的<code>Git</code>安装方法及使用方法</p>
-<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>首先将 <code>npm</code> 的源替换成淘宝的源</p>
-<pre><code>npm config set registry http://registry.npm.taobao.org/
-</code></pre><p>在 <code>Git</code> 中输入 <code>npm</code> 命令即可安装</p>
-<pre><code>npm install -g hexo
-</code></pre><p>在 <code>OS X</code>系统下 因为可能有文件读写权限的问题， 加上前缀<code>sudo</code></p>
-<p>安装过程中可能会出现错误，可以参考<a href="https://xuanwo.org/2014/08/14/hexo-usual-problem/" target="_blank" rel="external">Hexo 常见问题</a> 或自行<code>Google</code>查找。</p>
-<h3 id="建立本地博客"><a href="#建立本地博客" class="headerlink" title="建立本地博客"></a>建立本地博客</h3><p>安装完成后，新建一个目录如 MyBlog 用于存放博客，切换到该目录下执行以下指令，Hexo 即会在目标文件夹初步生成博客所需要的所有文件：</p>
-<pre><code>hexo init
-</code></pre><p>如果对 <code>Hexo</code> 自带的模板不满意的话可以看一下<a href="http://www.zhihu.com/question/24422335" target="_blank" rel="external">这里</a>，自定义个性化的主题模板。</p>
-<p>个人推荐：</p>
-<ul>
-<li>Jacman - <a href="https://github.com/wuchong/jacman" target="_blank" rel="external">https://github.com/wuchong/jacman</a></li>
-<li>Next - <a href="http://theme-next.iissnan.com/" target="_blank" rel="external">http://theme-next.iissnan.com/</a></li>
-</ul>
-<p><strong>注意：</strong>修改 <code>Hexo</code> 配置文件及主题配置文件时，按照YAML语法，参数冒号 <code>:</code> 后一定要留空格。</p>
-<h3 id="本地效果预览"><a href="#本地效果预览" class="headerlink" title="本地效果预览"></a>本地效果预览</h3><p>在终端使用 <code>cd</code> 命令切换到博客所在目录 <code>MyBlog</code>，执行如下命令生成静态博客页面（public 文件夹）并启动本地服务器</p>
-<pre><code>hexo generate
-hexo server
-</code></pre><p>或者如下的缩写形式也可以：</p>
-<pre><code>hexo g
-hexo s
-</code></pre><p>若成功可在浏览器中访问 <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> 进行预览。</p>
-<h3 id="部署到Github"><a href="#部署到Github" class="headerlink" title="部署到Github"></a>部署到Github</h3><ol>
-<li>利用  <code>Git</code>  将 <code>Github</code> 中的 <code>username.github.io</code> 项目    <code>clone</code> 到本地新建文件夹。</li>
-<li>将 <code>MyBlog</code> 中执行 <code>hexo g</code> 命令生成 <code>public</code> 文件夹，复制到<code>clone</code>的文件夹中。</li>
-<li>运行 <code>GitHub</code> 确认修改信息 <code>commit</code> 后执行右上角的 <code>Sync</code> 同步。（或者利用 <code>Git</code> 命令将修改内容 <code>pull</code> 到 <code>Github</code>）</li>
-<li>最后访问主页（<a href="http://username.github.io）观察效果，可能会存在延迟，请稍等几分钟。" target="_blank" rel="external">http://username.github.io）观察效果，可能会存在延迟，请稍等几分钟。</a></li>
-</ol>
-<h3 id="编写博文"><a href="#编写博文" class="headerlink" title="编写博文"></a>编写博文</h3><ul>
-<li><p>利用命令行 <code>cd</code> 到 MyBlog 中利用<code>Hexo</code>命令生成初始文章。</p>
-<pre><code>hexo n &quot;new&quot;
-</code></pre></li>
-<li><p>在<code>hexo\source\_posts</code>中编辑生成出来的<code>new</code>文件。</p>
-</li>
-<li><p>利用 <code>Markdown</code> 文本编辑器修改<code>new</code>文件，编写博文。 对<code>Markdown</code>不熟悉的小伙伴可以查看 <a href="http://wowubuntu.com/markdown/" target="_blank" rel="external">Markdown 语法</a> 。</p>
-</li>
-</ul>
+		<h5 id="链式编程"><a href="#链式编程" class="headerlink" title="链式编程"></a>链式编程</h5><blockquote>
+<p>链式编程思想：是将多个操作（多行代码）通过点号(.)链接在一起成为一句代码,使代码可读性好。</p>
+</blockquote>
+<p>在<code>OC</code>中，可以利用<code>block</code>实现链式编程。</p>
+<blockquote>
+<p>方法的返回值是<code>block</code>，<code>block</code>必须有返回值（本身对象），block参数（需要操作的值）</p>
+</blockquote>
+<p>定义如下：</p>
+<pre><code>- (returnType (^)(parameterTypes)function;
+</code></pre><p>实现：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- (returnType(^)(parameterTypes))function&#123;</span><br><span class="line"></span><br><span class="line">    return ^ returnType (parameterTypes)&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/*</span><br><span class="line">        处理参数</span><br><span class="line">        */</span></span><br><span class="line">                </span><br><span class="line">        return self; <span class="comment">// returnType 的类型为自身类型</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具体代码参照<a href="http://www.jianshu.com/p/87ef6720a096" target="_blank" rel="external">峥吖的文章《最快让你上手ReactiveCocoa之基础篇》</a></p>
+<p>在此将调用的代码列一下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> result = [NSObject makeCaculators:^(CaculatorMaker *maker) &#123;</span><br><span class="line">                maker.add(<span class="number">1</span>).add(<span class="number">2</span>).sub(<span class="number">3</span>).mult(<span class="number">10</span>);</span><br><span class="line">        </span><br><span class="line">    &#125;];</span><br></pre></td></tr></table></figure>
+<p><s>实在是太帅了，刚看到的时候，一脸懵逼，很像js对吧</s> 我们可以用自定义的实例接着做其他事，这样的调用像一条链子一样，一口气做完一个对象想做的所有事都可以。</p>
+<h5 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h5><p>它属于”结构化编程”的一种，主要思想是把运算过程尽量写成一系列嵌套的函数调用。</p>
+<p>详细说明，参照<a href="http://www.ruanyifeng.com/blog/2012/04/functional_programming.html" target="_blank" rel="external">阮一峰的网络日志-函数式编程初探</a></p>
+<p><s>12年呀，差距好大</s><br>举例来说,现在有这样一个数学表达式：</p>
+<pre><code>(1 + 2) * 3 - 4
+</code></pre><p>传统的过程式编程，可能这样写：</p>
+<pre><code>var a = 1 + 2;
+
+var b = a * 3;
+
+var c = b - 4;
+</code></pre><p>转换成响应式编程</p>
+<pre><code>add(1,2).multiply(3).subtract(4)
+</code></pre><p>在<code>OC</code>中的实现方法</p>
+<blockquote>
+<p>每个方法必须有返回值（本身对象）,把函数或者Block当做参数,block参数（需要操作的值）block返回值（操作结果）</p>
+</blockquote>
+<p>定义如下：</p>
+<pre><code>- ( ClassType )function:(returnType (^)(parameterTypes)parameter;
+</code></pre><p>实现：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- ( ClassType )function1:(returnType (^)(parameterTypes)parameter&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// block 调用 一般传入全局变量</span></span><br><span class="line">	变量 ＝  parameter(变量);</span><br><span class="line">	</span><br><span class="line">	return self;</span><br><span class="line">&#125;</span><br><span class="line">- ( ClassType )function2:(returnType (^)(parameterTypes)parameter&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// block 调用 一般传入全局变量</span></span><br><span class="line">	变量 ＝  parameter(变量);</span><br><span class="line">	</span><br><span class="line">	return self;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ClassType <span class="keyword">class</span> = [ClassType alloc]init];</span><br><span class="line">	</span><br><span class="line">[[<span class="keyword">class</span> function1:^(parameterTypes)&#123;</span><br><span class="line">	</span><br><span class="line">			<span class="comment">// 逻辑处理</span></span><br><span class="line">			return ...;</span><br><span class="line">&#125;]function2:^(parameterTypes)&#123;</span><br><span class="line">	</span><br><span class="line">			<span class="comment">// 逻辑处理 </span></span><br><span class="line">			<span class="comment">// 在方法2 中可以使用方法1中得到的变量进行操作</span></span><br><span class="line">			return ...;</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<p>对于函数式编程的思想，还不是太懂，在琢磨当中,借鉴了各位大神的博客，一一拜谢，理解比较浅，有错误的地方还望指正。<s>顺便说一句ReactiveCocoa真NB，不断学习中。</s></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -162,13 +170,13 @@ hexo s
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/Skill/">Skill</a>
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Hexo/">Hexo</a>
+  <span></span> <a href="/tags/RAC/">RAC</a>
   </div>
 
 </div>
@@ -177,7 +185,7 @@ hexo s
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://jokerhappy.github.io/post/hexo/" data-title="利用 Hexo 和 Github 创建个人博客 | 知行合一" data-tsina="null" class="share clearfix">
+	  <div data-url="http://jokerhappy.github.io/post/链式编程和函数式编程学习笔记/" data-title="链式编程和函数式编程学习笔记 | 知行合一" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -191,18 +199,18 @@ hexo s
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/post/webview/" title="UIWebView 使用浅析">
+ <a href="/post/iOS可变参数/" title="iOS可变参数">
   <strong>上一篇：</strong><br/>
   <span>
-  UIWebView 使用浅析</span>
+  iOS可变参数</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/post/hello/"  title="知行合一">
+<a href="/post/layout 笔记4/"  title="iOS Auto Layout Demystified 学习笔记（四）">
  <strong>下一篇：</strong><br/> 
- <span>知行合一
+ <span>iOS Auto Layout Demystified 学习笔记（四）
 </span>
 </a>
 </div>
@@ -211,7 +219,7 @@ hexo s
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="post/hexo/" data-title="利用 Hexo 和 Github 创建个人博客" data-url="http://jokerhappy.github.io/post/hexo/"></div>
+	<div class="ds-thread" data-thread-key="post/链式编程和函数式编程学习笔记/" data-title="链式编程和函数式编程学习笔记" data-url="http://jokerhappy.github.io/post/链式编程和函数式编程学习笔记/"></div>
 </section>
 
 
@@ -221,7 +229,7 @@ hexo s
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Github"><span class="toc-number">1.</span> <span class="toc-text">Github</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo"><span class="toc-number">2.</span> <span class="toc-text">Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-Node-js"><span class="toc-number">2.1.</span> <span class="toc-text">安装 Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Git"><span class="toc-number">2.2.</span> <span class="toc-text">安装Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Hexo"><span class="toc-number">2.3.</span> <span class="toc-text">安装Hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#建立本地博客"><span class="toc-number">2.4.</span> <span class="toc-text">建立本地博客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地效果预览"><span class="toc-number">2.5.</span> <span class="toc-text">本地效果预览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署到Github"><span class="toc-number">2.6.</span> <span class="toc-text">部署到Github</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编写博文"><span class="toc-number">2.7.</span> <span class="toc-text">编写博文</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#链式编程"><span class="toc-number">1.</span> <span class="toc-text">链式编程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#函数式编程"><span class="toc-number">2.</span> <span class="toc-text">函数式编程</span></a></li></ol>
  
   </div>
 

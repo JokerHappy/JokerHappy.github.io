@@ -76,7 +76,7 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/post/objective-c和javascript的相互调用/" title="Objective-C和JavaScript 数据交互" itemprop="url">Objective-C和JavaScript 数据交互</a>
+      <a href="/post/Objective-C和JavaScript 数据交互/" title="Objective-C和JavaScript 数据交互" itemprop="url">Objective-C和JavaScript 数据交互</a>
   </h1>
   <p class="article-author">By
        
@@ -89,10 +89,9 @@
 </header>
     <div class="article-content">
         
-        <h4 id="iOS7-之前"><a href="#iOS7-之前" class="headerlink" title="iOS7 之前"></a><s>iOS7 之前</s></h4><h6 id="OC-调用-JS"><a href="#OC-调用-JS" class="headerlink" title="OC 调用 JS"></a>OC 调用 JS</h6><p>在<code>iOS7</code>以前，在<code>OC</code>中调用<code>JavaScript</code>的方式只有一种，就是通过<code>UIWebView</code>对象的<code>stringByEvaluatingJavaScriptFromString:</code>方法，可以实现的交互很少，还需要<code>JS</code>提供相应的方法，实现功能，常用代码如下：</p>
-<pre><code>NSString *title =[webView stringByEvaluatingJavaScriptFromString:@&quot;document.title&quot;];  //得到网页标题
-</code></pre><p> </p>
-<h6 id="JS-调用-OC"><a href="#JS-调用-OC" class="headerlink" title="JS 调用 OC"></a>JS 调用 OC</h6><p>通过<code>UIWebView</code>的重定向，通过在<code>UIWebView</code>的代理函数<code>webView:shouldStartLoadWithRequest:navigationType:</code>来监听<code>URL</code>的变化，这个函数会在<code>webview</code>加载<code>UR</code>L时回调，我们可以<code>return YES</code>来让<code>webview</code>继续加载内容，<code>return NO</code>来停止继续加载新的内容。要约定好几个虚假的<code>URL</code>(比如tool://goToHomePage)，我们拿到定义好的URL之后做对应的<code>Objective-C</code>函数调用。</p>
+        <h4 id="iOS7-之前"><a href="#iOS7-之前" class="headerlink" title="iOS7 之前"></a><s>iOS7 之前</s></h4><h5 id="OC-调用-JS"><a href="#OC-调用-JS" class="headerlink" title="OC 调用 JS"></a>OC 调用 JS</h5><p>在<code>iOS7</code>以前，在<code>OC</code>中调用<code>JavaScript</code>的方式只有一种，就是通过<code>UIWebView</code>对象的<code>stringByEvaluatingJavaScriptFromString:</code>方法，可以实现的交互很少，还需要JS提供相应的方法，实现功能，常用代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *title =[webView stringByEvaluatingJavaScriptFromString:@&quot;document.title&quot;];  //得到网页标题</span><br></pre></td></tr></table></figure>
+<h5 id="JS-调用-OC"><a href="#JS-调用-OC" class="headerlink" title="JS 调用 OC"></a>JS 调用 OC</h5><p>通过<code>UIWebView</code>的重定向，通过在<code>UIWebView</code>的代理函数<code>webView:shouldStartLoadWithRequest:navigationType:</code>来监听<code>URL</code>的变化，这个函数会在<code>webview</code>加载<code>URL</code>时回调，我们可以<code>return YES</code>来让<code>webview</code>继续加载内容，<code>return NO</code>来停止继续加载新的内容。要约定好几个虚假的URL(比如<code>tool://goToHomePage</code>)，我们拿到定义好的<code>URL</code>之后做对应的<code>Objective-C</code>函数调用。</p>
 <p>比如我们在<code>JavaScript</code>文件里添加点击响应的函数</p>
 <pre><code>function clickButton() {
 
@@ -100,7 +99,7 @@
 
 }
 </code></pre><p>然后在<code>webview</code>的代理函数中监听，如果是事先定义好的虚假<code>URL</code>，就进行对应的处理</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType &#123;</span><br><span class="line">    NSURL *url = request.URL;</span><br><span class="line">    <span class="keyword">if</span> ([[url scheme] isEqualToString:@<span class="string">"tool"</span>] &amp;&amp; [[url host] isEqualToString:@<span class="string">"goToHomePage"</span>]) &#123;</span><br><span class="line">      <span class="comment">//添加跳转到HomePage的逻辑</span></span><br><span class="line">       [self jumpToHomePage];</span><br><span class="line">       <span class="keyword">return</span> NO;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> YES;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType &#123;</span><br><span class="line">    NSURL *url = request.URL;</span><br><span class="line">    <span class="keyword">if</span> ([[url scheme] isEqualToString:@<span class="string">"tool"</span>] &amp;&amp; [[url host] isEqualToString:@<span class="string">"goToHomePage"</span>]) &#123;</span><br><span class="line">      <span class="comment">//添加跳转到HomePage的逻辑</span></span><br><span class="line">       [self jumpToHomePage];</span><br><span class="line">       return NO;</span><br><span class="line">    &#125;</span><br><span class="line">    return YES;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>可以看出这种做法非常笨重，效率低下，无法实现混合开发。接下来要说到这篇博客的重点，利用<code>JavaScriptCore</code>实现<code>OC</code>和<code>JS</code>之间的深度交互。</p>
 <h4 id="JavaScriptCore"><a href="#JavaScriptCore" class="headerlink" title="JavaScriptCore"></a>JavaScriptCore</h4><h5 id="类概述"><a href="#类概述" class="headerlink" title="类概述"></a>类概述</h5><p><code>JavaScriptCore</code>头文件中包括以下几类：</p>
 <pre><code>#import &quot;JSContext.h&quot;
@@ -109,13 +108,13 @@
 #import &quot;JSVirtualMachine.h&quot;
 #import &quot;JSExport.h&quot;
 </code></pre><h6 id="JSContext"><a href="#JSContext" class="headerlink" title="JSContext"></a>JSContext</h6><p><code>JavaScript</code>的运行环境，你需要用<code>JSContext</code>来执行<code>JavaScript</code>代码。</p>
-<h6 id="JSValue"><a href="#JSValue" class="headerlink" title="JSValue"></a>JSValue</h6><p><code>JavaScript</code>实体，<code>JSValue</code>可以表示很多<code>JavaScript</code>原始类型例如boolean, integers, doubles，甚至包括对象，每个<code>JSValue</code>都是强引用一个<code>JSContext</code>。</p>
-<h6 id="JSManagedValue"><a href="#JSManagedValue" class="headerlink" title="JSManagedValue"></a>JSManagedValue</h6><p>内存管理辅助对象，用来避免循环引用。本质上属于JSValue实例。</p>
-<h6 id="JSVirtualMachine"><a href="#JSVirtualMachine" class="headerlink" title="JSVirtualMachine"></a>JSVirtualMachine</h6><p>JS运行的虚拟机，有独立的堆空间和垃圾回收机制。</p>
-<h6 id="JSExport"><a href="#JSExport" class="headerlink" title="JSExport"></a>JSExport</h6><p>协议，JS对象<strong>直接调用</strong>OC对象的属性及方法必须实现的协议。</p>
+<h6 id="JSValue"><a href="#JSValue" class="headerlink" title="JSValue"></a>JSValue</h6><p><code>JavaScript</code>实体，<code>JSValue</code>可以表示很多<code>JavaScript</code>原始类型例如<em>boolean</em>, <em>integers</em>, <em>doubles</em>，甚至包括对象，每个<code>JSValue</code>都是强引用一个<code>JSContext</code>。</p>
+<h6 id="JSManagedValue"><a href="#JSManagedValue" class="headerlink" title="JSManagedValue"></a>JSManagedValue</h6><p>内存管理辅助对象，用来避免循环引用。本质上属于<code>JSValue</code>实例。</p>
+<h6 id="JSVirtualMachine"><a href="#JSVirtualMachine" class="headerlink" title="JSVirtualMachine"></a>JSVirtualMachine</h6><p><code>JS</code>运行的虚拟机，有独立的堆空间和垃圾回收机制。</p>
+<h6 id="JSExport"><a href="#JSExport" class="headerlink" title="JSExport"></a>JSExport</h6><p>协议，<code>JS</code>对象直接调用<code>OC</code>对象的属性及方法必须实现的协议。</p>
 <h5 id="OC-调用-JS-1"><a href="#OC-调用-JS-1" class="headerlink" title="OC 调用 JS"></a>OC 调用 JS</h5><p>先加入<code>JavaScriptCore</code>的头文件。</p>
 <pre><code>#import &lt;JavaScriptCore/JavaScriptCore.h&gt;
-</code></pre><p>实例代码，OC调用JS 实现 两个数字相加</p>
+</code></pre><p>实例代码，<code>OC</code>调用<code>JS</code> 实现 两个数字相加</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化对象</span></span><br><span class="line">JSContext *context = [[JSContext alloc]init];</span><br><span class="line"><span class="comment">// JS 脚本</span></span><br><span class="line">NSString *function = @<span class="string">" var sum = function(a,b)&#123; "</span></span><br><span class="line">                         <span class="string">"      return a+b;         "</span></span><br><span class="line">                         <span class="string">"                        &#125; "</span>;</span><br><span class="line">   <span class="comment">// 将脚本加入到context中                      </span></span><br><span class="line">[context evaluateScript:function];</span><br><span class="line">   </span><br><span class="line">JSValue *jsFunction = context[@<span class="string">"sum"</span>];</span><br><span class="line">   <span class="comment">// 利用JSValue调用 </span></span><br><span class="line">JSValue *sum = [jsFunction callWithArguments:@[@<span class="number">1</span>,@<span class="number">2</span>]];</span><br><span class="line"> <span class="comment">// 转换类型 </span></span><br><span class="line">NSInteger result = [sum toInt32];</span><br><span class="line">  </span><br><span class="line">NSLog(@<span class="string">"%@,%ld"</span>,sum,result); <span class="comment">// sum = 3</span></span><br></pre></td></tr></table></figure>
 <p><code>JSValue</code> 包括一系列方法用于访问其可能的值以保证有正确的 <code>Foundation</code> 类型，包括：</p>
 <table>
@@ -134,8 +133,8 @@
 </tr>
 <tr>
 <td style="text-align:left">number</td>
-<td style="text-align:left">toNumber<br>toDouble<br>toInt32<br>toUInt32</td>
-<td style="text-align:left">NSNumber<br>double<br>int32_t<br>uint32_t</td>
+<td style="text-align:left">toNumber <br>toDouble<br> toInt32<br> toUInt32</td>
+<td style="text-align:left">NSNumber<br>double<br>int32_t<br>uint32_t </td>
 </tr>
 <tr>
 <td style="text-align:left">Date</td>
@@ -154,15 +153,15 @@
 </tr>
 <tr>
 <td style="text-align:left">Object</td>
-<td style="text-align:left">toObject<br>toObjectOfClass:</td>
+<td style="text-align:left">toObject <br>toObjectOfClass:</td>
 </tr>
 </tbody>
 </table>
-<h5 id="JS-调用-OC-1"><a href="#JS-调用-OC-1" class="headerlink" title="JS 调用 OC"></a>JS 调用 OC</h5><p>JS调用OC有两个方法：<code>block</code>和<code>JSExport</code>。</p>
+<h5 id="JS-调用-OC-1"><a href="#JS-调用-OC-1" class="headerlink" title="JS 调用 OC"></a>JS 调用 OC</h5><p>JS调用OC有两个方法：<code>Block</code>和<code>JSExport</code>。</p>
 <h6 id="Block"><a href="#Block" class="headerlink" title="Block"></a>Block</h6><p><s>稍微复杂的运算</s>给出一个数字，从1加到当前数字，将此函数在OC中实现，在JS中调用，代码如下：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化对象</span></span><br><span class="line">JSContext *context = [[JSContext alloc]init];</span><br><span class="line"><span class="comment">// JS 脚本</span></span><br><span class="line">NSString *function = @<span class="string">"var sum = function ()&#123; return gauss(100);&#125;;"</span>;</span><br><span class="line">   </span><br><span class="line">[context evaluateScript:function];</span><br><span class="line">   </span><br><span class="line">context[@<span class="string">"gauss"</span>] = ^(NSInteger a) &#123;</span><br><span class="line">   </span><br><span class="line">       NSInteger sum = <span class="number">0</span>;</span><br><span class="line">       </span><br><span class="line">       <span class="keyword">for</span> (NSInteger i = <span class="number">0</span>; i &lt;= a; i ++) &#123;</span><br><span class="line">           </span><br><span class="line">           sum += i;</span><br><span class="line">       &#125;</span><br><span class="line">       </span><br><span class="line">       <span class="keyword">return</span> sum;</span><br><span class="line">   &#125;;</span><br><span class="line">   </span><br><span class="line">   JSValue *value = context[@<span class="string">"sum"</span>];</span><br><span class="line">   JSValue *result = [value  callWithArguments:@[]];</span><br><span class="line">   </span><br><span class="line">   NSLog(@<span class="string">"%@"</span>,result); <span class="comment">// result = 5050</span></span><br></pre></td></tr></table></figure>
-<p><s>是不是很神奇</s>，我们可以得到JS执行上下文，利用JS语句得到相对应的<strong>DOM对象</strong>，运行OC中自定义的方法，完美。</p>
-<h6 id="JSExport-1"><a href="#JSExport-1" class="headerlink" title="JSExport"></a>JSExport</h6><p>JSExport是一个协议，可以让原生类的属性或方法转化为JavaScript的属性或方法。需要我们自定义一个协议继承JSExport，然后我们在签署我们自定义的协议。代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化对象</span></span><br><span class="line">JSContext *context = [[JSContext alloc]init];</span><br><span class="line"><span class="comment">// JS 脚本</span></span><br><span class="line">NSString *function = @<span class="string">"var sum = function ()&#123; return gauss(100);&#125;;"</span>;</span><br><span class="line">   </span><br><span class="line">[context evaluateScript:function];</span><br><span class="line">   </span><br><span class="line">context[@<span class="string">"gauss"</span>] = ^(NSInteger a) &#123;</span><br><span class="line">   </span><br><span class="line">       NSInteger sum = <span class="number">0</span>;</span><br><span class="line">       </span><br><span class="line">       <span class="keyword">for</span> (NSInteger i = <span class="number">0</span>; i &lt;= a; i ++) &#123;</span><br><span class="line">           </span><br><span class="line">           sum += i;</span><br><span class="line">       &#125;</span><br><span class="line">       </span><br><span class="line">       return sum;</span><br><span class="line">   &#125;;</span><br><span class="line">   </span><br><span class="line">   JSValue *value = context[@<span class="string">"sum"</span>];</span><br><span class="line">   JSValue *result = [value  callWithArguments:@[]];</span><br><span class="line">   </span><br><span class="line">   NSLog(@<span class="string">"%@"</span>,result); <span class="comment">// result = 5050</span></span><br></pre></td></tr></table></figure>
+<p>我们可以得到JS执行上下文，利用JS语句得到相对应的<strong>DOM对象</strong>，运行OC中自定义的方法，完美。</p>
+<h6 id="JSExport-1"><a href="#JSExport-1" class="headerlink" title="JSExport"></a>JSExport</h6><p><code>JSExport</code>是一个协议，可以让原生类的属性或方法转化为<code>JavaScript</code>的属性或方法。需要我们自定义一个协议继承<code>JSExport</code>，然后我们在签署我们自定义的协议。代码如下：</p>
 <pre><code>@protocol MyExport &lt;JSExport&gt;
 
 @end
@@ -170,13 +169,13 @@
 @interface ViewController : UIViewController &lt;MyExport&gt;
 
 @end
-</code></pre><p>例如有如下JavaScript代码</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">function <span class="title">Person</span><span class="params">(name, age)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">var Persons = <span class="keyword">new</span> Array;</span><br><span class="line"><span class="function">function <span class="title">addPerson</span><span class="params">(p)</span> </span>&#123;</span><br><span class="line">    Persons.push(p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以在Objective-C中把Person对象传递给addPerson函数</p>
+</code></pre><p>例如有如下<code>JavaScript</code>代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">function <span class="title">Person</span><span class="params">(name, age)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">var Persons = new Array;</span><br><span class="line"><span class="function">function <span class="title">addPerson</span><span class="params">(p)</span> </span>&#123;</span><br><span class="line">    Persons.push(p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以在<code>Objective-C</code>中把<code>Person</code>对象传递给<code>addPerson</code>函数</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Person *aPerson = [[Person alloc] init];</span><br><span class="line">aPerson.name = @<span class="string">"Jone"</span>;</span><br><span class="line">aPerson.age = @<span class="number">25</span>;</span><br><span class="line">JSContext *context = [[JSContext alloc]init];    </span><br><span class="line">[context evaluateScript:JSString];</span><br><span class="line">JSValue *function = context[@<span class="string">"addPerson"</span>];</span><br><span class="line">[function callWithArguments:@[aPerson]];</span><br></pre></td></tr></table></figure>
 <h5 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">context.exceptionHandler = ^(JSContext *context, JSValue *exception) &#123;</span><br><span class="line">       NSLog(@<span class="string">"Error: %@"</span>, exception);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h5 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h5><p>Objective-C的内存管理机制是引用技术，JavaScript的内存管理机制是垃圾回收。由于每个<code>JSValue</code>都是强引用一个<code>JSContext</code>，可能会存在循环引用的情况。<s>理解不深，不便多言。</s></p>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<h5 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h5><p><code>Objective-C</code>的内存管理机制是引用技术，<code>JavaScript</code>的内存管理机制是垃圾回收。由于每个<code>JSValue</code>都是强引用一个<code>JSContext</code>，可能会存在循环引用的情况。<s>理解不深，不便多言。</s></p>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
 <li><a href="https://www.gitbook.com/book/liuduo1988/ios/details" target="_blank" rel="external">iOS — Derek Liu</a></li>
 <li><a href="http://nshipster.cn/javascriptcore/" target="_blank" rel="external">Java​Script​Core</a></li>
 <li><a href="http://www.jianshu.com/p/a329cd4a67ee" target="_blank" rel="external">JavaScriptCore 使用</a></li>
@@ -210,7 +209,7 @@
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/post/objective-c和javascript的相互调用/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/objective-c和javascript的相互调用/" data-count-type="comments">&nbsp;</a>
+		<a href="/post/Objective-C和JavaScript 数据交互/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/Objective-C和JavaScript 数据交互/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -230,7 +229,7 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/post/iOS可变参数（不定参数）的用法/" title="iOS可变参数" itemprop="url">iOS可变参数</a>
+      <a href="/post/iOS可变参数/" title="iOS可变参数" itemprop="url">iOS可变参数</a>
   </h1>
   <p class="article-author">By
        
@@ -250,7 +249,7 @@
 <p><code>va_arg</code>：展开成一个表达式的宏，该表达式具有变长参数列表中下一个参数的值和类型。每次调用 <code>va_arg</code> 都会修改，用 <code>va_list</code> 声明的对象从而使该对象指向参数列表中的下一个参数。</p>
 <p><code>va_end</code>：该宏使程序能够从变长参数列表用宏 <code>va_start</code> 引用的函数中正常返回。</p>
 <blockquote>
-<p>参数结尾必须加上<strong>nil</strong>，表示参数结束，可以再参数后加上宏 <code>NS_REQUIRES_NIL_TERMINATION</code>，用于编译时非nil结尾的检查。</p>
+<p>参数结尾必须加上<strong>nil</strong>，表示参数结束，可以再参数后加上宏 <code>NS_REQUIRES_NIL_TERMINATION</code>，用于编译时非<strong>nil</strong>结尾的检查。</p>
 </blockquote>
 <pre><code>- (void) appendObjects:(id) firstObject, ...NS_REQUIRES_NIL_TERMINATION;
 </code></pre>
@@ -282,7 +281,7 @@
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/post/iOS可变参数（不定参数）的用法/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/iOS可变参数（不定参数）的用法/" data-count-type="comments">&nbsp;</a>
+		<a href="/post/iOS可变参数/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/iOS可变参数/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -302,7 +301,7 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/post/链式编程/" title="链式编程和函数式编程学习笔记" itemprop="url">链式编程和函数式编程学习笔记</a>
+      <a href="/post/链式编程和函数式编程学习笔记/" title="链式编程和函数式编程学习笔记" itemprop="url">链式编程和函数式编程学习笔记</a>
   </h1>
   <p class="article-author">By
        
@@ -320,22 +319,27 @@
 </blockquote>
 <p>在<code>OC</code>中，可以利用<code>block</code>实现链式编程。</p>
 <blockquote>
-<p>方法的返回值是block,block必须有返回值（本身对象），block参数（需要操作的值）</p>
+<p>方法的返回值是<code>block</code>，<code>block</code>必须有返回值（本身对象），block参数（需要操作的值）</p>
 </blockquote>
 <p>定义如下：</p>
 <pre><code>- (returnType (^)(parameterTypes)function;
 </code></pre><p>实现：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- (returnType(^)(parameterTypes))function&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ^ returnType (parameterTypes)&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/*</span><br><span class="line">        处理参数</span><br><span class="line">        */</span></span><br><span class="line">                </span><br><span class="line">        <span class="keyword">return</span> self; <span class="comment">// returnType 的类型为自身类型</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- (returnType(^)(parameterTypes))function&#123;</span><br><span class="line"></span><br><span class="line">    return ^ returnType (parameterTypes)&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/*</span><br><span class="line">        处理参数</span><br><span class="line">        */</span></span><br><span class="line">                </span><br><span class="line">        return self; <span class="comment">// returnType 的类型为自身类型</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>具体代码参照<a href="http://www.jianshu.com/p/87ef6720a096" target="_blank" rel="external">峥吖的文章《最快让你上手ReactiveCocoa之基础篇》</a></p>
 <p>在此将调用的代码列一下</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> result = [NSObject makeCaculators:^(CaculatorMaker *maker) &#123;</span><br><span class="line">                maker.add(<span class="number">1</span>).add(<span class="number">2</span>).sub(<span class="number">3</span>).mult(<span class="number">10</span>);</span><br><span class="line">        </span><br><span class="line">    &#125;];</span><br></pre></td></tr></table></figure>
-<p><s>实在是太帅了，刚看到的时候，一脸懵逼，很像js对吧</s>     我们可以用自定义的实例接着做其他事，这样的调用像一条链子一样，一口气做完一个对象想做的所有事都可以。</p>
-<h5 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h5><p>它属于”结构化编程”的一种，主要思想是把运算过程尽量写成一系列嵌套的函数调用。<br><br>详细说明，参照<a href="http://www.ruanyifeng.com/blog/2012/04/functional_programming.html" target="_blank" rel="external">阮一峰的网络日志-函数式编程初探</a></p>
+<p><s>实在是太帅了，刚看到的时候，一脸懵逼，很像js对吧</s> 我们可以用自定义的实例接着做其他事，这样的调用像一条链子一样，一口气做完一个对象想做的所有事都可以。</p>
+<h5 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h5><p>它属于”结构化编程”的一种，主要思想是把运算过程尽量写成一系列嵌套的函数调用。</p>
+<p>详细说明，参照<a href="http://www.ruanyifeng.com/blog/2012/04/functional_programming.html" target="_blank" rel="external">阮一峰的网络日志-函数式编程初探</a></p>
 <p><s>12年呀，差距好大</s><br>举例来说,现在有这样一个数学表达式：</p>
 <pre><code>(1 + 2) * 3 - 4
-</code></pre><p>　　<br>传统的过程式编程，可能这样写：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = <span class="number">1</span> + <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">var b = a * <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">var c = b - <span class="number">4</span>;</span><br></pre></td></tr></table></figure>
-<p>转换成响应式编程</p>
+</code></pre><p>传统的过程式编程，可能这样写：</p>
+<pre><code>var a = 1 + 2;
+
+var b = a * 3;
+
+var c = b - 4;
+</code></pre><p>转换成响应式编程</p>
 <pre><code>add(1,2).multiply(3).subtract(4)
 </code></pre><p>在<code>OC</code>中的实现方法</p>
 <blockquote>
@@ -344,10 +348,10 @@
 <p>定义如下：</p>
 <pre><code>- ( ClassType )function:(returnType (^)(parameterTypes)parameter;
 </code></pre><p>实现：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- ( ClassType )function1:(returnType (^)(parameterTypes)parameter&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// block 调用 一般传入全局变量</span></span><br><span class="line">	变量 ＝  parameter(变量);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> self;</span><br><span class="line">&#125;</span><br><span class="line">- ( ClassType )function2:(returnType (^)(parameterTypes)parameter&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// block 调用 一般传入全局变量</span></span><br><span class="line">	变量 ＝  parameter(变量);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> self;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- ( ClassType )function1:(returnType (^)(parameterTypes)parameter&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// block 调用 一般传入全局变量</span></span><br><span class="line">	变量 ＝  parameter(变量);</span><br><span class="line">	</span><br><span class="line">	return self;</span><br><span class="line">&#125;</span><br><span class="line">- ( ClassType )function2:(returnType (^)(parameterTypes)parameter&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// block 调用 一般传入全局变量</span></span><br><span class="line">	变量 ＝  parameter(变量);</span><br><span class="line">	</span><br><span class="line">	return self;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>调用代码</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ClassType <span class="keyword">class</span> = [ClassType alloc]init];</span><br><span class="line">	</span><br><span class="line">[[<span class="keyword">class</span> function1:^(parameterTypes)&#123;</span><br><span class="line">	</span><br><span class="line">			<span class="comment">// 逻辑处理</span></span><br><span class="line">			<span class="keyword">return</span> ...;</span><br><span class="line">&#125;]function2:^(parameterTypes)&#123;</span><br><span class="line">	</span><br><span class="line">			<span class="comment">// 逻辑处理 </span></span><br><span class="line">			<span class="comment">// 在方法2 中可以使用方法1中得到的变量进行操作</span></span><br><span class="line">			<span class="keyword">return</span> ...;</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-<p>对于函数式编程的思想，还不是太懂，在琢磨当中,借鉴了各位大神的博客，一一拜谢，理解比较浅，有错误的地方还望指正。<s>顺便说一句<code>ReactiveCocoa</code>真NB，不断学习中。</s></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ClassType <span class="keyword">class</span> = [ClassType alloc]init];</span><br><span class="line">	</span><br><span class="line">[[<span class="keyword">class</span> function1:^(parameterTypes)&#123;</span><br><span class="line">	</span><br><span class="line">			<span class="comment">// 逻辑处理</span></span><br><span class="line">			return ...;</span><br><span class="line">&#125;]function2:^(parameterTypes)&#123;</span><br><span class="line">	</span><br><span class="line">			<span class="comment">// 逻辑处理 </span></span><br><span class="line">			<span class="comment">// 在方法2 中可以使用方法1中得到的变量进行操作</span></span><br><span class="line">			return ...;</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<p>对于函数式编程的思想，还不是太懂，在琢磨当中,借鉴了各位大神的博客，一一拜谢，理解比较浅，有错误的地方还望指正。<s>顺便说一句ReactiveCocoa真NB，不断学习中。</s></p>
 
         
         
@@ -377,7 +381,7 @@
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/post/链式编程/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/链式编程/" data-count-type="comments">&nbsp;</a>
+		<a href="/post/链式编程和函数式编程学习笔记/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/链式编程和函数式编程学习笔记/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -410,59 +414,58 @@
 </header>
     <div class="article-content">
         
-        <p>本文主要探究利用可视化格式语言进行自动布局。<br></p>
+        <p>本文主要探究利用可视化格式语言进行自动布局。</p>
 <h5 id="可视化格式约束介绍"><a href="#可视化格式约束介绍" class="headerlink" title="可视化格式约束介绍"></a>可视化格式约束介绍</h5><p>可视化格式由一个描述视图布局的文本字符串组成。你可以根据视图在界面中出现的顺序列出他们，文本中可以指定间隔、不等量及优先级，可以使布局形象化地表现为一个简单的文本。<br>如下所示</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@<span class="string">"V:|-[view1](==200)-(&gt;=20@750)-[view2]"</span> options:NSLayoutFormatAlignAllLeft metrics:nil views:NSDictionaryOfVariableBindings(view1,view2)]];</span><br></pre></td></tr></table></figure>
 <p>其中<code>NSDictionaryOfVariableBindings()</code>表示：当使用可视化约束时，布局系统将名称字符串同它们表示的对象关联起来，利用此宏创建一个约束列表（字典）。<br>在代码中<code>NSDictionaryOfVariableBindings(view1,view2)</code>相当于创建了下列字典</p>
 <pre><code>@{@&quot;view1&quot;:view1,@&quot;view2&quot;:view2}
-</code></pre><p>当然你可以自定义字典，将视图进行关联。<br></p>
-<p>代码中其他符号的含义</p>
+</code></pre><p>当然你可以自定义字典，将视图进行关联。<br>代码中其他符号的含义</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">变量</th>
+<th style="text-align:left">变量</th>
 <th style="text-align:left">释义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">V:，H:</td>
+<td style="text-align:left">V:，H:</td>
 <td style="text-align:left">方向</td>
 </tr>
 <tr>
-<td style="text-align:center">metric</td>
+<td style="text-align:left">metric</td>
 <td style="text-align:left">度量</td>
 </tr>
 <tr>
-<td style="text-align:center">== &lt;= &gt;=</td>
+<td style="text-align:left">== &lt;= &gt;=</td>
 <td style="text-align:left">关系</td>
 </tr>
 <tr>
-<td style="text-align:center">@</td>
+<td style="text-align:left">@</td>
 <td style="text-align:left">优先级</td>
 </tr>
 <tr>
-<td style="text-align:center">｜</td>
+<td style="text-align:left">｜</td>
 <td style="text-align:left">父视图</td>
 </tr>
 <tr>
-<td style="text-align:center">options</td>
+<td style="text-align:left">options</td>
 <td style="text-align:left">对齐方式</td>
 </tr>
 <tr>
-<td style="text-align:center">-</td>
+<td style="text-align:left">-</td>
 <td style="text-align:left">标准间隔：视图到视图为8点；视图到父视图为20点</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>其中8点和20点的值来源于苹果的<code>Aqua</code>用户界面标准，作为基本的视觉主题应用于<code>OS X</code>设计</li>
+<li>其中8点和20点的值来源于苹果的<code>Aqu</code>a用户界面标准，作为基本的视觉主题应用于<code>OS X</code>设计</li>
 <li>如果间隔为负数的时候，需要使用<code>()</code></li>
 <li>可视化格式可以加入多个视图</li>
 <li>视图的<code>()</code>中指定视图的尺寸，根据排列方向对应固定的宽度或高度</li>
 <li>使用可视化格式创建的所有约束都有一个默认的优先级，即1000（必需的）</li>
 </ul>
-<h6 id="NSLog-和可视化格式"><a href="#NSLog-和可视化格式" class="headerlink" title="NSLog 和可视化格式"></a>NSLog 和可视化格式</h6><p>在<code>NSLayoutConstraint</code>日志中任何可能的地方<code>Xcode</code>都添加了可视化格式表示，即使完全适用<code>IB</code>或者通过单独的约束实例来创建约束，通过学习这种布局语言，你也会受益匪浅。<br>实践是检验真理的唯一标准，多去尝试吧。</p>
+<h5 id="NSLog-和可视化格式"><a href="#NSLog-和可视化格式" class="headerlink" title="NSLog 和可视化格式"></a>NSLog 和可视化格式</h5><p>在<code>NSLayoutConstrain</code>t日志中任何可能的地方<code>Xcode</code>都添加了可视化格式表示，即使完全适用<code>IB</code>或者通过单独的约束实例来创建约束，通过学习这种布局语言，你也会受益匪浅。<br>实践是检验真理的唯一标准，多去尝试吧。</p>
 
         
         
@@ -645,15 +648,15 @@
 			
 		
 			
+				<li><a href="/tags/Notes/" title="Notes">Notes<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/RAC/" title="RAC">RAC<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/JavaScriptCore/" title="JavaScriptCore">JavaScriptCore<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Notes/" title="Notes">Notes<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -666,11 +669,21 @@
         
           <li>
             
+            	<a href="https://hexo.io/" target="_blank" title="Hexo">Hexo</a>
+            
+          </li>
+        
+          <li>
+            
             	<a href="https://github.com/JokerHappy" target="_blank" title="GitHub">GitHub</a>
             
           </li>
         
     </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
 </aside>
