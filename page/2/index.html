@@ -76,6 +76,90 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/post/layout 笔记3/" title="iOS Auto Layout Demystified 学习笔记（三）" itemprop="url">iOS Auto Layout Demystified 学习笔记（三）</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-01T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-03-02</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>本文主要探究<code>Interface Builder</code>自动布局。<br></p>
+<h5 id="在IB中使用-禁用自动布局"><a href="#在IB中使用-禁用自动布局" class="headerlink" title="在IB中使用/禁用自动布局"></a>在IB中使用/禁用自动布局</h5><p>在右侧面板中勾选<code>Use Autolayout</code>选项，不做赘述。<br>如果想在代码中退出<code>Use Autolayout</code>需要设置视图的属性<code>translatesAutoresizingMaskIntoConstraints</code>属性为<code>YES</code>。</p>
+<h5 id="基本布局及自动生成的约束"><a href="#基本布局及自动生成的约束" class="headerlink" title="基本布局及自动生成的约束"></a>基本布局及自动生成的约束</h5><p>当你在<code>IB</code>中放置好视图时，在不添加约束的情况下，<code>Xcode</code>会<strong>自动</strong>帮助你免费添加一些根据视图的框架构建的约束，为界面元素提供最小的回退行为。</p>
+<h5 id="IB元素指南"><a href="#IB元素指南" class="headerlink" title="IB元素指南"></a><code>IB</code>元素指南</h5><p>具体元素在此不再赘述，需要开发者多多使用。<br><br>使用的小窍门</p>
+<ol>
+<li>按下<code>Ctrl</code>键从一个视图拖拽到另一个视图，在弹出的选择列表时，在选择约束类型是按住<code>Shift</code>可以进行多选.</li>
+<li>在<code>Intrinsic Size</code>中的选项<code>Placeholder</code>为设计中的视图提供一个占位空间，在程序运行时在具体计算视图的尺寸。</li>
+<li>在<code>IB</code>中，同时按下<code>Ctrl</code>+<code>Shift</code>键并单击任意区域，会显示该位置所放置的所有视图的清单，在复杂的布局中可以快速选择所要操作的视图。</li>
+</ol>
+<h5 id="添加约束"><a href="#添加约束" class="headerlink" title="添加约束"></a>添加约束</h5><p>略</p>
+<h5 id="预览布局"><a href="#预览布局" class="headerlink" title="预览布局"></a>预览布局</h5><p>在IB中布局完成后，不需要每次都运行程序查看布局效果，在IB中提供了简单的方法，可以展示在不同设备上的布局效果包括横竖屏。具体步骤：</p>
+<ul>
+<li>首先需要关闭多余的视图，腾出更多的空间。</li>
+<li>选择<code>IB</code>左上角，如下图所示<br><br><img src="http://7xt3bw.com1.z0.glb.clouddn.com/8.png-water" alt=""><br><br></li>
+<li>按住<code>Shift</code>和<code>Option</code>键，选择对应的IB视图，会出现如下视图<br><br><img src="http://7xt3bw.com1.z0.glb.clouddn.com/9.png-water" alt=""><br><br></li>
+<li>选择右侧下方<strong>＋</strong>,双击或者回车，就会出现对应的预览视图<br><br><img src="http://7xt3bw.com1.z0.glb.clouddn.com/10.png-water" alt=""><br><br></li>
+<li>最后就可以选择各种尺寸的屏幕，进行预览。</li>
+</ul>
+<p>在<code>IB</code>中还可以为视化编辑器添加一些视图覆盖物，用于测试，选中控件后再选择菜单中<br><code>Editor-&gt;Canvas</code>，可以选择测试效果。</p>
+<blockquote>
+<p>小窍门<br>在应项目的<code>Edit Scheme</code>中设置一个启动参数 <code>UIViewShowAlignmentRects</code> 并将参数值设置为<code>YES</code>，可以让程序在运行时显示视图的对齐矩阵（alignment rectangle）。-<br>    UIViewShowAlignmentRects YES</p>
+</blockquote>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Auto-Layout/">Auto Layout</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/post/layout 笔记3/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/layout 笔记3/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/post/layout 笔记2/" title="iOS Auto Layout Demystified 学习笔记（二）" itemprop="url">iOS Auto Layout Demystified 学习笔记（二）</a>
   </h1>
   <p class="article-author">By
@@ -331,74 +415,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/post/webview/" title="UIWebView 使用浅析" itemprop="url">UIWebView 使用浅析</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
-		
-  <p class="article-time">
-    <time datetime="2016-02-15T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-02-16</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>苹果官方对<code>UIWebView</code>的介绍</p>
-<blockquote>
-<p>You can use the UIWebView class to embed web content in your application. To doso, you simply create a UIWebView object, attach it to a window, and send it a request to load web content. You can also use this class to move back and forward in the history of webpages, and you can even set some web content properties programmatically.</p>
-</blockquote>
-<p><code>UIWebView</code>是<code>iOS</code>内置的浏览器控件，<code>UIWebView</code>用于在<code>App</code>中嵌入网页，通常是<code>html</code>网页，也可以是<code>PDF</code>、<code>txt</code>文档等。苹果在发布<code>iOS8</code>的时候，新增了一个<code>WKWebView</code>组件，如果你的<code>APP</code>只考虑支持<code>iOS8</code>及以上版本，那么你就可以使用这个新的浏览器控件了。</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/post/webview/#more">阅读全文</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Knowledge/">Knowledge</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/post/webview/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/webview/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next<span></span></a>
@@ -421,7 +437,7 @@
 		  
 		
 		  
-			<li><a href="/categories/iOS/" title="iOS">iOS<sup>10</sup></a></li>
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>11</sup></a></li>
 		  
 		
 		</ul>
@@ -438,6 +454,10 @@
 			
 		
 			
+				<li><a href="/tags/Notes/" title="Notes">Notes<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/随想/" title="随想">随想<sup>1</sup></a></li>
 			
 		
@@ -451,10 +471,6 @@
 		
 			
 				<li><a href="/tags/Knowledge/" title="Knowledge">Knowledge<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Notes/" title="Notes">Notes<sup>1</sup></a></li>
 			
 		
 			

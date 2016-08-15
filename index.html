@@ -76,6 +76,104 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/post/iOS 9 Universal Links/" title="iOS 9 Universal Links" itemprop="url">iOS 9 Universal Links</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
+		
+  <p class="article-time">
+    <time datetime="2016-04-09T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-04-10</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p><code>Apple</code> 推出<code>Universal Links</code> (通用链接)：一种能够方便的通过传统 <code>HTTP</code> 链接来启动 <code>APP</code>, 使用相同的网址打开网站和 <code>APP</code>。</p>
+<p>通过唯一的网址, 不需要特别的<code>schema</code>就可以链接一个特定的视图到<code>APP</code> 里面 。比如：在知乎中使用了通用链接, 那么用户在<code>Safari</code>、<code>UIWebView</code>或者 <code>WKWebView</code>点击一个链接, <code>iOS</code>设备上的知乎<code>app</code>怎会在知乎里面自动打开这个页面, 如果没有安装则在<code>Safrai</code>中打开响应链接。</p>
+<h5 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1"></a>Step 1</h5><p>创建一个<code>json</code> 格式的<code>apple-app-site-associatio</code> 文件<br><br>例如：</p>
+<pre><code>{
+    &quot;applinks&quot;: {
+        &quot;apps&quot;: [],
+        &quot;details&quot;: [
+            {
+                &quot;appID&quot;: &quot;9JA89QQLNQ.com.apple.wwdc&quot;,
+                &quot;paths&quot;: [ &quot;/wwdc/news/&quot;, &quot;/videos/wwdc/2015/*&quot;]
+            },
+            {
+                &quot;appID&quot;: &quot;ABCD1234.com.apple.wwdc&quot;,
+                &quot;paths&quot;: [ &quot;*&quot; ]
+            }
+        ]
+    }
+}
+</code></pre><ul>
+<li><code>appID</code> 构成 <strong>TeamID（你的团队标识的）.bundle id</strong></li>
+<li><code>paths</code> 键设定允许的路径列表, 或只是一个星号如果你想打开 <code>APP</code> 而不管路径是什么(<strong>注意区分大小写</strong>)</li>
+</ul>
+<h5 id="Step-2"><a href="#Step-2" class="headerlink" title="Step 2"></a>Step 2</h5><p>上传 <code>apple-app-site-association</code> 文件</p>
+<p>注意：</p>
+<ul>
+<li><p>上传到<code>web server</code>根目录下</p>
+</li>
+<li><p><code>web server</code> 需要支持<code>https</code>，客户端需要通告<code>https</code>访问，并且不支持任何重定向。</p>
+</li>
+</ul>
+<h5 id="Step-3"><a href="#Step-3" class="headerlink" title="Step 3"></a>Step 3</h5><p>在 APP 里处理通用链接</p>
+<p>必须在 <code>Xcode</code> 的 <code>capabilities</code> 里 添加你的 <code>APP</code> 域名, 必须用 <code>applinks:</code> 前置它：还添加一些你可能拥有的子域和扩展。</p>
+<p>这将使<code>APP</code>从域名请求<code>Step1</code>中创建的<code>JSON</code> 文件 <code>apple-app-site-association</code>。当你第一次启动 <code>APP</code>，它会从 <code>web server</code>根目录下载这个文件。</p>
+<h5 id="Step-4"><a href="#Step-4" class="headerlink" title="Step 4"></a>Step 4</h5><p>在 <code>AppDelegate</code> 里支持通用链接</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">-(BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(<span class="keyword">void</span> (^)(NSArray *restorableObjects))restorationHandler&#123;</span><br><span class="line"></span><br><span class="line"> 	<span class="keyword">if</span> ([[userActivity activityType] isEqualToString:NSUserActivityTypeBrowsingWeb]) </span><br><span class="line">    &#123;</span><br><span class="line">        NSString *urlStr = userActivity.webpageURL;</span><br><span class="line">     	</span><br><span class="line">		<span class="keyword">if</span> ([urlStr.host isEqualToString:@<span class="string">"myapp.com"</span>])&#123;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 打开App对应页面</span></span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			</span><br><span class="line">			<span class="comment">// 不能识别，在浏览器中打开</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当 <code>userActivity</code> 是 <code>NSUserActivityTypeBrowsingWeb</code> 类型, 则意味着它已经由通用链接 <code>API</code> 代理。这样的话, 它保证用户打开的 <code>URL</code> 将有一个非空的 <code>webpageURL</code> 属性。<br><br></p>
+<h5 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a><a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/AppSearch/UniversalLinks.html#//apple_ref/doc/uid/TP40016308-CH12-SW2" target="_blank" rel="external">官方文档</a></h5><h5 id="一些注意要点"><a href="#一些注意要点" class="headerlink" title="一些注意要点"></a><a href="http://www.jianshu.com/p/c2ca5b5f391f" target="_blank" rel="external">一些注意要点</a></h5>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Notes/">Notes</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/post/iOS 9 Universal Links/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/iOS 9 Universal Links/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/post/Objective-C和JavaScript 数据交互/" title="Objective-C和JavaScript 数据交互" itemprop="url">Objective-C和JavaScript 数据交互</a>
   </h1>
   <p class="article-author">By
@@ -509,90 +607,6 @@ var c = b - 4;
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/post/layout 笔记3/" title="iOS Auto Layout Demystified 学习笔记（三）" itemprop="url">iOS Auto Layout Demystified 学习笔记（三）</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
-		
-  <p class="article-time">
-    <time datetime="2016-03-01T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-03-02</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>本文主要探究<code>Interface Builder</code>自动布局。<br></p>
-<h5 id="在IB中使用-禁用自动布局"><a href="#在IB中使用-禁用自动布局" class="headerlink" title="在IB中使用/禁用自动布局"></a>在IB中使用/禁用自动布局</h5><p>在右侧面板中勾选<code>Use Autolayout</code>选项，不做赘述。<br>如果想在代码中退出<code>Use Autolayout</code>需要设置视图的属性<code>translatesAutoresizingMaskIntoConstraints</code>属性为<code>YES</code>。</p>
-<h5 id="基本布局及自动生成的约束"><a href="#基本布局及自动生成的约束" class="headerlink" title="基本布局及自动生成的约束"></a>基本布局及自动生成的约束</h5><p>当你在<code>IB</code>中放置好视图时，在不添加约束的情况下，<code>Xcode</code>会<strong>自动</strong>帮助你免费添加一些根据视图的框架构建的约束，为界面元素提供最小的回退行为。</p>
-<h5 id="IB元素指南"><a href="#IB元素指南" class="headerlink" title="IB元素指南"></a><code>IB</code>元素指南</h5><p>具体元素在此不再赘述，需要开发者多多使用。<br><br>使用的小窍门</p>
-<ol>
-<li>按下<code>Ctrl</code>键从一个视图拖拽到另一个视图，在弹出的选择列表时，在选择约束类型是按住<code>Shift</code>可以进行多选.</li>
-<li>在<code>Intrinsic Size</code>中的选项<code>Placeholder</code>为设计中的视图提供一个占位空间，在程序运行时在具体计算视图的尺寸。</li>
-<li>在<code>IB</code>中，同时按下<code>Ctrl</code>+<code>Shift</code>键并单击任意区域，会显示该位置所放置的所有视图的清单，在复杂的布局中可以快速选择所要操作的视图。</li>
-</ol>
-<h5 id="添加约束"><a href="#添加约束" class="headerlink" title="添加约束"></a>添加约束</h5><p>略</p>
-<h5 id="预览布局"><a href="#预览布局" class="headerlink" title="预览布局"></a>预览布局</h5><p>在IB中布局完成后，不需要每次都运行程序查看布局效果，在IB中提供了简单的方法，可以展示在不同设备上的布局效果包括横竖屏。具体步骤：</p>
-<ul>
-<li>首先需要关闭多余的视图，腾出更多的空间。</li>
-<li>选择<code>IB</code>左上角，如下图所示<br><br><img src="http://7xt3bw.com1.z0.glb.clouddn.com/8.png-water" alt=""><br><br></li>
-<li>按住<code>Shift</code>和<code>Option</code>键，选择对应的IB视图，会出现如下视图<br><br><img src="http://7xt3bw.com1.z0.glb.clouddn.com/9.png-water" alt=""><br><br></li>
-<li>选择右侧下方<strong>＋</strong>,双击或者回车，就会出现对应的预览视图<br><br><img src="http://7xt3bw.com1.z0.glb.clouddn.com/10.png-water" alt=""><br><br></li>
-<li>最后就可以选择各种尺寸的屏幕，进行预览。</li>
-</ul>
-<p>在<code>IB</code>中还可以为视化编辑器添加一些视图覆盖物，用于测试，选中控件后再选择菜单中<br><code>Editor-&gt;Canvas</code>，可以选择测试效果。</p>
-<blockquote>
-<p>小窍门<br>在应项目的<code>Edit Scheme</code>中设置一个启动参数 <code>UIViewShowAlignmentRects</code> 并将参数值设置为<code>YES</code>，可以让程序在运行时显示视图的对齐矩阵（alignment rectangle）。-<br>    UIViewShowAlignmentRects YES</p>
-</blockquote>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Auto-Layout/">Auto Layout</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/post/layout 笔记3/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/layout 笔记3/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -615,7 +629,7 @@ var c = b - 4;
 		  
 		
 		  
-			<li><a href="/categories/iOS/" title="iOS">iOS<sup>10</sup></a></li>
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>11</sup></a></li>
 		  
 		
 		</ul>
@@ -632,6 +646,10 @@ var c = b - 4;
 			
 		
 			
+				<li><a href="/tags/Notes/" title="Notes">Notes<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/随想/" title="随想">随想<sup>1</sup></a></li>
 			
 		
@@ -645,10 +663,6 @@ var c = b - 4;
 		
 			
 				<li><a href="/tags/Knowledge/" title="Knowledge">Knowledge<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Notes/" title="Notes">Notes<sup>1</sup></a></li>
 			
 		
 			

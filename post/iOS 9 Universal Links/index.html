@@ -4,33 +4,26 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>iOS Auto Layout Demystified 学习笔记（一） | 知行合一</title>
+    <title>iOS 9 Universal Links | 知行合一</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="xxx">
     
 
     
-    <meta name="description" content="Auto Layout 的由来2012年，Auto Layout 作为iOS 6版本的一部分，首次露面。 Auto Layout 的前身是Cassowary 约束解析包。
-
-Cassowary是一种递增式约束解析工具包，它能有效的解析线性等式系统和线性不等式系统。约束可能是需求，也可能是偏好。该工具包能够快速的重新解析系统，并且支持UI应用程序。">
+    <meta name="description" content="Apple 推出Universal Links (通用链接)：一种能够方便的通过传统 HTTP 链接来启动 APP, 使用相同的网址打开网站和 APP。
+通过唯一的网址, 不需要特别的schema就可以链接一个特定的视图到APP 里面 。比如：在知乎中使用了通用链接, 那么用户在Safari、UIWebView或者 WKWebView点击一个链接, iOS设备上的知乎app怎会在知乎里面自动打开这">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS Auto Layout Demystified 学习笔记（一）">
-<meta property="og:url" content="http://jokerhappy.github.io/post/layout 笔记1/index.html">
+<meta property="og:title" content="iOS 9 Universal Links">
+<meta property="og:url" content="http://jokerhappy.github.io/post/iOS 9 Universal Links/index.html">
 <meta property="og:site_name" content="知行合一">
-<meta property="og:description" content="Auto Layout 的由来2012年，Auto Layout 作为iOS 6版本的一部分，首次露面。 Auto Layout 的前身是Cassowary 约束解析包。
-
-Cassowary是一种递增式约束解析工具包，它能有效的解析线性等式系统和线性不等式系统。约束可能是需求，也可能是偏好。该工具包能够快速的重新解析系统，并且支持UI应用程序。">
-<meta property="og:image" content="http://7xt3bw.com2.z0.glb.clouddn.com/5.png-water">
-<meta property="og:image" content="http://7xt3bw.com2.z0.glb.clouddn.com/6.png-water">
-<meta property="og:image" content="http://7xt3bw.com2.z0.glb.clouddn.com/7.png-water">
-<meta property="og:updated_time" content="2016-05-18T14:17:01.059Z">
+<meta property="og:description" content="Apple 推出Universal Links (通用链接)：一种能够方便的通过传统 HTTP 链接来启动 APP, 使用相同的网址打开网站和 APP。
+通过唯一的网址, 不需要特别的schema就可以链接一个特定的视图到APP 里面 。比如：在知乎中使用了通用链接, 那么用户在Safari、UIWebView或者 WKWebView点击一个链接, iOS设备上的知乎app怎会在知乎里面自动打开这">
+<meta property="og:updated_time" content="2016-08-15T14:45:19.722Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS Auto Layout Demystified 学习笔记（一）">
-<meta name="twitter:description" content="Auto Layout 的由来2012年，Auto Layout 作为iOS 6版本的一部分，首次露面。 Auto Layout 的前身是Cassowary 约束解析包。
-
-Cassowary是一种递增式约束解析工具包，它能有效的解析线性等式系统和线性不等式系统。约束可能是需求，也可能是偏好。该工具包能够快速的重新解析系统，并且支持UI应用程序。">
-<meta name="twitter:image" content="http://7xt3bw.com2.z0.glb.clouddn.com/5.png-water">
+<meta name="twitter:title" content="iOS 9 Universal Links">
+<meta name="twitter:description" content="Apple 推出Universal Links (通用链接)：一种能够方便的通过传统 HTTP 链接来启动 APP, 使用相同的网址打开网站和 APP。
+通过唯一的网址, 不需要特别的schema就可以链接一个特定的视图到APP 里面 。比如：在知乎中使用了通用链接, 那么用户在Safari、UIWebView或者 WKWebView点击一个链接, iOS设备上的知乎app怎会在知乎里面自动打开这">
 
     
     <link rel="alternative" href="/atom.xml" title="知行合一" type="application/atom+xml">
@@ -85,14 +78,14 @@ Cassowary是一种递增式约束解析工具包，它能有效的解析线性�
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/post/layout 笔记1/" title="iOS Auto Layout Demystified 学习笔记（一）" itemprop="url">iOS Auto Layout Demystified 学习笔记（一）</a>
+      <a href="/post/iOS 9 Universal Links/" title="iOS 9 Universal Links" itemprop="url">iOS 9 Universal Links</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
 		
   <p class="article-time">
-    <time datetime="2016-02-19T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-02-20</time>
+    <time datetime="2016-04-09T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-04-10</time>
     
   </p>
 </header>
@@ -101,45 +94,47 @@ Cassowary是一种递增式约束解析工具包，它能有效的解析线性�
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Auto-Layout-的由来"><span class="toc-number">1.</span> <span class="toc-text">Auto Layout 的由来</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用Auto-Layout-的好处"><span class="toc-number">2.</span> <span class="toc-text">使用Auto Layout 的好处</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#约束"><span class="toc-number">3.</span> <span class="toc-text">约束</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#约束的属性"><span class="toc-number">3.1.</span> <span class="toc-text">约束的属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#约束的方法"><span class="toc-number">3.2.</span> <span class="toc-text">约束的方法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#压缩阻力和内容吸附"><span class="toc-number">4.</span> <span class="toc-text">压缩阻力和内容吸附</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#Step-1"><span class="toc-number">1.</span> <span class="toc-text">Step 1</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Step-2"><span class="toc-number">2.</span> <span class="toc-text">Step 2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Step-3"><span class="toc-number">3.</span> <span class="toc-text">Step 3</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Step-4"><span class="toc-number">4.</span> <span class="toc-text">Step 4</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#官方文档"><span class="toc-number">5.</span> <span class="toc-text">官方文档</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#一些注意要点"><span class="toc-number">6.</span> <span class="toc-text">一些注意要点</span></a></li></ol>
 		
 		</div>
 		
-		<h4 id="Auto-Layout-的由来"><a href="#Auto-Layout-的由来" class="headerlink" title="Auto Layout 的由来"></a><strong>Auto Layout</strong> 的由来</h4><p>2012年，Auto Layout 作为<code>iOS 6</code>版本的一部分，首次露面。 Auto Layout 的前身是<code>Cassowary</code> 约束解析包。</p>
-<blockquote>
-<p><code>Cassowary</code>是一种递增式约束解析工具包，它能有效的解析线性等式系统和线性不等式系统。约束可能是需求，也可能是偏好。该工具包能够快速的重新解析系统，并且支持UI应用程序。<br><a id="more"></a></p>
-<h4 id="使用Auto-Layout-的好处"><a href="#使用Auto-Layout-的好处" class="headerlink" title="使用Auto Layout 的好处"></a>使用<strong>Auto Layout</strong> 的好处</h4></blockquote>
+		<p><code>Apple</code> 推出<code>Universal Links</code> (通用链接)：一种能够方便的通过传统 <code>HTTP</code> 链接来启动 <code>APP</code>, 使用相同的网址打开网站和 <code>APP</code>。</p>
+<p>通过唯一的网址, 不需要特别的<code>schema</code>就可以链接一个特定的视图到<code>APP</code> 里面 。比如：在知乎中使用了通用链接, 那么用户在<code>Safari</code>、<code>UIWebView</code>或者 <code>WKWebView</code>点击一个链接, <code>iOS</code>设备上的知乎<code>app</code>怎会在知乎里面自动打开这个页面, 如果没有安装则在<code>Safrai</code>中打开响应链接。</p>
+<h5 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1"></a>Step 1</h5><p>创建一个<code>json</code> 格式的<code>apple-app-site-associatio</code> 文件<br><br>例如：</p>
+<pre><code>{
+    &quot;applinks&quot;: {
+        &quot;apps&quot;: [],
+        &quot;details&quot;: [
+            {
+                &quot;appID&quot;: &quot;9JA89QQLNQ.com.apple.wwdc&quot;,
+                &quot;paths&quot;: [ &quot;/wwdc/news/&quot;, &quot;/videos/wwdc/2015/*&quot;]
+            },
+            {
+                &quot;appID&quot;: &quot;ABCD1234.com.apple.wwdc&quot;,
+                &quot;paths&quot;: [ &quot;*&quot; ]
+            }
+        ]
+    }
+}
+</code></pre><ul>
+<li><code>appID</code> 构成 <strong>TeamID（你的团队标识的）.bundle id</strong></li>
+<li><code>paths</code> 键设定允许的路径列表, 或只是一个星号如果你想打开 <code>APP</code> 而不管路径是什么(<strong>注意区分大小写</strong>)</li>
+</ul>
+<h5 id="Step-2"><a href="#Step-2" class="headerlink" title="Step 2"></a>Step 2</h5><p>上传 <code>apple-app-site-association</code> 文件</p>
+<p>注意：</p>
 <ul>
-<li>建立几何关系</li>
-<li>内容驱动布局</li>
-<li>优先级规则</li>
-<li>检查和模块化</li>
-<li>与 Autosizing 兼容</li>
-</ul>
-<h4 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h4><p>约束是指用来描述视图布局的规则，使用的约束属于 <code>NSLayouConstra</code>类。</p>
-<blockquote>
-<p><strong>每个约束涉及一两个视图。约束将一个视图的属性与自身关联或者与另一个视图关联</strong></p>
-</blockquote>
-<p>使用约束可以满足系统的布局要求，建立的规则必须是单独使用和作为整体使用时都有意义。一个视图不能同时位于另一个视图的左边和右边，使用约束时要确保规则严格一致。<br><br>当规则失败时，会引起一连串的反应。在编译时，<code>Xcode</code>会发出警告，指出冲突的<code>IB</code>约束以及其他基于<code>IB</code>的布局问题。在运行时，每当解析程序遇到冲突，<code>Xcode</code>控制台都会提供更详细的更新，输出可能的错误原因，并提供调试援助。<br><br>当面对复杂的布局解决方案时，要保证约束的充分性，消除歧义。</p>
-<h5 id="约束的属性"><a href="#约束的属性" class="headerlink" title="约束的属性"></a>约束的属性</h5><ul>
-<li>NSLayoutRelationLessThanOrEqual</li>
-<li>NSLayoutRelationEqual</li>
-<li>NSLayoutRelationGreaterThanOrEqual</li>
-</ul>
-<blockquote>
-<p>在国际化应用程序时，尽量多使用<strong>前</strong>和<strong>后</strong>，少用 <strong>左</strong>和<strong>右</strong>。这样当使用那个从右到左的语言时，界面可以正确的反转过来。</p>
-</blockquote>
-<h5 id="约束的方法"><a href="#约束的方法" class="headerlink" title="约束的方法"></a>约束的方法</h5><p>在此只是简单说一下测试约束正确的几个方法及属性，在以后的学习笔记中会详细说明约束的方法。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-(BOOL)<span class="function">hasAmbiguousLayout <span class="title">NS_AVAILABLE_IOS</span><span class="params">(<span class="number">6</span>_0)</span></span>; <span class="comment">//用来测试视图的约束是否充分</span></span><br><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)<span class="function">exerciseAmbiguityInLayout <span class="title">NS_AVAILABLE_IOS</span><span class="params">(<span class="number">6</span>_0)</span></span>; <span class="comment">//这个方法会随机改变视图的layout到另外一个有效的layout。这样我们就可以很清楚的看到哪一个layout导致了整体的布局约束出现了错误，或者我们应该增加更多的布局约束。</span></span><br><span class="line"></span><br><span class="line">-(CGSize)<span class="function">intrinsicContentSize <span class="title">NS_AVAILABLE_IOS</span><span class="params">(<span class="number">6</span>_0)</span></span>; <span class="comment">//描述数据未经压缩或裁剪的情况下表达视图所需的最小空间，该属性源于每个视图所呈现内容的自然属性</span></span><br><span class="line"></span><br><span class="line">@property(nonatomic) <span class="function">BOOL translatesAutoresizingMaskIntoConstraints <span class="title">NS_AVAILABLE_IOS</span><span class="params">(<span class="number">6</span>_0)</span></span>; <span class="comment">// Default `YES `&lt;br/&gt;</span></span><br><span class="line"><span class="comment">// 指明view使用你在自动布局时给的初始值，还在使用自动布局，忽略默认值。Interface Builder 中会自动设置为NO，但是使用代码时，你需要为所有的视图手动设置。</span></span><br></pre></td></tr></table></figure>
-<h4 id="压缩阻力和内容吸附"><a href="#压缩阻力和内容吸附" class="headerlink" title="压缩阻力和内容吸附"></a>压缩阻力和内容吸附</h4><ul>
-<li><p>压缩阻力是指视图保护其内容的方式。压缩阻力高的视图能够抵抗收缩，不允许内容被剪切。<br><br><img src="http://7xt3bw.com2.z0.glb.clouddn.com/5.png-water" alt=""></p>
+<li><p>上传到<code>web server</code>根目录下</p>
 </li>
-<li><p>内容吸附正好相反，它是防止在视图与其核心内容间作填充或直接伸展其核心内容。<br><br><img src="http://7xt3bw.com2.z0.glb.clouddn.com/6.png-water" alt=""></p>
-</li>
-<li><p><code>IB</code> 中的设置<br><br><img src="http://7xt3bw.com2.z0.glb.clouddn.com/7.png-water" alt=""></p>
+<li><p><code>web server</code> 需要支持<code>https</code>，客户端需要通告<code>https</code>访问，并且不支持任何重定向。</p>
 </li>
 </ul>
-  
+<h5 id="Step-3"><a href="#Step-3" class="headerlink" title="Step 3"></a>Step 3</h5><p>在 APP 里处理通用链接</p>
+<p>必须在 <code>Xcode</code> 的 <code>capabilities</code> 里 添加你的 <code>APP</code> 域名, 必须用 <code>applinks:</code> 前置它：还添加一些你可能拥有的子域和扩展。</p>
+<p>这将使<code>APP</code>从域名请求<code>Step1</code>中创建的<code>JSON</code> 文件 <code>apple-app-site-association</code>。当你第一次启动 <code>APP</code>，它会从 <code>web server</code>根目录下载这个文件。</p>
+<h5 id="Step-4"><a href="#Step-4" class="headerlink" title="Step 4"></a>Step 4</h5><p>在 <code>AppDelegate</code> 里支持通用链接</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">-(BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(<span class="keyword">void</span> (^)(NSArray *restorableObjects))restorationHandler&#123;</span><br><span class="line"></span><br><span class="line"> 	<span class="keyword">if</span> ([[userActivity activityType] isEqualToString:NSUserActivityTypeBrowsingWeb]) </span><br><span class="line">    &#123;</span><br><span class="line">        NSString *urlStr = userActivity.webpageURL;</span><br><span class="line">     	</span><br><span class="line">		<span class="keyword">if</span> ([urlStr.host isEqualToString:@<span class="string">"myapp.com"</span>])&#123;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 打开App对应页面</span></span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			</span><br><span class="line">			<span class="comment">// 不能识别，在浏览器中打开</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当 <code>userActivity</code> 是 <code>NSUserActivityTypeBrowsingWeb</code> 类型, 则意味着它已经由通用链接 <code>API</code> 代理。这样的话, 它保证用户打开的 <code>URL</code> 将有一个非空的 <code>webpageURL</code> 属性。<br><br></p>
+<h5 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a><a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/AppSearch/UniversalLinks.html#//apple_ref/doc/uid/TP40016308-CH12-SW2" target="_blank" rel="external">官方文档</a></h5><h5 id="一些注意要点"><a href="#一些注意要点" class="headerlink" title="一些注意要点"></a><a href="http://www.jianshu.com/p/c2ca5b5f391f" target="_blank" rel="external">一些注意要点</a></h5>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -152,7 +147,7 @@ Cassowary是一种递增式约束解析工具包，它能有效的解析线性�
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Auto-Layout/">Auto Layout</a>
+  <span></span> <a href="/tags/Notes/">Notes</a>
   </div>
 
 </div>
@@ -161,7 +156,7 @@ Cassowary是一种递增式约束解析工具包，它能有效的解析线性�
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://jokerhappy.github.io/post/layout 笔记1/" data-title="iOS Auto Layout Demystified 学习笔记（一） | 知行合一" data-tsina="null" class="share clearfix">
+	  <div data-url="http://jokerhappy.github.io/post/iOS 9 Universal Links/" data-title="iOS 9 Universal Links | 知行合一" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -174,19 +169,11 @@ Cassowary是一种递增式约束解析工具包，它能有效的解析线性�
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/post/Diagnostics/" title="Xcode 利用工具解决程序内存问题">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Xcode 利用工具解决程序内存问题</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/post/AutoLayout zero/"  title="iOS中AutoLayer自动布局流程及相关方法">
+<a href="/post/Objective-C和JavaScript 数据交互/"  title="Objective-C和JavaScript 数据交互">
  <strong>下一篇：</strong><br/> 
- <span>iOS中AutoLayer自动布局流程及相关方法
+ <span>Objective-C和JavaScript 数据交互
 </span>
 </a>
 </div>
@@ -195,7 +182,7 @@ Cassowary是一种递增式约束解析工具包，它能有效的解析线性�
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="post/layout 笔记1/" data-title="iOS Auto Layout Demystified 学习笔记（一）" data-url="http://jokerhappy.github.io/post/layout 笔记1/"></div>
+	<div class="ds-thread" data-thread-key="post/iOS 9 Universal Links/" data-title="iOS 9 Universal Links" data-url="http://jokerhappy.github.io/post/iOS 9 Universal Links/"></div>
 </section>
 
 
@@ -205,7 +192,7 @@ Cassowary是一种递增式约束解析工具包，它能有效的解析线性�
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Auto-Layout-的由来"><span class="toc-number">1.</span> <span class="toc-text">Auto Layout 的由来</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用Auto-Layout-的好处"><span class="toc-number">2.</span> <span class="toc-text">使用Auto Layout 的好处</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#约束"><span class="toc-number">3.</span> <span class="toc-text">约束</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#约束的属性"><span class="toc-number">3.1.</span> <span class="toc-text">约束的属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#约束的方法"><span class="toc-number">3.2.</span> <span class="toc-text">约束的方法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#压缩阻力和内容吸附"><span class="toc-number">4.</span> <span class="toc-text">压缩阻力和内容吸附</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#Step-1"><span class="toc-number">1.</span> <span class="toc-text">Step 1</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Step-2"><span class="toc-number">2.</span> <span class="toc-text">Step 2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Step-3"><span class="toc-number">3.</span> <span class="toc-text">Step 3</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Step-4"><span class="toc-number">4.</span> <span class="toc-text">Step 4</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#官方文档"><span class="toc-number">5.</span> <span class="toc-text">官方文档</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#一些注意要点"><span class="toc-number">6.</span> <span class="toc-text">一些注意要点</span></a></li></ol>
  
   </div>
 
