@@ -76,6 +76,68 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/post/岛上书店/" title="岛上书店" itemprop="url">岛上书店</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-15T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-08-16</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <div align="center"><img src="http://7xt3bw.com1.z0.glb.clouddn.com/%E5%B2%9B%E4%B8%8A%E4%B9%A6%E5%BA%97.jpg"><br></div>
+
+<blockquote>
+<p>因为从心底害怕自己不值得被爱，我们独来独往，然而就是因为独来独往，才让我们以为自己不值得被爱。有一天，你不知道是什么时候，你会驱车上路。有一天，你不知道什么时候，你会遇到他（她）。你会被爱，因为你今生第一次真正不再孤单。你会选择不再孤单下去。</p>
+</blockquote>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/随想/">随想</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/post/岛上书店/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/岛上书店/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/post/iOS 9 Universal Links/" title="iOS 9 Universal Links" itemprop="url">iOS 9 Universal Links</a>
   </h1>
   <p class="article-author">By
@@ -493,120 +555,6 @@ var c = b - 4;
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/post/layout 笔记4/" title="iOS Auto Layout Demystified 学习笔记（四）" itemprop="url">iOS Auto Layout Demystified 学习笔记（四）</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
-		
-  <p class="article-time">
-    <time datetime="2016-03-04T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-03-05</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>本文主要探究利用可视化格式语言进行自动布局。</p>
-<h5 id="可视化格式约束介绍"><a href="#可视化格式约束介绍" class="headerlink" title="可视化格式约束介绍"></a>可视化格式约束介绍</h5><p>可视化格式由一个描述视图布局的文本字符串组成。你可以根据视图在界面中出现的顺序列出他们，文本中可以指定间隔、不等量及优先级，可以使布局形象化地表现为一个简单的文本。<br>如下所示</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@<span class="string">"V:|-[view1](==200)-(&gt;=20@750)-[view2]"</span> options:NSLayoutFormatAlignAllLeft metrics:nil views:NSDictionaryOfVariableBindings(view1,view2)]];</span><br></pre></td></tr></table></figure>
-<p>其中<code>NSDictionaryOfVariableBindings()</code>表示：当使用可视化约束时，布局系统将名称字符串同它们表示的对象关联起来，利用此宏创建一个约束列表（字典）。<br>在代码中<code>NSDictionaryOfVariableBindings(view1,view2)</code>相当于创建了下列字典</p>
-<pre><code>@{@&quot;view1&quot;:view1,@&quot;view2&quot;:view2}
-</code></pre><p>当然你可以自定义字典，将视图进行关联。<br>代码中其他符号的含义</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">变量</th>
-<th style="text-align:left">释义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">V:，H:</td>
-<td style="text-align:left">方向</td>
-</tr>
-<tr>
-<td style="text-align:left">metric</td>
-<td style="text-align:left">度量</td>
-</tr>
-<tr>
-<td style="text-align:left">== &lt;= &gt;=</td>
-<td style="text-align:left">关系</td>
-</tr>
-<tr>
-<td style="text-align:left">@</td>
-<td style="text-align:left">优先级</td>
-</tr>
-<tr>
-<td style="text-align:left">｜</td>
-<td style="text-align:left">父视图</td>
-</tr>
-<tr>
-<td style="text-align:left">options</td>
-<td style="text-align:left">对齐方式</td>
-</tr>
-<tr>
-<td style="text-align:left">-</td>
-<td style="text-align:left">标准间隔：视图到视图为8点；视图到父视图为20点</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>其中8点和20点的值来源于苹果的<code>Aqu</code>a用户界面标准，作为基本的视觉主题应用于<code>OS X</code>设计</li>
-<li>如果间隔为负数的时候，需要使用<code>()</code></li>
-<li>可视化格式可以加入多个视图</li>
-<li>视图的<code>()</code>中指定视图的尺寸，根据排列方向对应固定的宽度或高度</li>
-<li>使用可视化格式创建的所有约束都有一个默认的优先级，即1000（必需的）</li>
-</ul>
-<h5 id="NSLog-和可视化格式"><a href="#NSLog-和可视化格式" class="headerlink" title="NSLog 和可视化格式"></a>NSLog 和可视化格式</h5><p>在<code>NSLayoutConstrain</code>t日志中任何可能的地方<code>Xcode</code>都添加了可视化格式表示，即使完全适用<code>IB</code>或者通过单独的约束实例来创建约束，通过学习这种布局语言，你也会受益匪浅。<br>实践是检验真理的唯一标准，多去尝试吧。</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Auto-Layout/">Auto Layout</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/post/layout 笔记4/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/layout 笔记4/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -646,11 +594,11 @@ var c = b - 4;
 			
 		
 			
-				<li><a href="/tags/Notes/" title="Notes">Notes<sup>2</sup></a></li>
+				<li><a href="/tags/随想/" title="随想">随想<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/随想/" title="随想">随想<sup>1</sup></a></li>
+				<li><a href="/tags/Notes/" title="Notes">Notes<sup>2</sup></a></li>
 			
 		
 			
