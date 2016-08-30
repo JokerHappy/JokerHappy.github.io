@@ -4,26 +4,56 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>iOS可变参数 | 知行合一</title>
+    <title>iOS Auto Layout Demystified 学习笔记（六） | 知行合一</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="xxx">
     
 
     
-    <meta name="description" content="iOS可变参数官方的例子，留记
-12345678910111213141516171819202122232425#import &amp;lt;Cocoa/Cocoa.h&amp;gt;@interface NSMutableArray (variadicMethodExample)- (void) appendObjects:(id) firstObject, ...; // This method take">
+    <meta name="description" content="Auto Layout 的基本原则
+Auto Layout是声明性的
+Auto Layout最小化了计算
+Auto Layout设计是非直接的，但是它很灵活
+Auto Layout是由几何驱动的
+Auto Layout聚焦于关系
+Auto Layout允许带优先级的规则
+Auto Layout表现自然内容
+Auto Layout寻找最佳方案
+Auto Layout是分布式的
+
+使用布局库Mason">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS可变参数">
-<meta property="og:url" content="http://jokerhappy.github.io/post/iOS可变参数/index.html">
+<meta property="og:title" content="iOS Auto Layout Demystified 学习笔记（六）">
+<meta property="og:url" content="http://jokerhappy.github.io/post/layout 笔记6/index.html">
 <meta property="og:site_name" content="知行合一">
-<meta property="og:description" content="iOS可变参数官方的例子，留记
-12345678910111213141516171819202122232425#import &amp;lt;Cocoa/Cocoa.h&amp;gt;@interface NSMutableArray (variadicMethodExample)- (void) appendObjects:(id) firstObject, ...; // This method take">
-<meta property="og:updated_time" content="2016-08-11T14:17:52.637Z">
+<meta property="og:description" content="Auto Layout 的基本原则
+Auto Layout是声明性的
+Auto Layout最小化了计算
+Auto Layout设计是非直接的，但是它很灵活
+Auto Layout是由几何驱动的
+Auto Layout聚焦于关系
+Auto Layout允许带优先级的规则
+Auto Layout表现自然内容
+Auto Layout寻找最佳方案
+Auto Layout是分布式的
+
+使用布局库Mason">
+<meta property="og:updated_time" content="2016-08-30T10:33:38.846Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS可变参数">
-<meta name="twitter:description" content="iOS可变参数官方的例子，留记
-12345678910111213141516171819202122232425#import &amp;lt;Cocoa/Cocoa.h&amp;gt;@interface NSMutableArray (variadicMethodExample)- (void) appendObjects:(id) firstObject, ...; // This method take">
+<meta name="twitter:title" content="iOS Auto Layout Demystified 学习笔记（六）">
+<meta name="twitter:description" content="Auto Layout 的基本原则
+Auto Layout是声明性的
+Auto Layout最小化了计算
+Auto Layout设计是非直接的，但是它很灵活
+Auto Layout是由几何驱动的
+Auto Layout聚焦于关系
+Auto Layout允许带优先级的规则
+Auto Layout表现自然内容
+Auto Layout寻找最佳方案
+Auto Layout是分布式的
+
+使用布局库Mason">
 
     
     <link rel="alternative" href="/atom.xml" title="知行合一" type="application/atom+xml">
@@ -78,14 +108,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/post/iOS可变参数/" title="iOS可变参数" itemprop="url">iOS可变参数</a>
+      <a href="/post/layout 笔记6/" title="iOS Auto Layout Demystified 学习笔记（六）" itemprop="url">iOS Auto Layout Demystified 学习笔记（六）</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
 		
   <p class="article-time">
-    <time datetime="2016-04-05T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-04-06</time>
+    <time datetime="2016-03-09T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-03-10</time>
     
   </p>
 </header>
@@ -94,21 +124,33 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#iOS可变参数"><span class="toc-number">1.</span> <span class="toc-text">iOS可变参数</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#Auto-Layout-的基本原则"><span class="toc-number">1.</span> <span class="toc-text">Auto Layout 的基本原则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#使用布局库"><span class="toc-number">2.</span> <span class="toc-text">使用布局库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#界面设计"><span class="toc-number">3.</span> <span class="toc-text">界面设计</span></a></li></ol>
 		
 		</div>
 		
-		<h5 id="iOS可变参数"><a href="#iOS可变参数" class="headerlink" title="iOS可变参数"></a>iOS可变参数</h5><p><a href="https://developer.apple.com/library/mac/qa/qa1405/_index.html" target="_blank" rel="external">官方的例子</a>，留记</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Cocoa/Cocoa.h&gt;</span><br><span class="line"></span><br><span class="line">@interface NSMutableArray (variadicMethodExample)</span><br><span class="line"></span><br><span class="line">- (void) appendObjects:(id) firstObject, ...; // This method takes a nil-terminated list of objects.</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation NSMutableArray (variadicMethodExample)</span><br><span class="line"></span><br><span class="line">- (void) appendObjects:(id) firstObject, ...</span><br><span class="line">&#123;</span><br><span class="line">	id eachObject;</span><br><span class="line">	va_list argumentList;</span><br><span class="line">	if (firstObject) // The first argument isn't part of the varargs list,</span><br><span class="line">  &#123;                                   // so we'll handle it separately.</span><br><span class="line">  	[self addObject: firstObject];</span><br><span class="line">  	va_start(argumentList, firstObject); // Start scanning for arguments after firstObject.</span><br><span class="line">  	while (eachObject = va_arg(argumentList, id)) // As many times as we can get an argument of type "id"</span><br><span class="line">	[self addObject: eachObject]; // that isn't nil, add it to self's contents.</span><br><span class="line">  	va_end(argumentList);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
-<p><code>va_list</code>：用来保存宏 <code>va_start</code> 、<code>va_arg</code> 和 <code>va_end</code> 所需信息的一种类型。为了访问变长参数列表中的参数，必须声明 <code>va_list</code> 类型的一个对象。</p>
-<p><code>va_start</code>：访问变长参数列表中的参数之前使用的宏，它初始化用<code>va_list</code>声明的对象，初始化结果供宏<code>va_arg</code>和<code>va_end</code>使用；</p>
-<p><code>va_arg</code>：展开成一个表达式的宏，该表达式具有变长参数列表中下一个参数的值和类型。每次调用 <code>va_arg</code> 都会修改，用 <code>va_list</code> 声明的对象从而使该对象指向参数列表中的下一个参数。</p>
-<p><code>va_end</code>：该宏使程序能够从变长参数列表用宏 <code>va_start</code> 引用的函数中正常返回。</p>
-<blockquote>
-<p>参数结尾必须加上<strong>nil</strong>，表示参数结束，可以再参数后加上宏 <code>NS_REQUIRES_NIL_TERMINATION</code>，用于编译时非<strong>nil</strong>结尾的检查。</p>
-</blockquote>
-<pre><code>- (void) appendObjects:(id) firstObject, ...NS_REQUIRES_NIL_TERMINATION;
-</code></pre>  
+		<h5 id="Auto-Layout-的基本原则"><a href="#Auto-Layout-的基本原则" class="headerlink" title="Auto Layout 的基本原则"></a><code>Auto Layout</code> 的基本原则</h5><ul>
+<li><code>Auto Layout</code>是声明性的</li>
+<li><code>Auto Layout</code>最小化了计算</li>
+<li><code>Auto Layout</code>设计是非直接的，但是它很灵活</li>
+<li><code>Auto Layout</code>是由几何驱动的</li>
+<li><code>Auto Layout</code>聚焦于关系</li>
+<li><code>Auto Layout</code>允许带优先级的规则</li>
+<li><code>Auto Layout</code>表现自然内容</li>
+<li><code>Auto Layout</code>寻找最佳方案</li>
+<li><code>Auto Layout</code>是分布式的</li>
+</ul>
+<h5 id="使用布局库"><a href="#使用布局库" class="headerlink" title="使用布局库"></a>使用布局库</h5><p><a href="http://adad184.com/2014/09/28/use-masonry-to-quick-solve-autolayout/" target="_blank" rel="external">Masonry介绍与使用实践(快速上手Autolayout) </a></p>
+<h5 id="界面设计"><a href="#界面设计" class="headerlink" title="界面设计"></a>界面设计</h5><ul>
+<li>评估几何</li>
+<li>列出边缘条件</li>
+<li>探测冲突</li>
+<li>枚举回退</li>
+<li>寻找自然分组（模块化）</li>
+<li>探测分组布局</li>
+<li>为规则设定优先级</li>
+<li>考虑内容</li>
+</ul>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -121,7 +163,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Notes/">Notes</a>
+  <span></span> <a href="/tags/Auto-Layout/">Auto Layout</a>
   </div>
 
 </div>
@@ -130,7 +172,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://jokerhappy.github.io/post/iOS可变参数/" data-title="iOS可变参数 | 知行合一" data-tsina="null" class="share clearfix">
+	  <div data-url="http://jokerhappy.github.io/post/layout 笔记6/" data-title="iOS Auto Layout Demystified 学习笔记（六） | 知行合一" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -144,18 +186,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/post/Objective-C和JavaScript 数据交互/" title="Objective-C和JavaScript 数据交互">
+ <a href="/post/链式编程和函数式编程学习笔记/" title="链式编程和函数式编程学习笔记">
   <strong>上一篇：</strong><br/>
   <span>
-  Objective-C和JavaScript 数据交互</span>
+  链式编程和函数式编程学习笔记</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/post/链式编程和函数式编程学习笔记/"  title="链式编程和函数式编程学习笔记">
+<a href="/post/layout 笔记5/"  title="iOS Auto Layout Demystified 学习笔记（五）">
  <strong>下一篇：</strong><br/> 
- <span>链式编程和函数式编程学习笔记
+ <span>iOS Auto Layout Demystified 学习笔记（五）
 </span>
 </a>
 </div>
@@ -164,7 +206,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="post/iOS可变参数/" data-title="iOS可变参数" data-url="http://jokerhappy.github.io/post/iOS可变参数/"></div>
+	<div class="ds-thread" data-thread-key="post/layout 笔记6/" data-title="iOS Auto Layout Demystified 学习笔记（六）" data-url="http://jokerhappy.github.io/post/layout 笔记6/"></div>
 </section>
 
 
@@ -174,7 +216,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#iOS可变参数"><span class="toc-number">1.</span> <span class="toc-text">iOS可变参数</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#Auto-Layout-的基本原则"><span class="toc-number">1.</span> <span class="toc-text">Auto Layout 的基本原则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#使用布局库"><span class="toc-number">2.</span> <span class="toc-text">使用布局库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#界面设计"><span class="toc-number">3.</span> <span class="toc-text">界面设计</span></a></li></ol>
  
   </div>
 
