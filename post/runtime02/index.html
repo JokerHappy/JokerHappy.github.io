@@ -1,0 +1,542 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>iOS Runtime 关联对象 | 知行合一</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="xxx">
+    
+
+    
+    <meta name="description" content="概述Associated Objects(关联对象)与它相关在&amp;lt;objc/rumtime.h&amp;gt;中有3个C函数，他们可以让对象在运行时关联任何值：
+(1)用给定的key和policy来为指定对象(object)设置关联对象值(value)
+1void objc_setAssociatedObject(id object, const void *key, id value, objc_A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS Runtime 关联对象">
+<meta property="og:url" content="http://jokerhappy.github.io/post/runtime02/index.html">
+<meta property="og:site_name" content="知行合一">
+<meta property="og:description" content="概述Associated Objects(关联对象)与它相关在&amp;lt;objc/rumtime.h&amp;gt;中有3个C函数，他们可以让对象在运行时关联任何值：
+(1)用给定的key和policy来为指定对象(object)设置关联对象值(value)
+1void objc_setAssociatedObject(id object, const void *key, id value, objc_A">
+<meta property="og:updated_time" content="2016-09-21T09:06:30.862Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS Runtime 关联对象">
+<meta name="twitter:description" content="概述Associated Objects(关联对象)与它相关在&amp;lt;objc/rumtime.h&amp;gt;中有3个C函数，他们可以让对象在运行时关联任何值：
+(1)用给定的key和policy来为指定对象(object)设置关联对象值(value)
+1void objc_setAssociatedObject(id object, const void *key, id value, objc_A">
+
+    
+    <link rel="alternative" href="/atom.xml" title="知行合一" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="知行合一">知行合一</a></h1>
+				<h2 class="blog-motto">无谓的协助者</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">简介</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/post/runtime02/" title="iOS Runtime 关联对象" itemprop="url">iOS Runtime 关联对象</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-23T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-03-24</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#关联对象的特性"><span class="toc-number">2.</span> <span class="toc-text">关联对象的特性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#示例代码"><span class="toc-number">3.</span> <span class="toc-text">示例代码</span></a></li></ol>
+		
+		</div>
+		
+		<h5 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h5><p><a href="http://nshipster.cn/associated-objects/" target="_blank" rel="external">Associated Objects</a>(关联对象)与它相关在<code>&lt;objc/rumtime.h&gt;</code>中有3个C函数，他们可以让对象在运行时关联任何值：</p>
+<p>(1)用给定的<code>key</code>和<code>policy</code>来为指定对象<code>(object)</code>设置关联对象值<code>(value)</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">objc_setAssociatedObject</span><span class="params">(id object, <span class="keyword">const</span> <span class="keyword">void</span> *key, id value, objc_AssociationPolicy policy)</span></span></span><br></pre></td></tr></table></figure>
+<p>(2)根据给定的<code>key</code>从指定对象<code>(object)</code>中获取相对应的关联对象值</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">id <span class="title">objc_getAssociatedObject</span><span class="params">(id object, <span class="keyword">const</span> <span class="keyword">void</span> *key)</span></span></span><br></pre></td></tr></table></figure>
+<p>(3)移除指定对象的全部关联对象</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">objc_removeAssociatedObjects</span><span class="params">(id object)</span></span></span><br></pre></td></tr></table></figure>
+<h5 id="关联对象的特性"><a href="#关联对象的特性" class="headerlink" title="关联对象的特性"></a>关联对象的特性</h5><p>在<code>#import &lt;objc/runtime.h&gt;</code>中关于<code>objc_AssociationPolicy</code>的定义如下：</p>
+<pre><code>enum {
+    OBJC_ASSOCIATION_ASSIGN = 0,
+    OBJC_ASSOCIATION_RETAIN_NONATOMIC = 1,
+    OBJC_ASSOCIATION_COPY_NONATOMIC = 3,
+    OBJC_ASSOCIATION_RETAIN = 01401,
+    OBJC_ASSOCIATION_COPY = 01403
+};
+typedef uintptr_t objc_AssociationPolicy;
+</code></pre><p><code>objc_AssociationPolicy</code>是一个枚举类型的数据结构定义了<code>OBJC_ASSOCIATION_ASSIGN</code>、<code>OBJC_ASSOCIATION_RETAIN_NONATOMIC</code>、<code>OBJC_ASSOCIATION_COPY_NONATOMIC</code>、<code>OBJC_ASSOCIATION_RETAIN</code>和<code>OBJC_ASSOCIATION_COPY</code>这样五个关联对象特性，每个特性的描述如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">OBJC_ASSOCIATION_ASSIGN,给关联对象指定弱引用,相当于@property(assign)或@property(unsafe_unretained)</span><br><span class="line"></span><br><span class="line">OBJC_ASSOCIATION_RETAIN_NONATOMIC,给关联对象指定非原子的强引用,相当于@property(nonatomic,strong)或@property(nonatomic,retain)</span><br><span class="line"></span><br><span class="line">OBJC_ASSOCIATION_COPY_NONATOMIC,给关联对象指定非原子的copy特性,相当于@property(nonatomic,copy)</span><br><span class="line"></span><br><span class="line">OBJC_ASSOCIATION_RETAIN,给关联对象指定原子强引用,相当于@property(atomic,strong)或@property(atomic,retain)</span><br><span class="line"></span><br><span class="line">OBJC_ASSOCIATION_COPY,给关联对象指定原子copy特性,相当于@property(atomic,copy)</span><br></pre></td></tr></table></figure>
+<h5 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">- </span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">     </span><br><span class="line">    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];</span><br><span class="line">    [btn setTitle:@<span class="string">"点我"</span> forState:UIControlStateNormal];</span><br><span class="line">    [self.view addSubview:btn];</span><br><span class="line">    [btn setFrame:CGRectMake(<span class="number">50</span>, <span class="number">50</span>, <span class="number">50</span>, <span class="number">50</span>)];</span><br><span class="line">    btn.backgroundColor = [UIColor redColor];</span><br><span class="line">     </span><br><span class="line">    [btn addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];</span><br><span class="line">     </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)click:(UIButton *)sender</span><br><span class="line">&#123;</span><br><span class="line">    NSString *message = @<span class="string">"你是谁"</span>;</span><br><span class="line">     </span><br><span class="line">    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@<span class="string">"提示"</span> message:@<span class="string">"我要传值·"</span> delegate:self cancelButtonTitle:@<span class="string">"确定"</span> otherButtonTitles:nil];</span><br><span class="line">    alert.delegate = self;</span><br><span class="line">    [alert show];</span><br><span class="line">     </span><br><span class="line">    objc_setAssociatedObject(alert, @<span class="string">"msgstr"</span>, message,OBJC_ASSOCIATION_ASSIGN);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//把alert和message字符串关联起来，作为alertview的一部分，关键词就是msgstr，之后可以使用objc_getAssociatedObject从alertview中获取到所关联的对象，便可以访问message或者btn了</span></span><br><span class="line">     </span><br><span class="line">	<span class="comment">//关联传值</span></span><br><span class="line">    objc_setAssociatedObject(alert, @<span class="string">"btn property"</span>,sender,OBJC_ASSOCIATION_ASSIGN);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//通过 objc_getAssociatedObject获取关联对象</span></span><br><span class="line">    NSString  *messageString =objc_getAssociatedObject(alertView, @<span class="string">"msgstr"</span>);</span><br><span class="line">       </span><br><span class="line">    UIButton *sender = objc_getAssociatedObject(alertView, @<span class="string">"btn property"</span>);</span><br><span class="line">    NSLog(@<span class="string">"%ld"</span>,buttonIndex);</span><br><span class="line">    NSLog(@<span class="string">"%@"</span>,messageString);</span><br><span class="line">    NSLog(@<span class="string">"%@"</span>,[[sender titleLabel] text]);</span><br><span class="line">         </span><br><span class="line">    <span class="comment">//使用函数objc_removeAssociatedObjects可以断开所有关联。通常情况下不建议使用这个函数，因为他会断开所有关联。只有在需要把对象恢复到“原始状态”的时候才会使用这个函数。</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">终端打印：</span><br><span class="line"><span class="number">2015</span><span class="number">-07</span><span class="number">-22</span> <span class="number">16</span>:<span class="number">18</span>:<span class="number">35.294</span> test[<span class="number">5174</span>:<span class="number">144121</span>] <span class="number">0</span></span><br><span class="line"><span class="number">2015</span><span class="number">-07</span><span class="number">-22</span> <span class="number">16</span>:<span class="number">18</span>:<span class="number">35.295</span> test[<span class="number">5174</span>:<span class="number">144121</span>] 你是谁</span><br><span class="line"><span class="number">2015</span><span class="number">-07</span><span class="number">-22</span> <span class="number">16</span>:<span class="number">18</span>:<span class="number">35.295</span> test[<span class="number">5174</span>:<span class="number">144121</span>] 点我</span><br></pre></td></tr></table></figure>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Runtime/">Runtime</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://jokerhappy.github.io/post/runtime02/" data-title="iOS Runtime 关联对象 | 知行合一" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/post/链式编程和函数式编程学习笔记/" title="链式编程和函数式编程学习笔记">
+  <strong>上一篇：</strong><br/>
+  <span>
+  链式编程和函数式编程学习笔记</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/post/runtime01/"  title="iOS Runtime 消息">
+ <strong>下一篇：</strong><br/> 
+ <span>iOS Runtime 消息
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="post/runtime02/" data-title="iOS Runtime 关联对象" data-url="http://jokerhappy.github.io/post/runtime02/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#关联对象的特性"><span class="toc-number">2.</span> <span class="toc-text">关联对象的特性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#示例代码"><span class="toc-number">3.</span> <span class="toc-text">示例代码</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Skill/" title="Skill">Skill<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>17</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Auto-Layout/" title="Auto Layout">Auto Layout<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Runtime/" title="Runtime">Runtime<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/随想/" title="随想">随想<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Notes/" title="Notes">Notes<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Method/" title="Method">Method<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Knowledge/" title="Knowledge">Knowledge<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/RAC/" title="RAC">RAC<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaScriptCore/" title="JavaScriptCore">JavaScriptCore<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/RSA/" title="RSA">RSA<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://hexo.io/" target="_blank" title="Hexo">Hexo</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/JokerHappy" target="_blank" title="GitHub">GitHub</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Well, so long <br/>
+			Unity of knowing and doing</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/1395682167" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/JokerHappy" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="xxx">xxx</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"JokerHappy"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-76095227-1', 'auto');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
