@@ -4,25 +4,29 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>iOS中AutoLayer自动布局流程及相关方法 | 知行合一</title>
+    <title>KeyChain | 知行合一</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="xxx">
     
 
     
-    <meta name="description" content="Auto Layout  重新构思了开发者创建界面的方式。它创建了一个灵活、强大的系统，来描述试图和他们的内容是如何相互关联的，他们和他们占据的窗口和父试图是如何关联的。">
+    <meta name="description" content="通常情况下，我们用NSUserDefaults存储数据信息，但是对于一些私密信息，比如密码、证书等等，就需要使用更为安全的keychain了。keychain里保存的信息不会因App被删除而丢失，在用户重新安装App后依然有效，数据还在。
+iOS KeyChain 基础
+KeyChain使用与共享数据">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS中AutoLayer自动布局流程及相关方法">
-<meta property="og:url" content="http://jokerhappy.github.io/post/AutoLayout zero/index.html">
+<meta property="og:title" content="KeyChain">
+<meta property="og:url" content="http://jokerhappy.github.io/post/KeyChain/index.html">
 <meta property="og:site_name" content="知行合一">
-<meta property="og:description" content="Auto Layout  重新构思了开发者创建界面的方式。它创建了一个灵活、强大的系统，来描述试图和他们的内容是如何相互关联的，他们和他们占据的窗口和父试图是如何关联的。">
-<meta property="og:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/4.png">
-<meta property="og:updated_time" content="2016-05-03T13:24:16.400Z">
+<meta property="og:description" content="通常情况下，我们用NSUserDefaults存储数据信息，但是对于一些私密信息，比如密码、证书等等，就需要使用更为安全的keychain了。keychain里保存的信息不会因App被删除而丢失，在用户重新安装App后依然有效，数据还在。
+iOS KeyChain 基础
+KeyChain使用与共享数据">
+<meta property="og:updated_time" content="2016-09-23T02:56:28.008Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS中AutoLayer自动布局流程及相关方法">
-<meta name="twitter:description" content="Auto Layout  重新构思了开发者创建界面的方式。它创建了一个灵活、强大的系统，来描述试图和他们的内容是如何相互关联的，他们和他们占据的窗口和父试图是如何关联的。">
-<meta name="twitter:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/4.png">
+<meta name="twitter:title" content="KeyChain">
+<meta name="twitter:description" content="通常情况下，我们用NSUserDefaults存储数据信息，但是对于一些私密信息，比如密码、证书等等，就需要使用更为安全的keychain了。keychain里保存的信息不会因App被删除而丢失，在用户重新安装App后依然有效，数据还在。
+iOS KeyChain 基础
+KeyChain使用与共享数据">
 
     
     <link rel="alternative" href="/atom.xml" title="知行合一" type="application/atom+xml">
@@ -77,14 +81,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/post/AutoLayout zero/" title="iOS中AutoLayer自动布局流程及相关方法" itemprop="url">iOS中AutoLayer自动布局流程及相关方法</a>
+      <a href="/post/KeyChain/" title="KeyChain" itemprop="url">KeyChain</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
 		
   <p class="article-time">
-    <time datetime="2016-02-17T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-02-18</time>
+    <time datetime="2016-04-11T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-04-12</time>
     
   </p>
 </header>
@@ -93,43 +97,13 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Auto-Layout-Process-自动布局过程"><span class="toc-number">1.</span> <span class="toc-text">Auto Layout Process 自动布局过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#iOS-提供的Layout-的方法"><span class="toc-number">2.</span> <span class="toc-text">iOS 提供的Layout 的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#layoutSubviews"><span class="toc-number">2.1.</span> <span class="toc-text">layoutSubviews</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#setNeedsLayout"><span class="toc-number">2.2.</span> <span class="toc-text">setNeedsLayout</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#layoutIfNeeded"><span class="toc-number">2.3.</span> <span class="toc-text">layoutIfNeeded</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基于AutoLayer约束constraints的方法："><span class="toc-number">3.</span> <span class="toc-text">基于AutoLayer约束constraints的方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#setNeedsUpdateConstraints"><span class="toc-number">3.1.</span> <span class="toc-text">setNeedsUpdateConstraints</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#needsUpdateConstraints"><span class="toc-number">3.2.</span> <span class="toc-text">needsUpdateConstraints</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#updateConstraintsIfNeeded"><span class="toc-number">3.3.</span> <span class="toc-text">updateConstraintsIfNeeded</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#updateConstraints"><span class="toc-number">3.4.</span> <span class="toc-text">updateConstraints</span></a></li></ol></li></ol>
+			
 		
 		</div>
 		
-		<p><code>Auto Layout</code>  重新构思了开发者创建界面的方式。它创建了一个灵活、强大的系统，来描述试图和他们的内容是如何相互关联的，他们和他们占据的窗口和父试图是如何关联的。</p>
-<a id="more"></a>
-<h4 id="Auto-Layout-Process-自动布局过程"><a href="#Auto-Layout-Process-自动布局过程" class="headerlink" title="Auto Layout Process 自动布局过程"></a>Auto Layout Process 自动布局过程</h4><p><code>Auto Layout</code>在<code>view</code>显示之前，主要有三个步骤<code>updating constraints -&gt; layout -&gt; display</code>。每一个步骤都依赖于上一个。<code>display</code>依赖<code>layout</code>，而<code>layout</code>依赖<code>updating constraints</code>。 </p>
-<ul>
-<li><p><code>updating constraints</code>，被称为测量阶段，其从下向上(from subview to super view),为下一步<code>layout</code>准备信息。可以通过调用方法<code>setNeedUpdateConstraints</code>去触发此步。<code>constraints</code>的改变也会自动的触发此步。但是，当你自定义<code>view</code>的时候，如果一些改变可能会影响到布局的时候，通常需要自己去通知<code>Auto Layout</code>-&gt;<code>updateConstraintsIfNeeded</code>。<br>自定义<code>view</code>的话，通常可以重写<code>updateConstraints</code>方法，在其中可以添加<code>view</code>需要的局部的<code>contraints</code>。</p>
-</li>
-<li><p><code>layout</code>，其从上向下(from super view to subview)，此步主要应用上一步的信息去设置<code>view</code>的<code>center</code>和<code>bounds</code>。可以通过调用<code>setNeedsLayout</code>去触发此步骤，此方法不会立即应用<code>layout</code>。如果想要系统立即的更新<code>layout</code>，可以调用<code>layoutIfNeeded</code>。另外，自定义<code>view</code>可以重写方法<code>layoutSubViews</code>来在<code>layout</code>的工程中得到更多的定制化效果。</p>
-</li>
-<li><p><code>display</code>，此步时把<code>view</code>渲染到屏幕上，它与你是否使用<code>Auto layout</code>无关，其操作是从上向下(from super view to subview)，通过调用<code>setNeedsDisplay</code>触发，因为每一步都依赖前一步，因此一个<code>display</code>可能会触发<code>layout</code>，当有任何<code>layout</code>没有被处理的时候，同理，<code>layout</code>可能会触发<code>updating constraints</code>，当<code>constraint system</code>更新改变的时候。</p>
-</li>
-</ul>
-<p><img src="http://7xt3bw.com1.z0.glb.clouddn.com/4.png" alt=""></p>
-<h4 id="iOS-提供的Layout-的方法"><a href="#iOS-提供的Layout-的方法" class="headerlink" title="iOS 提供的Layout 的方法"></a>iOS 提供的Layout 的方法</h4><h5 id="layoutSubviews"><a href="#layoutSubviews" class="headerlink" title="layoutSubviews"></a>layoutSubviews</h5><ul>
-<li>在<code>iOS5.1</code>和之前的版本，此方法的缺省实现不会做任何事情(实现为空)，<code>iOS5.1</code>之后(iOS6开始)的版本，此方法的缺省实现是使用你设置在此view上面的constraints(Autolayout)去决定subviews的<code>position</code>和<code>size</code>。 UIView的子类如果需要对其<code>subviews</code>进行更精确的布局，则可以重写此方法。只有在autoresizing和constraint-based behaviors of subviews不能提供我们想要的布局结果的时候，我们才应该重写此方法。可以在此方法中直接设置subviews的<code>frame</code>。 我们不应该直接调用此方法，而应当用下面两个方法。</li>
-</ul>
-<h5 id="setNeedsLayout"><a href="#setNeedsLayout" class="headerlink" title="setNeedsLayout"></a>setNeedsLayout</h5><ul>
-<li>此方法会将view当前的layout设置为无效的，并在下一个<code>upadte cycle</code>里去触发<code>layout</code>更新。</li>
-</ul>
-<h5 id="layoutIfNeeded"><a href="#layoutIfNeeded" class="headerlink" title="layoutIfNeeded"></a>layoutIfNeeded</h5><ul>
-<li>使用此方法<code>强制立即</code>进行layout,从当前view开始，此方法会遍历整个view层次(包括superviews)请求layout。因此，调用此方法会强制整个view层次布局。</li>
-</ul>
-<h4 id="基于AutoLayer约束constraints的方法："><a href="#基于AutoLayer约束constraints的方法：" class="headerlink" title="基于AutoLayer约束constraints的方法："></a>基于AutoLayer约束constraints的方法：</h4><h5 id="setNeedsUpdateConstraints"><a href="#setNeedsUpdateConstraints" class="headerlink" title="setNeedsUpdateConstraints"></a>setNeedsUpdateConstraints</h5><ul>
-<li>当一个自定义view的某个属性发生改变，并且可能影响到constraint时，需要调用此方法去标记constraints需要在未来的某个点更新，系统然后调用<code>updateConstraints</code>.</li>
-</ul>
-<h5 id="needsUpdateConstraints"><a href="#needsUpdateConstraints" class="headerlink" title="needsUpdateConstraints"></a>needsUpdateConstraints</h5><ul>
-<li><code>constraint-based layout system</code>使用此返回值去决定是否需要调用<code>updateConstraint</code>s作为正常布局过程的一部分。</li>
-</ul>
-<h5 id="updateConstraintsIfNeeded"><a href="#updateConstraintsIfNeeded" class="headerlink" title="updateConstraintsIfNeeded"></a>updateConstraintsIfNeeded</h5><ul>
-<li>立即触发约束更新，自动更新布局。</li>
-</ul>
-<h5 id="updateConstraints"><a href="#updateConstraints" class="headerlink" title="updateConstraints"></a>updateConstraints</h5><ul>
-<li>自定义view应该重写此方法在其中建立constraints. 注意：要在实现在最后调用<code>[super updateConstraints]</code></li>
-</ul>
+		<p>通常情况下，我们用<code>NSUserDefaults</code>存储数据信息，但是对于一些私密信息，比如密码、证书等等，就需要使用更为安全的<code>keychain</code>了。<code>keychain</code>里保存的信息不会因<code>App</code>被删除而丢失，在用户重新安装<code>App</code>后依然有效，数据还在。</p>
+<p><a href="https://cnbin.github.io/blog/2015/08/18/ios-keychain-ji-chu/" target="_blank" rel="external">iOS KeyChain 基础</a></p>
+<p><a href="http://blog.csdn.net/ibcker/article/details/24839143" target="_blank" rel="external">KeyChain使用与共享数据</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -143,7 +117,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Auto-Layout/">Auto Layout</a>
+  <span></span> <a href="/tags/Notes/">Notes</a>
   </div>
 
 </div>
@@ -152,7 +126,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://jokerhappy.github.io/post/AutoLayout zero/" data-title="iOS中AutoLayer自动布局流程及相关方法 | 知行合一" data-tsina="null" class="share clearfix">
+	  <div data-url="http://jokerhappy.github.io/post/KeyChain/" data-title="KeyChain | 知行合一" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -166,18 +140,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/post/layout 笔记1/" title="iOS Auto Layout Demystified 学习笔记（一）">
+ <a href="/post/指纹识别/" title="iOS 指纹识别">
   <strong>上一篇：</strong><br/>
   <span>
-  iOS Auto Layout Demystified 学习笔记（一）</span>
+  iOS 指纹识别</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/post/webview/"  title="UIWebView 使用浅析">
+<a href="/post/iOS 9 Universal Links/"  title="iOS 9 Universal Links">
  <strong>下一篇：</strong><br/> 
- <span>UIWebView 使用浅析
+ <span>iOS 9 Universal Links
 </span>
 </a>
 </div>
@@ -186,7 +160,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="post/AutoLayout zero/" data-title="iOS中AutoLayer自动布局流程及相关方法" data-url="http://jokerhappy.github.io/post/AutoLayout zero/"></div>
+	<div class="ds-thread" data-thread-key="post/KeyChain/" data-title="KeyChain" data-url="http://jokerhappy.github.io/post/KeyChain/"></div>
 </section>
 
 
@@ -196,7 +170,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Auto-Layout-Process-自动布局过程"><span class="toc-number">1.</span> <span class="toc-text">Auto Layout Process 自动布局过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#iOS-提供的Layout-的方法"><span class="toc-number">2.</span> <span class="toc-text">iOS 提供的Layout 的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#layoutSubviews"><span class="toc-number">2.1.</span> <span class="toc-text">layoutSubviews</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#setNeedsLayout"><span class="toc-number">2.2.</span> <span class="toc-text">setNeedsLayout</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#layoutIfNeeded"><span class="toc-number">2.3.</span> <span class="toc-text">layoutIfNeeded</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基于AutoLayer约束constraints的方法："><span class="toc-number">3.</span> <span class="toc-text">基于AutoLayer约束constraints的方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#setNeedsUpdateConstraints"><span class="toc-number">3.1.</span> <span class="toc-text">setNeedsUpdateConstraints</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#needsUpdateConstraints"><span class="toc-number">3.2.</span> <span class="toc-text">needsUpdateConstraints</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#updateConstraintsIfNeeded"><span class="toc-number">3.3.</span> <span class="toc-text">updateConstraintsIfNeeded</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#updateConstraints"><span class="toc-number">3.4.</span> <span class="toc-text">updateConstraints</span></a></li></ol></li></ol>
+ 
  
   </div>
 

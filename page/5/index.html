@@ -14,7 +14,7 @@
     <meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="知行合一">
-<meta property="og:url" content="http://jokerhappy.github.io/page/4/index.html">
+<meta property="og:url" content="http://jokerhappy.github.io/page/5/index.html">
 <meta property="og:site_name" content="知行合一">
 <meta property="og:description">
 <meta name="twitter:card" content="summary">
@@ -76,25 +76,71 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/post/layout 笔记2/" title="iOS Auto Layout Demystified 学习笔记（二）" itemprop="url">iOS Auto Layout Demystified 学习笔记（二）</a>
+      <a href="/post/hexo/" title="利用 Hexo 和 Github 创建个人博客" itemprop="url">利用 Hexo 和 Github 创建个人博客</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
 		
   <p class="article-time">
-    <time datetime="2016-02-27T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-02-28</time>
+    <time datetime="2016-02-13T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-02-14</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <p><code>Auto Layout</code>是一种约束满足系统。所谓<strong>约束</strong>其本质是限制的意思。你创建的每个规则都给出了一个要求，这个要求规定了界面的一部分和另一部分的关系。这些规则可以用数字标识的优先级进行排序，<code>Auto Layout</code>根据你定制的规则和优先级序号确定界面的<strong>可视化</strong>呈现方式。<br><br/><br>
+        <p><a href="https://hexo.io/" target="_blank" rel="external">Hexo</a> 是一款基于 <code>Node.js</code> 的静态博客框架。<code>Hexo</code> 生成的静态页面可以部署在 <code>Github</code> 或 <code>Coding</code> 上，并且能够免费绑定自己的域名，可以用来很方便地搭建个人博客。</p>
+<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><ol>
+<li>注册 <a href="https://github.com/" target="_blank" rel="external">github</a>。</li>
+<li>在主页右下角创建New repository，name必须和用户名一致,如username.github.io。</li>
+<li>首次创建耐心等待10分钟左右审核，之后即可访问静态主页如<a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a></li>
+</ol>
+<p>个人博客初步搭建完成，接下来利用 <code>Hexo</code> 修改博客框架</p>
+<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><h3 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h3><p>选择对应的系统安装<a href="http://nodejs.cn/download/" target="_blank" rel="external">Node.js</a></p>
+<h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><p>最简单的方法 安装  <a href="https://desktop.github.com/" target="_blank" rel="external">GitHub Desktop</a> </p>
+<p>对 <code>Git</code> 还不太熟悉的小伙伴可以参考下 <a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">Git 教程（廖雪峰的官方网站）</a></p>
+<p>里面有详细的<code>Git</code>安装方法及使用方法</p>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>首先将 <code>npm</code> 的源替换成淘宝的源</p>
+<pre><code>npm config set registry http://registry.npm.taobao.org/
+</code></pre><p>在 <code>Git</code> 中输入 <code>npm</code> 命令即可安装</p>
+<pre><code>npm install -g hexo
+</code></pre><p>在 <code>OS X</code>系统下 因为可能有文件读写权限的问题， 加上前缀<code>sudo</code></p>
+<p>安装过程中可能会出现错误，可以参考<a href="https://xuanwo.org/2014/08/14/hexo-usual-problem/" target="_blank" rel="external">Hexo 常见问题</a> 或自行<code>Google</code>查找。</p>
+<h3 id="建立本地博客"><a href="#建立本地博客" class="headerlink" title="建立本地博客"></a>建立本地博客</h3><p>安装完成后，新建一个目录如 MyBlog 用于存放博客，切换到该目录下执行以下指令，Hexo 即会在目标文件夹初步生成博客所需要的所有文件：</p>
+<pre><code>hexo init
+</code></pre><p>如果对 <code>Hexo</code> 自带的模板不满意的话可以看一下<a href="http://www.zhihu.com/question/24422335" target="_blank" rel="external">这里</a>，自定义个性化的主题模板。</p>
+<p>个人推荐：</p>
+<ul>
+<li>Jacman - <a href="https://github.com/wuchong/jacman" target="_blank" rel="external">https://github.com/wuchong/jacman</a></li>
+<li>Next - <a href="http://theme-next.iissnan.com/" target="_blank" rel="external">http://theme-next.iissnan.com/</a></li>
+</ul>
+<p><strong>注意：</strong>修改 <code>Hexo</code> 配置文件及主题配置文件时，按照YAML语法，参数冒号 <code>:</code> 后一定要留空格。</p>
+<h3 id="本地效果预览"><a href="#本地效果预览" class="headerlink" title="本地效果预览"></a>本地效果预览</h3><p>在终端使用 <code>cd</code> 命令切换到博客所在目录 <code>MyBlog</code>，执行如下命令生成静态博客页面（public 文件夹）并启动本地服务器</p>
+<pre><code>hexo generate
+hexo server
+</code></pre><p>或者如下的缩写形式也可以：</p>
+<pre><code>hexo g
+hexo s
+</code></pre><p>若成功可在浏览器中访问 <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> 进行预览。</p>
+<h3 id="部署到Github"><a href="#部署到Github" class="headerlink" title="部署到Github"></a>部署到Github</h3><ol>
+<li>利用  <code>Git</code>  将 <code>Github</code> 中的 <code>username.github.io</code> 项目    <code>clone</code> 到本地新建文件夹。</li>
+<li>将 <code>MyBlog</code> 中执行 <code>hexo g</code> 命令生成 <code>public</code> 文件夹，复制到<code>clone</code>的文件夹中。</li>
+<li>运行 <code>GitHub</code> 确认修改信息 <code>commit</code> 后执行右上角的 <code>Sync</code> 同步。（或者利用 <code>Git</code> 命令将修改内容 <code>pull</code> 到 <code>Github</code>）</li>
+<li>最后访问主页（<a href="http://username.github.io）观察效果，可能会存在延迟，请稍等几分钟。" target="_blank" rel="external">http://username.github.io）观察效果，可能会存在延迟，请稍等几分钟。</a></li>
+</ol>
+<h3 id="编写博文"><a href="#编写博文" class="headerlink" title="编写博文"></a>编写博文</h3><ul>
+<li><p>利用命令行 <code>cd</code> 到 MyBlog 中利用<code>Hexo</code>命令生成初始文章。</p>
+<pre><code>hexo n &quot;new&quot;
+</code></pre></li>
+<li><p>在<code>hexo\source\_posts</code>中编辑生成出来的<code>new</code>文件。</p>
+</li>
+<li><p>利用 <code>Markdown</code> 文本编辑器修改<code>new</code>文件，编写博文。 对<code>Markdown</code>不熟悉的小伙伴可以查看 <a href="http://wowubuntu.com/markdown/" target="_blank" rel="external">Markdown 语法</a> 。</p>
+</li>
+</ul>
+
         
         
         <p class="article-more-link">
-          
-            <a href="/post/layout 笔记2/#more">阅读全文</a>
           
        </p>
     </div>
@@ -103,13 +149,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  <a class="article-category-link" href="/categories/Skill/">Skill</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Auto-Layout/">Auto Layout</a>
+  <span></span> <a href="/tags/Hexo/">Hexo</a>
   </div>
 
 </div>
@@ -120,7 +166,7 @@
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/post/layout 笔记2/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/layout 笔记2/" data-count-type="comments">&nbsp;</a>
+		<a href="/post/hexo/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/hexo/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -140,43 +186,39 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/post/Diagnostics/" title="Xcode 利用工具解决程序内存问题" itemprop="url">Xcode 利用工具解决程序内存问题</a>
+      <a href="/post/hello/" title="知行合一" itemprop="url">知行合一</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
 		
   <p class="article-time">
-    <time datetime="2016-02-23T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-02-24</time>
+    <time datetime="2015-12-31T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-01-01</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <p>苹果在 <code>iOS 4.2</code> 时，推出了 <code>ARC</code> 的内存管理机制。这是一种编译期的内存管理方式，在编译时，编译器会判断 <code>Cocoa</code> 对象的使用状况，并适当的加上 <code>retain</code> 和 <code>release</code>，使得对象的内存被合理的管理。但是在开发过程中，由于种种原因还是会造成内存泄漏。</p>
-<blockquote>
-<p>内存泄漏（Memory Leaks）是当一个对象或变量在使用完成后没有释放掉，这个对象一直占有着这块内存，直到应用停止。如果这种对象过多内存就会耗尽，其它的应用就无法运行。</p>
+        <blockquote>
+<p>知是行之始，行是知之成。</p>
+<p>若会得时，</p>
+<p>只说一个知，已自有行在。</p>
+<p>只说一个行，已自有知在。</p>
 </blockquote>
+
         
         
         <p class="article-more-link">
-          
-            <a href="/post/Diagnostics/#more">阅读全文</a>
           
        </p>
     </div>
     <footer class="article-footer clearfix">
 <div class="article-catetags">
 
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
-</div>
-
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Method/">Method</a>
+  <span></span> <a href="/tags/随想/">随想</a>
   </div>
 
 </div>
@@ -187,205 +229,7 @@
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/post/Diagnostics/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/Diagnostics/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/post/layout 笔记1/" title="iOS Auto Layout Demystified 学习笔记（一）" itemprop="url">iOS Auto Layout Demystified 学习笔记（一）</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
-		
-  <p class="article-time">
-    <time datetime="2016-02-19T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-02-20</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h4 id="Auto-Layout-的由来"><a href="#Auto-Layout-的由来" class="headerlink" title="Auto Layout 的由来"></a><strong>Auto Layout</strong> 的由来</h4><p>2012年，Auto Layout 作为<code>iOS 6</code>版本的一部分，首次露面。 Auto Layout 的前身是<code>Cassowary</code> 约束解析包。</p>
-<blockquote>
-<p><code>Cassowary</code>是一种递增式约束解析工具包，它能有效的解析线性等式系统和线性不等式系统。约束可能是需求，也可能是偏好。该工具包能够快速的重新解析系统，并且支持UI应用程序。<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/post/layout 笔记1/#more">阅读全文</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Auto-Layout/">Auto Layout</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/post/layout 笔记1/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/layout 笔记1/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/post/AutoLayout zero/" title="iOS中AutoLayer自动布局流程及相关方法" itemprop="url">iOS中AutoLayer自动布局流程及相关方法</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
-		
-  <p class="article-time">
-    <time datetime="2016-02-17T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-02-18</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p><code>Auto Layout</code>  重新构思了开发者创建界面的方式。它创建了一个灵活、强大的系统，来描述试图和他们的内容是如何相互关联的，他们和他们占据的窗口和父试图是如何关联的。</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/post/AutoLayout zero/#more">阅读全文</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Auto-Layout/">Auto Layout</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/post/AutoLayout zero/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/AutoLayout zero/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/post/webview/" title="UIWebView 使用浅析" itemprop="url">UIWebView 使用浅析</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
-		
-  <p class="article-time">
-    <time datetime="2016-02-15T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-02-16</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>苹果官方对<code>UIWebView</code>的介绍</p>
-<blockquote>
-<p>You can use the UIWebView class to embed web content in your application. To doso, you simply create a UIWebView object, attach it to a window, and send it a request to load web content. You can also use this class to move back and forward in the history of webpages, and you can even set some web content properties programmatically.</p>
-</blockquote>
-<p><code>UIWebView</code>是<code>iOS</code>内置的浏览器控件，<code>UIWebView</code>用于在<code>App</code>中嵌入网页，通常是<code>html</code>网页，也可以是<code>PDF</code>、<code>txt</code>文档等。苹果在发布<code>iOS8</code>的时候，新增了一个<code>WKWebView</code>组件，如果你的<code>APP</code>只考虑支持<code>iOS8</code>及以上版本，那么你就可以使用这个新的浏览器控件了。</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/post/webview/#more">阅读全文</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Knowledge/">Knowledge</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/post/webview/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/webview/" data-count-type="comments">&nbsp;</a>
+		<a href="/post/hello/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/hello/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -401,7 +245,7 @@
 
 
   <nav id="page-nav" class="clearfix">
-    <a class="extend prev" rel="prev" href="/page/3/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next<span></span></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
   </nav>
 
 </div>

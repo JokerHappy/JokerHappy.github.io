@@ -138,6 +138,154 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/post/指纹识别/" title="iOS 指纹识别" itemprop="url">iOS 指纹识别</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
+		
+  <p class="article-time">
+    <time datetime="2016-04-11T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-04-12</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>在<code>iPhone5s</code>的时候，苹果推出了指纹解锁。但是在<code>ios8.0</code>的时候苹果才推出相关的接口。</p>
+<h6 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h6><ul>
+<li><p>导入框架</p>
+<pre><code>#import &lt;LocalAuthentication/LocalAuthentication.h&gt;
+</code></pre></li>
+<li><p>获得当前系统版本号</p>
+<pre><code>float version = [UIDevice currentDevice].systemVersion.floatValue;
+
+if (version &lt; 8.0 ) // 判断当前系统版本 {
+    NSLog(@&quot;系统版本太低,请升级至最新系统&quot;);
+    return;
+}
+</code></pre></li>
+<li><p>实例化指纹识别对象,判断当前设备是否支持指纹识别功能(是否带有TouchID)</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 1&gt; 实例化指纹识别对象</span><br><span class="line">LAContext *context = [[LAContext alloc] init];</span><br><span class="line"></span><br><span class="line">// 2&gt; 判断当前设备是否支持指纹识别功能.</span><br><span class="line">if (![context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:NULL]) &#123;</span><br><span class="line"></span><br><span class="line">  // 如果设备不支持指纹识别功能</span><br><span class="line">  NSLog(@&quot;该设备不支持指纹识别功能&quot;);</span><br><span class="line"></span><br><span class="line">  return;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>指纹登陆(默认是异步方法)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:@&quot;提示文字&quot; reply:^(BOOL success, NSError *error) &#123;</span><br><span class="line">	  // 如果成功,表示指纹输入正确.</span><br><span class="line">	  if (success) &#123;</span><br><span class="line">	      NSLog(@&quot;指纹识别成功!&quot;);</span><br><span class="line">	</span><br><span class="line">	  &#125; else &#123;</span><br><span class="line">	      // 判断错误类型是否是主动自行输入密码</span><br><span class="line">			if (error.code == LAErrorUserFallback) &#123;</span><br><span class="line">			    dispatch_async(dispatch_get_main_queue(), ^&#123;                        </span><br><span class="line"></span><br><span class="line">					//密码验证方法</span><br><span class="line">			    &#125;);</span><br><span class="line">			&#125;else&#123;</span><br><span class="line"></span><br><span class="line">			&#125;</span><br><span class="line">	  &#125;</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Notes/">Notes</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/post/指纹识别/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/指纹识别/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/post/KeyChain/" title="KeyChain" itemprop="url">KeyChain</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
+		
+  <p class="article-time">
+    <time datetime="2016-04-11T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-04-12</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>通常情况下，我们用<code>NSUserDefaults</code>存储数据信息，但是对于一些私密信息，比如密码、证书等等，就需要使用更为安全的<code>keychain</code>了。<code>keychain</code>里保存的信息不会因<code>App</code>被删除而丢失，在用户重新安装<code>App</code>后依然有效，数据还在。</p>
+<p><a href="https://cnbin.github.io/blog/2015/08/18/ios-keychain-ji-chu/" target="_blank" rel="external">iOS KeyChain 基础</a></p>
+<p><a href="http://blog.csdn.net/ibcker/article/details/24839143" target="_blank" rel="external">KeyChain使用与共享数据</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Notes/">Notes</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/post/KeyChain/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/KeyChain/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/post/iOS 9 Universal Links/" title="iOS 9 Universal Links" itemprop="url">iOS 9 Universal Links</a>
   </h1>
   <p class="article-author">By
@@ -383,181 +531,9 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/post/iOS可变参数/" title="iOS可变参数" itemprop="url">iOS可变参数</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
-		
-  <p class="article-time">
-    <time datetime="2016-04-05T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-04-06</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h5 id="iOS可变参数"><a href="#iOS可变参数" class="headerlink" title="iOS可变参数"></a>iOS可变参数</h5><p><a href="https://developer.apple.com/library/mac/qa/qa1405/_index.html" target="_blank" rel="external">官方的例子</a>，留记</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Cocoa/Cocoa.h&gt;</span><br><span class="line"></span><br><span class="line">@interface NSMutableArray (variadicMethodExample)</span><br><span class="line"></span><br><span class="line">- (void) appendObjects:(id) firstObject, ...; // This method takes a nil-terminated list of objects.</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation NSMutableArray (variadicMethodExample)</span><br><span class="line"></span><br><span class="line">- (void) appendObjects:(id) firstObject, ...</span><br><span class="line">&#123;</span><br><span class="line">	id eachObject;</span><br><span class="line">	va_list argumentList;</span><br><span class="line">	if (firstObject) // The first argument isn't part of the varargs list,</span><br><span class="line">  &#123;                                   // so we'll handle it separately.</span><br><span class="line">  	[self addObject: firstObject];</span><br><span class="line">  	va_start(argumentList, firstObject); // Start scanning for arguments after firstObject.</span><br><span class="line">  	while (eachObject = va_arg(argumentList, id)) // As many times as we can get an argument of type "id"</span><br><span class="line">	[self addObject: eachObject]; // that isn't nil, add it to self's contents.</span><br><span class="line">  	va_end(argumentList);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
-<p><code>va_list</code>：用来保存宏 <code>va_start</code> 、<code>va_arg</code> 和 <code>va_end</code> 所需信息的一种类型。为了访问变长参数列表中的参数，必须声明 <code>va_list</code> 类型的一个对象。</p>
-<p><code>va_start</code>：访问变长参数列表中的参数之前使用的宏，它初始化用<code>va_list</code>声明的对象，初始化结果供宏<code>va_arg</code>和<code>va_end</code>使用；</p>
-<p><code>va_arg</code>：展开成一个表达式的宏，该表达式具有变长参数列表中下一个参数的值和类型。每次调用 <code>va_arg</code> 都会修改，用 <code>va_list</code> 声明的对象从而使该对象指向参数列表中的下一个参数。</p>
-<p><code>va_end</code>：该宏使程序能够从变长参数列表用宏 <code>va_start</code> 引用的函数中正常返回。</p>
-<blockquote>
-<p>参数结尾必须加上<strong>nil</strong>，表示参数结束，可以再参数后加上宏 <code>NS_REQUIRES_NIL_TERMINATION</code>，用于编译时非<strong>nil</strong>结尾的检查。</p>
-</blockquote>
-<pre><code>- (void) appendObjects:(id) firstObject, ...NS_REQUIRES_NIL_TERMINATION;
-</code></pre>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Notes/">Notes</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/post/iOS可变参数/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/iOS可变参数/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/post/链式编程和函数式编程学习笔记/" title="链式编程和函数式编程学习笔记" itemprop="url">链式编程和函数式编程学习笔记</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
-		
-  <p class="article-time">
-    <time datetime="2016-03-31T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-04-01</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h5 id="链式编程"><a href="#链式编程" class="headerlink" title="链式编程"></a>链式编程</h5><blockquote>
-<p>链式编程思想：是将多个操作（多行代码）通过点号(.)链接在一起成为一句代码,使代码可读性好。</p>
-</blockquote>
-<p>在<code>OC</code>中，可以利用<code>block</code>实现链式编程。</p>
-<blockquote>
-<p>方法的返回值是<code>block</code>，<code>block</code>必须有返回值（本身对象），block参数（需要操作的值）</p>
-</blockquote>
-<p>定义如下：</p>
-<pre><code>- (returnType (^)(parameterTypes)function;
-</code></pre><p>实现：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- (returnType(^)(parameterTypes))function&#123;</span><br><span class="line"></span><br><span class="line">    return ^ returnType (parameterTypes)&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/*</span><br><span class="line">        处理参数</span><br><span class="line">        */</span></span><br><span class="line">                </span><br><span class="line">        return self; <span class="comment">// returnType 的类型为自身类型</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>具体代码参照<a href="http://www.jianshu.com/p/87ef6720a096" target="_blank" rel="external">峥吖的文章《最快让你上手ReactiveCocoa之基础篇》</a></p>
-<p>在此将调用的代码列一下</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> result = [NSObject makeCaculators:^(CaculatorMaker *maker) &#123;</span><br><span class="line">                maker.add(<span class="number">1</span>).add(<span class="number">2</span>).sub(<span class="number">3</span>).mult(<span class="number">10</span>);</span><br><span class="line">        </span><br><span class="line">    &#125;];</span><br></pre></td></tr></table></figure>
-<p><s>实在是太帅了，刚看到的时候，一脸懵逼，很像js对吧</s> 我们可以用自定义的实例接着做其他事，这样的调用像一条链子一样，一口气做完一个对象想做的所有事都可以。</p>
-<h5 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h5><p>它属于”结构化编程”的一种，主要思想是把运算过程尽量写成一系列嵌套的函数调用。</p>
-<p>详细说明，参照<a href="http://www.ruanyifeng.com/blog/2012/04/functional_programming.html" target="_blank" rel="external">阮一峰的网络日志-函数式编程初探</a></p>
-<p><s>12年呀，差距好大</s><br>举例来说,现在有这样一个数学表达式：</p>
-<pre><code>(1 + 2) * 3 - 4
-</code></pre><p>传统的过程式编程，可能这样写：</p>
-<pre><code>var a = 1 + 2;
-
-var b = a * 3;
-
-var c = b - 4;
-</code></pre><p>转换成响应式编程</p>
-<pre><code>add(1,2).multiply(3).subtract(4)
-</code></pre><p>在<code>OC</code>中的实现方法</p>
-<blockquote>
-<p>每个方法必须有返回值（本身对象）,把函数或者Block当做参数,block参数（需要操作的值）block返回值（操作结果）</p>
-</blockquote>
-<p>定义如下：</p>
-<pre><code>- ( ClassType )function:(returnType (^)(parameterTypes)parameter;
-</code></pre><p>实现：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- ( ClassType )function1:(returnType (^)(parameterTypes)parameter&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// block 调用 一般传入全局变量</span></span><br><span class="line">	变量 ＝  parameter(变量);</span><br><span class="line">	</span><br><span class="line">	return self;</span><br><span class="line">&#125;</span><br><span class="line">- ( ClassType )function2:(returnType (^)(parameterTypes)parameter&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// block 调用 一般传入全局变量</span></span><br><span class="line">	变量 ＝  parameter(变量);</span><br><span class="line">	</span><br><span class="line">	return self;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>调用代码</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ClassType <span class="keyword">class</span> = [ClassType alloc]init];</span><br><span class="line">	</span><br><span class="line">[[<span class="keyword">class</span> function1:^(parameterTypes)&#123;</span><br><span class="line">	</span><br><span class="line">			<span class="comment">// 逻辑处理</span></span><br><span class="line">			return ...;</span><br><span class="line">&#125;]function2:^(parameterTypes)&#123;</span><br><span class="line">	</span><br><span class="line">			<span class="comment">// 逻辑处理 </span></span><br><span class="line">			<span class="comment">// 在方法2 中可以使用方法1中得到的变量进行操作</span></span><br><span class="line">			return ...;</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-<p>对于函数式编程的思想，还不是太懂，在琢磨当中,借鉴了各位大神的博客，一一拜谢，理解比较浅，有错误的地方还望指正。<s>顺便说一句ReactiveCocoa真NB，不断学习中。</s></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/RAC/">RAC</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/post/链式编程和函数式编程学习笔记/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/链式编程和函数式编程学习笔记/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
   </nav>
 
 </div>
@@ -577,7 +553,7 @@ var c = b - 4;
 		  
 		
 		  
-			<li><a href="/categories/iOS/" title="iOS">iOS<sup>17</sup></a></li>
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>19</sup></a></li>
 		  
 		
 		</ul>
@@ -594,15 +570,15 @@ var c = b - 4;
 			
 		
 			
+				<li><a href="/tags/Notes/" title="Notes">Notes<sup>4</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/Runtime/" title="Runtime">Runtime<sup>3</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/随想/" title="随想">随想<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Notes/" title="Notes">Notes<sup>2</sup></a></li>
 			
 		
 			

@@ -4,25 +4,47 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>iOS中AutoLayer自动布局流程及相关方法 | 知行合一</title>
+    <title>iOS 指纹识别 | 知行合一</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="xxx">
     
 
     
-    <meta name="description" content="Auto Layout  重新构思了开发者创建界面的方式。它创建了一个灵活、强大的系统，来描述试图和他们的内容是如何相互关联的，他们和他们占据的窗口和父试图是如何关联的。">
+    <meta name="description" content="在iPhone5s的时候，苹果推出了指纹解锁。但是在ios8.0的时候苹果才推出相关的接口。
+使用步骤
+导入框架
+#import &amp;lt;LocalAuthentication/LocalAuthentication.h&amp;gt;
+
+获得当前系统版本号
+float version = [UIDevice currentDevice].systemVersion.floatValue;
+
+if (ve">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS中AutoLayer自动布局流程及相关方法">
-<meta property="og:url" content="http://jokerhappy.github.io/post/AutoLayout zero/index.html">
+<meta property="og:title" content="iOS 指纹识别">
+<meta property="og:url" content="http://jokerhappy.github.io/post/指纹识别/index.html">
 <meta property="og:site_name" content="知行合一">
-<meta property="og:description" content="Auto Layout  重新构思了开发者创建界面的方式。它创建了一个灵活、强大的系统，来描述试图和他们的内容是如何相互关联的，他们和他们占据的窗口和父试图是如何关联的。">
-<meta property="og:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/4.png">
-<meta property="og:updated_time" content="2016-05-03T13:24:16.400Z">
+<meta property="og:description" content="在iPhone5s的时候，苹果推出了指纹解锁。但是在ios8.0的时候苹果才推出相关的接口。
+使用步骤
+导入框架
+#import &amp;lt;LocalAuthentication/LocalAuthentication.h&amp;gt;
+
+获得当前系统版本号
+float version = [UIDevice currentDevice].systemVersion.floatValue;
+
+if (ve">
+<meta property="og:updated_time" content="2016-09-23T03:00:33.370Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS中AutoLayer自动布局流程及相关方法">
-<meta name="twitter:description" content="Auto Layout  重新构思了开发者创建界面的方式。它创建了一个灵活、强大的系统，来描述试图和他们的内容是如何相互关联的，他们和他们占据的窗口和父试图是如何关联的。">
-<meta name="twitter:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/4.png">
+<meta name="twitter:title" content="iOS 指纹识别">
+<meta name="twitter:description" content="在iPhone5s的时候，苹果推出了指纹解锁。但是在ios8.0的时候苹果才推出相关的接口。
+使用步骤
+导入框架
+#import &amp;lt;LocalAuthentication/LocalAuthentication.h&amp;gt;
+
+获得当前系统版本号
+float version = [UIDevice currentDevice].systemVersion.floatValue;
+
+if (ve">
 
     
     <link rel="alternative" href="/atom.xml" title="知行合一" type="application/atom+xml">
@@ -77,14 +99,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/post/AutoLayout zero/" title="iOS中AutoLayer自动布局流程及相关方法" itemprop="url">iOS中AutoLayer自动布局流程及相关方法</a>
+      <a href="/post/指纹识别/" title="iOS 指纹识别" itemprop="url">iOS 指纹识别</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
 		
   <p class="article-time">
-    <time datetime="2016-02-17T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-02-18</time>
+    <time datetime="2016-04-11T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-04-12</time>
     
   </p>
 </header>
@@ -93,43 +115,31 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Auto-Layout-Process-自动布局过程"><span class="toc-number">1.</span> <span class="toc-text">Auto Layout Process 自动布局过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#iOS-提供的Layout-的方法"><span class="toc-number">2.</span> <span class="toc-text">iOS 提供的Layout 的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#layoutSubviews"><span class="toc-number">2.1.</span> <span class="toc-text">layoutSubviews</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#setNeedsLayout"><span class="toc-number">2.2.</span> <span class="toc-text">setNeedsLayout</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#layoutIfNeeded"><span class="toc-number">2.3.</span> <span class="toc-text">layoutIfNeeded</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基于AutoLayer约束constraints的方法："><span class="toc-number">3.</span> <span class="toc-text">基于AutoLayer约束constraints的方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#setNeedsUpdateConstraints"><span class="toc-number">3.1.</span> <span class="toc-text">setNeedsUpdateConstraints</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#needsUpdateConstraints"><span class="toc-number">3.2.</span> <span class="toc-text">needsUpdateConstraints</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#updateConstraintsIfNeeded"><span class="toc-number">3.3.</span> <span class="toc-text">updateConstraintsIfNeeded</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#updateConstraints"><span class="toc-number">3.4.</span> <span class="toc-text">updateConstraints</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#使用步骤"><span class="toc-number">1.</span> <span class="toc-text">使用步骤</span></a></li></ol>
 		
 		</div>
 		
-		<p><code>Auto Layout</code>  重新构思了开发者创建界面的方式。它创建了一个灵活、强大的系统，来描述试图和他们的内容是如何相互关联的，他们和他们占据的窗口和父试图是如何关联的。</p>
-<a id="more"></a>
-<h4 id="Auto-Layout-Process-自动布局过程"><a href="#Auto-Layout-Process-自动布局过程" class="headerlink" title="Auto Layout Process 自动布局过程"></a>Auto Layout Process 自动布局过程</h4><p><code>Auto Layout</code>在<code>view</code>显示之前，主要有三个步骤<code>updating constraints -&gt; layout -&gt; display</code>。每一个步骤都依赖于上一个。<code>display</code>依赖<code>layout</code>，而<code>layout</code>依赖<code>updating constraints</code>。 </p>
+		<p>在<code>iPhone5s</code>的时候，苹果推出了指纹解锁。但是在<code>ios8.0</code>的时候苹果才推出相关的接口。</p>
+<h6 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h6><ul>
+<li><p>导入框架</p>
+<pre><code>#import &lt;LocalAuthentication/LocalAuthentication.h&gt;
+</code></pre></li>
+<li><p>获得当前系统版本号</p>
+<pre><code>float version = [UIDevice currentDevice].systemVersion.floatValue;
+
+if (version &lt; 8.0 ) // 判断当前系统版本 {
+    NSLog(@&quot;系统版本太低,请升级至最新系统&quot;);
+    return;
+}
+</code></pre></li>
+<li><p>实例化指纹识别对象,判断当前设备是否支持指纹识别功能(是否带有TouchID)</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 1&gt; 实例化指纹识别对象</span><br><span class="line">LAContext *context = [[LAContext alloc] init];</span><br><span class="line"></span><br><span class="line">// 2&gt; 判断当前设备是否支持指纹识别功能.</span><br><span class="line">if (![context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:NULL]) &#123;</span><br><span class="line"></span><br><span class="line">  // 如果设备不支持指纹识别功能</span><br><span class="line">  NSLog(@&quot;该设备不支持指纹识别功能&quot;);</span><br><span class="line"></span><br><span class="line">  return;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p><code>updating constraints</code>，被称为测量阶段，其从下向上(from subview to super view),为下一步<code>layout</code>准备信息。可以通过调用方法<code>setNeedUpdateConstraints</code>去触发此步。<code>constraints</code>的改变也会自动的触发此步。但是，当你自定义<code>view</code>的时候，如果一些改变可能会影响到布局的时候，通常需要自己去通知<code>Auto Layout</code>-&gt;<code>updateConstraintsIfNeeded</code>。<br>自定义<code>view</code>的话，通常可以重写<code>updateConstraints</code>方法，在其中可以添加<code>view</code>需要的局部的<code>contraints</code>。</p>
-</li>
-<li><p><code>layout</code>，其从上向下(from super view to subview)，此步主要应用上一步的信息去设置<code>view</code>的<code>center</code>和<code>bounds</code>。可以通过调用<code>setNeedsLayout</code>去触发此步骤，此方法不会立即应用<code>layout</code>。如果想要系统立即的更新<code>layout</code>，可以调用<code>layoutIfNeeded</code>。另外，自定义<code>view</code>可以重写方法<code>layoutSubViews</code>来在<code>layout</code>的工程中得到更多的定制化效果。</p>
-</li>
-<li><p><code>display</code>，此步时把<code>view</code>渲染到屏幕上，它与你是否使用<code>Auto layout</code>无关，其操作是从上向下(from super view to subview)，通过调用<code>setNeedsDisplay</code>触发，因为每一步都依赖前一步，因此一个<code>display</code>可能会触发<code>layout</code>，当有任何<code>layout</code>没有被处理的时候，同理，<code>layout</code>可能会触发<code>updating constraints</code>，当<code>constraint system</code>更新改变的时候。</p>
-</li>
+<li>指纹登陆(默认是异步方法)</li>
 </ul>
-<p><img src="http://7xt3bw.com1.z0.glb.clouddn.com/4.png" alt=""></p>
-<h4 id="iOS-提供的Layout-的方法"><a href="#iOS-提供的Layout-的方法" class="headerlink" title="iOS 提供的Layout 的方法"></a>iOS 提供的Layout 的方法</h4><h5 id="layoutSubviews"><a href="#layoutSubviews" class="headerlink" title="layoutSubviews"></a>layoutSubviews</h5><ul>
-<li>在<code>iOS5.1</code>和之前的版本，此方法的缺省实现不会做任何事情(实现为空)，<code>iOS5.1</code>之后(iOS6开始)的版本，此方法的缺省实现是使用你设置在此view上面的constraints(Autolayout)去决定subviews的<code>position</code>和<code>size</code>。 UIView的子类如果需要对其<code>subviews</code>进行更精确的布局，则可以重写此方法。只有在autoresizing和constraint-based behaviors of subviews不能提供我们想要的布局结果的时候，我们才应该重写此方法。可以在此方法中直接设置subviews的<code>frame</code>。 我们不应该直接调用此方法，而应当用下面两个方法。</li>
-</ul>
-<h5 id="setNeedsLayout"><a href="#setNeedsLayout" class="headerlink" title="setNeedsLayout"></a>setNeedsLayout</h5><ul>
-<li>此方法会将view当前的layout设置为无效的，并在下一个<code>upadte cycle</code>里去触发<code>layout</code>更新。</li>
-</ul>
-<h5 id="layoutIfNeeded"><a href="#layoutIfNeeded" class="headerlink" title="layoutIfNeeded"></a>layoutIfNeeded</h5><ul>
-<li>使用此方法<code>强制立即</code>进行layout,从当前view开始，此方法会遍历整个view层次(包括superviews)请求layout。因此，调用此方法会强制整个view层次布局。</li>
-</ul>
-<h4 id="基于AutoLayer约束constraints的方法："><a href="#基于AutoLayer约束constraints的方法：" class="headerlink" title="基于AutoLayer约束constraints的方法："></a>基于AutoLayer约束constraints的方法：</h4><h5 id="setNeedsUpdateConstraints"><a href="#setNeedsUpdateConstraints" class="headerlink" title="setNeedsUpdateConstraints"></a>setNeedsUpdateConstraints</h5><ul>
-<li>当一个自定义view的某个属性发生改变，并且可能影响到constraint时，需要调用此方法去标记constraints需要在未来的某个点更新，系统然后调用<code>updateConstraints</code>.</li>
-</ul>
-<h5 id="needsUpdateConstraints"><a href="#needsUpdateConstraints" class="headerlink" title="needsUpdateConstraints"></a>needsUpdateConstraints</h5><ul>
-<li><code>constraint-based layout system</code>使用此返回值去决定是否需要调用<code>updateConstraint</code>s作为正常布局过程的一部分。</li>
-</ul>
-<h5 id="updateConstraintsIfNeeded"><a href="#updateConstraintsIfNeeded" class="headerlink" title="updateConstraintsIfNeeded"></a>updateConstraintsIfNeeded</h5><ul>
-<li>立即触发约束更新，自动更新布局。</li>
-</ul>
-<h5 id="updateConstraints"><a href="#updateConstraints" class="headerlink" title="updateConstraints"></a>updateConstraints</h5><ul>
-<li>自定义view应该重写此方法在其中建立constraints. 注意：要在实现在最后调用<code>[super updateConstraints]</code></li>
-</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:@&quot;提示文字&quot; reply:^(BOOL success, NSError *error) &#123;</span><br><span class="line">	  // 如果成功,表示指纹输入正确.</span><br><span class="line">	  if (success) &#123;</span><br><span class="line">	      NSLog(@&quot;指纹识别成功!&quot;);</span><br><span class="line">	</span><br><span class="line">	  &#125; else &#123;</span><br><span class="line">	      // 判断错误类型是否是主动自行输入密码</span><br><span class="line">			if (error.code == LAErrorUserFallback) &#123;</span><br><span class="line">			    dispatch_async(dispatch_get_main_queue(), ^&#123;                        </span><br><span class="line"></span><br><span class="line">					//密码验证方法</span><br><span class="line">			    &#125;);</span><br><span class="line">			&#125;else&#123;</span><br><span class="line"></span><br><span class="line">			&#125;</span><br><span class="line">	  &#125;</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -143,7 +153,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Auto-Layout/">Auto Layout</a>
+  <span></span> <a href="/tags/Notes/">Notes</a>
   </div>
 
 </div>
@@ -152,7 +162,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://jokerhappy.github.io/post/AutoLayout zero/" data-title="iOS中AutoLayer自动布局流程及相关方法 | 知行合一" data-tsina="null" class="share clearfix">
+	  <div data-url="http://jokerhappy.github.io/post/指纹识别/" data-title="iOS 指纹识别 | 知行合一" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -166,18 +176,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/post/layout 笔记1/" title="iOS Auto Layout Demystified 学习笔记（一）">
+ <a href="/post/岛上书店/" title="岛上书店">
   <strong>上一篇：</strong><br/>
   <span>
-  iOS Auto Layout Demystified 学习笔记（一）</span>
+  岛上书店</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/post/webview/"  title="UIWebView 使用浅析">
+<a href="/post/KeyChain/"  title="KeyChain">
  <strong>下一篇：</strong><br/> 
- <span>UIWebView 使用浅析
+ <span>KeyChain
 </span>
 </a>
 </div>
@@ -186,7 +196,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="post/AutoLayout zero/" data-title="iOS中AutoLayer自动布局流程及相关方法" data-url="http://jokerhappy.github.io/post/AutoLayout zero/"></div>
+	<div class="ds-thread" data-thread-key="post/指纹识别/" data-title="iOS 指纹识别" data-url="http://jokerhappy.github.io/post/指纹识别/"></div>
 </section>
 
 
@@ -196,7 +206,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Auto-Layout-Process-自动布局过程"><span class="toc-number">1.</span> <span class="toc-text">Auto Layout Process 自动布局过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#iOS-提供的Layout-的方法"><span class="toc-number">2.</span> <span class="toc-text">iOS 提供的Layout 的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#layoutSubviews"><span class="toc-number">2.1.</span> <span class="toc-text">layoutSubviews</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#setNeedsLayout"><span class="toc-number">2.2.</span> <span class="toc-text">setNeedsLayout</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#layoutIfNeeded"><span class="toc-number">2.3.</span> <span class="toc-text">layoutIfNeeded</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基于AutoLayer约束constraints的方法："><span class="toc-number">3.</span> <span class="toc-text">基于AutoLayer约束constraints的方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#setNeedsUpdateConstraints"><span class="toc-number">3.1.</span> <span class="toc-text">setNeedsUpdateConstraints</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#needsUpdateConstraints"><span class="toc-number">3.2.</span> <span class="toc-text">needsUpdateConstraints</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#updateConstraintsIfNeeded"><span class="toc-number">3.3.</span> <span class="toc-text">updateConstraintsIfNeeded</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#updateConstraints"><span class="toc-number">3.4.</span> <span class="toc-text">updateConstraints</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#使用步骤"><span class="toc-number">1.</span> <span class="toc-text">使用步骤</span></a></li></ol>
  
   </div>
 

@@ -76,6 +76,178 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/post/iOS可变参数/" title="iOS可变参数" itemprop="url">iOS可变参数</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
+		
+  <p class="article-time">
+    <time datetime="2016-04-05T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-04-06</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h5 id="iOS可变参数"><a href="#iOS可变参数" class="headerlink" title="iOS可变参数"></a>iOS可变参数</h5><p><a href="https://developer.apple.com/library/mac/qa/qa1405/_index.html" target="_blank" rel="external">官方的例子</a>，留记</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Cocoa/Cocoa.h&gt;</span><br><span class="line"></span><br><span class="line">@interface NSMutableArray (variadicMethodExample)</span><br><span class="line"></span><br><span class="line">- (void) appendObjects:(id) firstObject, ...; // This method takes a nil-terminated list of objects.</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation NSMutableArray (variadicMethodExample)</span><br><span class="line"></span><br><span class="line">- (void) appendObjects:(id) firstObject, ...</span><br><span class="line">&#123;</span><br><span class="line">	id eachObject;</span><br><span class="line">	va_list argumentList;</span><br><span class="line">	if (firstObject) // The first argument isn't part of the varargs list,</span><br><span class="line">  &#123;                                   // so we'll handle it separately.</span><br><span class="line">  	[self addObject: firstObject];</span><br><span class="line">  	va_start(argumentList, firstObject); // Start scanning for arguments after firstObject.</span><br><span class="line">  	while (eachObject = va_arg(argumentList, id)) // As many times as we can get an argument of type "id"</span><br><span class="line">	[self addObject: eachObject]; // that isn't nil, add it to self's contents.</span><br><span class="line">  	va_end(argumentList);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p><code>va_list</code>：用来保存宏 <code>va_start</code> 、<code>va_arg</code> 和 <code>va_end</code> 所需信息的一种类型。为了访问变长参数列表中的参数，必须声明 <code>va_list</code> 类型的一个对象。</p>
+<p><code>va_start</code>：访问变长参数列表中的参数之前使用的宏，它初始化用<code>va_list</code>声明的对象，初始化结果供宏<code>va_arg</code>和<code>va_end</code>使用；</p>
+<p><code>va_arg</code>：展开成一个表达式的宏，该表达式具有变长参数列表中下一个参数的值和类型。每次调用 <code>va_arg</code> 都会修改，用 <code>va_list</code> 声明的对象从而使该对象指向参数列表中的下一个参数。</p>
+<p><code>va_end</code>：该宏使程序能够从变长参数列表用宏 <code>va_start</code> 引用的函数中正常返回。</p>
+<blockquote>
+<p>参数结尾必须加上<strong>nil</strong>，表示参数结束，可以再参数后加上宏 <code>NS_REQUIRES_NIL_TERMINATION</code>，用于编译时非<strong>nil</strong>结尾的检查。</p>
+</blockquote>
+<pre><code>- (void) appendObjects:(id) firstObject, ...NS_REQUIRES_NIL_TERMINATION;
+</code></pre>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Notes/">Notes</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/post/iOS可变参数/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/iOS可变参数/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/post/链式编程和函数式编程学习笔记/" title="链式编程和函数式编程学习笔记" itemprop="url">链式编程和函数式编程学习笔记</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-31T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-04-01</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h5 id="链式编程"><a href="#链式编程" class="headerlink" title="链式编程"></a>链式编程</h5><blockquote>
+<p>链式编程思想：是将多个操作（多行代码）通过点号(.)链接在一起成为一句代码,使代码可读性好。</p>
+</blockquote>
+<p>在<code>OC</code>中，可以利用<code>block</code>实现链式编程。</p>
+<blockquote>
+<p>方法的返回值是<code>block</code>，<code>block</code>必须有返回值（本身对象），block参数（需要操作的值）</p>
+</blockquote>
+<p>定义如下：</p>
+<pre><code>- (returnType (^)(parameterTypes)function;
+</code></pre><p>实现：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- (returnType(^)(parameterTypes))function&#123;</span><br><span class="line"></span><br><span class="line">    return ^ returnType (parameterTypes)&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/*</span><br><span class="line">        处理参数</span><br><span class="line">        */</span></span><br><span class="line">                </span><br><span class="line">        return self; <span class="comment">// returnType 的类型为自身类型</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具体代码参照<a href="http://www.jianshu.com/p/87ef6720a096" target="_blank" rel="external">峥吖的文章《最快让你上手ReactiveCocoa之基础篇》</a></p>
+<p>在此将调用的代码列一下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> result = [NSObject makeCaculators:^(CaculatorMaker *maker) &#123;</span><br><span class="line">                maker.add(<span class="number">1</span>).add(<span class="number">2</span>).sub(<span class="number">3</span>).mult(<span class="number">10</span>);</span><br><span class="line">        </span><br><span class="line">    &#125;];</span><br></pre></td></tr></table></figure>
+<p><s>实在是太帅了，刚看到的时候，一脸懵逼，很像js对吧</s> 我们可以用自定义的实例接着做其他事，这样的调用像一条链子一样，一口气做完一个对象想做的所有事都可以。</p>
+<h5 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h5><p>它属于”结构化编程”的一种，主要思想是把运算过程尽量写成一系列嵌套的函数调用。</p>
+<p>详细说明，参照<a href="http://www.ruanyifeng.com/blog/2012/04/functional_programming.html" target="_blank" rel="external">阮一峰的网络日志-函数式编程初探</a></p>
+<p><s>12年呀，差距好大</s><br>举例来说,现在有这样一个数学表达式：</p>
+<pre><code>(1 + 2) * 3 - 4
+</code></pre><p>传统的过程式编程，可能这样写：</p>
+<pre><code>var a = 1 + 2;
+
+var b = a * 3;
+
+var c = b - 4;
+</code></pre><p>转换成响应式编程</p>
+<pre><code>add(1,2).multiply(3).subtract(4)
+</code></pre><p>在<code>OC</code>中的实现方法</p>
+<blockquote>
+<p>每个方法必须有返回值（本身对象）,把函数或者Block当做参数,block参数（需要操作的值）block返回值（操作结果）</p>
+</blockquote>
+<p>定义如下：</p>
+<pre><code>- ( ClassType )function:(returnType (^)(parameterTypes)parameter;
+</code></pre><p>实现：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- ( ClassType )function1:(returnType (^)(parameterTypes)parameter&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// block 调用 一般传入全局变量</span></span><br><span class="line">	变量 ＝  parameter(变量);</span><br><span class="line">	</span><br><span class="line">	return self;</span><br><span class="line">&#125;</span><br><span class="line">- ( ClassType )function2:(returnType (^)(parameterTypes)parameter&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// block 调用 一般传入全局变量</span></span><br><span class="line">	变量 ＝  parameter(变量);</span><br><span class="line">	</span><br><span class="line">	return self;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ClassType <span class="keyword">class</span> = [ClassType alloc]init];</span><br><span class="line">	</span><br><span class="line">[[<span class="keyword">class</span> function1:^(parameterTypes)&#123;</span><br><span class="line">	</span><br><span class="line">			<span class="comment">// 逻辑处理</span></span><br><span class="line">			return ...;</span><br><span class="line">&#125;]function2:^(parameterTypes)&#123;</span><br><span class="line">	</span><br><span class="line">			<span class="comment">// 逻辑处理 </span></span><br><span class="line">			<span class="comment">// 在方法2 中可以使用方法1中得到的变量进行操作</span></span><br><span class="line">			return ...;</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<p>对于函数式编程的思想，还不是太懂，在琢磨当中,借鉴了各位大神的博客，一一拜谢，理解比较浅，有错误的地方还望指正。<s>顺便说一句ReactiveCocoa真NB，不断学习中。</s></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/RAC/">RAC</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/post/链式编程和函数式编程学习笔记/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/链式编程和函数式编程学习笔记/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/post/runtime02/" title="iOS Runtime 关联对象" itemprop="url">iOS Runtime 关联对象</a>
   </h1>
   <p class="article-author">By
@@ -383,188 +555,9 @@ property_copyAttributeList
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/post/RSA加密/" title="iOS RSA 加密" itemprop="url">iOS RSA 加密</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
-		
-  <p class="article-time">
-    <time datetime="2016-03-14T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-03-15</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h5 id="RSA-简述"><a href="#RSA-简述" class="headerlink" title="RSA 简述"></a>RSA 简述</h5><ul>
-<li>RSA算法：1977年由<code>Ron Rivest</code>、<code>Adi Shamirh</code>和<code>LenAdleman</code>发明的，RSA就是取自他们三个人的名字。算法基于一个数论：将两个大素数相乘非常容易，但要对这个乘积的结果进行因式分解却非常困难，因此可以把乘积公开作为公钥。该算法能够抵抗目前已知的所有密码攻击。RSA算法是一种非对称算法，算法需要一对密钥，使用其中一个加密，需要使用另外一个才能解密。我们在进行RSA加密通讯时，就把公钥放在客户端，私钥留在服务器。</li>
-</ul>
-<p><a href="http://www.ruanyifeng.com/blog/2013/06/rsa_algorithm_part_one.html" target="_blank" rel="external">RSA算法原理（一）</a><br><br><a href="http://www.ruanyifeng.com/blog/2013/07/rsa_algorithm_part_two.html" target="_blank" rel="external">RSA算法原理（二）</a></p>
-<h5 id="公钥私钥"><a href="#公钥私钥" class="headerlink" title="公钥私钥"></a>公钥私钥</h5><p><a href="http://www.blogjava.net/yxhxj2006/archive/2012/10/15/389547.html" target="_blank" rel="external">公钥与私钥</a></p>
-<ul>
-<li><code>DER</code>, <code>PEM</code>：既然使用RSA需要一对密钥，那么我们当然是要先使用工具来生成这样一对密钥了。在<code>linux</code>、<code>unix</code>下，最简单方便的就是使用<code>openssl</code>命令行了。而<code>DER</code>、<code>PEM</code>就是生成的密钥可选择的两种文件格式。<code>DER</code>是<code>Distinguished Encoding Rules</code>的简称，是一种信息传输语法规则，在<code>ITU X.690</code>中定义的。在<code>iOS</code>端，我们的公钥就是需要这样一种格式的，我们可以从<a href="https://developer.apple.com/library/ios/documentation/Security/Reference/certifkeytrustservices/index.html#//apple_ref/c/func/SecCertificateCreateWithData" target="_blank" rel="external">Certificate, Key, and Trust Services Reference</a>这篇文档的<code>SecCertificateCreateWithData</code>函数的<code>data</code>参数的说明中看到。而<code>PEM</code>格式是一种对<code>DER</code>进行封装的格式，他只是把<code>der</code>的内容进行了<code>base64</code>编码并加上了头尾说明。<code>openssl</code>命令行默认输出的都是<code>PEM</code>格式的文件，要能够在<code>iOS</code>下使用，我们需要指定使用<code>DER</code>或者先生成<code>PEM</code>然后转换称<code>DER</code>。</li>
-</ul>
-<p>具体步骤：</p>
-<p>生成私钥文件     </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ openssl genrsa -out private.pem 1024</span><br><span class="line"></span><br><span class="line">	openssl:是一个自由的软件组织,专注做加密和解密的框架。</span><br><span class="line">	genrsa:指定了生成了算法使用RSA</span><br><span class="line">	-out:后面的参数表示生成的key的输入文件</span><br><span class="line">	1024:表示的是生成key的长度,单位字节(bits)</span><br></pre></td></tr></table></figure>
-<p>创建证书请求</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ openssl req -new -key private.pem -out rsacert.csr</span><br><span class="line"></span><br><span class="line">    可以拿着这个文件去数字证书颁发机构（即CA）申请一个数字证书。CA会给你一个新的文件cacert.pem,那才是你的数字证书。(要收费的)</span><br></pre></td></tr></table></figure>
-<p>生成证书并签名，有效期10年</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ openssl x509 -req -days 3650 -in rsacert.csr -signkey private.pem -out rsacert.crt</span><br><span class="line"></span><br><span class="line">    509是一种非常通用的证书格式。</span><br><span class="line">    将用上面生成的密钥privkey.pem和rsacert.csr证书请求文件生成一个数字证书rsacert.crt。这个就是公钥</span><br></pre></td></tr></table></figure>
-<p> 转换格式 将 PEM 格式文件 转换成 DER 格式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ openssl x509 -outform der -in rsacert.crt -out rsacert.der</span><br><span class="line"></span><br><span class="line">    在 iOS开发中,公钥是不能使用base64编码的,上面的命令是将公钥的base64编码字符串转换成二进制数据</span><br></pre></td></tr></table></figure>
-<p>导出 P12 文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ openssl pkcs12 -export -out p.p12 -inkey private.pem -in rsacert.crt</span><br><span class="line"></span><br><span class="line">       在iOS使用私钥不能直接使用，需要导出一个p12文件。下面命令就是将私钥文件导出为p12文件。</span><br></pre></td></tr></table></figure>
-<h5 id="RSA使用"><a href="#RSA使用" class="headerlink" title="RSA使用"></a>RSA使用</h5><ul>
-<li>客户端向服务器第一次发起登录请求（不传输用户名和密码）。</li>
-<li>服务器利用RSA算法产生一对公钥和私钥。并保留私钥， 将公钥发送给客户端。</li>
-<li>客户端收到公钥后， 加密用户密码， 向服务器发起第二次登录请求（传输用户名和加密后的密码）。</li>
-<li>服务器利用保留的私钥对密文进行解密，得到真正的密码。</li>
-</ul>
-<p>拓展</p>
-<ul>
-<li>客户端向服务器第一次发起登录请求（不传输用户名和密码）。</li>
-<li>服务器利用RSA算法产生一对公钥和私钥。并保留私钥， 将公钥发送给客户端。</li>
-<li>客户端收到公钥后， 加密用户密码，向服务器发送用户名和加密后的用户密码； 同时另外产生一对公钥和私钥，自己保留私钥, 向服务器发送公钥； 于是第二次登录请求传输了用户名和加密后的密码以及客户端生成的公钥。</li>
-<li>服务器利用保留的私钥对密文进行解密，得到真正的密码。 经过判断， 确定用户可以登录后，生成sessionId和token， 同时利用客户端发送的公钥，对token进行加密。最后将sessionId和加密后的token返还给客户端。</li>
-<li>客户端利用自己生成的私钥对token密文解密， 得到真正的token。</li>
-</ul>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/RSA/">RSA</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/post/RSA加密/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/RSA加密/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/post/layout 笔记6/" title="iOS Auto Layout Demystified 学习笔记（六）" itemprop="url">iOS Auto Layout Demystified 学习笔记（六）</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
-		
-  <p class="article-time">
-    <time datetime="2016-03-09T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-03-10</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h5 id="Auto-Layout-的基本原则"><a href="#Auto-Layout-的基本原则" class="headerlink" title="Auto Layout 的基本原则"></a><code>Auto Layout</code> 的基本原则</h5><ul>
-<li><code>Auto Layout</code>是声明性的</li>
-<li><code>Auto Layout</code>最小化了计算</li>
-<li><code>Auto Layout</code>设计是非直接的，但是它很灵活</li>
-<li><code>Auto Layout</code>是由几何驱动的</li>
-<li><code>Auto Layout</code>聚焦于关系</li>
-<li><code>Auto Layout</code>允许带优先级的规则</li>
-<li><code>Auto Layout</code>表现自然内容</li>
-<li><code>Auto Layout</code>寻找最佳方案</li>
-<li><code>Auto Layout</code>是分布式的</li>
-</ul>
-<h5 id="使用布局库"><a href="#使用布局库" class="headerlink" title="使用布局库"></a>使用布局库</h5><p><a href="http://adad184.com/2014/09/28/use-masonry-to-quick-solve-autolayout/" target="_blank" rel="external">Masonry介绍与使用实践(快速上手Autolayout) </a></p>
-<h5 id="界面设计"><a href="#界面设计" class="headerlink" title="界面设计"></a>界面设计</h5><ul>
-<li>评估几何</li>
-<li>列出边缘条件</li>
-<li>探测冲突</li>
-<li>枚举回退</li>
-<li>寻找自然分组（模块化）</li>
-<li>探测分组布局</li>
-<li>为规则设定优先级</li>
-<li>考虑内容</li>
-</ul>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Auto-Layout/">Auto Layout</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/post/layout 笔记6/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/layout 笔记6/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
-    <a class="extend prev" rel="prev" href="/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next<span></span></a>
+    <a class="extend prev" rel="prev" href="/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next<span></span></a>
   </nav>
 
 </div>
@@ -584,7 +577,7 @@ property_copyAttributeList
 		  
 		
 		  
-			<li><a href="/categories/iOS/" title="iOS">iOS<sup>17</sup></a></li>
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>19</sup></a></li>
 		  
 		
 		</ul>
@@ -601,15 +594,15 @@ property_copyAttributeList
 			
 		
 			
+				<li><a href="/tags/Notes/" title="Notes">Notes<sup>4</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/Runtime/" title="Runtime">Runtime<sup>3</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/随想/" title="随想">随想<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Notes/" title="Notes">Notes<sup>2</sup></a></li>
 			
 		
 			
