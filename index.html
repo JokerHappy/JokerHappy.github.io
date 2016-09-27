@@ -300,7 +300,7 @@ if (version &lt; 8.0 ) // 判断当前系统版本 {
     <div class="article-content">
         
         <p><code>Apple</code> 推出<code>Universal Links</code> (通用链接)：一种能够方便的通过传统 <code>HTTP</code> 链接来启动 <code>APP</code>, 使用相同的网址打开网站和 <code>APP</code>。</p>
-<p>通过唯一的网址, 不需要特别的<code>schema</code>就可以链接一个特定的视图到<code>APP</code> 里面 。比如：在知乎中使用了通用链接, 那么用户在<code>Safari</code>、<code>UIWebView</code>或者 <code>WKWebView</code>点击一个链接, <code>iOS</code>设备上的知乎<code>app</code>怎会在知乎里面自动打开这个页面, 如果没有安装则在<code>Safrai</code>中打开响应链接。</p>
+<p>通过唯一的网址, 不需要特别的<code>schema</code>就可以链接一个特定的视图到<code>APP</code> 里面 。比如：在知乎中使用了通用链接, 那么用户在<code>Safari</code>、<code>UIWebView</code>或者 <code>WKWebView</code>点击一个链接, <code>iOS</code>设备上的知乎<code>app</code>会在知乎里面自动打开这个页面, 如果没有安装则在<code>Safrai</code>中打开响应链接。</p>
 <h5 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1"></a>Step 1</h5><p>创建一个<code>json</code> 格式的<code>apple-app-site-associatio</code> 文件<br><br>例如：</p>
 <pre><code>{
     &quot;applinks&quot;: {
@@ -324,7 +324,7 @@ if (version &lt; 8.0 ) // 判断当前系统版本 {
 <h5 id="Step-2"><a href="#Step-2" class="headerlink" title="Step 2"></a>Step 2</h5><p>上传 <code>apple-app-site-association</code> 文件</p>
 <p>注意：</p>
 <ul>
-<li><p>上传到<code>web server</code>根目录下</p>
+<li><p>上传到<code>.well-known</code>目录下 /.well-known/apple-app-site-association</p>
 </li>
 <li><p><code>web server</code> 需要支持<code>https</code>，客户端需要通告<code>https</code>访问，并且不支持任何重定向。</p>
 </li>
