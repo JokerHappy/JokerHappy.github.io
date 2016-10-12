@@ -4,6 +4,46 @@
 
     
   <url>
+    <loc>http://jokerhappy.github.io/post/Load++/</loc>
+    <lastmod>2016-10-12T14:06:23.237Z</lastmod>
+    <data>
+        <display>
+        <title>Objective C中类方法load和initialize的区别</title>
+        <pubTime>2016-04-14T16:00:00.000Z</pubTime>
+        
+        <tag>Notes</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jokerhappy.github.io/post/self%20super/</loc>
+    <lastmod>2016-10-12T13:55:32.605Z</lastmod>
+    <data>
+        <display>
+        <title>Self 和 Super</title>
+        <pubTime>2016-04-17T16:00:00.000Z</pubTime>
+        
+        <tag>Notes</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://jokerhappy.github.io/post/iOS%209%20Universal%20Links/</loc>
     <lastmod>2016-09-27T05:37:59.492Z</lastmod>
     <data>
