@@ -76,6 +76,85 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/post/国际化/" title="iOS 国际化问题" itemprop="url">iOS 国际化问题</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
+		
+  <p class="article-time">
+    <time datetime="2016-11-20T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-11-21</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>最近开发程序的国际版本，遇到一些问题在此记录一下：</p>
+<h5 id="中文问题"><a href="#中文问题" class="headerlink" title="中文问题"></a>中文问题</h5><p>刚开始在使用字符串的时候，直接选择硬编码到代码中</p>
+<pre><code>label.text = @&quot;你好，世界&quot;;
+</code></pre><p>但是之后 如果有国际化的需求的话，必须改成这样</p>
+<pre><code>label.text = NSLocalizedString(@&quot;hello&quot;, @&quot;你好，世界&quot;);
+</code></pre><p>不过随着代码越来越多 不免有疏漏 所以有时我们要去搜索一些漏网之鱼 这里分享一个快捷的方法</p>
+<blockquote>
+<p>打开<code>“Find Navigator”</code></p>
+<p>切换搜索模式到 <code>“Find &gt; Regular Expression”</code></p>
+<p>输入<code>@&quot;[^&quot;]*[\u4E00-\u9FA5]+[^&quot;\n]*?&quot;</code></p>
+</blockquote>
+<h5 id="xib文件产生的问题"><a href="#xib文件产生的问题" class="headerlink" title="xib文件产生的问题"></a>xib文件产生的问题</h5><p>问题描述：程序中部分控制器带有<code>xib</code>文件，对<code>xib</code>文件也进行了国际化，程序运行时，中文环境没问题，切换到英文环境崩溃，<code>crash</code>不是必现，接下来运行就没有问题，只有再切换分支的时候，第一次运行才会出现。<code>crash</code>文本</p>
+<pre><code>NSScanner: nil string argument
+NSScanner: nil string argument
+libc++abi.dylib: terminate_handler unexpectedly threw an exception
+</code></pre><p>仔细检查了代码及<code>xib</code>中的连线，没有问题，查了很多资料也没有解释。我把<code>xib</code>给删除了，重新做的国际化就没有问题。</p>
+<p>然后在版本控制中发现更改<code>xib</code>文件时，<code>svn</code>文件也会变动,<strong>猜想</strong>为<code>svn</code>导致国际化出错，修改了<code>xib</code>中的文本。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS/">iOS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Notes/">Notes</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/post/国际化/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/国际化/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/post/岛上书店/" title="岛上书店" itemprop="url">岛上书店</a>
   </h1>
   <p class="article-author">By
@@ -383,71 +462,6 @@ if (version &lt; 8.0 ) // 判断当前系统版本 {
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/post/KeyChain/" title="KeyChain" itemprop="url">KeyChain</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
-		
-  <p class="article-time">
-    <time datetime="2016-04-11T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-04-12</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>通常情况下，我们用<code>NSUserDefaults</code>存储数据信息，但是对于一些私密信息，比如密码、证书等等，就需要使用更为安全的<code>keychain</code>了。<code>keychain</code>里保存的信息不会因<code>App</code>被删除而丢失，在用户重新安装<code>App</code>后依然有效，数据还在。</p>
-<p><a href="https://cnbin.github.io/blog/2015/08/18/ios-keychain-ji-chu/" target="_blank" rel="external">iOS KeyChain 基础</a></p>
-<p><a href="http://blog.csdn.net/ibcker/article/details/24839143" target="_blank" rel="external">KeyChain使用与共享数据</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/iOS/">iOS</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Notes/">Notes</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/post/KeyChain/#comments" class="ds-thread-count comments-count-link" data-thread-key="post/KeyChain/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -470,7 +484,7 @@ if (version &lt; 8.0 ) // 判断当前系统版本 {
 		  
 		
 		  
-			<li><a href="/categories/iOS/" title="iOS">iOS<sup>21</sup></a></li>
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>22</sup></a></li>
 		  
 		
 		</ul>
@@ -487,7 +501,7 @@ if (version &lt; 8.0 ) // 判断当前系统版本 {
 			
 		
 			
-				<li><a href="/tags/Notes/" title="Notes">Notes<sup>6</sup></a></li>
+				<li><a href="/tags/Notes/" title="Notes">Notes<sup>7</sup></a></li>
 			
 		
 			

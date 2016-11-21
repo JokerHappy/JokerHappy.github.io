@@ -4,26 +4,38 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>iOS可变参数 | 知行合一</title>
+    <title>iOS 国际化问题 | 知行合一</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="xxx">
     
 
     
-    <meta name="description" content="iOS可变参数官方的例子，留记
-12345678910111213141516171819202122232425#import &amp;lt;Cocoa/Cocoa.h&amp;gt;@interface NSMutableArray (variadicMethodExample)- (void) appendObjects:(id) firstObject, ...; // This method take">
+    <meta name="description" content="最近开发程序的国际版本，遇到一些问题在此记录一下：
+中文问题刚开始在使用字符串的时候，直接选择硬编码到代码中
+label.text = @&amp;quot;你好，世界&amp;quot;;
+但是之后 如果有国际化的需求的话，必须改成这样
+label.text = NSLocalizedString(@&amp;quot;hello&amp;quot;, @&amp;quot;你好，世界&amp;quot;);
+不过随着代码越来越多 不免有疏漏">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS可变参数">
-<meta property="og:url" content="http://jokerhappy.github.io/post/iOS可变参数/index.html">
+<meta property="og:title" content="iOS 国际化问题">
+<meta property="og:url" content="http://jokerhappy.github.io/post/国际化/index.html">
 <meta property="og:site_name" content="知行合一">
-<meta property="og:description" content="iOS可变参数官方的例子，留记
-12345678910111213141516171819202122232425#import &amp;lt;Cocoa/Cocoa.h&amp;gt;@interface NSMutableArray (variadicMethodExample)- (void) appendObjects:(id) firstObject, ...; // This method take">
-<meta property="og:updated_time" content="2016-08-11T14:17:52.637Z">
+<meta property="og:description" content="最近开发程序的国际版本，遇到一些问题在此记录一下：
+中文问题刚开始在使用字符串的时候，直接选择硬编码到代码中
+label.text = @&amp;quot;你好，世界&amp;quot;;
+但是之后 如果有国际化的需求的话，必须改成这样
+label.text = NSLocalizedString(@&amp;quot;hello&amp;quot;, @&amp;quot;你好，世界&amp;quot;);
+不过随着代码越来越多 不免有疏漏">
+<meta property="og:updated_time" content="2016-11-21T12:52:49.171Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS可变参数">
-<meta name="twitter:description" content="iOS可变参数官方的例子，留记
-12345678910111213141516171819202122232425#import &amp;lt;Cocoa/Cocoa.h&amp;gt;@interface NSMutableArray (variadicMethodExample)- (void) appendObjects:(id) firstObject, ...; // This method take">
+<meta name="twitter:title" content="iOS 国际化问题">
+<meta name="twitter:description" content="最近开发程序的国际版本，遇到一些问题在此记录一下：
+中文问题刚开始在使用字符串的时候，直接选择硬编码到代码中
+label.text = @&amp;quot;你好，世界&amp;quot;;
+但是之后 如果有国际化的需求的话，必须改成这样
+label.text = NSLocalizedString(@&amp;quot;hello&amp;quot;, @&amp;quot;你好，世界&amp;quot;);
+不过随着代码越来越多 不免有疏漏">
 
     
     <link rel="alternative" href="/atom.xml" title="知行合一" type="application/atom+xml">
@@ -78,14 +90,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/post/iOS可变参数/" title="iOS可变参数" itemprop="url">iOS可变参数</a>
+      <a href="/post/国际化/" title="iOS 国际化问题" itemprop="url">iOS 国际化问题</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="xxx" target="_blank" itemprop="author">xxx</a>
 		
   <p class="article-time">
-    <time datetime="2016-04-05T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-04-06</time>
+    <time datetime="2016-11-20T16:00:00.000Z" itemprop="datePublished"> 发表于 2016-11-21</time>
     
   </p>
 </header>
@@ -94,21 +106,28 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#iOS可变参数"><span class="toc-number">1.</span> <span class="toc-text">iOS可变参数</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#中文问题"><span class="toc-number">1.</span> <span class="toc-text">中文问题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#xib文件产生的问题"><span class="toc-number">2.</span> <span class="toc-text">xib文件产生的问题</span></a></li></ol>
 		
 		</div>
 		
-		<h5 id="iOS可变参数"><a href="#iOS可变参数" class="headerlink" title="iOS可变参数"></a>iOS可变参数</h5><p><a href="https://developer.apple.com/library/mac/qa/qa1405/_index.html" target="_blank" rel="external">官方的例子</a>，留记</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Cocoa/Cocoa.h&gt;</span><br><span class="line"></span><br><span class="line">@interface NSMutableArray (variadicMethodExample)</span><br><span class="line"></span><br><span class="line">- (void) appendObjects:(id) firstObject, ...; // This method takes a nil-terminated list of objects.</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation NSMutableArray (variadicMethodExample)</span><br><span class="line"></span><br><span class="line">- (void) appendObjects:(id) firstObject, ...</span><br><span class="line">&#123;</span><br><span class="line">	id eachObject;</span><br><span class="line">	va_list argumentList;</span><br><span class="line">	if (firstObject) // The first argument isn't part of the varargs list,</span><br><span class="line">  &#123;                                   // so we'll handle it separately.</span><br><span class="line">  	[self addObject: firstObject];</span><br><span class="line">  	va_start(argumentList, firstObject); // Start scanning for arguments after firstObject.</span><br><span class="line">  	while (eachObject = va_arg(argumentList, id)) // As many times as we can get an argument of type "id"</span><br><span class="line">	[self addObject: eachObject]; // that isn't nil, add it to self's contents.</span><br><span class="line">  	va_end(argumentList);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
-<p><code>va_list</code>：用来保存宏 <code>va_start</code> 、<code>va_arg</code> 和 <code>va_end</code> 所需信息的一种类型。为了访问变长参数列表中的参数，必须声明 <code>va_list</code> 类型的一个对象。</p>
-<p><code>va_start</code>：访问变长参数列表中的参数之前使用的宏，它初始化用<code>va_list</code>声明的对象，初始化结果供宏<code>va_arg</code>和<code>va_end</code>使用；</p>
-<p><code>va_arg</code>：展开成一个表达式的宏，该表达式具有变长参数列表中下一个参数的值和类型。每次调用 <code>va_arg</code> 都会修改，用 <code>va_list</code> 声明的对象从而使该对象指向参数列表中的下一个参数。</p>
-<p><code>va_end</code>：该宏使程序能够从变长参数列表用宏 <code>va_start</code> 引用的函数中正常返回。</p>
+		<p>最近开发程序的国际版本，遇到一些问题在此记录一下：</p>
+<h5 id="中文问题"><a href="#中文问题" class="headerlink" title="中文问题"></a>中文问题</h5><p>刚开始在使用字符串的时候，直接选择硬编码到代码中</p>
+<pre><code>label.text = @&quot;你好，世界&quot;;
+</code></pre><p>但是之后 如果有国际化的需求的话，必须改成这样</p>
+<pre><code>label.text = NSLocalizedString(@&quot;hello&quot;, @&quot;你好，世界&quot;);
+</code></pre><p>不过随着代码越来越多 不免有疏漏 所以有时我们要去搜索一些漏网之鱼 这里分享一个快捷的方法</p>
 <blockquote>
-<p>参数结尾必须加上<strong>nil</strong>，表示参数结束，可以再参数后加上宏 <code>NS_REQUIRES_NIL_TERMINATION</code>，用于编译时非<strong>nil</strong>结尾的检查。</p>
+<p>打开<code>“Find Navigator”</code></p>
+<p>切换搜索模式到 <code>“Find &gt; Regular Expression”</code></p>
+<p>输入<code>@&quot;[^&quot;]*[\u4E00-\u9FA5]+[^&quot;\n]*?&quot;</code></p>
 </blockquote>
-<pre><code>- (void) appendObjects:(id) firstObject, ...NS_REQUIRES_NIL_TERMINATION;
-</code></pre>  
+<h5 id="xib文件产生的问题"><a href="#xib文件产生的问题" class="headerlink" title="xib文件产生的问题"></a>xib文件产生的问题</h5><p>问题描述：程序中部分控制器带有<code>xib</code>文件，对<code>xib</code>文件也进行了国际化，程序运行时，中文环境没问题，切换到英文环境崩溃，<code>crash</code>不是必现，接下来运行就没有问题，只有再切换分支的时候，第一次运行才会出现。<code>crash</code>文本</p>
+<pre><code>NSScanner: nil string argument
+NSScanner: nil string argument
+libc++abi.dylib: terminate_handler unexpectedly threw an exception
+</code></pre><p>仔细检查了代码及<code>xib</code>中的连线，没有问题，查了很多资料也没有解释。我把<code>xib</code>给删除了，重新做的国际化就没有问题。</p>
+<p>然后在版本控制中发现更改<code>xib</code>文件时，<code>svn</code>文件也会变动,<strong>猜想</strong>为<code>svn</code>导致国际化出错，修改了<code>xib</code>中的文本。</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -130,7 +149,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://jokerhappy.github.io/post/iOS可变参数/" data-title="iOS可变参数 | 知行合一" data-tsina="null" class="share clearfix">
+	  <div data-url="http://jokerhappy.github.io/post/国际化/" data-title="iOS 国际化问题 | 知行合一" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -143,19 +162,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/post/Objective-C和JavaScript 数据交互/" title="Objective-C和JavaScript 数据交互">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Objective-C和JavaScript 数据交互</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/post/链式编程和函数式编程学习笔记/"  title="链式编程和函数式编程学习笔记">
+<a href="/post/岛上书店/"  title="岛上书店">
  <strong>下一篇：</strong><br/> 
- <span>链式编程和函数式编程学习笔记
+ <span>岛上书店
 </span>
 </a>
 </div>
@@ -164,7 +175,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="post/iOS可变参数/" data-title="iOS可变参数" data-url="http://jokerhappy.github.io/post/iOS可变参数/"></div>
+	<div class="ds-thread" data-thread-key="post/国际化/" data-title="iOS 国际化问题" data-url="http://jokerhappy.github.io/post/国际化/"></div>
 </section>
 
 
@@ -174,7 +185,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#iOS可变参数"><span class="toc-number">1.</span> <span class="toc-text">iOS可变参数</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#中文问题"><span class="toc-number">1.</span> <span class="toc-text">中文问题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#xib文件产生的问题"><span class="toc-number">2.</span> <span class="toc-text">xib文件产生的问题</span></a></li></ol>
  
   </div>
 
