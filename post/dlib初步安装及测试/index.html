@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Auto Layout," />
+  <meta name="keywords" content="Notes," />
 
 
 
@@ -81,18 +81,28 @@
 
 
 
-<meta name="description" content="Auto Layout  重新构思了开发者创建界面的方式。它创建了一个灵活、强大的系统，来描述试图和他们的内容是如何相互关联的，他们和他们占据的窗口和父试图是如何关联的。">
+<meta name="description" content="dlib
+dlib是一套包含了机器学习、计算机视觉、图像处理等的函数库，使用C++开发而成，目前广泛使用于工业及学术界，也应用于机器人、嵌入式系统、手机、甚至于大型的运算架构中，而且最重要的是，它不但是开源的而且还可以跨平台使用（Linux、Mac OS 、Windows），并且还提供了Python API。开发者是Davis King
+
+dlib依赖
+dlib安装需要依赖库有openblas，o">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS中AutoLayer自动布局流程及相关方法">
-<meta property="og:url" content="http://jokerhappy.github.io/post/AutoLayout zero/index.html">
+<meta property="og:title" content="dlib初步安装及测试">
+<meta property="og:url" content="http://jokerhappy.github.io/post/dlib初步安装及测试/index.html">
 <meta property="og:site_name" content="知行合一">
-<meta property="og:description" content="Auto Layout  重新构思了开发者创建界面的方式。它创建了一个灵活、强大的系统，来描述试图和他们的内容是如何相互关联的，他们和他们占据的窗口和父试图是如何关联的。">
-<meta property="og:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/4.png">
-<meta property="og:updated_time" content="2018-01-25T12:02:50.685Z">
+<meta property="og:description" content="dlib
+dlib是一套包含了机器学习、计算机视觉、图像处理等的函数库，使用C++开发而成，目前广泛使用于工业及学术界，也应用于机器人、嵌入式系统、手机、甚至于大型的运算架构中，而且最重要的是，它不但是开源的而且还可以跨平台使用（Linux、Mac OS 、Windows），并且还提供了Python API。开发者是Davis King
+
+dlib依赖
+dlib安装需要依赖库有openblas，o">
+<meta property="og:updated_time" content="2018-04-28T07:32:05.285Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS中AutoLayer自动布局流程及相关方法">
-<meta name="twitter:description" content="Auto Layout  重新构思了开发者创建界面的方式。它创建了一个灵活、强大的系统，来描述试图和他们的内容是如何相互关联的，他们和他们占据的窗口和父试图是如何关联的。">
-<meta name="twitter:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/4.png">
+<meta name="twitter:title" content="dlib初步安装及测试">
+<meta name="twitter:description" content="dlib
+dlib是一套包含了机器学习、计算机视觉、图像处理等的函数库，使用C++开发而成，目前广泛使用于工业及学术界，也应用于机器人、嵌入式系统、手机、甚至于大型的运算架构中，而且最重要的是，它不但是开源的而且还可以跨平台使用（Linux、Mac OS 、Windows），并且还提供了Python API。开发者是Davis King
+
+dlib依赖
+dlib安装需要依赖库有openblas，o">
 
 
 
@@ -122,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://jokerhappy.github.io/post/AutoLayout zero/"/>
+  <link rel="canonical" href="http://jokerhappy.github.io/post/dlib初步安装及测试/"/>
 
 
 
 
 
-  <title>iOS中AutoLayer自动布局流程及相关方法 | 知行合一</title>
+  <title>dlib初步安装及测试 | 知行合一</title>
   
 
 
@@ -254,7 +264,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jokerhappy.github.io/post/AutoLayout zero/">
+    <link itemprop="mainEntityOfPage" href="http://jokerhappy.github.io/post/dlib初步安装及测试/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="温小二">
@@ -271,7 +281,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">iOS中AutoLayer自动布局流程及相关方法</h1>
+          <h1 class="post-title" itemprop="name headline">dlib初步安装及测试</h1>
         
 
         <div class="post-meta">
@@ -283,8 +293,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-18T00:00:00+08:00">
-                2016-02-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-01T00:00:00+08:00">
+                2018-04-01
               </time>
             
 
@@ -293,28 +303,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -343,39 +331,45 @@
       
 
       
-        <p><code>Auto Layout</code>  重新构思了开发者创建界面的方式。它创建了一个灵活、强大的系统，来描述试图和他们的内容是如何相互关联的，他们和他们占据的窗口和父试图是如何关联的。</p>
-<a id="more"></a> 
-<h4 id="Auto-Layout-Process-自动布局过程"><a href="#Auto-Layout-Process-自动布局过程" class="headerlink" title="Auto Layout Process 自动布局过程"></a>Auto Layout Process 自动布局过程</h4><p><code>Auto Layout</code>在<code>view</code>显示之前，主要有三个步骤<code>updating constraints -&gt; layout -&gt; display</code>。每一个步骤都依赖于上一个。<code>display</code>依赖<code>layout</code>，而<code>layout</code>依赖<code>updating constraints</code>。 </p>
-<ul>
-<li><p><code>updating constraints</code>，被称为测量阶段，其从下向上(from subview to super view),为下一步<code>layout</code>准备信息。可以通过调用方法<code>setNeedUpdateConstraints</code>去触发此步。<code>constraints</code>的改变也会自动的触发此步。但是，当你自定义<code>view</code>的时候，如果一些改变可能会影响到布局的时候，通常需要自己去通知<code>Auto Layout</code>-&gt;<code>updateConstraintsIfNeeded</code>。<br>自定义<code>view</code>的话，通常可以重写<code>updateConstraints</code>方法，在其中可以添加<code>view</code>需要的局部的<code>contraints</code>。</p>
+        <h2 id="dlib"><a href="#dlib" class="headerlink" title="dlib"></a><a href="http://www.dlib.net/ml.html" target="_blank" rel="external">dlib</a></h2><blockquote>
+<p>dlib是一套包含了机器学习、计算机视觉、图像处理等的函数库，使用C++开发而成，目前广泛使用于工业及学术界，也应用于机器人、嵌入式系统、手机、甚至于大型的运算架构中，而且最重要的是，它不但是开源的而且还可以跨平台使用（Linux、Mac OS 、Windows），并且还提供了Python API。开发者是<a href="[http://blog.dlib.net]">Davis King</a></p>
+</blockquote>
+<h2 id="dlib依赖"><a href="#dlib依赖" class="headerlink" title="dlib依赖"></a>dlib依赖</h2><ul>
+<li><p>dlib安装需要依赖库有<code>openblas</code>，<code>opencv</code>。可以直接使用<code>brew</code>安装。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ brew install openblas</span><br><span class="line"></span><br><span class="line">$ brew install opencv3 --with-python3 --c++11 --with-contrib</span><br><span class="line">$ brew link --force opencv3</span><br></pre></td></tr></table></figure>
+<p>安装<code>opencv</code>可以参考<a href="https://gravityjack.com/news/opencv-python-3-homebrew/" target="_blank" rel="external">这个</a>，出现的问题有详细的说明</p>
 </li>
-<li><p><code>layout</code>，其从上向下(from super view to subview)，此步主要应用上一步的信息去设置<code>view</code>的<code>center</code>和<code>bounds</code>。可以通过调用<code>setNeedsLayout</code>去触发此步骤，此方法不会立即应用<code>layout</code>。如果想要系统立即的更新<code>layout</code>，可以调用<code>layoutIfNeeded</code>。另外，自定义<code>view</code>可以重写方法<code>layoutSubViews</code>来在<code>layout</code>的工程中得到更多的定制化效果。</p>
+<li><p>Mac下安装X11</p>
+<p><code>X11</code>是执行Unix程序的图形窗口环境。Mac OS X本身的程序是<code>Aqua</code>界面的，但是为了能够兼容<code>unix</code>和<code>linux</code>移植过来的程序（Mac OS X由BSD-UNIX修改而来），比如MatLab，就需要x11窗口环境。</p>
+<p>运行<code>dlib</code>需要<code>X11</code>，但Mac目前没有自带X11，需要重新下载安装，下载地址为：<a href="https://www.xquartz.org/" target="_blank" rel="external">https://www.xquartz.org/</a>，下载后直接安装，默认安装目录为<code>/opt/X11</code>，需要在<code>/usr/loca/opt</code>目录下创建软连接，创建命令如下，创建后重启Mac。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cd /usr/local/opt</span><br><span class="line"></span><br><span class="line">$ ln -s /opt/X11 X11dlib</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><code>display</code>，此步时把<code>view</code>渲染到屏幕上，它与你是否使用<code>Auto layout</code>无关，其操作是从上向下(from super view to subview)，通过调用<code>setNeedsDisplay</code>触发，因为每一步都依赖前一步，因此一个<code>display</code>可能会触发<code>layout</code>，当有任何<code>layout</code>没有被处理的时候，同理，<code>layout</code>可能会触发<code>updating constraints</code>，当<code>constraint system</code>更新改变的时候。</p>
+</ul>
+<h2 id="dlib安装"><a href="#dlib安装" class="headerlink" title="dlib安装"></a>dlib安装</h2><ul>
+<li><p>下载dlib，也可直接去Git下载    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/davisking/dlib.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下载后解压，安装dlib</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd dlib/examples</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake .. -DUSE_SSE4_INSTRUCTIONS=ON</span><br><span class="line">cmake --build . --config Release</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装python模块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cd dlib</span><br><span class="line"></span><br><span class="line">sudo python setup.py install</span><br><span class="line"></span><br><span class="line">python</span><br><span class="line"></span><br><span class="line"># 不报错，说明安装python模块成功</span><br><span class="line">import dlib</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><img src="http://7xt3bw.com1.z0.glb.clouddn.com/4.png" alt=""></p>
-<h4 id="iOS-提供的Layout-的方法"><a href="#iOS-提供的Layout-的方法" class="headerlink" title="iOS 提供的Layout 的方法"></a>iOS 提供的Layout 的方法</h4><h5 id="layoutSubviews"><a href="#layoutSubviews" class="headerlink" title="layoutSubviews"></a>layoutSubviews</h5><ul>
-<li>在<code>iOS5.1</code>和之前的版本，此方法的缺省实现不会做任何事情(实现为空)，<code>iOS5.1</code>之后(iOS6开始)的版本，此方法的缺省实现是使用你设置在此view上面的constraints(Autolayout)去决定subviews的<code>position</code>和<code>size</code>。 UIView的子类如果需要对其<code>subviews</code>进行更精确的布局，则可以重写此方法。只有在autoresizing和constraint-based behaviors of subviews不能提供我们想要的布局结果的时候，我们才应该重写此方法。可以在此方法中直接设置subviews的<code>frame</code>。 我们不应该直接调用此方法，而应当用下面两个方法。</li>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><ul>
+<li><p>检测人脸</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cd dlib/examples/build/</span><br><span class="line"></span><br><span class="line">#下载face landmark模型</span><br><span class="line">wget http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2</span><br><span class="line"></span><br><span class="line"># 解压文件</span><br><span class="line"></span><br><span class="line">./webcam_face_pose_ex</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>利用<code>python</code>十行代码进行人脸检测</p>
+<p>首先需要安装相关依赖库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">brew install boost</span><br><span class="line">brew install boost-python</span><br><span class="line">pip install dlib</span><br><span class="line">pip install scikit-image</span><br></pre></td></tr></table></figure>
+<p>具体代码<code>main.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> dlib</span><br><span class="line"><span class="keyword">from</span> skimage <span class="keyword">import</span> io</span><br><span class="line"><span class="keyword">from</span> skimage.draw <span class="keyword">import</span> polygon_perimeter</span><br><span class="line"></span><br><span class="line">detector = dlib.get_frontal_face_detector()</span><br><span class="line">sample_image = io.imread(<span class="string">'目标图片'</span>)</span><br><span class="line">faces = detector(sample_image, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> d <span class="keyword">in</span> faces:</span><br><span class="line">    rr, cc = polygon_perimeter([d.top(), d.top(), d.bottom(), d.bottom()], [d.right(), d.left(), d.left(), d.right()])</span><br><span class="line">    sample_image[rr, cc] = (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>)</span><br><span class="line">io.imsave(<span class="string">'识别后新生成图片'</span>, sample_image)</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<h5 id="setNeedsLayout"><a href="#setNeedsLayout" class="headerlink" title="setNeedsLayout"></a>setNeedsLayout</h5><ul>
-<li>此方法会将view当前的layout设置为无效的，并在下一个<code>upadte cycle</code>里去触发<code>layout</code>更新。</li>
-</ul>
-<h5 id="layoutIfNeeded"><a href="#layoutIfNeeded" class="headerlink" title="layoutIfNeeded"></a>layoutIfNeeded</h5><ul>
-<li>使用此方法<code>强制立即</code>进行layout,从当前view开始，此方法会遍历整个view层次(包括superviews)请求layout。因此，调用此方法会强制整个view层次布局。</li>
-</ul>
-<h4 id="基于AutoLayer约束constraints的方法："><a href="#基于AutoLayer约束constraints的方法：" class="headerlink" title="基于AutoLayer约束constraints的方法："></a>基于AutoLayer约束constraints的方法：</h4><h5 id="setNeedsUpdateConstraints"><a href="#setNeedsUpdateConstraints" class="headerlink" title="setNeedsUpdateConstraints"></a>setNeedsUpdateConstraints</h5><ul>
-<li>当一个自定义view的某个属性发生改变，并且可能影响到constraint时，需要调用此方法去标记constraints需要在未来的某个点更新，系统然后调用<code>updateConstraints</code>.</li>
-</ul>
-<h5 id="needsUpdateConstraints"><a href="#needsUpdateConstraints" class="headerlink" title="needsUpdateConstraints"></a>needsUpdateConstraints</h5><ul>
-<li><code>constraint-based layout system</code>使用此返回值去决定是否需要调用<code>updateConstraint</code>s作为正常布局过程的一部分。</li>
-</ul>
-<h5 id="updateConstraintsIfNeeded"><a href="#updateConstraintsIfNeeded" class="headerlink" title="updateConstraintsIfNeeded"></a>updateConstraintsIfNeeded</h5><ul>
-<li>立即触发约束更新，自动更新布局。</li>
-</ul>
-<h5 id="updateConstraints"><a href="#updateConstraints" class="headerlink" title="updateConstraints"></a>updateConstraints</h5><ul>
-<li>自定义view应该重写此方法在其中建立constraints. 注意：要在实现在最后调用<code>[super updateConstraints]</code></li>
-</ul>
+<blockquote>
+<p>我是使用<code>python3</code>执行<code>main.py</code>的，需要注意的是要将<code>shape_predictor_68_face_landmarks.dat.bz2</code>的解压文件和<code>main.py</code>放在同一目录下</p>
+</blockquote>
 
       
     </div>
@@ -393,7 +387,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Auto-Layout/" rel="tag"># Auto Layout</a>
+            <a href="/tags/Notes/" rel="tag"># Notes</a>
           
         </div>
       
@@ -406,8 +400,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/post/webview/" rel="next" title="UIWebView 使用浅析">
-                <i class="fa fa-chevron-left"></i> UIWebView 使用浅析
+              <a href="/post/SSL证书/" rel="next" title="SSL证书类型的选择">
+                <i class="fa fa-chevron-left"></i> SSL证书类型的选择
               </a>
             
           </div>
@@ -415,10 +409,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/post/layout 笔记1/" rel="prev" title="iOS Auto Layout Demystified 学习笔记（一）">
-                iOS Auto Layout Demystified 学习笔记（一） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -566,7 +556,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Auto-Layout-Process-自动布局过程"><span class="nav-number">1.</span> <span class="nav-text">Auto Layout Process 自动布局过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#iOS-提供的Layout-的方法"><span class="nav-number">2.</span> <span class="nav-text">iOS 提供的Layout 的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#layoutSubviews"><span class="nav-number">2.1.</span> <span class="nav-text">layoutSubviews</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#setNeedsLayout"><span class="nav-number">2.2.</span> <span class="nav-text">setNeedsLayout</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#layoutIfNeeded"><span class="nav-number">2.3.</span> <span class="nav-text">layoutIfNeeded</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于AutoLayer约束constraints的方法："><span class="nav-number">3.</span> <span class="nav-text">基于AutoLayer约束constraints的方法：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#setNeedsUpdateConstraints"><span class="nav-number">3.1.</span> <span class="nav-text">setNeedsUpdateConstraints</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#needsUpdateConstraints"><span class="nav-number">3.2.</span> <span class="nav-text">needsUpdateConstraints</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#updateConstraintsIfNeeded"><span class="nav-number">3.3.</span> <span class="nav-text">updateConstraintsIfNeeded</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#updateConstraints"><span class="nav-number">3.4.</span> <span class="nav-text">updateConstraints</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#dlib"><span class="nav-number">1.</span> <span class="nav-text">dlib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dlib依赖"><span class="nav-number">2.</span> <span class="nav-text">dlib依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dlib安装"><span class="nav-number">3.</span> <span class="nav-text">dlib安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Demo"><span class="nav-number">4.</span> <span class="nav-text">Demo</span></a></li></ol></div>
             
 
           </div>
