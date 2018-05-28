@@ -87,12 +87,12 @@
 <meta property="og:url" content="http://jokerhappy.github.io/post/AutoLayout zero/index.html">
 <meta property="og:site_name" content="知行合一">
 <meta property="og:description" content="Auto Layout  重新构思了开发者创建界面的方式。它创建了一个灵活、强大的系统，来描述试图和他们的内容是如何相互关联的，他们和他们占据的窗口和父试图是如何关联的。">
-<meta property="og:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/4.png">
-<meta property="og:updated_time" content="2018-01-25T12:02:50.685Z">
+<meta property="og:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/4.png-water">
+<meta property="og:updated_time" content="2018-05-28T02:31:56.389Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS中AutoLayer自动布局流程及相关方法">
 <meta name="twitter:description" content="Auto Layout  重新构思了开发者创建界面的方式。它创建了一个灵活、强大的系统，来描述试图和他们的内容是如何相互关联的，他们和他们占据的窗口和父试图是如何关联的。">
-<meta name="twitter:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/4.png">
+<meta name="twitter:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/4.png-water">
 
 
 
@@ -354,7 +354,7 @@
 <li><p><code>display</code>，此步时把<code>view</code>渲染到屏幕上，它与你是否使用<code>Auto layout</code>无关，其操作是从上向下(from super view to subview)，通过调用<code>setNeedsDisplay</code>触发，因为每一步都依赖前一步，因此一个<code>display</code>可能会触发<code>layout</code>，当有任何<code>layout</code>没有被处理的时候，同理，<code>layout</code>可能会触发<code>updating constraints</code>，当<code>constraint system</code>更新改变的时候。</p>
 </li>
 </ul>
-<p><img src="http://7xt3bw.com1.z0.glb.clouddn.com/4.png" alt=""></p>
+<p><img src="http://7xt3bw.com1.z0.glb.clouddn.com/4.png-water" alt=""></p>
 <h4 id="iOS-提供的Layout-的方法"><a href="#iOS-提供的Layout-的方法" class="headerlink" title="iOS 提供的Layout 的方法"></a>iOS 提供的Layout 的方法</h4><h5 id="layoutSubviews"><a href="#layoutSubviews" class="headerlink" title="layoutSubviews"></a>layoutSubviews</h5><ul>
 <li>在<code>iOS5.1</code>和之前的版本，此方法的缺省实现不会做任何事情(实现为空)，<code>iOS5.1</code>之后(iOS6开始)的版本，此方法的缺省实现是使用你设置在此view上面的constraints(Autolayout)去决定subviews的<code>position</code>和<code>size</code>。 UIView的子类如果需要对其<code>subviews</code>进行更精确的布局，则可以重写此方法。只有在autoresizing和constraint-based behaviors of subviews不能提供我们想要的布局结果的时候，我们才应该重写此方法。可以在此方法中直接设置subviews的<code>frame</code>。 我们不应该直接调用此方法，而应当用下面两个方法。</li>
 </ul>

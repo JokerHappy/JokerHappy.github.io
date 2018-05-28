@@ -107,8 +107,8 @@
 以此类推，如果一直到根类还没找到，转向拦截调用。
 
 如果没有重写拦截调用的方法，程序报错。">
-<meta property="og:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/runtimemethod.png">
-<meta property="og:updated_time" content="2018-01-25T12:15:47.703Z">
+<meta property="og:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/runtimemethod.png-water">
+<meta property="og:updated_time" content="2018-05-28T02:35:45.429Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS Runtime 消息">
 <meta name="twitter:description" content="OC中方法调用在运行时的过程
@@ -122,7 +122,7 @@
 以此类推，如果一直到根类还没找到，转向拦截调用。
 
 如果没有重写拦截调用的方法，程序报错。">
-<meta name="twitter:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/runtimemethod.png">
+<meta name="twitter:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/runtimemethod.png-water">
 
 
 
@@ -404,7 +404,7 @@
 <li><p>第四个方法是将你调用的不存在的方法打包成<code>NSInvocation</code>传给你。做完你自己的处理后，调用<code>invokeWithTarget:</code>方法让某个<code>target</code>触发这个方法。</p>
 </li>
 </ul>
-<p>具体流程如下：<br><img src="http://7xt3bw.com1.z0.glb.clouddn.com/runtimemethod.png" alt=""></p>
+<p>具体流程如下：<br><img src="http://7xt3bw.com1.z0.glb.clouddn.com/runtimemethod.png-water" alt=""></p>
 <p>具体事例可参考<a href="http://justinyan.me/post/1624" target="_blank" rel="external">理解 Objective-C Runtime</a></p>
 <h5 id="动态添加方法"><a href="#动态添加方法" class="headerlink" title="动态添加方法"></a>动态添加方法</h5><p>重写了拦截调用的方法并且返回了<code>YES</code>，我们要怎么处理呢？</p>
 <p>有一个办法是根据传进来的<code>SEL</code>类型的<code>selector</code>动态添加一个方法。</p>
