@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="知行合一" />
+  <meta name="keywords" content="Notes," />
 
 
 
@@ -81,16 +81,18 @@
 
 
 
-<meta name="description" content="无畏的协助者">
-<meta property="og:type" content="website">
-<meta property="og:title" content="知行合一">
-<meta property="og:url" content="http://jokerhappy.github.io/index.html">
+<meta name="description" content="防御式编程的核心思想：子程序应该不因传入错误数据而被破坏，哪怕是有其他子程序产生的错误数据。更一般地说，其核心想法是要承认程序都会有问题，都需要被修改，聪明的程序员应该根据这一点来编程序。 通常有三种方法来保护程序免遭非法输入数据而被破坏  检查所有来源于外部的数据的值 检查子程序所有输入参数的值 决定如何处理错误的输入数据  防御式编码的最佳方式就是在一开始不要在代码中引入错误。使用迭代式设计、">
+<meta name="keywords" content="Notes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="防御式编程">
+<meta property="og:url" content="http://jokerhappy.github.io/post/防御式编程/index.html">
 <meta property="og:site_name" content="知行合一">
-<meta property="og:description" content="无畏的协助者">
+<meta property="og:description" content="防御式编程的核心思想：子程序应该不因传入错误数据而被破坏，哪怕是有其他子程序产生的错误数据。更一般地说，其核心想法是要承认程序都会有问题，都需要被修改，聪明的程序员应该根据这一点来编程序。 通常有三种方法来保护程序免遭非法输入数据而被破坏  检查所有来源于外部的数据的值 检查子程序所有输入参数的值 决定如何处理错误的输入数据  防御式编码的最佳方式就是在一开始不要在代码中引入错误。使用迭代式设计、">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-01T13:24:44.123Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="知行合一">
-<meta name="twitter:description" content="无畏的协助者">
+<meta name="twitter:title" content="防御式编程">
+<meta name="twitter:description" content="防御式编程的核心思想：子程序应该不因传入错误数据而被破坏，哪怕是有其他子程序产生的错误数据。更一般地说，其核心想法是要承认程序都会有问题，都需要被修改，聪明的程序员应该根据这一点来编程序。 通常有三种方法来保护程序免遭非法输入数据而被破坏  检查所有来源于外部的数据的值 检查子程序所有输入参数的值 决定如何处理错误的输入数据  防御式编码的最佳方式就是在一开始不要在代码中引入错误。使用迭代式设计、">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://jokerhappy.github.io/"/>
+  <link rel="canonical" href="http://jokerhappy.github.io/post/防御式编程/"/>
 
 
 
 
 
-  <title>知行合一</title>
+  <title>防御式编程 | 知行合一</title>
   
 
 
@@ -154,8 +156,7 @@
     
   
 
-  <div class="container sidebar-position-right 
-  page-home">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -238,9 +239,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -270,9 +271,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/防御式编程/" itemprop="url">防御式编程</a></h1>
+          <h1 class="post-title" itemprop="name headline">防御式编程</h1>
         
 
         <div class="post-meta">
@@ -344,8 +343,7 @@
       
 
       
-        
-          <p>防御式编程的核心思想：子程序应该不因传入错误数据而被破坏，哪怕是有其他子程序产生的错误数据。更一般地说，其核心想法是要承认程序都会有问题，都需要被修改，聪明的程序员应该根据这一点来编程序。</p>
+        <p>防御式编程的核心思想：子程序应该不因传入错误数据而被破坏，哪怕是有其他子程序产生的错误数据。更一般地说，其核心想法是要承认程序都会有问题，都需要被修改，聪明的程序员应该根据这一点来编程序。</p>
 <p>通常有三种方法来保护程序免遭非法输入数据而被破坏</p>
 <ul>
 <li>检查所有来源于外部的数据的值</li>
@@ -353,277 +351,31 @@
 <li>决定如何处理错误的输入数据</li>
 </ul>
 <p>防御式编码的最佳方式就是在一开始不要在代码中引入错误。<strong>使用迭代式设计、编码前先写为代码、写代码前先写测试用例、低层设计检查</strong>等活动，都有助于防止引入错误。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/post/防御式编程/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jokerhappy.github.io/post/dlib初步安装及测试/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="温小二">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="知行合一">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/dlib初步安装及测试/" itemprop="url">dlib初步安装及测试</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-01T00:00:00+08:00">
-                2018-04-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          dlib
-dlib是一套包含了机器学习、计算机视觉、图像处理等的函数库，使用C++开发而成，目前广泛使用于工业及学术界，也应用于机器人、嵌入式系统、手机、甚至于大型的运算架构中，而且最重要的是，它不但是开源的而且还可以跨平台使用（Linux、Mac OS 、Windows），并且还提供了Python
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/post/dlib初步安装及测试/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jokerhappy.github.io/post/SSL证书/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="温小二">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="知行合一">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/SSL证书/" itemprop="url">SSL证书类型的选择</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T00:00:00+08:00">
-                2018-02-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="SSL证书的类型"><a href="#SSL证书的类型" class="headerlink" title="SSL证书的类型"></a>SSL证书的类型</h4><p>通常来说，SSL证书分为四大类 </p>
+<a id="more"></a>
+<h4 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h4><p>断言对于大型的复杂程序或可靠性要求极高的程序来说尤其有用。通过使用断言，能更快速的排查出音修改代码或者别的原因导致的程序错误。</p>
+<p>一个断言通常含有两个参数：一个描述假设为真时的情况的布尔表达式和一个断言为假时需要显示的信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define NSAssert(condition, desc)</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>DV证书</p>
+<p>断言主要是用于开发和维护阶段。通常，断言只是在开发阶段被编译到目标代码中，而在生成产品代码时并不编译进去。</p>
 </blockquote>
-<blockquote>
-<p>OV证书</p>
-</blockquote>
-<blockquote>
-<p>EV证书</p>
-</blockquote>
-<blockquote>
-<p>自签名证书——自签名证书很少被部署到正式的网站上，一般是被用在内部的测试环境中</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/post/SSL证书/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+<h5 id="使用断言的指导建议"><a href="#使用断言的指导建议" class="headerlink" title="使用断言的指导建议"></a>使用断言的指导建议</h5><h6 id="用错处理代码来处理预期会发生的状况，用断言来处理绝不应该发生的状况。"><a href="#用错处理代码来处理预期会发生的状况，用断言来处理绝不应该发生的状况。" class="headerlink" title="用错处理代码来处理预期会发生的状况，用断言来处理绝不应该发生的状况。"></a>用错处理代码来处理预期会发生的状况，用断言来处理绝不应该发生的状况。</h6><p>错误处理通常用来检查有害的输入数据，而断言是用于检查代码中的bug。</p>
+<p>有种方式可以让你更好地理解断言，那就是把断言看作是可执行的注解——你不能依赖它来让代码正常工作，但与编程语言中的注释相比，它能更主动地对程序中的假定做出说明。</p>
+<h6 id="避免把需要执行的代码放到断言中"><a href="#避免把需要执行的代码放到断言中" class="headerlink" title="避免把需要执行的代码放到断言中"></a>避免把需要执行的代码放到断言中</h6><h6 id="用断言来注解并验证前条件和后条件"><a href="#用断言来注解并验证前条件和后条件" class="headerlink" title="用断言来注解并验证前条件和后条件"></a>用断言来注解并验证前条件和后条件</h6><p>断言是用来说明前条件和后条件的有利工具，也可以用注释来说明前条件和后条件，但断言却能动态地判断前条件和后条件是否为真</p>
+<h6 id="对于高健壮性的代码，应该先使用断言再处理错误"><a href="#对于高健壮性的代码，应该先使用断言再处理错误" class="headerlink" title="对于高健壮性的代码，应该先使用断言再处理错误"></a>对于高健壮性的代码，应该先使用断言再处理错误</h6><h4 id="错误处理技术"><a href="#错误处理技术" class="headerlink" title="错误处理技术"></a>错误处理技术</h4><ul>
+<li>返回中立值</li>
+<li>换用下一个正确的数据</li>
+<li>返回与前次相同的数据</li>
+<li>换用最接近的合法值</li>
+<li>把警告信息记录到日志文件中</li>
+<li>返回一个错误码</li>
+<li>调用错误处理子程序或对象</li>
+<li>当错误发生时显示出错消息</li>
+<li>用最妥当的方式在局部处理错误</li>
+<li>关闭程序 —— 这个方法适用于人身安全攸关的应用程序</li>
+</ul>
+<h4 id="健壮性与正确性"><a href="#健壮性与正确性" class="headerlink" title="健壮性与正确性"></a>健壮性与正确性</h4><p>处理错误最恰当的方式要根据出现错误的软件的类别而定。正确性意味着永不返回不准确的结果，哪怕不返回结果也比返回不准确的结果好。然而，健壮性则意味着要不断尝试采取某些措施，以保证软件可以持续地运转下去，哪怕有时做出一些不够准确的结果。</p>
+<h4 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h4><p>异常是把代码中的错误或异常事件传递给调用方代码的一种特殊方式。如果在一个子程序中遇到了预料之外的情况，但不知道该如何处理的话，它就可以抛出一个异常。对出错的前因后果不甚了解的代码，可以把控制权转交给系统中其他能更好地能更好地解释错误并采取措施的部分。</p>
+
       
     </div>
     
@@ -638,285 +390,36 @@ dlib是一套包含了机器学习、计算机视觉、图像处理等的函数�
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jokerhappy.github.io/post/宜幸福/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="温小二">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="知行合一">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/宜幸福/" itemprop="url">宜幸福</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-01T00:00:00+08:00">
-                2018-01-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/Notes/" rel="tag"># Notes</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <blockquote class="blockquote-center"><p>虽然人生在世会有种种不如意，但你仍可以在幸福与不幸中作选择。 </p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/post/宜幸福/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/dlib初步安装及测试/" rel="next" title="dlib初步安装及测试">
+                <i class="fa fa-chevron-left"></i> dlib初步安装及测试
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jokerhappy.github.io/post/国际化/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="温小二">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="知行合一">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/国际化/" itemprop="url">iOS 国际化问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-21T00:00:00+08:00">
-                2016-11-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>最近开发程序的国际版本，遇到一些问题在此记录一下：</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/post/国际化/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -926,14 +429,11 @@ dlib是一套包含了机器学习、计算机视觉、图像处理等的函数�
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -941,6 +441,10 @@ dlib是一套包含了机器学习、计算机视觉、图像处理等的函数�
 
 
           
+
+  
+
+
 
         </div>
         
@@ -961,8 +465,17 @@ dlib是一套包含了机器学习、计算机视觉、图像处理等的函数�
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1038,6 +551,22 @@ dlib是一套包含了机器学习、计算机视觉、图像处理等的函数�
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#断言"><span class="nav-number">1.</span> <span class="nav-text">断言</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#使用断言的指导建议"><span class="nav-number">1.1.</span> <span class="nav-text">使用断言的指导建议</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#用错处理代码来处理预期会发生的状况，用断言来处理绝不应该发生的状况。"><span class="nav-number">1.1.1.</span> <span class="nav-text">用错处理代码来处理预期会发生的状况，用断言来处理绝不应该发生的状况。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#避免把需要执行的代码放到断言中"><span class="nav-number">1.1.2.</span> <span class="nav-text">避免把需要执行的代码放到断言中</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#用断言来注解并验证前条件和后条件"><span class="nav-number">1.1.3.</span> <span class="nav-text">用断言来注解并验证前条件和后条件</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#对于高健壮性的代码，应该先使用断言再处理错误"><span class="nav-number">1.1.4.</span> <span class="nav-text">对于高健壮性的代码，应该先使用断言再处理错误</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#错误处理技术"><span class="nav-number">2.</span> <span class="nav-text">错误处理技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#健壮性与正确性"><span class="nav-number">3.</span> <span class="nav-text">健壮性与正确性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异常"><span class="nav-number">4.</span> <span class="nav-text">异常</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1171,6 +700,10 @@ dlib是一套包含了机器学习、计算机视觉、图像处理等的函数�
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

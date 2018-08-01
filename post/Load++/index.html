@@ -82,12 +82,14 @@
 
 
 <meta name="description" content="NSObject Class Reference里对这两个方法说明：">
+<meta name="keywords" content="Notes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Objective C中类方法load和initialize的区别">
 <meta property="og:url" content="http://jokerhappy.github.io/post/Load++/index.html">
 <meta property="og:site_name" content="知行合一">
 <meta property="og:description" content="NSObject Class Reference里对这两个方法说明：">
-<meta property="og:updated_time" content="2018-01-25T12:24:57.300Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-15T09:08:02.653Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective C中类方法load和initialize的区别">
 <meta name="twitter:description" content="NSObject Class Reference里对这两个方法说明：">
@@ -341,9 +343,9 @@
       
 
       
-        <p><a href="https://developer.apple.com/reference/objectivec/nsobject?language=objc" target="_blank" rel="external">NSObject Class Reference</a>里对这两个方法说明：</p>
+        <p><a href="https://developer.apple.com/reference/objectivec/nsobject?language=objc" target="_blank" rel="noopener">NSObject Class Reference</a>里对这两个方法说明：</p>
 <a id="more"></a> 
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">+(<span class="keyword">void</span>)initialize</span><br><span class="line"></span><br><span class="line">    The runtime sends initialize to each class <span class="keyword">in</span> a program exactly one time just before the class, or any class that inherits from it, is sent its first message from within the program. (Thus the method may never be invoked <span class="keyword">if</span> the class is not used.) The runtime sends the initialize message to classes <span class="keyword">in</span> a thread-safe manner. Superclasses receive <span class="keyword">this</span> message before their subclasses.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+(<span class="keyword">void</span>)load</span><br><span class="line"></span><br><span class="line">    The load message is sent to classes and categories that are both dynamically loaded and statically linked, but only <span class="keyword">if</span> the newly loaded class or category implements a method that can respond.</span><br><span class="line">    The order of initialization is as follows:</span><br><span class="line"></span><br><span class="line">    All initializers <span class="keyword">in</span> any framework you link to.</span><br><span class="line">    All +load methods <span class="keyword">in</span> your image.</span><br><span class="line">    All C++ <span class="keyword">static</span> initializers and C/C++ __attribute__(constructor) functions <span class="keyword">in</span> your image.</span><br><span class="line">    All initializers <span class="keyword">in</span> frameworks that link to you.</span><br><span class="line"></span><br><span class="line">In addition:</span><br><span class="line"></span><br><span class="line">    A class’s +load method is called after all of its superclasses’ +load methods.</span><br><span class="line">    A category +load method is called after the class’s own +load method.</span><br><span class="line"></span><br><span class="line">    In a custom implementation of load you can therefore safely message other unrelated classes from the same image, but any load methods implemented by those classes may not have run yet.</span><br></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">+(<span class="keyword">void</span>)initialize</span><br><span class="line"></span><br><span class="line">    The runtime sends initialize to each <span class="keyword">class</span> <span class="keyword">in</span> a program exactly one time just before the <span class="keyword">class</span>, or any <span class="keyword">class</span> that inherits from it, is sent its first message from within the program. (Thus the method may never be invoked <span class="keyword">if</span> the <span class="keyword">class</span> is not used.) The runtime sends the initialize message to classes <span class="keyword">in</span> a thread-safe manner. Superclasses receive <span class="keyword">this</span> message before their subclasses.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+(<span class="keyword">void</span>)load</span><br><span class="line"></span><br><span class="line">    The load message is sent to classes and categories that are both dynamically loaded and statically linked, but only <span class="keyword">if</span> the newly loaded <span class="keyword">class</span> or category implements a method that can respond.</span><br><span class="line">    The order of initialization is as follows:</span><br><span class="line"></span><br><span class="line">    All initializers <span class="keyword">in</span> any framework you link to.</span><br><span class="line">    All +load methods <span class="keyword">in</span> your image.</span><br><span class="line">    All C++ <span class="keyword">static</span> initializers and C/C++ __attribute__(constructor) functions <span class="keyword">in</span> your image.</span><br><span class="line">    All initializers <span class="keyword">in</span> frameworks that link to you.</span><br><span class="line"></span><br><span class="line">In addition:</span><br><span class="line"></span><br><span class="line">    A <span class="keyword">class</span>’s +load method is called after all of its superclasses’ +load methods.</span><br><span class="line">    A category +load method is called after the <span class="keyword">class</span>’s own +load method.</span><br><span class="line"></span><br><span class="line">    In a custom implementation of load you can therefore safely message other unrelated classes from the same image, but any load methods implemented by those classes may not have run yet.</span><br></pre></td></tr></table></figure>
 <p>文档中说明了<code>initialize</code>和<code>load</code>的区别在于：<code>load</code>是只要类所在文件被引用就会被调用，而<code>initialize</code>是在类或者其子类的第一个方法被调用前调用（懒加载）。所以如果类没有被引用进项目，就不会有<code>load</code>调用；但即使类文件被引用进来，但是没有使用，那么<code>initialize</code>也不会被调用。</p>
 <p>它们的相同点在于：方法只会被调用一次。（相对<code>runtime</code>）。</p>
 <p>文档也明确阐述了方法调用的顺序：父类(<code>Superclass</code>)的方法优先于子类(<code>Subclass</code>)的方法，类中的方法优先于类别(<code>Category</code>)中的方法。</p>
@@ -377,8 +379,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/post/指纹识别/" rel="next" title="iOS 指纹识别">
-                <i class="fa fa-chevron-left"></i> iOS 指纹识别
+              <a href="/post/KeyChain/" rel="next" title="KeyChain">
+                <i class="fa fa-chevron-left"></i> KeyChain
               </a>
             
           </div>
@@ -457,7 +459,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

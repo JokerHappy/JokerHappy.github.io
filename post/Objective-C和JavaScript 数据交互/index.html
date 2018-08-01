@@ -82,12 +82,14 @@
 
 
 <meta name="description" content="iOS7 之前OC 调用 JS在iOS7以前，在OC中调用JavaScript的方式只有一种，就是通过UIWebView对象的stringByEvaluatingJavaScriptFromString:方法，可以实现的交互很少，还需要JS提供相应的方法，实现功能，常用代码如下：">
+<meta name="keywords" content="JavaScriptCore">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Objective-C和JavaScript 数据交互">
 <meta property="og:url" content="http://jokerhappy.github.io/post/Objective-C和JavaScript 数据交互/index.html">
 <meta property="og:site_name" content="知行合一">
 <meta property="og:description" content="iOS7 之前OC 调用 JS在iOS7以前，在OC中调用JavaScript的方式只有一种，就是通过UIWebView对象的stringByEvaluatingJavaScriptFromString:方法，可以实现的交互很少，还需要JS提供相应的方法，实现功能，常用代码如下：">
-<meta property="og:updated_time" content="2018-01-25T12:11:51.065Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-15T09:08:02.654Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C和JavaScript 数据交互">
 <meta name="twitter:description" content="iOS7 之前OC 调用 JS在iOS7以前，在OC中调用JavaScript的方式只有一种，就是通过UIWebView对象的stringByEvaluatingJavaScriptFromString:方法，可以实现的交互很少，还需要JS提供相应的方法，实现功能，常用代码如下：">
@@ -423,15 +425,15 @@
 
 @end
 </code></pre><p>例如有如下<code>JavaScript</code>代码</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">function <span class="title">Person</span><span class="params">(name, age)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">var Persons = new Array;</span><br><span class="line"><span class="function">function <span class="title">addPerson</span><span class="params">(p)</span> </span>&#123;</span><br><span class="line">    Persons.push(p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">function <span class="title">Person</span><span class="params">(name, age)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">var Persons = <span class="keyword">new</span> Array;</span><br><span class="line"><span class="function">function <span class="title">addPerson</span><span class="params">(p)</span> </span>&#123;</span><br><span class="line">    Persons.push(p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>可以在<code>Objective-C</code>中把<code>Person</code>对象传递给<code>addPerson</code>函数</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Person *aPerson = [[Person alloc] init];</span><br><span class="line">aPerson.name = <span class="string">@"Jone"</span>;</span><br><span class="line">aPerson.age = @<span class="number">25</span>;</span><br><span class="line">JSContext *context = [[JSContext alloc]init];    </span><br><span class="line">[context evaluateScript:JSString];</span><br><span class="line">JSValue *function = context[<span class="string">@"addPerson"</span>];</span><br><span class="line">[function callWithArguments:@[aPerson]];</span><br></pre></td></tr></table></figure>
 <h5 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h5><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">context.exceptionHandler = ^(JSContext *context, JSValue *exception) &#123;</span><br><span class="line">       <span class="built_in">NSLog</span>(<span class="string">@"Error: %@"</span>, exception);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h5 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h5><p><code>Objective-C</code>的内存管理机制是引用技术，<code>JavaScript</code>的内存管理机制是垃圾回收。由于每个<code>JSValue</code>都是强引用一个<code>JSContext</code>，可能会存在循环引用的情况。<s>理解不深，不便多言。</s></p>
 <h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
-<li><a href="https://www.gitbook.com/book/liuduo1988/ios/details" target="_blank" rel="external">iOS — Derek Liu</a></li>
-<li><a href="http://nshipster.cn/javascriptcore/" target="_blank" rel="external">Java​Script​Core</a></li>
-<li><a href="http://www.jianshu.com/p/a329cd4a67ee" target="_blank" rel="external">JavaScriptCore 使用</a></li>
+<li><a href="https://www.gitbook.com/book/liuduo1988/ios/details" target="_blank" rel="noopener">iOS — Derek Liu</a></li>
+<li><a href="http://nshipster.cn/javascriptcore/" target="_blank" rel="noopener">Java​Script​Core</a></li>
+<li><a href="http://www.jianshu.com/p/a329cd4a67ee" target="_blank" rel="noopener">JavaScriptCore 使用</a></li>
 </ul>
 
       
@@ -552,7 +554,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

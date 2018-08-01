@@ -82,12 +82,14 @@
 
 
 <meta name="description" content="iOS可变参数官方的例子，留记">
+<meta name="keywords" content="Notes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS可变参数">
 <meta property="og:url" content="http://jokerhappy.github.io/post/iOS可变参数/index.html">
 <meta property="og:site_name" content="知行合一">
 <meta property="og:description" content="iOS可变参数官方的例子，留记">
-<meta property="og:updated_time" content="2018-01-25T12:17:37.245Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-15T09:08:02.656Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS可变参数">
 <meta name="twitter:description" content="iOS可变参数官方的例子，留记">
@@ -341,7 +343,7 @@
       
 
       
-        <h5 id="iOS可变参数"><a href="#iOS可变参数" class="headerlink" title="iOS可变参数"></a>iOS可变参数</h5><p><a href="https://developer.apple.com/library/mac/qa/qa1405/_index.html" target="_blank" rel="external">官方的例子</a>，留记</p>
+        <h5 id="iOS可变参数"><a href="#iOS可变参数" class="headerlink" title="iOS可变参数"></a>iOS可变参数</h5><p><a href="https://developer.apple.com/library/mac/qa/qa1405/_index.html" target="_blank" rel="noopener">官方的例子</a>，留记</p>
 <a id="more"></a> 
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;Cocoa/Cocoa.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">NSMutableArray</span> (<span class="title">variadicMethodExample</span>)</span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>) appendObjects:(<span class="keyword">id</span>) firstObject, ...; <span class="comment">// This method takes a nil-terminated list of objects.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">NSMutableArray</span> (<span class="title">variadicMethodExample</span>)</span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>) appendObjects:(<span class="keyword">id</span>) firstObject, ...</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">id</span> eachObject;</span><br><span class="line">	va_list argumentList;</span><br><span class="line">	<span class="keyword">if</span> (firstObject) <span class="comment">// The first argument isn't part of the varargs list,</span></span><br><span class="line">  &#123;                                   <span class="comment">// so we'll handle it separately.</span></span><br><span class="line">  	[<span class="keyword">self</span> addObject: firstObject];</span><br><span class="line">  	va_start(argumentList, firstObject); <span class="comment">// Start scanning for arguments after firstObject.</span></span><br><span class="line">  	<span class="keyword">while</span> (eachObject = va_arg(argumentList, <span class="keyword">id</span>)) <span class="comment">// As many times as we can get an argument of type "id"</span></span><br><span class="line">	[<span class="keyword">self</span> addObject: eachObject]; <span class="comment">// that isn't nil, add it to self's contents.</span></span><br><span class="line">  	va_end(argumentList);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
 <p><code>va_list</code>：用来保存宏 <code>va_start</code> 、<code>va_arg</code> 和 <code>va_end</code> 所需信息的一种类型。为了访问变长参数列表中的参数，必须声明 <code>va_list</code> 类型的一个对象。</p>
@@ -471,7 +473,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -81,19 +81,18 @@
 
 
 
-<meta name="description" content="Runtime 概述Objective-C runtime是一个实现Objective-C语言的C库。对象可以用C语言中的结构体表示，方法（methods）也可以用C函数实现。
-当程序执行[object doSomething]时，并不是直接找到方法调用，而是会将一条消息（message）会发送给对象，对象根据消息决定该作出怎样的反应。">
+<meta name="description" content="Runtime 概述Objective-C runtime是一个实现Objective-C语言的C库。对象可以用C语言中的结构体表示，方法（methods）也可以用C函数实现。 当程序执行[object doSomething]时，并不是直接找到方法调用，而是会将一条消息（message）会发送给对象，对象根据消息决定该作出怎样的反应。">
+<meta name="keywords" content="Runtime">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS Runtime 学习">
 <meta property="og:url" content="http://jokerhappy.github.io/post/runtime00/index.html">
 <meta property="og:site_name" content="知行合一">
-<meta property="og:description" content="Runtime 概述Objective-C runtime是一个实现Objective-C语言的C库。对象可以用C语言中的结构体表示，方法（methods）也可以用C函数实现。
-当程序执行[object doSomething]时，并不是直接找到方法调用，而是会将一条消息（message）会发送给对象，对象根据消息决定该作出怎样的反应。">
-<meta property="og:updated_time" content="2018-01-25T12:16:04.128Z">
+<meta property="og:description" content="Runtime 概述Objective-C runtime是一个实现Objective-C语言的C库。对象可以用C语言中的结构体表示，方法（methods）也可以用C函数实现。 当程序执行[object doSomething]时，并不是直接找到方法调用，而是会将一条消息（message）会发送给对象，对象根据消息决定该作出怎样的反应。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-15T09:08:02.658Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS Runtime 学习">
-<meta name="twitter:description" content="Runtime 概述Objective-C runtime是一个实现Objective-C语言的C库。对象可以用C语言中的结构体表示，方法（methods）也可以用C函数实现。
-当程序执行[object doSomething]时，并不是直接找到方法调用，而是会将一条消息（message）会发送给对象，对象根据消息决定该作出怎样的反应。">
+<meta name="twitter:description" content="Runtime 概述Objective-C runtime是一个实现Objective-C语言的C库。对象可以用C语言中的结构体表示，方法（methods）也可以用C函数实现。 当程序执行[object doSomething]时，并不是直接找到方法调用，而是会将一条消息（message）会发送给对象，对象根据消息决定该作出怎样的反应。">
 
 
 
@@ -371,7 +370,7 @@ object_setIvar
 </code></pre><h6 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h6><blockquote>
 <p>获取成员变量列表</p>
 </blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Ivar *ivarList = class_copyIvarList([<span class="keyword">self</span> class], &amp;count);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">unsigned</span> <span class="keyword">int</span> i; i&lt;count; i++) &#123;</span><br><span class="line">   </span><br><span class="line">    Ivar myivar =ivarList[i];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *ivarname =ivar_getName(myivar);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"ivar----="</span><span class="string">"&gt;%@"</span>, [<span class="built_in">NSString</span> stringWithUTF8String:ivarname]);</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Ivar *ivarList = class_copyIvarList([<span class="keyword">self</span> <span class="keyword">class</span>], &amp;count);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">unsigned</span> <span class="keyword">int</span> i; i&lt;count; i++) &#123;</span><br><span class="line">   </span><br><span class="line">    Ivar myivar =ivarList[i];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *ivarname =ivar_getName(myivar);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"ivar----="</span><span class="string">"&gt;%@"</span>, [<span class="built_in">NSString</span> stringWithUTF8String:ivarname]);</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>访问私有变量</p>
 </blockquote>
@@ -395,7 +394,7 @@ property_copyAttributeList
 </code></pre><h6 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h6><blockquote>
 <p>获取属性列表</p>
 </blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">objc_property_t *propertyList = class_copyPropertyList([<span class="keyword">self</span> class], &amp;count);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">unsigned</span> <span class="keyword">int</span> i=<span class="number">0</span>; i&lt;count; i++) &#123;</span><br><span class="line">          </span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">char</span> *propertyname =property_getName(propertyList[i]);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">NSLog</span>(<span class="string">@"property----="</span><span class="string">"&gt;%@"</span>, [<span class="built_in">NSString</span> stringWithUTF8String:propertyname]);</span><br><span class="line">      </span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">objc_property_t *propertyList = class_copyPropertyList([<span class="keyword">self</span> <span class="keyword">class</span>], &amp;count);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">unsigned</span> <span class="keyword">int</span> i=<span class="number">0</span>; i&lt;count; i++) &#123;</span><br><span class="line">          </span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">char</span> *propertyname =property_getName(propertyList[i]);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">NSLog</span>(<span class="string">@"property----="</span><span class="string">"&gt;%@"</span>, [<span class="built_in">NSString</span> stringWithUTF8String:propertyname]);</span><br><span class="line">      </span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -514,7 +513,7 @@ property_copyAttributeList
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

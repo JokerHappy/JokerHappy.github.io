@@ -81,47 +81,19 @@
 
 
 
-<meta name="description" content="OC中方法调用在运行时的过程
-
-首先，在相应操作的对象中的缓存方法列表中找调用的方法，如果找到，转向相应实现并执行。
-
-如果没找到，在相应操作的对象中的方法列表中找调用的方法，如果找到，转向相应实现执行
-
-如果没找到，去父类指针所指向的对象中执行1，2.
-
-以此类推，如果一直到根类还没找到，转向拦截调用。
-
-如果没有重写拦截调用的方法，程序报错。">
+<meta name="description" content="OC中方法调用在运行时的过程  首先，在相应操作的对象中的缓存方法列表中找调用的方法，如果找到，转向相应实现并执行。  如果没找到，在相应操作的对象中的方法列表中找调用的方法，如果找到，转向相应实现执行  如果没找到，去父类指针所指向的对象中执行1，2.  以此类推，如果一直到根类还没找到，转向拦截调用。  如果没有重写拦截调用的方法，程序报错。">
+<meta name="keywords" content="Runtime">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS Runtime 消息">
 <meta property="og:url" content="http://jokerhappy.github.io/post/runtime01/index.html">
 <meta property="og:site_name" content="知行合一">
-<meta property="og:description" content="OC中方法调用在运行时的过程
-
-首先，在相应操作的对象中的缓存方法列表中找调用的方法，如果找到，转向相应实现并执行。
-
-如果没找到，在相应操作的对象中的方法列表中找调用的方法，如果找到，转向相应实现执行
-
-如果没找到，去父类指针所指向的对象中执行1，2.
-
-以此类推，如果一直到根类还没找到，转向拦截调用。
-
-如果没有重写拦截调用的方法，程序报错。">
+<meta property="og:description" content="OC中方法调用在运行时的过程  首先，在相应操作的对象中的缓存方法列表中找调用的方法，如果找到，转向相应实现并执行。  如果没找到，在相应操作的对象中的方法列表中找调用的方法，如果找到，转向相应实现执行  如果没找到，去父类指针所指向的对象中执行1，2.  以此类推，如果一直到根类还没找到，转向拦截调用。  如果没有重写拦截调用的方法，程序报错。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/runtimemethod.png-water">
-<meta property="og:updated_time" content="2018-05-28T02:35:45.429Z">
+<meta property="og:updated_time" content="2018-07-15T09:08:02.658Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS Runtime 消息">
-<meta name="twitter:description" content="OC中方法调用在运行时的过程
-
-首先，在相应操作的对象中的缓存方法列表中找调用的方法，如果找到，转向相应实现并执行。
-
-如果没找到，在相应操作的对象中的方法列表中找调用的方法，如果找到，转向相应实现执行
-
-如果没找到，去父类指针所指向的对象中执行1，2.
-
-以此类推，如果一直到根类还没找到，转向拦截调用。
-
-如果没有重写拦截调用的方法，程序报错。">
+<meta name="twitter:description" content="OC中方法调用在运行时的过程  首先，在相应操作的对象中的缓存方法列表中找调用的方法，如果找到，转向相应实现并执行。  如果没找到，在相应操作的对象中的方法列表中找调用的方法，如果找到，转向相应实现执行  如果没找到，去父类指针所指向的对象中执行1，2.  以此类推，如果一直到根类还没找到，转向拦截调用。  如果没有重写拦截调用的方法，程序报错。">
 <meta name="twitter:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/runtimemethod.png-water">
 
 
@@ -405,7 +377,7 @@
 </li>
 </ul>
 <p>具体流程如下：<br><img src="http://7xt3bw.com1.z0.glb.clouddn.com/runtimemethod.png-water" alt=""></p>
-<p>具体事例可参考<a href="http://justinyan.me/post/1624" target="_blank" rel="external">理解 Objective-C Runtime</a></p>
+<p>具体事例可参考<a href="http://justinyan.me/post/1624" target="_blank" rel="noopener">理解 Objective-C Runtime</a></p>
 <h5 id="动态添加方法"><a href="#动态添加方法" class="headerlink" title="动态添加方法"></a>动态添加方法</h5><p>重写了拦截调用的方法并且返回了<code>YES</code>，我们要怎么处理呢？</p>
 <p>有一个办法是根据传进来的<code>SEL</code>类型的<code>selector</code>动态添加一个方法。</p>
 <p>首先从外部隐式调用一个不存在的方法：</p>
@@ -427,7 +399,7 @@
 </ul>
 <h5 id="方法交换"><a href="#方法交换" class="headerlink" title="方法交换"></a>方法交换</h5><p>方法交换，顾名思义，就是将两个方法的实现交换。例如，将A方法和B方法交换，调用A方法的时候，就会执行B方法中的代码，反之亦然。</p>
 <p>话不多说，这是参考Mattt大神在NSHipster上的文章自己写的代码。</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"UIViewController+swizzling.h"</span></span></span><br><span class="line"><span class="meta">#import @implementation UIViewController (swizzling)</span></span><br><span class="line"><span class="comment">//load方法会在类第一次加载的时候被调用</span></span><br><span class="line"><span class="comment">//调用的时间比较靠前，适合在这个方法里做方法交换</span></span><br><span class="line"></span><br><span class="line">	+ (<span class="keyword">void</span>)load&#123;</span><br><span class="line">	    <span class="comment">//方法交换应该被保证，在程序中只会执行一次</span></span><br><span class="line">	    <span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;</span><br><span class="line">	    <span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123;</span><br><span class="line">	        <span class="comment">//获得viewController的生命周期方法的selector</span></span><br><span class="line">	        SEL systemSel = <span class="keyword">@selector</span>(viewWillAppear:);</span><br><span class="line">	        <span class="comment">//自己实现的将要被交换的方法的selector</span></span><br><span class="line">	        SEL swizzSel = <span class="keyword">@selector</span>(swiz_viewWillAppear:);</span><br><span class="line">	        <span class="comment">//两个方法的Method</span></span><br><span class="line">	        Method systemMethod = class_getInstanceMethod([<span class="keyword">self</span> class], systemSel);</span><br><span class="line">	        Method swizzMethod = class_getInstanceMethod([<span class="keyword">self</span> class], swizzSel);</span><br><span class="line">	        <span class="comment">//首先动态添加方法，实现是被交换的方法，返回值表示添加成功还是失败</span></span><br><span class="line">	        <span class="built_in">BOOL</span> isAdd = class_addMethod(<span class="keyword">self</span>, systemSel, method_getImplementation(swizzMethod), method_getTypeEncoding(swizzMethod));</span><br><span class="line">	        <span class="keyword">if</span> (isAdd) &#123;</span><br><span class="line">	            <span class="comment">//如果成功，说明类中不存在这个方法的实现</span></span><br><span class="line">	            <span class="comment">//将被交换方法的实现替换到这个并不存在的实现</span></span><br><span class="line">	            class_replaceMethod(<span class="keyword">self</span>, swizzSel, method_getImplementation(systemMethod), method_getTypeEncoding(systemMethod));</span><br><span class="line">	        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	            <span class="comment">//否则，交换两个方法的实现</span></span><br><span class="line">	            method_exchangeImplementations(systemMethod, swizzMethod);</span><br><span class="line">	        &#125;</span><br><span class="line">	    &#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	- (<span class="keyword">void</span>)swiz_viewWillAppear:(<span class="built_in">BOOL</span>)animated&#123;</span><br><span class="line">	    <span class="comment">//这时候调用自己，看起来像是死循环</span></span><br><span class="line">	    <span class="comment">//但是其实自己的实现已经被替换了</span></span><br><span class="line">	    [<span class="keyword">self</span> swiz_viewWillAppear:animated];</span><br><span class="line">	    <span class="built_in">NSLog</span>(<span class="string">@"swizzle"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"UIViewController+swizzling.h"</span></span></span><br><span class="line"><span class="meta">#import @implementation UIViewController (swizzling)</span></span><br><span class="line"><span class="comment">//load方法会在类第一次加载的时候被调用</span></span><br><span class="line"><span class="comment">//调用的时间比较靠前，适合在这个方法里做方法交换</span></span><br><span class="line"></span><br><span class="line">	+ (<span class="keyword">void</span>)load&#123;</span><br><span class="line">	    <span class="comment">//方法交换应该被保证，在程序中只会执行一次</span></span><br><span class="line">	    <span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;</span><br><span class="line">	    <span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123;</span><br><span class="line">	        <span class="comment">//获得viewController的生命周期方法的selector</span></span><br><span class="line">	        SEL systemSel = <span class="keyword">@selector</span>(viewWillAppear:);</span><br><span class="line">	        <span class="comment">//自己实现的将要被交换的方法的selector</span></span><br><span class="line">	        SEL swizzSel = <span class="keyword">@selector</span>(swiz_viewWillAppear:);</span><br><span class="line">	        <span class="comment">//两个方法的Method</span></span><br><span class="line">	        Method systemMethod = class_getInstanceMethod([<span class="keyword">self</span> <span class="keyword">class</span>], systemSel);</span><br><span class="line">	        Method swizzMethod = class_getInstanceMethod([<span class="keyword">self</span> <span class="keyword">class</span>], swizzSel);</span><br><span class="line">	        <span class="comment">//首先动态添加方法，实现是被交换的方法，返回值表示添加成功还是失败</span></span><br><span class="line">	        <span class="built_in">BOOL</span> isAdd = class_addMethod(<span class="keyword">self</span>, systemSel, method_getImplementation(swizzMethod), method_getTypeEncoding(swizzMethod));</span><br><span class="line">	        <span class="keyword">if</span> (isAdd) &#123;</span><br><span class="line">	            <span class="comment">//如果成功，说明类中不存在这个方法的实现</span></span><br><span class="line">	            <span class="comment">//将被交换方法的实现替换到这个并不存在的实现</span></span><br><span class="line">	            class_replaceMethod(<span class="keyword">self</span>, swizzSel, method_getImplementation(systemMethod), method_getTypeEncoding(systemMethod));</span><br><span class="line">	        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	            <span class="comment">//否则，交换两个方法的实现</span></span><br><span class="line">	            method_exchangeImplementations(systemMethod, swizzMethod);</span><br><span class="line">	        &#125;</span><br><span class="line">	    &#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	- (<span class="keyword">void</span>)swiz_viewWillAppear:(<span class="built_in">BOOL</span>)animated&#123;</span><br><span class="line">	    <span class="comment">//这时候调用自己，看起来像是死循环</span></span><br><span class="line">	    <span class="comment">//但是其实自己的实现已经被替换了</span></span><br><span class="line">	    [<span class="keyword">self</span> swiz_viewWillAppear:animated];</span><br><span class="line">	    <span class="built_in">NSLog</span>(<span class="string">@"swizzle"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
 <p>在一个自己定义的viewController中重写viewWillAppear</p>
 <pre><code>- (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -552,7 +524,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

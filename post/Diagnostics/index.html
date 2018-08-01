@@ -81,25 +81,21 @@
 
 
 
-<meta name="description" content="苹果在 iOS 4.2 时，推出了 ARC 的内存管理机制。这是一种编译期的内存管理方式，在编译时，编译器会判断 Cocoa 对象的使用状况，并适当的加上 retain 和 release，使得对象的内存被合理的管理。但是在开发过程中，由于种种原因还是会造成内存泄漏。
-
-内存泄漏（Memory Leaks）是当一个对象或变量在使用完成后没有释放掉，这个对象一直占有着这块内存，直到应用停止。如果这种">
+<meta name="description" content="苹果在 iOS 4.2 时，推出了 ARC 的内存管理机制。这是一种编译期的内存管理方式，在编译时，编译器会判断 Cocoa 对象的使用状况，并适当的加上 retain 和 release，使得对象的内存被合理的管理。但是在开发过程中，由于种种原因还是会造成内存泄漏。  内存泄漏（Memory Leaks）是当一个对象或变量在使用完成后没有释放掉，这个对象一直占有着这块内存，直到应用停止。如果这种">
+<meta name="keywords" content="Method">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Xcode 利用工具解决程序内存问题">
 <meta property="og:url" content="http://jokerhappy.github.io/post/Diagnostics/index.html">
 <meta property="og:site_name" content="知行合一">
-<meta property="og:description" content="苹果在 iOS 4.2 时，推出了 ARC 的内存管理机制。这是一种编译期的内存管理方式，在编译时，编译器会判断 Cocoa 对象的使用状况，并适当的加上 retain 和 release，使得对象的内存被合理的管理。但是在开发过程中，由于种种原因还是会造成内存泄漏。
-
-内存泄漏（Memory Leaks）是当一个对象或变量在使用完成后没有释放掉，这个对象一直占有着这块内存，直到应用停止。如果这种">
+<meta property="og:description" content="苹果在 iOS 4.2 时，推出了 ARC 的内存管理机制。这是一种编译期的内存管理方式，在编译时，编译器会判断 Cocoa 对象的使用状况，并适当的加上 retain 和 release，使得对象的内存被合理的管理。但是在开发过程中，由于种种原因还是会造成内存泄漏。  内存泄漏（Memory Leaks）是当一个对象或变量在使用完成后没有释放掉，这个对象一直占有着这块内存，直到应用停止。如果这种">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/1.png-water">
 <meta property="og:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/2.png-water">
 <meta property="og:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/3.png-water">
-<meta property="og:updated_time" content="2016-05-08T03:26:02.021Z">
+<meta property="og:updated_time" content="2018-07-15T09:08:02.653Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Xcode 利用工具解决程序内存问题">
-<meta name="twitter:description" content="苹果在 iOS 4.2 时，推出了 ARC 的内存管理机制。这是一种编译期的内存管理方式，在编译时，编译器会判断 Cocoa 对象的使用状况，并适当的加上 retain 和 release，使得对象的内存被合理的管理。但是在开发过程中，由于种种原因还是会造成内存泄漏。
-
-内存泄漏（Memory Leaks）是当一个对象或变量在使用完成后没有释放掉，这个对象一直占有着这块内存，直到应用停止。如果这种">
+<meta name="twitter:description" content="苹果在 iOS 4.2 时，推出了 ARC 的内存管理机制。这是一种编译期的内存管理方式，在编译时，编译器会判断 Cocoa 对象的使用状况，并适当的加上 retain 和 release，使得对象的内存被合理的管理。但是在开发过程中，由于种种原因还是会造成内存泄漏。  内存泄漏（Memory Leaks）是当一个对象或变量在使用完成后没有释放掉，这个对象一直占有着这块内存，直到应用停止。如果这种">
 <meta name="twitter:image" content="http://7xt3bw.com1.z0.glb.clouddn.com/1.png-water">
 
 
@@ -364,7 +360,7 @@
 <p><code>Scribble</code>其实是<code>malloc</code>库<code>libsystem_malloc.dylib</code>自身提供的调试方案</p>
 </blockquote>
 <h5 id="Enable-Malloc-Guard-Edges"><a href="#Enable-Malloc-Guard-Edges" class="headerlink" title="Enable Malloc Guard Edges"></a>Enable Malloc Guard Edges</h5><blockquote>
-<p>申请大片内存的时候在前后page上加保护，详见<a href="http://baike.baidu.com/link?url=47Hbd0Lf8oBC2tUS1HcASJKPWGPYOp3vsUJqJwF4i-6TJ-QkhwIRfKoYpEbnbZFOjavlB383bXTykYOOGVtqya" target="_blank" rel="external">保护模式</a>。</p>
+<p>申请大片内存的时候在前后page上加保护，详见<a href="http://baike.baidu.com/link?url=47Hbd0Lf8oBC2tUS1HcASJKPWGPYOp3vsUJqJwF4i-6TJ-QkhwIRfKoYpEbnbZFOjavlB383bXTykYOOGVtqya" target="_blank" rel="noopener">保护模式</a>。</p>
 </blockquote>
 <h5 id="Enable-Guard-Mallocs"><a href="#Enable-Guard-Mallocs" class="headerlink" title="Enable Guard Mallocs"></a>Enable Guard Mallocs</h5><blockquote>
 <p>使用<code>libgmalloc</code>捕获常见的内存问题，比如越界、释放之后继续使用。</p>
@@ -538,7 +534,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -82,12 +82,14 @@
 
 
 <meta name="description" content="Auto Layout是一种约束满足系统。所谓约束其本质是限制的意思。你创建的每个规则都给出了一个要求，这个要求规定了界面的一部分和另一部分的关系。这些规则可以用数字标识的优先级进行排序，Auto Layout根据你定制的规则和优先级序号确定界面的可视化呈现方式。">
+<meta name="keywords" content="Auto Layout">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS Auto Layout Demystified 学习笔记（二）">
 <meta property="og:url" content="http://jokerhappy.github.io/post/layout 笔记2/index.html">
 <meta property="og:site_name" content="知行合一">
 <meta property="og:description" content="Auto Layout是一种约束满足系统。所谓约束其本质是限制的意思。你创建的每个规则都给出了一个要求，这个要求规定了界面的一部分和另一部分的关系。这些规则可以用数字标识的优先级进行排序，Auto Layout根据你定制的规则和优先级序号确定界面的可视化呈现方式。">
-<meta property="og:updated_time" content="2018-01-25T12:17:05.440Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-15T09:08:02.656Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS Auto Layout Demystified 学习笔记（二）">
 <meta name="twitter:description" content="Auto Layout是一种约束满足系统。所谓约束其本质是限制的意思。你创建的每个规则都给出了一个要求，这个要求规定了界面的一部分和另一部分的关系。这些规则可以用数字标识的优先级进行排序，Auto Layout根据你定制的规则和优先级序号确定界面的可视化呈现方式。">
@@ -358,6 +360,8 @@
 <p>值得一提的是：<code>NSContentSizeLayoutConstraint</code>最主要的作用是和<code>intrinsic size</code>一起工作，通常这个约束和Layout约束共同决定view的显示方式。</p>
 <blockquote>
 <p>所有的约束类型都具有以下特性： </p>
+</blockquote>
+<blockquote>
 <ul>
 <li>都表达了视图在屏幕上的布局方式。</li>
 <li>都有一个内在的优先级，它指定了每个请求在<code>Auto Layout</code>系统中的强烈程度。</li>
@@ -385,7 +389,7 @@
 </ul>
 <p><strong>具体使用方法会在以后的笔记中详细说明</strong></p>
 <h5 id="构建NSLayoutConstraint实例"><a href="#构建NSLayoutConstraint实例" class="headerlink" title="构建NSLayoutConstraint实例"></a>构建<code>NSLayoutConstraint</code>实例</h5><p>利用<code>NSLayoutConstraint</code>类方法创建实例</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+(instancetype)constraintWithItem:(<span class="keyword">id</span>)view1 attribute:(<span class="built_in">NSLayoutAttribute</span>)attr1 relatedBy:(<span class="built_in">NSLayoutRelation</span>)relation toItem:(nullable <span class="keyword">id</span>)view2 attribute:(<span class="built_in">NSLayoutAttribute</span>)attr2 multiplier:(<span class="built_in">CGFloat</span>)multiplier constant:(<span class="built_in">CGFloat</span>)c;</span><br></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+(<span class="keyword">instancetype</span>)constraintWithItem:(<span class="keyword">id</span>)view1 attribute:(<span class="built_in">NSLayoutAttribute</span>)attr1 relatedBy:(<span class="built_in">NSLayoutRelation</span>)relation toItem:(<span class="keyword">nullable</span> <span class="keyword">id</span>)view2 attribute:(<span class="built_in">NSLayoutAttribute</span>)attr2 multiplier:(<span class="built_in">CGFloat</span>)multiplier constant:(<span class="built_in">CGFloat</span>)c;</span><br></pre></td></tr></table></figure>
 <p>方法中的变量解释：</p>
 <ul>
 <li><code>view1</code> 与 <code>view2</code> ，约束关联的视图。</li>
@@ -397,6 +401,8 @@
 <pre><code>y （关系）m * x + b
 </code></pre><h4 id="约束、层次结构与边界系统"><a href="#约束、层次结构与边界系统" class="headerlink" title="约束、层次结构与边界系统"></a>约束、层次结构与边界系统</h4><blockquote>
 <p>约束引用两个视图时，这两个视图必须在同一个视图层次结构，这个特别重要。</p>
+</blockquote>
+<blockquote>
 <p>对于两个涉及视图的约束，只有两种情况，一种是父视图与子视图，另一种就是视图是平级的，即它们拥有相同的祖先视图。</p>
 </blockquote>
 <h4 id="安装约束"><a href="#安装约束" class="headerlink" title="安装约束"></a>安装约束</h4><p>约束创建完成之后，还只是 <code>NSLayoutConstraint</code> 类的实例，如果想要约束生效，还需要将约束添加到 <code>AutoLayout</code> 系统，例如：</p>
@@ -541,7 +547,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

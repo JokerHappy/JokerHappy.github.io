@@ -4,140 +4,12 @@
 
     
   <url>
-    <loc>http://jokerhappy.github.io/post/SSL%E8%AF%81%E4%B9%A6/</loc>
-    <lastmod>2018-05-28T02:37:24.546Z</lastmod>
+    <loc>http://jokerhappy.github.io/post/%E9%98%B2%E5%BE%A1%E5%BC%8F%E7%BC%96%E7%A8%8B/</loc>
+    <lastmod>2018-08-01T13:24:44.123Z</lastmod>
     <data>
         <display>
-        <title>SSL证书类型的选择</title>
-        <pubTime>2018-01-31T16:00:00.000Z</pubTime>
-        
-        <tag>Notes</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://jokerhappy.github.io/post/runtime01/</loc>
-    <lastmod>2018-05-28T02:35:45.429Z</lastmod>
-    <data>
-        <display>
-        <title>iOS Runtime 消息</title>
-        <pubTime>2016-03-19T16:00:00.000Z</pubTime>
-        
-        <tag>Runtime</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://jokerhappy.github.io/post/layout%20%E7%AC%94%E8%AE%B01/</loc>
-    <lastmod>2018-05-28T02:34:12.812Z</lastmod>
-    <data>
-        <display>
-        <title>iOS Auto Layout Demystified 学习笔记（一）</title>
-        <pubTime>2016-02-19T16:00:00.000Z</pubTime>
-        
-        <tag>Auto Layout</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://jokerhappy.github.io/post/%E5%B2%9B%E4%B8%8A%E4%B9%A6%E5%BA%97/</loc>
-    <lastmod>2018-05-28T02:32:41.731Z</lastmod>
-    <data>
-        <display>
-        <title>岛上书店</title>
-        <pubTime>2016-08-15T16:00:00.000Z</pubTime>
-        
-        <tag>随想</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://jokerhappy.github.io/post/AutoLayout%20zero/</loc>
-    <lastmod>2018-05-28T02:31:56.389Z</lastmod>
-    <data>
-        <display>
-        <title>iOS中AutoLayer自动布局流程及相关方法</title>
-        <pubTime>2016-02-17T16:00:00.000Z</pubTime>
-        
-        <tag>Auto Layout</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://jokerhappy.github.io/post/dlib%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85%E5%8F%8A%E6%B5%8B%E8%AF%95/</loc>
-    <lastmod>2018-04-28T07:32:05.285Z</lastmod>
-    <data>
-        <display>
-        <title>dlib初步安装及测试</title>
-        <pubTime>2018-03-31T16:00:00.000Z</pubTime>
-        
-        <tag>Notes</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://jokerhappy.github.io/post/%E5%AE%9C%E5%B9%B8%E7%A6%8F/</loc>
-    <lastmod>2018-01-26T02:34:57.262Z</lastmod>
-    <data>
-        <display>
-        <title>宜幸福</title>
-        <pubTime>2017-12-31T16:00:00.000Z</pubTime>
-        
-        <tag>摘录</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://jokerhappy.github.io/post/%E5%9B%BD%E9%99%85%E5%8C%96/</loc>
-    <lastmod>2018-01-26T02:15:32.226Z</lastmod>
-    <data>
-        <display>
-        <title>iOS 国际化问题</title>
-        <pubTime>2016-11-20T16:00:00.000Z</pubTime>
+        <title>防御式编程</title>
+        <pubTime>2018-04-11T16:00:00.000Z</pubTime>
         
         <tag>Notes</tag>
          
@@ -152,69 +24,13 @@
 
     
     
-  <url>
-    <loc>http://jokerhappy.github.io/post/%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB/</loc>
-    <lastmod>2018-01-25T12:27:27.735Z</lastmod>
-    <data>
-        <display>
-        <title>iOS 指纹识别</title>
-        <pubTime>2016-04-11T16:00:00.000Z</pubTime>
-        
-        <tag>Notes</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
-  <url>
-    <loc>http://jokerhappy.github.io/post/Load++/</loc>
-    <lastmod>2018-01-25T12:24:57.300Z</lastmod>
-    <data>
-        <display>
-        <title>Objective C中类方法load和initialize的区别</title>
-        <pubTime>2016-04-14T16:00:00.000Z</pubTime>
-        
-        <tag>Notes</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
-  <url>
-    <loc>http://jokerhappy.github.io/post/self%20super/</loc>
-    <lastmod>2018-01-25T12:21:47.738Z</lastmod>
-    <data>
-        <display>
-        <title>Self 和 Super</title>
-        <pubTime>2016-04-17T16:00:00.000Z</pubTime>
-        
-        <tag>Notes</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
+    
     
   <url>
     <loc>http://jokerhappy.github.io/post/%E9%93%BE%E5%BC%8F%E7%BC%96%E7%A8%8B%E5%92%8C%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2018-01-25T12:19:15.193Z</lastmod>
+    <lastmod>2018-07-15T09:08:02.660Z</lastmod>
     <data>
         <display>
         <title>链式编程和函数式编程学习笔记</title>
@@ -233,12 +49,12 @@
 
     
   <url>
-    <loc>http://jokerhappy.github.io/post/iOS%209%20Universal%20Links/</loc>
-    <lastmod>2018-01-25T12:17:55.392Z</lastmod>
+    <loc>http://jokerhappy.github.io/post/%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB/</loc>
+    <lastmod>2018-07-15T09:08:02.660Z</lastmod>
     <data>
         <display>
-        <title>iOS 9 Universal Links</title>
-        <pubTime>2016-04-09T16:00:00.000Z</pubTime>
+        <title>iOS 指纹识别</title>
+        <pubTime>2016-04-11T16:00:00.000Z</pubTime>
         
         <tag>Notes</tag>
          
@@ -253,100 +69,34 @@
 
     
   <url>
-    <loc>http://jokerhappy.github.io/post/iOS%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/</loc>
-    <lastmod>2018-01-25T12:17:37.245Z</lastmod>
+    <loc>http://jokerhappy.github.io/post/%E5%B2%9B%E4%B8%8A%E4%B9%A6%E5%BA%97/</loc>
+    <lastmod>2018-07-15T09:08:02.660Z</lastmod>
     <data>
         <display>
-        <title>iOS可变参数</title>
-        <pubTime>2016-04-05T16:00:00.000Z</pubTime>
+        <title>岛上书店</title>
+        <pubTime>2016-08-15T16:00:00.000Z</pubTime>
         
-        <tag>Notes</tag>
+        <tag>随想</tag>
          
          
            
-             
-              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
-          
         </display>
     </data>
     </url>
 
     
   <url>
-    <loc>http://jokerhappy.github.io/post/layout%20%E7%AC%94%E8%AE%B02/</loc>
-    <lastmod>2018-01-25T12:17:05.440Z</lastmod>
+    <loc>http://jokerhappy.github.io/post/%E5%AE%9C%E5%B9%B8%E7%A6%8F/</loc>
+    <lastmod>2018-07-15T09:08:02.660Z</lastmod>
     <data>
         <display>
-        <title>iOS Auto Layout Demystified 学习笔记（二）</title>
-        <pubTime>2016-02-27T16:00:00.000Z</pubTime>
+        <title>宜幸福</title>
+        <pubTime>2017-12-31T16:00:00.000Z</pubTime>
         
-        <tag>Auto Layout</tag>
+        <tag>摘录</tag>
          
          
            
-             
-              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://jokerhappy.github.io/post/layout%20%E7%AC%94%E8%AE%B04/</loc>
-    <lastmod>2018-01-25T12:16:39.959Z</lastmod>
-    <data>
-        <display>
-        <title>iOS Auto Layout Demystified 学习笔记（四）</title>
-        <pubTime>2016-03-04T16:00:00.000Z</pubTime>
-        
-        <tag>Auto Layout</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://jokerhappy.github.io/post/runtime00/</loc>
-    <lastmod>2018-01-25T12:16:04.128Z</lastmod>
-    <data>
-        <display>
-        <title>iOS Runtime 学习</title>
-        <pubTime>2016-03-17T16:00:00.000Z</pubTime>
-        
-        <tag>Runtime</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://jokerhappy.github.io/post/runtime02/</loc>
-    <lastmod>2018-01-25T12:15:28.600Z</lastmod>
-    <data>
-        <display>
-        <title>iOS Runtime 关联对象</title>
-        <pubTime>2016-03-23T16:00:00.000Z</pubTime>
-        
-        <tag>Runtime</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
-          
         </display>
     </data>
     </url>
@@ -354,7 +104,7 @@
     
   <url>
     <loc>http://jokerhappy.github.io/post/webview/</loc>
-    <lastmod>2018-01-25T12:14:45.995Z</lastmod>
+    <lastmod>2018-07-15T09:08:02.659Z</lastmod>
     <data>
         <display>
         <title>UIWebView 使用浅析</title>
@@ -373,52 +123,12 @@
 
     
   <url>
-    <loc>http://jokerhappy.github.io/post/Objective-C%E5%92%8CJavaScript%20%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92/</loc>
-    <lastmod>2018-01-25T12:11:51.065Z</lastmod>
+    <loc>http://jokerhappy.github.io/post/self%20super/</loc>
+    <lastmod>2018-07-15T09:08:02.659Z</lastmod>
     <data>
         <display>
-        <title>Objective-C和JavaScript 数据交互</title>
-        <pubTime>2016-04-06T16:00:00.000Z</pubTime>
-        
-        <tag>JavaScriptCore</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://jokerhappy.github.io/post/RSA%E5%8A%A0%E5%AF%86/</loc>
-    <lastmod>2018-01-25T12:04:27.217Z</lastmod>
-    <data>
-        <display>
-        <title>iOS RSA 加密</title>
-        <pubTime>2016-03-14T16:00:00.000Z</pubTime>
-        
-        <tag>RSA</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://jokerhappy.github.io/post/KeyChain/</loc>
-    <lastmod>2018-01-25T12:03:21.174Z</lastmod>
-    <data>
-        <display>
-        <title>KeyChain</title>
-        <pubTime>2016-04-11T16:00:00.000Z</pubTime>
+        <title>Self 和 Super</title>
+        <pubTime>2016-04-17T16:00:00.000Z</pubTime>
         
         <tag>Notes</tag>
          
@@ -433,19 +143,59 @@
 
     
   <url>
-    <loc>http://jokerhappy.github.io/post/hexo/</loc>
-    <lastmod>2018-01-25T12:03:00.433Z</lastmod>
+    <loc>http://jokerhappy.github.io/post/%E5%9B%BD%E9%99%85%E5%8C%96/</loc>
+    <lastmod>2018-07-15T09:08:02.659Z</lastmod>
     <data>
         <display>
-        <title>利用 Hexo 和 Github 创建个人博客</title>
-        <pubTime>2016-02-13T16:00:00.000Z</pubTime>
+        <title>iOS 国际化问题</title>
+        <pubTime>2016-11-20T16:00:00.000Z</pubTime>
         
-        <tag>Hexo</tag>
+        <tag>Notes</tag>
          
          
            
              
-              <breadCrumb title="Skill" url="http://jokerhappy.github.io/categories/Skill/"/>
+              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jokerhappy.github.io/post/runtime02/</loc>
+    <lastmod>2018-07-15T09:08:02.659Z</lastmod>
+    <data>
+        <display>
+        <title>iOS Runtime 关联对象</title>
+        <pubTime>2016-03-23T16:00:00.000Z</pubTime>
+        
+        <tag>Runtime</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jokerhappy.github.io/post/runtime01/</loc>
+    <lastmod>2018-07-15T09:08:02.658Z</lastmod>
+    <data>
+        <display>
+        <title>iOS Runtime 消息</title>
+        <pubTime>2016-03-19T16:00:00.000Z</pubTime>
+        
+        <tag>Runtime</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
           
         </display>
     </data>
@@ -454,7 +204,7 @@
     
   <url>
     <loc>http://jokerhappy.github.io/post/layout%20%E7%AC%94%E8%AE%B06/</loc>
-    <lastmod>2016-08-30T10:33:38.846Z</lastmod>
+    <lastmod>2018-07-15T09:08:02.658Z</lastmod>
     <data>
         <display>
         <title>iOS Auto Layout Demystified 学习笔记（六）</title>
@@ -474,7 +224,7 @@
     
   <url>
     <loc>http://jokerhappy.github.io/post/layout%20%E7%AC%94%E8%AE%B05/</loc>
-    <lastmod>2016-08-30T10:05:33.232Z</lastmod>
+    <lastmod>2018-07-15T09:08:02.658Z</lastmod>
     <data>
         <display>
         <title>iOS Auto Layout Demystified 学习笔记（五）</title>
@@ -493,8 +243,28 @@
 
     
   <url>
+    <loc>http://jokerhappy.github.io/post/runtime00/</loc>
+    <lastmod>2018-07-15T09:08:02.658Z</lastmod>
+    <data>
+        <display>
+        <title>iOS Runtime 学习</title>
+        <pubTime>2016-03-17T16:00:00.000Z</pubTime>
+        
+        <tag>Runtime</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://jokerhappy.github.io/post/layout%20%E7%AC%94%E8%AE%B03/</loc>
-    <lastmod>2016-05-28T03:52:57.344Z</lastmod>
+    <lastmod>2018-07-15T09:08:02.657Z</lastmod>
     <data>
         <display>
         <title>iOS Auto Layout Demystified 学习笔记（三）</title>
@@ -513,8 +283,219 @@
 
     
   <url>
+    <loc>http://jokerhappy.github.io/post/layout%20%E7%AC%94%E8%AE%B04/</loc>
+    <lastmod>2018-07-15T09:08:02.657Z</lastmod>
+    <data>
+        <display>
+        <title>iOS Auto Layout Demystified 学习笔记（四）</title>
+        <pubTime>2016-03-04T16:00:00.000Z</pubTime>
+        
+        <tag>Auto Layout</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jokerhappy.github.io/post/layout%20%E7%AC%94%E8%AE%B02/</loc>
+    <lastmod>2018-07-15T09:08:02.656Z</lastmod>
+    <data>
+        <display>
+        <title>iOS Auto Layout Demystified 学习笔记（二）</title>
+        <pubTime>2016-02-27T16:00:00.000Z</pubTime>
+        
+        <tag>Auto Layout</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jokerhappy.github.io/post/layout%20%E7%AC%94%E8%AE%B01/</loc>
+    <lastmod>2018-07-15T09:08:02.656Z</lastmod>
+    <data>
+        <display>
+        <title>iOS Auto Layout Demystified 学习笔记（一）</title>
+        <pubTime>2016-02-19T16:00:00.000Z</pubTime>
+        
+        <tag>Auto Layout</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jokerhappy.github.io/post/iOS%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/</loc>
+    <lastmod>2018-07-15T09:08:02.656Z</lastmod>
+    <data>
+        <display>
+        <title>iOS可变参数</title>
+        <pubTime>2016-04-05T16:00:00.000Z</pubTime>
+        
+        <tag>Notes</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jokerhappy.github.io/post/hexo/</loc>
+    <lastmod>2018-07-15T09:08:02.655Z</lastmod>
+    <data>
+        <display>
+        <title>利用 Hexo 和 Github 创建个人博客</title>
+        <pubTime>2016-02-13T16:00:00.000Z</pubTime>
+        
+        <tag>Hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="Skill" url="http://jokerhappy.github.io/categories/Skill/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jokerhappy.github.io/post/hello/</loc>
+    <lastmod>2018-07-15T09:08:02.655Z</lastmod>
+    <data>
+        <display>
+        <title>知行合一</title>
+        <pubTime>2015-12-31T16:00:00.000Z</pubTime>
+        
+        <tag>随想</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jokerhappy.github.io/post/iOS%209%20Universal%20Links/</loc>
+    <lastmod>2018-07-15T09:08:02.655Z</lastmod>
+    <data>
+        <display>
+        <title>iOS 9 Universal Links</title>
+        <pubTime>2016-04-09T16:00:00.000Z</pubTime>
+        
+        <tag>Notes</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jokerhappy.github.io/post/dlib%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85%E5%8F%8A%E6%B5%8B%E8%AF%95/</loc>
+    <lastmod>2018-07-15T09:08:02.655Z</lastmod>
+    <data>
+        <display>
+        <title>dlib初步安装及测试</title>
+        <pubTime>2018-03-31T16:00:00.000Z</pubTime>
+        
+        <tag>Notes</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jokerhappy.github.io/post/Objective-C%E5%92%8CJavaScript%20%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92/</loc>
+    <lastmod>2018-07-15T09:08:02.654Z</lastmod>
+    <data>
+        <display>
+        <title>Objective-C和JavaScript 数据交互</title>
+        <pubTime>2016-04-06T16:00:00.000Z</pubTime>
+        
+        <tag>JavaScriptCore</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jokerhappy.github.io/post/RSA%E5%8A%A0%E5%AF%86/</loc>
+    <lastmod>2018-07-15T09:08:02.654Z</lastmod>
+    <data>
+        <display>
+        <title>iOS RSA 加密</title>
+        <pubTime>2016-03-14T16:00:00.000Z</pubTime>
+        
+        <tag>RSA</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jokerhappy.github.io/post/SSL%E8%AF%81%E4%B9%A6/</loc>
+    <lastmod>2018-07-15T09:08:02.654Z</lastmod>
+    <data>
+        <display>
+        <title>SSL证书类型的选择</title>
+        <pubTime>2018-01-31T16:00:00.000Z</pubTime>
+        
+        <tag>Notes</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://jokerhappy.github.io/post/Diagnostics/</loc>
-    <lastmod>2016-05-08T03:26:02.021Z</lastmod>
+    <lastmod>2018-07-15T09:08:02.653Z</lastmod>
     <data>
         <display>
         <title>Xcode 利用工具解决程序内存问题</title>
@@ -533,24 +514,63 @@
 
     
   <url>
-    <loc>http://jokerhappy.github.io/post/hello/</loc>
-    <lastmod>2016-04-10T03:08:29.561Z</lastmod>
+    <loc>http://jokerhappy.github.io/post/Load++/</loc>
+    <lastmod>2018-07-15T09:08:02.653Z</lastmod>
     <data>
         <display>
-        <title>知行合一</title>
-        <pubTime>2015-12-31T16:00:00.000Z</pubTime>
+        <title>Objective C中类方法load和initialize的区别</title>
+        <pubTime>2016-04-14T16:00:00.000Z</pubTime>
         
-        <tag>随想</tag>
+        <tag>Notes</tag>
          
          
            
+             
+              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
+          
         </display>
     </data>
     </url>
 
     
+  <url>
+    <loc>http://jokerhappy.github.io/post/KeyChain/</loc>
+    <lastmod>2018-07-15T09:08:02.653Z</lastmod>
+    <data>
+        <display>
+        <title>KeyChain</title>
+        <pubTime>2016-04-11T16:00:00.000Z</pubTime>
+        
+        <tag>Notes</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
     
-    
-    
+  <url>
+    <loc>http://jokerhappy.github.io/post/AutoLayout%20zero/</loc>
+    <lastmod>2018-07-15T09:08:02.652Z</lastmod>
+    <data>
+        <display>
+        <title>iOS中AutoLayer自动布局流程及相关方法</title>
+        <pubTime>2016-02-17T16:00:00.000Z</pubTime>
+        
+        <tag>Auto Layout</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="http://jokerhappy.github.io/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
     
 </urlset>

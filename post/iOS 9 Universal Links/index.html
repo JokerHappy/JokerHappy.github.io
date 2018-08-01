@@ -81,19 +81,18 @@
 
 
 
-<meta name="description" content="Apple 推出Universal Links (通用链接)：一种能够方便的通过传统 HTTP 链接来启动 APP, 使用相同的网址打开网站和 APP。
-通过唯一的网址, 不需要特别的schema就可以链接一个特定的视图到APP 里面 。比如：在知乎中使用了通用链接, 那么用户在Safari、UIWebView或者 WKWebView点击一个链接, iOS设备上的知乎app会在知乎里面自动打开这个">
+<meta name="description" content="Apple 推出Universal Links (通用链接)：一种能够方便的通过传统 HTTP 链接来启动 APP, 使用相同的网址打开网站和 APP。 通过唯一的网址, 不需要特别的schema就可以链接一个特定的视图到APP 里面 。比如：在知乎中使用了通用链接, 那么用户在Safari、UIWebView或者 WKWebView点击一个链接, iOS设备上的知乎app会在知乎里面自动打开这个">
+<meta name="keywords" content="Notes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS 9 Universal Links">
 <meta property="og:url" content="http://jokerhappy.github.io/post/iOS 9 Universal Links/index.html">
 <meta property="og:site_name" content="知行合一">
-<meta property="og:description" content="Apple 推出Universal Links (通用链接)：一种能够方便的通过传统 HTTP 链接来启动 APP, 使用相同的网址打开网站和 APP。
-通过唯一的网址, 不需要特别的schema就可以链接一个特定的视图到APP 里面 。比如：在知乎中使用了通用链接, 那么用户在Safari、UIWebView或者 WKWebView点击一个链接, iOS设备上的知乎app会在知乎里面自动打开这个">
-<meta property="og:updated_time" content="2018-01-25T12:17:55.392Z">
+<meta property="og:description" content="Apple 推出Universal Links (通用链接)：一种能够方便的通过传统 HTTP 链接来启动 APP, 使用相同的网址打开网站和 APP。 通过唯一的网址, 不需要特别的schema就可以链接一个特定的视图到APP 里面 。比如：在知乎中使用了通用链接, 那么用户在Safari、UIWebView或者 WKWebView点击一个链接, iOS设备上的知乎app会在知乎里面自动打开这个">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-15T09:08:02.655Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 9 Universal Links">
-<meta name="twitter:description" content="Apple 推出Universal Links (通用链接)：一种能够方便的通过传统 HTTP 链接来启动 APP, 使用相同的网址打开网站和 APP。
-通过唯一的网址, 不需要特别的schema就可以链接一个特定的视图到APP 里面 。比如：在知乎中使用了通用链接, 那么用户在Safari、UIWebView或者 WKWebView点击一个链接, iOS设备上的知乎app会在知乎里面自动打开这个">
+<meta name="twitter:description" content="Apple 推出Universal Links (通用链接)：一种能够方便的通过传统 HTTP 链接来启动 APP, 使用相同的网址打开网站和 APP。 通过唯一的网址, 不需要特别的schema就可以链接一个特定的视图到APP 里面 。比如：在知乎中使用了通用链接, 那么用户在Safari、UIWebView或者 WKWebView点击一个链接, iOS设备上的知乎app会在知乎里面自动打开这个">
 
 
 
@@ -381,7 +380,7 @@
 <h5 id="Step-4"><a href="#Step-4" class="headerlink" title="Step 4"></a>Step 4</h5><p>在 <code>AppDelegate</code> 里支持通用链接</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">-(<span class="built_in">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application continueUserActivity:(<span class="built_in">NSUserActivity</span> *)userActivity restorationHandler:(<span class="keyword">void</span> (^)(<span class="built_in">NSArray</span> *restorableObjects))restorationHandler&#123;</span><br><span class="line"></span><br><span class="line"> 	<span class="keyword">if</span> ([[userActivity activityType] isEqualToString:<span class="built_in">NSUserActivityTypeBrowsingWeb</span>]) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">NSString</span> *urlStr = userActivity.webpageURL;</span><br><span class="line">     	</span><br><span class="line">		<span class="keyword">if</span> ([urlStr.host isEqualToString:<span class="string">@"myapp.com"</span>])&#123;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 打开App对应页面</span></span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			</span><br><span class="line">			<span class="comment">// 不能识别，在浏览器中打开</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>当 <code>userActivity</code> 是 <code>NSUserActivityTypeBrowsingWeb</code> 类型, 则意味着它已经由通用链接 <code>API</code> 代理。这样的话, 它保证用户打开的 <code>URL</code> 将有一个非空的 <code>webpageURL</code> 属性。<br><br></p>
-<h5 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a><a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/AppSearch/UniversalLinks.html#//apple_ref/doc/uid/TP40016308-CH12-SW2" target="_blank" rel="external">官方文档</a></h5><h5 id="一些注意要点"><a href="#一些注意要点" class="headerlink" title="一些注意要点"></a><a href="http://www.jianshu.com/p/c2ca5b5f391f" target="_blank" rel="external">一些注意要点</a></h5>
+<h5 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a><a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/AppSearch/UniversalLinks.html#//apple_ref/doc/uid/TP40016308-CH12-SW2" target="_blank" rel="noopener">官方文档</a></h5><h5 id="一些注意要点"><a href="#一些注意要点" class="headerlink" title="一些注意要点"></a><a href="http://www.jianshu.com/p/c2ca5b5f391f" target="_blank" rel="noopener">一些注意要点</a></h5>
       
     </div>
     
@@ -421,8 +420,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/post/KeyChain/" rel="prev" title="KeyChain">
-                KeyChain <i class="fa fa-chevron-right"></i>
+              <a href="/post/指纹识别/" rel="prev" title="iOS 指纹识别">
+                iOS 指纹识别 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -500,7 +499,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
